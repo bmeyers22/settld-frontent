@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 `import DS from 'ember-data'`
-`import Enums from 'frontend/enums'`
+`import Enums from 'web/enums'`
 
 Transaction = DS.Model.extend(
   invoices: DS.hasMany "invoice", async: true

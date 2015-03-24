@@ -1,5 +1,5 @@
 `import Feeds from '../feeds'`
-`import Enums from 'frontend/enums'`
+`import Enums from 'web/enums'`
 
 JobsFeedController = Feeds.extend(
   jobs: (->

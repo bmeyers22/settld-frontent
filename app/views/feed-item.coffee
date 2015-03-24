@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
-`import Transaction from 'frontend/models/transaction'`
-`import Job from 'frontend/models/job'`
+`import Transaction from 'web/models/transaction'`
+`import Job from 'web/models/job'`
 
 FeedItemView = Ember.View.extend(
   templateName: 'feedItem'

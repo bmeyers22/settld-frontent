@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-# `import io from 'frontend/utils/socket.io'`
+# `import io from 'web/utils/socket.io'`
 Client = null
 initialize = (container, application) ->
   Client = ->

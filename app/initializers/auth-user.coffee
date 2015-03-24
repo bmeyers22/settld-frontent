@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-`import Session from 'frontend/models/session'`
+`import Session from 'web/models/session'`
 
 # Takes two parameters: container and app
 initialize = (container, application) ->

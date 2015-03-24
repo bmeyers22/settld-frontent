@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-`import Enums from 'frontend/enums'`
+`import Enums from 'web/enums'`
 `import AudienceButtonContainer from './audience-button'`
 `import AudienceButtonView from './audience-button'`
 

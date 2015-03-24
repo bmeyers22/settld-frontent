@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-`import ModelDefaults from 'frontend/services/model-defaults'`
+`import ModelDefaults from 'web/services/model-defaults'`
 `import JobNew from '../jobs/new'`
 
 NewJob = JobNew.extend
