@@ -1,0 +1,11 @@
+.ui.global.modal
+  i.close.icon
+  .header
+    = title
+  .content
+    = yield
+  .actions
+    .ui.button Cancel
+    .ui.positive.submit.right.labeled.icon.button.submit
+      span Save
+      i.checkmark.icon

@@ -1,0 +1,3 @@
+label Date
+input type="text" class="form-control" tabindex=tabindex
+i.datepicker-addon

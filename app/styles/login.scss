@@ -1,0 +1,84 @@
+@import "main";
+
+.signin-container, .register-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  &.login {
+    top: -100%;
+    transition: top 1.2s;
+  }
+  &.login.visible {
+    top: 0px;
+  }
+
+  .form-container {
+    display: table;
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    .form-wrapper {
+      width: 600px;
+      display: table-cell;
+      vertical-align: middle;
+
+      .cover-heading {
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        color: #fff;
+        font-family: 'Damion', cursive;
+        font-size: 145px;
+        text-align: center;
+        text-shadow: 0 1px 3px rgba(0,0,0,.5);
+      }
+    }
+  }
+
+}
+.signin-container {
+  .ui.form {
+
+    .field.valid {
+      input{
+        border-color: #52A954;
+        border-left: none;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        -webkit-box-shadow: 0em 0em 0em 0em #52A954 inset;
+        box-shadow: 0.1em 0em 0em 0em #52A954 inset;
+      }
+      .corner.label {
+        border-color: #52A954;
+      }
+    }
+
+
+    .inline.fields .field > :only-child, .ui.form .inline.field.signin-checkbox{
+      margin-top: 20px;
+    }
+
+    .signin-link {
+      color: #1AB8F3;
+      text-decoration: none;
+
+      &:visited {
+        color: #1AB8F3;
+        text-decoration: none;
+
+      }
+
+    }
+    .facebook-signin-container {
+      text-align: center;
+    }
+  }
+}

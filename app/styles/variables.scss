@@ -1,0 +1,22 @@
+$APP_WIDTH: 1024px;
+$USER_TOP_HEIGHT: 40px;
+$DEFAULT_TRANS_SPEED: .3s;
+
+@mixin transition-all($dur: $DEFAULT_TRANS_SPEED) {
+	-o-transition: $dur;
+	-ms-transition: $dur;
+	-moz-transition: $dur;
+	-webkit-transition: $dur;
+	transition: $dur;
+}
+
+@mixin trbl0() {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin center-margin() {
+	margin: 0 auto;
+}

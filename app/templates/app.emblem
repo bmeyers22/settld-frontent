@@ -1,0 +1,25 @@
+div.global-wrapper
+  div.ui.fixed.transparent.inverted.main.menu.user-top-bar
+    div.content
+      link-to 'dashboard'
+        div.title.item Settld
+      div.home-select-wrapper.right.menu
+        a.item data-method="DELETE" href="/logout" rel="nofollow"
+          div.ui.button.mini.red Log out
+        div.item
+          div.ui.pointing.dropdown.main-home-select
+            input type="hidden" name="currentHome"
+            div.text
+              = session.currentHome.name
+            i.icon.dropdown
+            div.menu
+              each home in session.authUser.homes
+                div.item data-value=home.id
+                  = home.name
+  div.main-content-wrapper
+    div.control-panel-wrapper
+      = partial 'control_panel'
+    div.app-content-wrapper
+      = outlet
+      
+= outlet 'modal'

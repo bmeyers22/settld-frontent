@@ -1,0 +1,10 @@
+.fourteen.wide.column
+	.homes
+		.ui.segment
+			h3 = name
+			
+.one.wide.column.move-column
+	i.icon.bars
+
+.one.wide.column.edit-column
+	i.icon.pencil click="'editHome' this"

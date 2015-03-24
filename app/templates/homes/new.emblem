@@ -1,0 +1,81 @@
+.new-home-wrapper
+	h2.ui.dividing.header New Home
+	.ui.form.new-home
+		.field.inline
+			label Name
+			.ui.labeled.input
+				= input type="text" name="name" value=name class="form-control" tabindex="1" placeholder="e.g. My Home"
+
+				.ui.corner.label
+					i.asterisk.icon
+
+		h4.ui.dividing.headerLocation
+		.field
+			label Address
+			.ui.fluid.input
+				= input type="text" name="address" value=address class="form-control" tabindex="2" placeholder="e.g. 99 Great One Ln Apt #1"
+
+		.three.fields
+			.field
+				label City
+				= input type="text" name="city" value=city class="form-control" tabindex="3" placeholder="e.g. New York"
+
+			.field
+				label State
+				.ui.state-dropdown.selectiondropdown tabindex="4"
+					input type="hidden" name="state"
+					= input type="hidden" name="state" value=state
+					.default.text
+						| ...
+
+					i.dropdown.icon
+					.menu
+						each state in Enums.USStates
+							.item data-value=state.alpha-2
+
+			.field
+				label Zip
+				.ui.labeled.input
+					= input type="text" name="zip" value=zip class="form-control" tabindex="5" placeholder="e.g. 99999"
+					.ui.corner.label
+						i.asterisk.icon
+
+		h4.ui.dividing.headerHome info
+		.two.fields
+			.field
+				label # of Roommates
+				.ui.labeled.input
+					= input type="text" name="roommateCount" value=roommateCount class="form-control" tabindex="6" placeholder="e.g. 3"
+					.ui.corner.label
+						i.asterisk.icon
+
+			.field
+				label Rent
+				i.why-rent question.icon small data-content="For rent payment features."
+				.ui.left.right.icon.labeled.input
+					= input type="text" name="rentPerMonth" value=rentPerMonth class="form-control" tabindex="7" placeholder="e.g. 2000"
+					i.dollar.icon
+					span.suffix /mo.
+					.ui.corner.label
+						i.asterisk.icon
+
+		.two.fields
+			.field
+				label Password
+				.ui.labeled.input
+					= input type="password" name="password" value=password class="form-control" tabindex="8" placeholder="Password 8-12 characters"
+					.ui.corner.label
+						i.asterisk.icon
+
+			.field
+				label for="" Confirm
+				.ui.labeled.input
+					= input name="confirm" type="password" class="form-control" tabindex="9" placeholder="Confirm password"
+					.ui.corner.label
+						i.asterisk.icon
+
+		.submit-container
+			.ui.buttons
+				.ui.button click="'cancelCreate' model" Cancel
+				.or
+				.ui.submit.positive.button tabindex="10" Submit

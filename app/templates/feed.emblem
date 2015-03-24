@@ -1,0 +1,18 @@
+.feed-wrapper
+	.ui.grid
+		div.eight.wide.column
+			.ui.mini.icon.input
+				input type="text" placeholder="Search mini"
+				i.search.icon
+		div.four.wide.column
+		div.four.wide.column
+			.ui.icon.buttons.small.right.floated
+				each child in view.audienceButtonViews.childViews
+					= view child
+						i class=child.iconClass
+	.ui.feed.small.segment
+		if hasStream
+			each item in stream
+				= render 'feedItem' item
+		else
+			.event Your feed is empty!  Add a transaction or a job to see items here :)

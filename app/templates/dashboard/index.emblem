@@ -1,0 +1,16 @@
+.red.ui.corner.label.add-job data-content="Add new chore" click="'showModal' 'modals/job'"
+    i.plus.icon
+
+.green.ui.corner.left.label.add-transaction data-content="Add new transaction" click="'showModal' 'modals/transaction'"
+    i.plus.icon
+
+.overview-segment-container
+	.ui.blue.center.aligned.segment.score-segment
+		.ui.score.dividing.header = session.userInfo.score
+		.score-type Score
+	.ui.green.center.aligned.segment.score-segment
+		.ui.score.dividing.header = session.userInfo.balance
+		.score-type Balance
+	.ui.red.center.aligned.segment.score-segment
+		.ui.score.dividing.header = session.userInfo.choresToDo
+		.score-type To-Do

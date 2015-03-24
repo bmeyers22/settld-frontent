@@ -1,0 +1,144 @@
+@import 'variables';
+$overview-height: 350px;
+$header-height: 30px;
+
+
+.dashboard-wrapper {
+	.overview-wrapper {
+		.overview-content {
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			height: $overview-height;
+			overflow-y: auto;
+			position: relative;
+			padding: 40px;
+			.ui.corner.label {
+				&.add-job, &.add-tansaction {
+					cursor: pointer;
+				}
+				&:after {
+					transition: .5s border-width;
+				}
+				&:hover {
+					&.add-job {
+						&:after {
+							border-right: 3.3em solid transparent;
+							border-right-color: inherit;
+							border-bottom: 3.3em solid transparent;
+						}
+					}
+
+					&.add-transaction {
+						&:after {
+							border-top: 3.3em solid transparent;
+							border-right: 3.3em solid transparent;
+							border-top-color: inherit;
+						}
+					}
+				}
+			}
+
+			.ui.corner.label.add-transaction {
+				bottom: initial;
+				cursor: pointer;
+				bottom: initial;
+				left: 0px;
+				top: 0px;
+				right: initial;
+
+			}
+
+			.overview-segment-container {
+				font-size: 0;
+				.score-segment {
+					width: 33%;
+					padding: 0px 10px;
+					display: inline-block;
+					font-size: 1rem;
+					.score {
+						font-size: 5em;
+						padding: 30px;
+					}
+
+					.score-type {
+						font-size: 2em;
+						color: #777;
+					}
+				}
+			}
+
+
+			.new-quick-add-form {
+				position: absolute;
+				.ui.dropdown .menu .item {
+					padding: 0.45em 1em !important;
+				}
+				.form-header {
+					&.transaction {
+						background: #A1CF64;
+					}
+					&.job {
+						background: #D95C5C;
+					}
+					height: $header-height;
+					padding: 5px;
+					color: #fff;
+					font-weight: bold;
+					position: absolute;
+					left: 0;
+					right: 0;
+				}
+				.close-quick-add {
+					position: absolute;
+					right: 0;
+					top: 3px;
+					color: #fff;
+				}
+				.form-wrapper {
+					position: absolute;
+					top: $header-height;
+					padding: 10px;
+					top: 30px;
+					left: 0px;
+					bottom: 0px;
+					right: 0px;
+				}
+				.cost-checkboxes {
+					margin-top: 30px;
+				}
+
+				// Mixins
+  				@include trbl0()
+			}
+		}
+	}
+
+	.feed-wrapper {
+		padding: 20px 0 0 0;
+
+		.section-header {
+			font-size: 20px;
+		}
+
+		.ui.feed {
+			padding-top: 0px;
+			.event {
+				position: relative;
+
+				.label.image {
+					padding-top: 5px;
+				}
+				.ui.left.corner.label {
+					left: -14px;
+					top: 0px;
+					.icon {
+						margin: 0.0em 0em 0em -.2em;
+					}
+				}
+			}
+
+		}
+
+
+	}
+}

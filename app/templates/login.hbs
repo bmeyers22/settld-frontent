@@ -1,0 +1,54 @@
+<div class="form-container">
+  <div class="form-wrapper">
+    <h1 class="cover-heading">Settld</h1>
+    <div class="ui form segment">
+      <form class="ui form segment new_user" id="new_user" action="/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+        <input id="auth-hidden" type="hidden" name="authenticity_token" value="">
+        <div class="ui error message">
+          <div class="header">We noticed some issues</div>
+        </div>
+        <div class="field">
+          <label>Username</label>
+          <div class="ui left labeled icon input">
+            <input autofocus="autofocus" class="form-control" placeholder="Email" type="email" name="user[email]" id="user_email">
+            <i class="user icon"></i>
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="ui left labeled icon input">
+            <input class="form-control" placeholder="Enter Password" type="password" name="user[password]" id="user_password">
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>2
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="inline field signin-checkbox">
+            <div class="ui toggle checkbox">
+              <input type="checkbox" name="">
+              <input name="user[remember_me]" type="hidden" value="0"><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+              <label>Remember me</label>
+            </div>
+          </div>
+          <div class="field">
+            <input type="submit" name="commit" value="Login" class="ui green submit button right floated">
+          </div>
+
+        </div>
+        <div class="ui horizontal divider">
+          Or
+        </div>
+        <div class="facebook-signin-container">
+          <a id="fbLogin" class="ui facebook button" href="/users/auth/facebook"><i class="facebook icon"></i> Sign in with Facebook</a>      
+          <a id="venmoLogin" class="ui button twitter" href="/users/auth/venmo"><i class="fa fa-vimeo-square"></i> Sign in with Venmo</a>
+        </div>
+      </form>
+      <span>Still need to sign up? {{#link-to 'register' classNames="signin-link"}}Register here{{/link-to}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+h1 Transactions Home Page
+.ui.button click="'showModal' 'modals/transaction'" Add

@@ -1,0 +1,11 @@
+div class=view.cornerColor
+  i class=view.iconType
+div.label image
+  if view.userImage
+    img src=view.userImage
+  else
+  i.circular.user.icon
+div.content
+  div.date = view.fuzzyTime
+  div.summary = view.displayName view.actionName item.title
+  div.extra.text = item.description

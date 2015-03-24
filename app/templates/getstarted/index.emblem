@@ -1,0 +1,8 @@
+.home-links-wrapper
+	h2 Setup your home
+	.home-select.button.container
+		link-to 'getstarted.new'
+			.fluid.ui.button New Home
+	.home-select button container
+		link-to 'getstarted.join'
+			.fluid.ui.button Join a Home

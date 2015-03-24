@@ -1,0 +1,5 @@
+div.transactions-wrapper
+	div.overview-wrapper
+		div.overview-content
+			= outlet
+	= render 'feeds/transactions'

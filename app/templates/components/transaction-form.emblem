@@ -1,0 +1,45 @@
+.new-transaction-form
+	.form-wrapper
+		.ui.small.form
+			.ui.three.fields
+				.field
+					label Item
+					= input type="text" tabindex="1" value=model.title class="form-control" name="title" placeholder="Item name..."
+
+				date-picker date=model.date
+				.field
+					label Category
+					.ui.category.selection.dropdown tabindex="3"
+						input type="hidden" name="category"
+						.default.text
+							| Choose one...
+
+						i.dropdown.icon
+						.menu
+							each cat in categories
+								.item data-value=key
+									= cat.val
+
+			.ui.two.fields
+				.field
+					label Description:
+					= input name="description" tabindex="4" value=model.description tagName="textarea" placeholder="Description..."
+
+				.field
+					label Cost:
+					= input name="cost" tabindex="5" type="text" value=model.cost class="form-control" placeholder="Price..."
+
+
+			.field.cost-checkboxes
+				.ui.checkbox.split
+					= input name="split" tabindex="6" type="checkbox" checked=model.split disabled=model.disabled
+					label Split
+					
+	.ui.dimmer
+		.content
+			.center
+				h3.ui.inverted.icon.header
+					i.icon.circular.inverted.emphasized.green.check
+					span Your transaction was added successfully!
+
+= yield

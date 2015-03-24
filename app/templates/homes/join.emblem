@@ -1,0 +1,36 @@
+.join-home-wrapper
+  h2.ui.dividing.header Find your home
+
+  .search-form-wrapper
+    .ui.search.join-search-form
+
+      .ui.icon.fluid.input
+        i.search.link.icon click="'findHomes' target='view'"
+        input class="prompt" type="text" name="query" value=view.query autocomplete="on" placeholder="Search..."
+
+      .ui.segment.home-results.form
+        if view.searchResults
+          .result.results-labels
+            .info
+              .title Name
+              .zip Zip
+          each result in view.searchResults
+            div class={:result result.selected} click="'homeSelected' result target='view'"
+              .info
+                .title = result.name
+                .zip = result.zip
+          .all View all results
+        else
+          h1.no-results No results
+
+      .ui.form.segment.join-password
+        div class={:field isHomeSelected}
+          label Password
+          .ui.action.input
+            input type="hidden" name="passwordValid" value=passwordValid
+            input type="password" name="password" placeholder="Home password" value=selectedHome.password disabled=isHomeSelected
+        div class={:ui :green :submit :button view.canSubmitForm }
+          span.submit-text Join
+          i.submit-loading.icon.loading
+
+        .ui.error.message

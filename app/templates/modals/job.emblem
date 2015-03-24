@@ -1,0 +1,2 @@
+global-modal title="New Transaction" complete="submitModal" close="closeModal" controller=controller model=model
+  job-form categories=controller.categories model=this.model

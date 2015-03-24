@@ -1,0 +1,19 @@
+div.control-panel.ui.vertical.pointing.labeled.icon.menu
+  link-to .item.black 'dashboard' 
+    i.big.home.icon
+    span Home
+  link-to .item.blue "homes"
+    i.big.building.multi.middle.icon
+    i.big.building.multi.right.icon
+    i.big.building.multi.left.icon
+    i.big.building.placehold.icon
+    span My Homes
+  link-to .item.green 'transactions' 
+    i.big.dollar.icon
+    span Purchases
+  link-to .item.red 'jobs' 
+    i.big.briefcase.icon
+    span Chores
+  link-to .item.purple 'settings' 
+    i.big.user.icon
+    span Profile
