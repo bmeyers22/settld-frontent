@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
 
-DashboardController = Ember.ObjectController.extend({})
+DashboardController = Ember.Controller.extend({})
 
 `export default DashboardController`

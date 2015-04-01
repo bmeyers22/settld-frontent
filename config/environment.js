@@ -17,12 +17,12 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self' ", 
-      'font-src': "'self' https://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
+      'default-src': "'none' 'self'",
+      'script-src': "'self' 'localhost' 'unsafe-inline' www.google-analytics.com", 
+      'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
       'connect-src': "'self' ",
       'img-src': "'self'",
-      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
       'media-src': "'self'"
     }
   };

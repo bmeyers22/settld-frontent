@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 
 AppView = Ember.View.extend(didInsertElement: ->
-  $('.main-home-select').dropdown 'set value', @get('controller.CURRENT_HOME_ID')
+  $('.main-home-select').dropdown 'set value', @get('controller.model.CURRENT_HOME_ID')
   return
 )
 

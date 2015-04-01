@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-HomesJoinController = Ember.ObjectController.extend
+HomesJoinController = Ember.Controller.extend
   selectedHome: null
   passwordValid: true
   finishRouteName: 'homes'

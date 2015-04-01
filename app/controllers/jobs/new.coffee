@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-JobsNewController = Ember.ObjectController.extend(
+JobsNewController = Ember.Controller.extend(
   needs: 'application'
   appController: Ember.computed.alias('controllers.application')
   save: (job) ->

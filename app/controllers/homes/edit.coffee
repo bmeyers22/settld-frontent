@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-HomesEditController = Ember.ObjectController.extend(dataGroups:
+HomesEditController = Ember.Controller.extend(dataGroups:
   info: [
     'name'
     'roommateCount'

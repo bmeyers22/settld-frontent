@@ -8,7 +8,7 @@ AppRoute = Ember.Route.extend
     if !settings.get('isUserConfigured')
       transition.abort()
       @transitionTo 'getstarted'
-    return
+    @transitionTo 'dashboard'
   model: ->
     Ember.Object.create
       authUser: @session.get('authUser')

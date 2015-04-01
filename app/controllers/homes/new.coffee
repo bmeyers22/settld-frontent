@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-HomesNewController = Ember.ObjectController.extend(
+HomesNewController = Ember.Controller.extend(
   needs: 'application'
   appController: Ember.computed.alias('controllers.application')
   saveHome: (home) ->

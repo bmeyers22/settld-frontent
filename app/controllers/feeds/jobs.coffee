@@ -17,7 +17,7 @@ JobsFeedController = Feeds.extend(
     jobs = @get('jobs') or []
     stream = Ember.A()
     stream.pushObjects jobs.toArray()
-    Em.ArrayProxy.createWithMixins Ember.SortableMixin,
+    Ember.ArrayProxy.createWithMixins Ember.SortableMixin,
       content: stream
       sortProperties: @sortProperties
       sortAscending: @sortAscending

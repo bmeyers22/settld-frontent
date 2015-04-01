@@ -18,7 +18,7 @@ TransactionsFeedController = Feeds.extend(
     txn = @get('transactions') or []
     stream = Ember.A()
     stream.pushObjects txn.toArray()
-    Em.ArrayProxy.createWithMixins Ember.SortableMixin,
+    Ember.ArrayProxy.createWithMixins Ember.SortableMixin,
       content: stream
       sortProperties: @sortProperties
       sortAscending: @sortAscending

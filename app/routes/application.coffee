@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-Application = Em.Route.extend
+Application = Ember.Route.extend
 
   actions:
     showModal: (name, model) ->
@@ -14,4 +14,3 @@ Application = Em.Route.extend
         parentView: 'application'
 
 `export default Application`
-

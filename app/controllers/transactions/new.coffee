@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-TransactionsNewController = Ember.ObjectController.extend(
+TransactionsNewController = Ember.Controller.extend(
   needs: 'application'
   categories: (->
     cats = _.clone(@Enums.TransactionCategories)

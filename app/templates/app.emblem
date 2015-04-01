@@ -21,5 +21,3 @@ div.global-wrapper
       = partial 'control_panel'
     div.app-content-wrapper
       = outlet
-      
-= outlet 'modal'

@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 `import Enums from 'web/enums'`
 
-FeedsController = Ember.ObjectController.extend(
+FeedsController = Ember.Controller.extend(
   audienceScope: Enums.FeedAudienceScope.Home
   needs: 'application'
   appController: Ember.computed.alias('controllers.application')

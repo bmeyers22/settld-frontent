@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-SettingsIndexController = Em.ObjectController.extend(
+SettingsIndexController = Ember.Controller.extend(
   dataGroups:
     info: [
       'firstName'
@@ -45,4 +45,3 @@ SettingsIndexController = Em.ObjectController.extend(
 )
 
 `export default SettingsIndexController`
-

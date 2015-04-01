@@ -30,7 +30,7 @@ DashboardFeedController = Feeds.extend(
     stream = Ember.A()
     stream.pushObjects txn.toArray()
     stream.pushObjects job.toArray()
-    Em.ArrayProxy.createWithMixins Ember.SortableMixin,
+    Ember.ArrayProxy.createWithMixins Ember.SortableMixin,
       content: stream
       sortProperties: @sortProperties
       sortAscending: @sortAscending

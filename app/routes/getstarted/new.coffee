@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-GetstartedNewRoute = Em.Route.extend(
+GetstartedNewRoute = Ember.Route.extend(
   model: ->
     @store.createRecord 'home'
   setupController: (controller, model) ->
