@@ -2,7 +2,7 @@
   <div class="form-wrapper">
     <h1 class="cover-heading">Settld</h1>
     <div class="ui form segment">
-      <form class="ui form segment new_user" id="new_user" action="http://localhost:3000/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+      <form class="ui form segment new_user" id="new_user" action="http://settld.com/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
         <input id="auth-hidden" type="hidden" name="authenticity_token" value="">
         <div class="ui error message">
           <div class="header">We noticed some issues</div>
@@ -44,8 +44,8 @@
           Or
         </div>
         <div class="facebook-signin-container">
-          <a id="fbLogin" class="ui facebook button" href="http://localhost:3000/users/auth/facebook"><i class="facebook icon"></i> Sign in with Facebook</a>      
-          <a id="venmoLogin" class="ui button twitter" href="http://localhost:3000/users/auth/venmo"><i class="fa fa-vimeo-square"></i> Sign in with Venmo</a>
+          <a id="fbLogin" class="ui facebook button" href="http://settld.com/users/auth/facebook"><i class="facebook icon"></i> Sign in with Facebook</a>      
+          <a id="venmoLogin" class="ui button twitter" href="http://settld.com/users/auth/venmo"><i class="fa fa-vimeo-square"></i> Sign in with Venmo</a>
         </div>
       </form>
       <span>Still need to sign up? {{#link-to 'register' classNames="signin-link"}}Register here{{/link-to}}</span>
