@@ -12,7 +12,7 @@ module.exports = {
       gzipExtensions: ['js', 'css', 'svg'], // if undefined, js, css & svg files are gziped
       accessKeyId: 'AKIAITFSMYX27ZPZA67A',
       secretAccessKey: process.env['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'],
-      bucket: 'app.settld.com'
+      bucket: 'app.dev.settld.com'
     }
   },
 
