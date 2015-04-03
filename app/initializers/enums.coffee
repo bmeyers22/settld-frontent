@@ -9,9 +9,8 @@ initialize = (container, application) ->
 
 EnumsInitializer =
   name: 'enums'
-  after: 'store'
+  after: 'environment'
   initialize: initialize
 
 `export {initialize}`
 `export default EnumsInitializer`
-

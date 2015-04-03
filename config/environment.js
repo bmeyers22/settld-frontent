@@ -33,12 +33,12 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.APP.PROXY_URL = "localhost:3000"
+    ENV.APP.PROXY_URL = "http://localhost:3000/"
   }
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.APP.PROXY_URL = "localhost:3000"
+    ENV.APP.PROXY_URL = "http://localhost:3000/"
     ENV.baseURL = '/';
     ENV.locationType = 'none';
 
@@ -50,7 +50,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.PROXY_URL = "settld.com"
+    ENV.APP.PROXY_URL = "http://settld.com/"
   }
 
   return ENV;

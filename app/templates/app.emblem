@@ -4,7 +4,7 @@ div.global-wrapper
       link-to 'dashboard'
         div.title.item Settld
       div.home-select-wrapper.right.menu
-        a.item data-method="DELETE" href="http://localhost:3000/logout" rel="nofollow"
+        a.item{ bind-attr href='APP_ENV.LOGOUT_URL' } data-method="DELETE" rel="nofollow"
           div.ui.button.mini.red Log out
         div.item
           div.ui.pointing.dropdown.main-home-select

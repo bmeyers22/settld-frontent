@@ -11,4 +11,3 @@ ServicesInitializer =
 
 `export {initialize}`
 `export default ServicesInitializer`
-
