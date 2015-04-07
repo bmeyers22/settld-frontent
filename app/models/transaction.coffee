@@ -3,7 +3,7 @@
 `import Enums from 'web/enums'`
 
 Transaction = DS.Model.extend(
-  invoices: DS.hasMany "invoice", async: true
+  invoices: DS.hasMany "invoice", async: false
   user: DS.belongsTo('user')
   home: DS.belongsTo('home')
   cost: DS.attr('number')
