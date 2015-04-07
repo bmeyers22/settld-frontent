@@ -55,6 +55,7 @@ TransactionForm = Ember.Component.extend
       ,
         onSuccess: =>
           @sendAction 'complete', @get('model')
+          $('.global.modal').modal "close"
         onFailure: =>
           console.log "Fail"
 

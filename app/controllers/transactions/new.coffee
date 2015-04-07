@@ -13,11 +13,11 @@ TransactionsNewController = Ember.Controller.extend(
   ).property()
   save: (txn) ->
     copy = @store.createRecord('transaction', txn)
-    if !copy.get('split')
+    if copy.get('split')
       copy.set 'contributors', Ember.A()
+      copy.get("home.users").forEach (user) ->
+        copy.get('contributors').pushObject user.get('id') unless user is copy.get "user"
       copy.save()
-      copy.get("home").forEach (user) ->
-        contributors.pushObject user unless user is copy.get "user"
     else
       copy.save()
 )
