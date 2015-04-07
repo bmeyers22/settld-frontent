@@ -1,3 +1,4 @@
+`import App from 'web/app'`
 `import Feeds from '../feeds'`
 
 DashboardFeedController = Feeds.extend(
@@ -5,10 +6,10 @@ DashboardFeedController = Feeds.extend(
     filter = {}
     scope = @get('audienceScope')
     if scope == @Enums.FeedAudienceScope.Me
-      filter['user'] = @get('appController.CURRENT_USER_ID')
-      filter['home'] = @get('appController.CURRENT_HOME_ID')
+      filter['user'] = @get('session.CURRENT_USER_ID')
+      filter['home'] = @get('session.CURRENT_HOME_ID')
     else if scope == @Enums.FeedAudienceScope.Home
-      filter['home'] = @get('appController.CURRENT_HOME_ID')
+      filter['home'] = @get('session.CURRENT_HOME_ID')
     # return this.store.find('transaction', filter);
     @store.filter 'transaction', filter, (txns) ->
       true
@@ -17,10 +18,10 @@ DashboardFeedController = Feeds.extend(
     filter = {}
     scope = @get('audienceScope')
     if scope == @Enums.FeedAudienceScope.Me
-      filter['user_id'] = @get('appController.CURRENT_USER_ID')
-      filter['home_id'] = @get('appController.CURRENT_HOME_ID')
+      filter['user_id'] = @get('session.CURRENT_USER_ID')
+      filter['home_id'] = @get('session.CURRENT_HOME_ID')
     else if scope == @Enums.FeedAudienceScope.Home
-      filter['home_id'] = @get('appController.CURRENT_HOME_ID')
+      filter['home_id'] = @get('session.CURRENT_HOME_ID')
     @store.filter 'job', filter, (jobs) ->
       true
   ).property('audienceScope')

@@ -7,9 +7,10 @@ FeedView = Ember.View.extend(
   audienceButtonViews: (->
     AudienceButtonContainer.create()
   ).property()
-  actions: changeAudience: (num, event) ->
-    @get('controller').set 'audienceScope', num
-    return
+  actions: 
+    changeAudience: (num, event) ->
+      @get('controller').set 'audienceScope', num
+      return
 )
 
 `export default FeedView`

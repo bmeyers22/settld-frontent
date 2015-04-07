@@ -183,19 +183,19 @@
 								<div class="field inline">
 									<label>Current Password:</label>
 									<div class="ui labeled input">
-									{{input type="password" email="email" value=appController.authUser.current_password class="form-control"}}
+									{{input type="password" email="email" value=session.authUser.current_password class="form-control"}}
 									</div>
 								</div>
 								<div class="field inline">
 									<label>New Password:</label>
 										 <div class="ui labeled input">
-										{{input type="password" password="password" value=appController.authUser.password class="form-control"}}
+										{{input type="password" password="password" value=session.authUser.password class="form-control"}}
 									 </div>
 								</div>
 								<div class="field inline">
 									<label>Password Confirmation:</label>
 											<div class="ui labeled input">
-												{{input type="password" password_confirmation="password_confirmation" value=appController.authUser.password_confirmation class="form-control"}}
+												{{input type="password" password_confirmation="password_confirmation" value=session.authUser.password_confirmation class="form-control"}}
 										</div>
 								</div>
 							</div>

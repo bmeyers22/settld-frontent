@@ -3,8 +3,7 @@
 Modal = Ember.Component.extend
   actions:
     complete: ->
-      # @$('.dimmer').dimmer 'show'
-      debugger
+      @$('.dimmer').dimmer 'show'
       @sendAction "complete"
 
   didInsertElement: ->

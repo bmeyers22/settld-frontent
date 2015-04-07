@@ -43,6 +43,5 @@
     "semantic-ui-ember": "git://github.com/Semantic-Org/Semantic-UI-Ember"
   },
   "dependencies": {
-    "rails-csrf": "^2.0.1"
   }
 }

@@ -13,6 +13,6 @@
 	.ui.feed.small.segment
 		if hasStream
 			each item in stream
-				= render 'feedItem' item
+				feed-item item=item
 		else
 			.event Your feed is empty!  Add a transaction or a job to see items here :)

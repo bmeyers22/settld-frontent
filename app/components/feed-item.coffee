@@ -2,39 +2,38 @@
 `import Transaction from 'web/models/transaction'`
 `import Job from 'web/models/job'`
 
-FeedItemView = Ember.View.extend(
-  templateName: 'feedItem'
+FeedItem = Ember.Component.extend
   classNames: [ 'event' ]
   classType: (->
-    model = @get('controller.model')
+    model = @get('item')
     if model instanceof Transaction then 'transaction' else if model instanceof Job then 'job' else ''
   ).property()
   cornerColor: (->
     classType = @get('classType')
     base = 'ui corner left label '
     base + (if classType == 'transaction' then 'green' else if classType == 'job' then 'red' else '')
-  ).property()
+  ).property('classType')
   iconType: (->
     classType = @get('classType')
     base = 'icon '
     base + (if classType == 'transaction' then 'dollar' else if classType == 'job' then 'briefcase' else '')
-  ).property()
+  ).property('classType')
   userImage: (->
-    @get 'controller.model.user.image'
+    @get 'item.user.image'
   ).property()
   fuzzyTime: (->
-    moment(@get('controller.model.date')).fromNow()
-  ).property('controller.model.date')
+    moment(@get('item.date')).fromNow()
+  ).property('item.date')
   displayName: (->
-    isMe = @get('controller.model.user') == @get('controller.session.authUser')
+    isMe = @get('item.user') == @get('targetObject.session.authUser')
     if isMe
       'You'
     else
-      @get 'controller.model.user.name'
-  ).property('controller.model.user')
+      @get 'item.user.name'
+  ).property('item.user')
   actionName: (->
     classType = @get('classType')
     if classType == 'transaction' then 'bought' else if classType == 'job' then 'performed' else ''
-  ).property())
+  ).property()
 
-`export default FeedItemView`
+`export default FeedItem`
