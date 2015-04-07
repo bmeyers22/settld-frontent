@@ -2,7 +2,6 @@
 
 JobsNewController = Ember.Controller.extend(
   needs: 'application'
-  appController: Ember.computed.alias('controllers.application')
   save: (job) ->
     copy = @store.createRecord('job', job)
     copy.set 'user', job.get('user')

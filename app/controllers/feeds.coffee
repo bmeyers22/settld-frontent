@@ -4,7 +4,6 @@
 FeedsController = Ember.Controller.extend(
   audienceScope: Enums.FeedAudienceScope.Home
   needs: 'application'
-  appController: Ember.computed.alias('controllers.application')
   sortProperties: [ 'date' ]
   sortAscending: false
   hasStream: (->

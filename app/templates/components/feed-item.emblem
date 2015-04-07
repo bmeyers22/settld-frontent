@@ -1,0 +1,11 @@
+div class=cornerColor
+  i class=iconType
+div.label.image
+  if userImage
+    img src=userImage
+  else
+    i.circular.user.icon
+div.content
+  div.date {{fuzzyTime}}
+  div.summary {{displayName}} {{actionName}} {{item.title}}
+  div.extra.text {{item.description}}

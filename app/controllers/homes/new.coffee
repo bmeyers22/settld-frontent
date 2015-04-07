@@ -2,7 +2,6 @@
 
 HomesNewController = Ember.Controller.extend(
   needs: 'application'
-  appController: Ember.computed.alias('controllers.application')
   saveHome: (home) ->
     self = this
     authUser = @session.get('authUser')
@@ -38,4 +37,3 @@ HomesNewController = Ember.Controller.extend(
 )
 
 `export default HomesNewController`
-

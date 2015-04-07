@@ -1,6 +1,9 @@
 `import Ember from 'ember'`
 
 TransactionForm = Ember.Component.extend
+  actions:
+    complete: ->
+      @sendAction "complete"
   didInsertElement: ->
     @$('.ui.category.dropdown').dropdown
       onChange: (value, text) =>
@@ -51,7 +54,7 @@ TransactionForm = Ember.Component.extend
           ]
       ,
         onSuccess: =>
-          @send 'complete', @get('model')
+          @sendAction 'complete', @get('model')
         onFailure: =>
           console.log "Fail"
 

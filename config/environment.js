@@ -21,7 +21,7 @@ module.exports = function(environment) {
       'script-src': "'self' 'localhost' 'unsafe-inline' www.google-analytics.com", 
       'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
       'connect-src': "'self' ",
-      'img-src': "'self'",
+      'img-src': "'self' data:",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
       'media-src': "'self'"
     }

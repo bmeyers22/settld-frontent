@@ -13,7 +13,6 @@ SettingsIndexController = Ember.Controller.extend(
       'password_confirmation'
     ]
   needs: 'application'
-  appController: Ember.computed.alias('controllers.application')
   current_password: ''
   password: ''
   password_confirmation: ''

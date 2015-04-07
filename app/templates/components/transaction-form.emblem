@@ -5,8 +5,11 @@
 				.field
 					label Item
 					= input type="text" tabindex="1" value=model.title class="form-control" name="title" placeholder="Item name..."
-
-				date-picker date=model.date
+					
+				.field
+					label Date
+					pik-a-day date=model.date
+				
 				.field
 					label Category
 					.ui.category.selection.dropdown tabindex="3"
