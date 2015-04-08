@@ -40,7 +40,6 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.APP.PROXY_URL = "http://localhost:3000/"
     ENV.baseURL = '/';
-    ENV.locationType = 'none';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
