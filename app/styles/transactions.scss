@@ -1,41 +1,15 @@
 $overview-height: 350px;
 $header-height: 30px;
 .transactions-wrapper {
-	.overview-wrapper {
-		.overview-content {
-			border: 1px solid #ddd;
-			border-radius: 5px;
-			height: $overview-height;
-			overflow-y: auto;
-			position: relative;
+  .overview-wrapper {
+    .overview-content {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      height: $overview-height;
+      overflow-y: auto;
+      position: relative;
 
 
-		}
-	}
-
-	.feed-wrapper {
-		padding: 20px 0 0 0;
-
-		.section-header {
-			font-size: 20px;
-		}
-
-		.ui.feed {
-			padding-top: 0px;
-			.event {
-				position: relative;
-
-				.ui.left.corner.label {
-					left: -14px;
-					top: 0px;
-					.icon {
-						margin: 0.0em 0em 0em -.2em;
-					}
-				}
-			}
-
-		}
-
-
-	}
+    }
+  }
 }

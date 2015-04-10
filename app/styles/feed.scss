@@ -1,0 +1,26 @@
+.feed-wrapper {
+  padding: 20px 0 0 0;
+
+  .section-header {
+    font-size: 20px;
+  }
+
+  .ui.feed {
+    .event {
+      position: relative;
+      padding: 5px;
+
+      .label.image {
+        vertical-align: middle;
+      }
+      .ui.left.corner.label {
+        left: -14px;
+        top: 0px;
+        .icon {
+          margin: -6px 0 0 9px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
