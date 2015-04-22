@@ -10,7 +10,7 @@ Application = Ember.Route.extend
 
     closeModal: ->
       @disconnectOutlet
-        outlet: "modal" 
+        outlet: "modal"
         parentView: 'application'
 
 `export default Application`
