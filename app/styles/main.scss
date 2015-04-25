@@ -27,8 +27,8 @@ body::after {
 }
 
 .global-wrapper {
-	position: absolute;
-	@include trbl0();
+  position: absolute;
+  @include trbl0();
 
     .main-content-wrapper {
         position: absolute;
@@ -39,6 +39,6 @@ body::after {
         right: 0px;
         bottom: 0px;
         background: #fff;
-        overflow-y: scroll; 
+        overflow-y: auto; 
     }
 }

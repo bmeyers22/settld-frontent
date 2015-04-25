@@ -1,5 +1,4 @@
 div.dashboard-wrapper
-	div.overview-wrapper
-		div.overview-content.ui.dimmable
-			= outlet
-	= render 'feeds/dashboard'
+  div.overview-wrapper
+    = outlet
+  = render 'feeds/dashboard'

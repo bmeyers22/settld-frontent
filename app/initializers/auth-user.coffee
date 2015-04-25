@@ -15,6 +15,17 @@ initialize = (container, application) ->
   session = container.lookup('session:current')
   Ember.$.getJSON("/users/current.json").then (raw_user) ->
     if raw_user?.user?
+      Ember.$.getJSON("/users/token.json").then (tokenData) ->
+        $meta = $ '<meta/>'
+        $meta.attr
+          name: 'csrf-token'
+          content: tokenData.csrfToken
+        $('head').append $meta
+        $ ->
+          token = tokenData.csrfToken
+          $.ajaxPrefilter (options, originalOptions, xhr) ->
+            xhr.setRequestHeader('X-CSRF-Token', token)
+
       user = store.find("user", raw_user.user._id).then (user) ->
         console.log user
         session.set 'authUser', user

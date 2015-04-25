@@ -1,13 +1,15 @@
-`import Ember from 'ember'`
-`import Enums from 'web/enums'`
-`import AudienceButtonContainer from './audience-button-container'`
+`
+import Ember from 'ember'
+import Enums from 'web/enums'
+import AudienceButtonContainer from './audience-button-container'
+`
 
 FeedView = Ember.View.extend(
   templateName: 'feed'
   audienceButtonViews: (->
     AudienceButtonContainer.create()
   ).property()
-  actions: 
+  actions:
     changeAudience: (num, event) ->
       @get('controller').set 'audienceScope', num
       return

@@ -4,17 +4,23 @@
   .section-header {
     font-size: 20px;
   }
-
+  .grid.filters {
+    margin: 0;
+  }
   .ui.feed {
     .event {
       position: relative;
       padding: 5px;
-
+      border-bottom: 1px solid #ddd;
       .label.image {
+        padding: 0px 10px;
         vertical-align: middle;
       }
+      .date {
+        float: right;
+      }
       .ui.left.corner.label {
-        left: -14px;
+        left: 0px;
         top: 0px;
         .icon {
           margin: -6px 0 0 9px;

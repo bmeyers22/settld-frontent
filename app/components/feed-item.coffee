@@ -1,6 +1,8 @@
-`import Ember from 'ember'`
-`import Transaction from 'web/models/transaction'`
-`import Job from 'web/models/job'`
+`
+import Ember from 'ember'
+import Transaction from 'web/models/transaction'
+import Job from 'web/models/job'
+`
 
 FeedItem = Ember.Component.extend
   classNames: [ 'event' ]

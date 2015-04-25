@@ -1,7 +1,10 @@
-`import Ember from 'ember'`
+`
+import Ember from 'ember'
+`
 
 DashboardIndexView = Ember.View.extend(
   templateName: 'dashboard/index'
+  classNames: ['overview-segment-container', 'ui', 'three', 'column', 'grid']
   didInsertElement: ->
     @$('#test_user_data').on 'click', (e) ->
       Ember.$.get '/api/v1/user_data/' + @session.get('CURRENT_USER_ID'), {}, (data) ->

@@ -1,6 +1,8 @@
-`import Ember from 'ember'`
-`import DS from 'ember-data'`
-`import Enums from 'web/enums'`
+`
+import Ember from 'ember'
+import DS from 'ember-data'
+import Enums from 'web/enums'
+`
 
 Transaction = DS.Model.extend(
   invoices: DS.hasMany "invoice", async: false
@@ -14,13 +16,12 @@ Transaction = DS.Model.extend(
     Enums.TransactionCategories[@get('category')]
   ).property('category')
   date: DS.attr('date', defaultValue: ->
-    new Date
+    new Date()
   )
   fuzzyDate: (->
     moment(@get('date')).fromNow()
   ).property('date')
   split: DS.attr('boolean')
-  contributors: DS.attr('array')
   points: DS.attr('number'))
 
 `export default Transaction`
