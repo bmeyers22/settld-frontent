@@ -1,5 +1,7 @@
-`import Ember from 'ember'`
-`import Session from 'web/models/session'`
+`
+import Ember from 'ember'
+import Session from 'web/models/session'
+`
 
 # Takes two parameters: container and app
 initialize = (container, application) ->
@@ -11,7 +13,7 @@ initialize = (container, application) ->
   application.inject 'controller', 'session', 'session:current'
   application.inject 'route', 'session', 'session:current'
   session = container.lookup('session:current')
-  Ember.$.getJSON("/users/current.json").then (raw_user) -> 
+  Ember.$.getJSON("/users/current.json").then (raw_user) ->
     if raw_user?.user?
       user = store.find("user", raw_user.user._id).then (user) ->
         console.log user
@@ -47,7 +49,7 @@ initialize = (container, application) ->
       application.advanceReadiness()
   , ->
     application.advanceReadiness()
-    
+
 
 AuthUserInitializer =
   name: 'auth-user'

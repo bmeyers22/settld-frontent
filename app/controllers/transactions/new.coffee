@@ -1,4 +1,6 @@
-`import Ember from 'ember'`
+`
+import Ember from 'ember'
+`
 TransactionsNewController = Ember.Controller.extend(
   needs: 'application'
   categories: (->
@@ -13,13 +15,7 @@ TransactionsNewController = Ember.Controller.extend(
   ).property()
   save: (txn) ->
     copy = @store.createRecord('transaction', txn)
-    if copy.get('split')
-      copy.set 'contributors', Ember.A()
-      copy.get("home.users").forEach (user) ->
-        copy.get('contributors').pushObject user.get('id') unless user is copy.get "user"
-      copy.save()
-    else
-      copy.save()
+    copy.save()
 )
 
 `export default TransactionsNewController`
