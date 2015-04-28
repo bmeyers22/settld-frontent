@@ -2,8 +2,8 @@
   "name": "web",
   "dependencies": {
     "jquery": "^1.11.1",
-    "ember": "1.11.0",
-    "ember-data": "1.0.0-beta.16.1",
+    "ember": "components/ember#canary",
+    "ember-data": "components/ember-data#canary",
     "ember-resolver": "~0.1.15",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
@@ -16,5 +16,9 @@
     "semantic-ui": "~1.10.2",
     "lodash": "~3.3.1",
     "moment": "~2.9.0"
+  },
+  "resolutions": {
+    "ember": "canary",
+    "ember-data": "canary"
   }
 }

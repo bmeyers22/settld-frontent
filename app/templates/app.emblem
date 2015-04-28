@@ -17,6 +17,34 @@ div.global-wrapper
                 div.item data-value=home.id
                   = home.name
   div.main-content-wrapper
+    .ui.left.vertical.inverted.labeled.icon.sidebar.menu
+      a.item
+        i.home.icon
+        | Home
+      a.item
+        i.block.layout.icon
+        | Topics
+      a.item
+        i.smile.icon
+        | Friends
+      a.item
+        i.calendar.icon
+        | History
+      a.item
+        i.mail.icon
+        | Messages
+      a.item
+        i.chat.icon
+        | Discussions
+      a.item
+        i.trophy.icon
+        | Achievements
+      a.item
+        i.shop.icon
+        | Store
+      a.item
+        i.settings.icon
+        | Settings
     div.control-panel-wrapper
       = partial 'control_panel'
     div.app-content-wrapper

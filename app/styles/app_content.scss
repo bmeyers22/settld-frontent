@@ -2,9 +2,10 @@
 
 .app-content-wrapper {
   background: #fff;
-  position: relative;
+  position: absolute;
+  top: 0px;
   right: 0px;
-  margin-left: 90px;
-  min-height: 100%;
+  left: 0px;
+  bottom: 90px;
   overflow-y: auto;
 }
