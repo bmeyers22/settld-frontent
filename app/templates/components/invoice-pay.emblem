@@ -1,0 +1,7 @@
+i.close.icon click="close"
+
+.title HEY LETS PAY ME
+
+a.venmo.embed-button click="sendPayment"
+  span.logo
+  span.label Venmo Me

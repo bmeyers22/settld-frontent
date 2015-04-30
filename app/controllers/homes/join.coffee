@@ -1,4 +1,6 @@
-`import Ember from 'ember'`
+`
+import Ember from 'ember'
+`
 
 HomesJoinController = Ember.Controller.extend
   selectedHome: null
@@ -26,10 +28,11 @@ HomesJoinController = Ember.Controller.extend
     else
       self.set 'passwordValid', false
     return
-  actions: 
+  actions:
     joinHome: ->
+      debugger
       new (Ember.RSVP.Promise)((resolve, reject) =>(
-        $.post '/api/v1/homes/join', 
+        $.post '/api/v1/homes/join',
             home: @get('selectedHome').serialize()
           , resolve).fail(reject)
       ).then (data) =>

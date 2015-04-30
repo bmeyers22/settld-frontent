@@ -2,7 +2,7 @@
 @import "resets";
 
 body {
-  background: #fff; 
+  background: #fff;
 /*     background-attachment: fixed;
 background: url('/assets/images/bg3.jpg') no-repeat center center fixed;
 -webkit-background-size: cover;
@@ -31,15 +31,75 @@ body::after {
   position: absolute;
   @include trbl0();
 
-    .main-content-wrapper {
-        position: absolute;
-        max-width: $APP_WIDTH;
-        @include center-margin();
-        top: 40px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        background: #fff;
-        overflow-y: auto;
+  .venmo.embed-button {
+    color: #3f94d0;
+    cursor: pointer;
+    text-decoration: none;
+    .logo {
+      -webkit-border-radius: 4px 0px 0px 4px;
+      -moz-border-radius: 4px 0px 0px 4px;
+      border-radius: 4px 0px 0px 4px;
+      border: 1px solid;
+      position: absolute;
+      left: 0px;
+      width: 30px;
+      height: 33px;
+      background-color: #3f94d0;
+      background-position: 50%;
+      background-size: 14px;
+      background-image: url("/assets/images/venmo_v_white.png");
+      background-repeat: no-repeat;
+      border-color: #3f94d0;
     }
+    .label {
+      -webkit-border-radius: 0px 4px 4px 0px;
+      -moz-border-radius: 0px 4px 4px 0px;
+      border-radius: 0px 4px 4px 0px;
+      border: 1px solid;
+      border-left: 0;
+      position: absolute;
+      left: 30px;
+      padding: 0px 5px;
+      min-width: 70px;
+      height: 33px;
+      text-align: center;
+      font-weight: 400;
+      font-size: 16px;
+      padding-top: 5px;
+      background: #ffffff;
+      border-color: #3f94d0;
+      color: #3f94d0;
+    }
+  }
+
+  .invoice-pay-container {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0px 2px 7px rgba(85, 85, 85, 0.37);
+    .invoice {
+      background: #ffffff;
+      height: 75px;
+      max-width: $APP_WIDTH;
+      margin: 0 auto;
+      .close.icon {
+        float: right;
+      }
+    }
+  }
+
+  .main-content-wrapper {
+      position: absolute;
+      max-width: $APP_WIDTH;
+      @include center-margin();
+      top: 40px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background: #fff;
+      overflow-y: auto;
+
+  }
 }

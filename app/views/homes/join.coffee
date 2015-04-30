@@ -1,5 +1,7 @@
-`import Ember from 'ember'`
-`import Serializable from 'web/mixins/serializable'`
+`
+import Ember from 'ember'
+import Serializable from 'web/mixins/serializable'
+`
 
 HomesJoinView = Ember.View.extend
   query: ''

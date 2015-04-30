@@ -4,8 +4,8 @@ div.global-wrapper
       link-to 'dashboard'
         div.title.item Settld
       div.home-select-wrapper.right.menu
-        a.item{ bind-attr href='APP_ENV.LOGOUT_URL' } data-method="DELETE" rel="nofollow"
-          div.ui.button.mini.red Log out
+        a.item.new-entry click='openInvoiceAction'
+          i.write.square.link.large.icon
         div.item
           div.ui.pointing.dropdown.main-home-select
             input type="hidden" name="currentHome"
@@ -16,36 +16,20 @@ div.global-wrapper
               each home in session.authUser.homes
                 div.item data-value=home.id
                   = home.name
+        a.item{ bind-attr href='APP_ENV.LOGOUT_URL' } data-method="DELETE" rel="nofollow"
+          div.ui.button.mini.red Log out
+
+  = liquid-outlet 'invoice-action' class="invoice-pay-container"
+
   div.main-content-wrapper
     .ui.left.vertical.inverted.labeled.icon.sidebar.menu
       a.item
         i.home.icon
         | Home
-      a.item
-        i.block.layout.icon
-        | Topics
-      a.item
-        i.smile.icon
-        | Friends
-      a.item
-        i.calendar.icon
-        | History
-      a.item
-        i.mail.icon
-        | Messages
-      a.item
-        i.chat.icon
-        | Discussions
-      a.item
-        i.trophy.icon
-        | Achievements
-      a.item
-        i.shop.icon
-        | Store
-      a.item
-        i.settings.icon
-        | Settings
+
+
     div.control-panel-wrapper
       = partial 'control_panel'
+
     div.app-content-wrapper
       = outlet
