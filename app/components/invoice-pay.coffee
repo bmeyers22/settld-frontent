@@ -1,9 +1,6 @@
-`
-import Ember from 'ember'
-`
+`import Ember from 'ember'`
 
 InvoicePayComponent = Ember.Component.extend
-  tagName: 'div'
   classNames: ['invoice']
   didInsertElement: ->
   actions:
@@ -11,17 +8,10 @@ InvoicePayComponent = Ember.Component.extend
       @sendAction('close')
     sendPayment: ->
       console.log 'doing some stuff'
-      $.ajax
+      $.post '/api/v1/venmo/pay',
         type: "POST"
-        async: false
-        url: 'https://sandbox-api.venmo.com/v1/payments?'
-        dataType: "json"
-        crossDomain: true
-        data:
-          access_token: 'gQvqkMKCv5Y87sQ3AdxNdxnGysZDVkVu'
+        payment:
           user_id: '145434160922624933'
-          email: 'venmo@venmo.com'
-          phone: '15555555555'
           note: 'Hey'
           amount: 0.10
         success: (data) ->

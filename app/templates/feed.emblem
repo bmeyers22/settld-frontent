@@ -14,7 +14,7 @@
   if hasStream
     .ui.feed
       each item in stream
-        feed-item item=item
+        feed-item item=item openInvoiceAction='openInvoiceAction' user=session.authUser
   else
     .row
       .event.center.aligned.column Your feed is empty!  Add a transaction or a job to see items here :)

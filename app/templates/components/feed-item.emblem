@@ -1,11 +1,20 @@
-div class=cornerColor
-  i class=iconType
 div.label.image
   if userImage
     img src=userImage
   else
     i.circular.user.icon
 div.content
-  div.date {{fuzzyTime}}
-  div.summary {{displayName}} {{actionName}} {{item.title}}
-  div.extra.text {{item.description}}
+  div.item-wrapper
+    div.info
+      div.summary
+        | {{displayName}} {{actionName}} {{item.title}}
+        span.date {{fuzzyTime}}
+      div.extra.text {{item.description}}
+      div.meta
+        a.like
+          i.like.icon
+          | 4 Likes
+    div.actions
+      if payableInvoice
+        div.ui.green.inverted.segment.pay  click='openInvoiceAction payableInvoice'
+          span Pay

@@ -1,4 +1,6 @@
-`import { test, moduleForComponent } from 'ember-qunit'`
+`
+import { test, moduleForComponent } from 'ember-qunit'
+`
 
 moduleForComponent 'invoice-pay', {
   # specify the other units that are required for this test

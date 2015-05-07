@@ -1,3 +1,4 @@
+'use strict'
 `
 import Ember from 'ember'
 `
@@ -57,11 +58,7 @@ TransactionForm = Ember.Component.extend
       ,
         onSuccess: =>
           @sendAction 'complete', @get('model')
-          $('.global.modal').modal "close"
         onFailure: =>
           console.log "Fail"
-
-    $('.global.modal').on "click", ".submit", =>
-      @form.form "submit"
 
 `export default TransactionForm`

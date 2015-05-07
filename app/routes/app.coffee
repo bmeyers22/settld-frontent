@@ -9,18 +9,20 @@ AppRoute = Ember.Route.extend
     settings = @session.get 'userSettings'
     if not settings.get 'isUserConfigured'
       transition.abort()
-      @transitionTo 'getstarted.index'
-    else
-      @transitionTo 'dashboard'
+      @transitionTo 'getstarted'
+    @transitionTo 'dashboard' if /^app/.test transition.targetName
   model: ->
     Ember.Object.create
       authUser: @session.get 'authUser'
       currentHome: @session.get 'currentHome'
   actions:
-    openInvoiceAction: ->
+    openInvoiceAction: (txn, invoice) ->
+      this.controllerFor('invoice-action').get('transactions').pushObject txn
+      this.controllerFor('invoice-action').get('invoices').pushObject invoice
       @render 'invoice-action',
         into: 'app'
         outlet: 'invoice-action'
+        controller: 'invoice-action'
     closeInvoiceAction: ->
       @disconnectOutlet
         outlet: 'invoice-action',

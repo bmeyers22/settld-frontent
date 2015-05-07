@@ -1,0 +1,1 @@
+transaction-form categories=controller.categories complete="complete" model=this.model

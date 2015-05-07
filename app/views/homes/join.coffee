@@ -6,6 +6,9 @@ import Serializable from 'web/mixins/serializable'
 HomesJoinView = Ember.View.extend
   query: ''
   searchResults: Ember.A()
+  selectedHome: (->
+    @get('controller.selectedHome')
+  ).property('controller.selectedHome')
   canSubmitForm: (->
     if @get('controller.selectedHome') then '' else 'disabled'
   ).property('controller.selectedHome')

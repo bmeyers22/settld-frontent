@@ -1,1 +1,1 @@
-invoice-pay close="closeInvoiceAction"
+invoice-pay close="closeInvoiceAction" transactions=transactions invoices=invoices

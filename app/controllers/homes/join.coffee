@@ -7,7 +7,7 @@ HomesJoinController = Ember.Controller.extend
   passwordValid: true
   finishRouteName: 'homes'
   isHomeSelected: (->
-    if !@get('selectedHome')
+    if not @get('selectedHome')
       'disabled'
     else
       false

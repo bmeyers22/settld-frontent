@@ -5,11 +5,11 @@
 				.field
 					label Item
 					= input type="text" tabindex="1" value=model.title class="form-control" name="title" placeholder="Item name..."
-					
+
 				.field
 					label Date
 					pik-a-day date=model.date
-				
+
 				.field
 					label Category
 					.ui.category.selection.dropdown tabindex="3"
@@ -25,24 +25,25 @@
 
 			.ui.two.fields
 				.field
-					label Description:
-					= input name="description" tabindex="4" value=model.description tagName="textarea" placeholder="Description..."
+					label
+					 | Description:
+					= input tabindex="4" value=model.description tagName="textarea" placeholder="Description..."
 
 				.field
 					label Cost:
-					= input name="cost" tabindex="5" type="text" value=model.cost class="form-control" placeholder="Price..."
+					= input tabindex="5" type="text" value=model.cost class="form-control" placeholder="Price..."
 
 
 			.field.cost-checkboxes
 				.ui.checkbox.split
-					= input name="split" tabindex="6" type="checkbox" checked=model.split disabled=model.disabled
+					= input tabindex="6" type="checkbox" checked=model.split disabled=model.disabled
 					label Split
-					
-	.ui.dimmer
-		.content
-			.center
-				h3.ui.inverted.icon.header
-					i.icon.circular.inverted.emphasized.green.check
-					span Your transaction was added successfully!
+
+			.actions
+				.ui.button Cancel
+				.ui.positive.submit.right.labeled.icon.button
+					span Save
+					i.checkmark.icon
+
 
 = yield

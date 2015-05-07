@@ -1,6 +1,4 @@
-`
-import Ember from 'ember'
-`
+`import Ember from 'ember'`
 
 Application = Ember.Route.extend
 

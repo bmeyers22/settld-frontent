@@ -4,7 +4,7 @@ div.global-wrapper
       link-to 'dashboard'
         div.title.item Settld
       div.home-select-wrapper.right.menu
-        a.item.new-entry click='openInvoiceAction'
+        link-to .item.new-entry 'create.index'
           i.write.square.link.large.icon
         div.item
           div.ui.pointing.dropdown.main-home-select

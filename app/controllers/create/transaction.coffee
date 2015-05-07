@@ -2,7 +2,6 @@
 import Ember from 'ember'
 `
 TransactionsNewController = Ember.Controller.extend(
-  needs: 'application'
   categories: (->
     cats = _.clone(@Enums.TransactionCategories)
     _.sortBy _.map(cats, (name, key) ->
@@ -16,6 +15,10 @@ TransactionsNewController = Ember.Controller.extend(
   save: (txn) ->
     copy = @store.createRecord('transaction', txn)
     copy.save()
+  actions:
+    complete: (txn) ->
+      @save @get 'model'
+
 )
 
 `export default TransactionsNewController`

@@ -10,6 +10,9 @@ Router.map ->
   @route 'missing', path: '/*missing'
   @resource 'app', { path: '/' }, ->
     @resource 'dashboard', ->
+    @resource 'create', ->
+      @route 'transaction'
+      @route 'job'
     @resource 'homes', ->
       @route 'new'
       @route 'join'
@@ -17,6 +20,9 @@ Router.map ->
     @resource 'transactions', ->
     @resource 'jobs', ->
     @resource 'settings', ->
+    @resource 'create', ->
+      @route 'transaction'
+
   @resource 'getstarted', ->
     @route 'new'
     @route 'join'
