@@ -22,6 +22,7 @@ Router.map ->
     @resource 'settings', ->
     @resource 'create', ->
       @route 'transaction'
+      @route 'job'
 
   @resource 'getstarted', ->
     @route 'new'
@@ -29,5 +30,6 @@ Router.map ->
   @route 'login'
   @route 'register'
   @route 'logout'
+  @route 'create/job'
 
 `export default Router`

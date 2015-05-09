@@ -38,13 +38,10 @@ FeedItem = Ember.Component.extend
     if classType == 'transaction' then 'bought' else if classType == 'job' then 'performed' else ''
   ).property()
   payableInvoice: (->
-    found = null
-    @item.get('invoices').forEach (inv, index) =>
-      found = inv if @user.get('id') is inv.get 'payerId'
-    found
-  ).property("model.invoices")
+    @item.getOpenInvoice?(@user)
+  ).property()
   actions:
     openInvoiceAction: (invoice) ->
-      @sendAction('openInvoiceAction', @item, invoice)
+      @sendAction('openInvoiceAction', @item)
 
 `export default FeedItem`

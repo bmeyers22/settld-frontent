@@ -4,7 +4,7 @@ import DS from 'ember-data'
 import Enums from 'web/enums'
 `
 
-Transaction = DS.Model.extend(
+Transaction = DS.Model.extend
   invoices: DS.hasMany "invoice", async: false
   user: DS.belongsTo('user')
   home: DS.belongsTo('home')
@@ -22,6 +22,9 @@ Transaction = DS.Model.extend(
     moment(@get('date')).fromNow()
   ).property('date')
   split: DS.attr('boolean')
-  points: DS.attr('number'))
+  points: DS.attr('number')
+  getOpenInvoice: (user) ->
+    @get('invoices').find (inv, index, arr) =>
+      user.get('id') is inv.get 'payerId'
 
 `export default Transaction`

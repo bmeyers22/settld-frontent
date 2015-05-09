@@ -5,15 +5,17 @@ InvoicePayComponent = Ember.Component.extend
   didInsertElement: ->
   actions:
     close: ->
-      @sendAction('close')
+      @sendAction 'close'
+    removeTxn: ->
+      @sendAction 'remove', txn
     sendPayment: ->
-      console.log 'doing some stuff'
+      invoices = @transactions.map (txn) =>
+        txn.getOpenInvoice(@user).get('id')
       $.post '/api/v1/venmo/pay',
         type: "POST"
         payment:
-          user_id: '145434160922624933'
-          note: 'Hey'
-          amount: 0.10
+          invoices: invoices
+          note: "HEY"
         success: (data) ->
           console.log data
         error: (data) ->

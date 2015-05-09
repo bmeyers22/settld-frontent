@@ -16,9 +16,8 @@ AppRoute = Ember.Route.extend
       authUser: @session.get 'authUser'
       currentHome: @session.get 'currentHome'
   actions:
-    openInvoiceAction: (txn, invoice) ->
-      this.controllerFor('invoice-action').get('transactions').pushObject txn
-      this.controllerFor('invoice-action').get('invoices').pushObject invoice
+    openInvoiceAction: (txn) ->
+      this.controllerFor('invoice-action').addTransaction txn
       @render 'invoice-action',
         into: 'app'
         outlet: 'invoice-action'
