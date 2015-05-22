@@ -1,14 +1,14 @@
 #!/bin/bash
 
-for FILE in `find . -name "app.emblem" -type f`
+for FILE in `find . -name "*.emblem" -type f`
 do
     if [ -e $FILE ] ; then
-        COFFEE=${FILE//.emblem}
-
+        # COFFEE=${FILE//.hbs}
+        #
         echo "converting ${FILE} to ${COFFEE}"
-        emblem2hbs "$FILE" > "$COFFEE"
-        mv $COFFEE "${FILE}.hbs"
+        emblem2hbs "$FILE"
+        mv "${FILE//.emblem}.js.hbs" "${FILE//.emblem}.hbs"
     else
-        echo "File: {$1} does not exist!"
+        echo "File: does not exist!"
     fi
 done
