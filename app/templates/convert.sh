@@ -5,9 +5,8 @@ do
     if [ -e $FILE ] ; then
         # COFFEE=${FILE//.hbs}
         #
-        echo "converting ${FILE} to ${COFFEE}"
-        emblem2hbs "$FILE"
-        mv "${FILE//.emblem}.js.hbs" "${FILE//.emblem}.hbs"
+        echo "removing ${FILE}"
+        rm "$FILE"
     else
         echo "File: does not exist!"
     fi

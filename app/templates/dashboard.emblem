@@ -1,4 +1,0 @@
-div.dashboard-wrapper
-  div.overview-wrapper
-    = outlet
-  = render 'feeds/dashboard'

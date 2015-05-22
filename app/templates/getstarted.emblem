@@ -1,5 +1,0 @@
-div.getstarted-container
-	div.content-container
-		div.content-wrapper
-			div.ui.blue.segment
-				= outlet

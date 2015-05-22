@@ -1,6 +1,0 @@
-link-to .item.green 'create.transaction'
-  i.big.dollar.icon
-  span Purchases
-link-to .item.red 'create.job'
-  i.big.briefcase.icon
-  span Chores
