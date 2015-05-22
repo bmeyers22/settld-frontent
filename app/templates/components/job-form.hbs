@@ -1,0 +1,32 @@
+<div class="new-transaction-form">
+  <div class="form-wrapper">
+    <div class="ui small form">
+      <div class="ui two fields">
+        <div class="field">
+          <label>
+            Job = input type="text" value=title class="form-control" placeholder="Job name..." 
+          </label>
+        </div>
+        {{date-picker date=date}}
+      </div>
+      <div class="field">
+        <label>
+          Description:
+        </label>
+      </div>
+    </div>
+    {{input value=description tagName="textarea" placeholder="Description..." style="height: auto;"}}
+  </div>
+  <div class="ui dimmer">
+    <div class="content">
+      <div class="center">
+        <h2 class="ui inverted icon header">
+          <i class="icon circular inverted emphasized green check">
+          </i>
+          Your job was added successfully!
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+{{yield}}

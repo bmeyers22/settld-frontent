@@ -1,0 +1,43 @@
+<div class="label image">
+  {{#if userImage}}
+    <img {{bind-attr src="userImage"}} />
+  {{else}}
+    <i class="circular user icon">
+    </i>
+  {{/if}}
+</div>
+<div class="content">
+  <div class="item-wrapper">
+    <div class="info">
+      <div class="summary">
+        {{displayName}}
+         
+        {{actionName}}
+         
+        {{item.title}}
+        <span class="date">
+          {{fuzzyTime}}
+        </span>
+      </div>
+      <div class="extra text">
+        {{item.description}}
+      </div>
+      <div class="meta">
+        <a class="like">
+          <i class="like icon">
+          </i>
+          4 Likes
+        </a>
+      </div>
+    </div>
+    <div class="actions">
+      {{#if payableInvoice}}
+        <div {{action "openInvoiceAction" payableInvoice on="click"}} class="ui green inverted segment pay">
+          <span>
+            Pay
+          </span>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

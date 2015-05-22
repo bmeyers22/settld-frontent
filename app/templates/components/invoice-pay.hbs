@@ -1,0 +1,20 @@
+<div class="close-button">
+  <i {{action "close" on="click"}} class="close icon">
+  </i>
+</div>
+{{#each txn in transactions}}
+  <div>
+    <div class="title">
+      {{txn.title}}
+    </div>
+  </div>
+{{/each}}
+<div class="venmo-button-container">
+  <span {{action "sendPayment" on="click"}} class="venmo embed-button">
+    <span class="logo">
+    </span>
+    <span class="label">
+      Venmo Me
+    </span>
+  </span>
+</div>

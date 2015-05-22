@@ -1,0 +1,143 @@
+<div class="new-home-wrapper">
+  <h2 class="ui dividing header">
+    New Home
+  </h2>
+  <div class="ui form new-home">
+    <div class="field inline">
+      <label>
+        Name
+      </label>
+      <div class="ui labeled input">
+        {{input type="text" name="name" value=name class="form-control" tabindex="1" placeholder="e.g. My Home"}}
+        <div class="ui corner label">
+          <i class="asterisk icon">
+          </i>
+        </div>
+      </div>
+    </div>
+    <h4 class="ui dividing headerLocation">
+    </h4>
+    <div class="field">
+      <label>
+        Address
+      </label>
+      <div class="ui fluid input">
+        {{input type="text" name="address" value=address class="form-control" tabindex="2" placeholder="e.g. 99 Great One Ln Apt #1"}}
+      </div>
+    </div>
+    <div class="three fields">
+      <div class="field">
+        <label>
+          City
+        </label>
+        {{input type="text" name="city" value=city class="form-control" tabindex="3" placeholder="e.g. New York"}}
+      </div>
+      <div class="field">
+        <label>
+          State
+        </label>
+        <div tabindex="4" class="ui state-dropdown selectiondropdown">
+          <input type="hidden" name="state" />
+          {{input type="hidden" name="state" value=state}}
+          <div class="default text">
+            ...
+          </div>
+          <i class="dropdown icon">
+          </i>
+          <div class="menu">
+            {{#each state in Enums.USStates}}
+              <div {{bind-attr data-value="state.alpha-2"}} class="item">
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>
+          Zip
+        </label>
+        <div class="ui labeled input">
+          {{input type="text" name="zip" value=zip class="form-control" tabindex="5" placeholder="e.g. 99999"}}
+          <div class="ui corner label">
+            <i class="asterisk icon">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h4 class="ui dividing headerHome">
+      info
+    </h4>
+    <div class="two fields">
+      <div class="field">
+        <label>
+          # of Roommates
+        </label>
+        <div class="ui labeled input">
+          {{input type="text" name="roommateCount" value=roommateCount class="form-control" tabindex="6" placeholder="e.g. 3"}}
+          <div class="ui corner label">
+            <i class="asterisk icon">
+            </i>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>
+          Rent
+        </label>
+        <i class="why-rent">
+          question.icon small data-content="For rent payment features."
+        </i>
+        <div class="ui left right icon labeled input">
+          {{input type="text" name="rentPerMonth" value=rentPerMonth class="form-control" tabindex="7" placeholder="e.g. 2000"}}
+          <i class="dollar icon">
+          </i>
+          <span class="suffix">
+          </span>
+          <div class="ui corner label">
+            <i class="asterisk icon">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>
+          Password
+        </label>
+        <div class="ui labeled input">
+          {{input type="password" name="password" value=password class="form-control" tabindex="8" placeholder="Password 8-12 characters"}}
+          <div class="ui corner label">
+            <i class="asterisk icon">
+            </i>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="">
+          Confirm
+        </label>
+        <div class="ui labeled input">
+          {{input name="confirm" type="password" class="form-control" tabindex="9" placeholder="Confirm password"}}
+          <div class="ui corner label">
+            <i class="asterisk icon">
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-container">
+      <div class="ui buttons">
+        <div click="'cancelCreate' model" class="ui button">
+          Cancel
+        </div>
+        <div class="or">
+        </div>
+        <div tabindex="10" class="ui submit positive button">
+          Submit
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

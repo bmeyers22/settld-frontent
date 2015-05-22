@@ -1,0 +1,75 @@
+<div class="new-transaction-form">
+  <div class="form-wrapper">
+    <div class="ui small form">
+      <div class="ui three fields">
+        <div class="field">
+          <label>
+            Item
+          </label>
+          {{input type="text" tabindex="1" value=model.title class="form-control" name="title" placeholder="Item name..."}}
+        </div>
+        <div class="field">
+          <label>
+            Date
+          </label>
+          {{pik-a-day date=model.date}}
+        </div>
+        <div class="field">
+          <label>
+            Category
+          </label>
+          <div tabindex="3" class="ui category selection dropdown">
+            <input type="hidden" name="category" />
+            <div class="default text">
+              Choose one...
+            </div>
+            <i class="dropdown icon">
+            </i>
+            <div class="menu">
+              {{#each cat in categories}}
+                <div {{bind-attr data-value="key"}} class="item">
+                  {{cat.val}}
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui two fields">
+        <div class="field">
+          <label>
+            Description:
+          </label>
+          {{input tabindex="4" value=model.description tagName="textarea" placeholder="Description..."}}
+        </div>
+        <div class="field">
+          <label>
+            Cost:
+          </label>
+          {{input tabindex="5" type="text" value=model.cost class="form-control" placeholder="Price..."}}
+        </div>
+      </div>
+      <div class="field cost-checkboxes">
+        <div class="ui checkbox split">
+          {{input tabindex="6" type="checkbox" checked=model.split disabled=model.disabled}}
+          <label>
+            Split
+          </label>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui button">
+          Cancel
+        </div>
+        <div class="ui positive submit right labeled icon button">
+          <span>
+            Save
+          </span>
+          <i class="checkmark icon">
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{yield}}

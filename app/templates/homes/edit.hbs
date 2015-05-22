@@ -1,0 +1,287 @@
+<div class="edit-home-wrapper">
+  <h1 class="ui dividing header">
+    {{name}}
+  </h1>
+  {{#view "homes/editable-info" content=this groupBinding=this.dataGroups.info}}
+    <h4 class="title">
+      <i class="info icon">
+        Home Info
+      </i>
+    </h4>
+    <div class="button-container">
+      <div class="ui tiny buttons save-cancel">
+        <div click="'submitEdit' this target='view'" class="ui positive submit edit button">
+          <i class="icon check">
+          </i>
+        </div>
+        <div class="or">
+        </div>
+        <div click="'cancelEdit' this target='view'" class="ui button">
+          <i class="icon close">
+          </i>
+        </div>
+      </div>
+      <h4 click="'editSection' this target='view'" class="edit-icon">
+        <i class="icon pencil">
+        </i>
+      </h4>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="ui divider">
+    </div>
+    <div class="content">
+      <div class="details">
+        <div class="ui one column grid">
+          <div class="column">
+            <span>
+              Name: span.value = name
+            </span>
+          </div>
+        </div>
+        <div class="ui two column grid">
+          <div class="column">
+            <span>
+              # of Roommates: span.value = roommateCount
+            </span>
+          </div>
+          <div class="column">
+            <span>
+              Monthly Rent: span.value = rentPerMonth
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="editable">
+        <div class="ui form">
+          <div class="field inline">
+            <label>
+              Name
+            </label>
+            <div class="ui labeled input">
+              {{input type="text" name="name" value=name class="form-control"}}
+            </div>
+          </div>
+          <div class="ui two column grid">
+            <div class="column">
+              <div class="field inline">
+                <label>
+                  Number of Roommates
+                </label>
+                <div class="ui labeled input">
+                  {{input type="text" name="roommateCount" value=roommateCount class="form-control"}}
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field inline">
+                <label>
+                  Monthly Rent
+                </label>
+                <div class="ui labeled input">
+                  {{input type="text" name="rentPerMonth" value=rentPerMonth class="form-control"}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/view}}
+</div>
+{{#view "homes/editable-location" content=this.content groupBinding=this.dataGroups.location}}
+  <h4 class="title">
+    <i class="fafa-location-arrow">
+      Location
+    </i>
+  </h4>
+  <div class="button-container">
+    <div class="ui tiny buttons save-cancel">
+      <div click="'submitEdit' this target='view'" class="ui positive button">
+        <i class="icon check">
+        </i>
+      </div>
+      <div class="or">
+      </div>
+      <div click="'cancelEdit' this target='view'" class="ui button">
+        <i class="icon close">
+        </i>
+      </div>
+    </div>
+    <h4 click="'editSection' this target='view'" class="edit-icon">
+      <i class="icon pencil">
+      </i>
+    </h4>
+  </div>
+  <div class="clearfix">
+  </div>
+  <div class="ui divider">
+  </div>
+  <div class="content">
+    <div class="details">
+      <div class="ui two column grid">
+        <div class="ten wide column">
+          <span>
+            Address: span.value = address
+          </span>
+        </div>
+        <div class="six wide column">
+          <span>
+            Apt: span.value [add this field]
+          </span>
+        </div>
+      </div>
+      <div class="ui three column grid">
+        <div class="six wide column">
+          <span>
+            City: span.value = city
+          </span>
+        </div>
+        <div class="four wide column">
+          <span>
+            State: span.value = state
+          </span>
+        </div>
+        <div class="six wide column">
+          <span>
+            Zip: span.value = zip
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="editable">
+      <div class="ui form">
+        <div class="ui two column grid">
+          <div class="ten wide column">
+            <div class="field inline">
+              <label>
+                Address
+              </label>
+              <div class="ui labeled input">
+                {{input type="text" name="address" value=address class="form-control"}}
+              </div>
+            </div>
+          </div>
+          <div class="six wide column">
+            <div class="field inline">
+              <label>
+                Apt
+              </label>
+              <div class="ui labeled input">
+                {{input type="text" name="apt" value=apt class="form-control"}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui three column grid">
+          <div class="six wide column">
+            <div class="field inline">
+              <label>
+                City
+              </label>
+              <div class="ui labeled input">
+                {{input type="text" name="city" value=city class="form-control"}}
+              </div>
+            </div>
+          </div>
+          <div class="four wide column">
+            <div class="inline">
+              field label State div.ui.state-dropdown.selection.dropdown tabindex="4" 	= input type="hidden" name="state"	= input type="hidden" name="state" value=state	div.default text		i.dropdown icon	div.menu		each state in Enums.USStates		div.item data-value=(state.alpha-2 
+              = state.alpha-2)	
+            </div>
+          </div>
+          <div class="six wide column">
+            <div class="field inline">
+              <label>
+                Zip
+              </label>
+              <div class="ui labeled input">
+                {{input type="text" name="zip" value=zip class="form-control"}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/view}}
+{{#view "homes/editable-password" content=this.content groupBinding=this.dataGroups.password}}
+  <h4 class="title">
+    <i class="lock icon">
+      Change Password
+    </i>
+  </h4>
+  <div class="button-container">
+    <div class="ui tiny buttons save-cancel">
+      <div click="'submitEdit' this target='view'" class="ui positive button">
+        <i class="icon check">
+        </i>
+      </div>
+      <div class="or">
+      </div>
+      <div click="'cancelEdit' this target='view'" class="ui button">
+        <i class="icon close">
+        </i>
+      </div>
+    </div>
+    <h4 click="'editSection' this target='view'" class="edit-icon">
+      <i class="icon pencil">
+      </i>
+    </h4>
+  </div>
+  <div class="clearfix">
+  </div>
+  <div class="ui divider">
+  </div>
+  <div class="content">
+    <div class="details">
+      <div class="ui one column grid">
+        <div class="column">
+          <span>
+            Current Password: span.value ********
+          </span>
+        </div>
+      </div>
+      <div class="ui two column grid">
+        <div class="column">
+          <span>
+            New Password: span.value = password
+          </span>
+        </div>
+        <div class="column">
+          <span>
+            Confirm: span.value = passwordConfirmation
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="editable">
+      <div class="ui form">
+        <div class="field inline">
+          <label>
+            Current password
+          </label>
+          <div class="ui labeled input">
+            {{input type="password" name="currentPassword" value=currentPassword class="form-control"}}
+          </div>
+        </div>
+        <div class="ui two column grid">
+          <div class="column">
+            <div class="field inline">
+              <label>
+                New password div.ui.labeled.input 	= input type="password" name="password" value=password class="form-control"			
+              </label>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field inline">
+              <label>
+                Confirm div.ui.labeled.input 	= input type="password" name="passwordConfirmation" value=passwordConfirmation class="form-control"	
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/view}}
