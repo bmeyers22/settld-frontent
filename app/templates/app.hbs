@@ -1,0 +1,55 @@
+<div class="global-wrapper">
+  <div class="ui fixed transparent inverted main menu user-top-bar">
+    <div class="content">
+      {{#link-to "dashboard"}}
+        <div class="title item">
+          Settld
+        </div>
+      {{/link-to}}
+      <div class="home-select-wrapper right menu">
+        {{#link-to "create.index" class="item new-entry"}}
+          <i class="write square link large icon">
+          </i>
+        {{/link-to}}
+        <div class="item">
+          <div class="ui pointing dropdown main-home-select">
+            <input type="hidden" name="currentHome" />
+            <div class="text">
+              {{session.currentHome.name}}
+            </div>
+            <i class="icon dropdown">
+            </i>
+            <div class="menu">
+              {{#each session.authUser.homes as |home|}}
+                <div data-value={{home.id}} class="item">
+                  {{home.name}}
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <a href={{APP_ENV.LOGOUT_URL}} data-method="DELETE" rel="nofollow" class="item">
+          <div class="ui button mini red">
+            Log out
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  {{outlet "invoice-action" class="invoice-pay-container"}}
+  <div class="main-content-wrapper">
+    <div class="ui left vertical inverted labeled icon sidebar menu">
+      <a class="item">
+        <i class="home icon">
+        </i>
+        Home
+      </a>
+    </div>
+    <div class="control-panel-wrapper">
+      {{partial "control_panel"}}
+    </div>
+    <div class="app-content-wrapper">
+      {{outlet}}
+    </div>
+  </div>
+</div>
