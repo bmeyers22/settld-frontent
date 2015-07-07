@@ -1,14 +1,14 @@
 `import Ember from 'ember'`
 # `import io from 'web/utils/socket.io'`
 Client = null
-initialize = (container, application) ->
+initialize = (registry, application) ->
   Client = ->
     @init = ->
       @socket = io.connect('localhost:3001')
       @createListeners()
 
     @createListeners = ->
-      store = container.lookup('store:main')
+      store = instance.container.lookup('service:store')
       socket = @socket
       socket.on 'user_data_push', (data) ->
         console.log data

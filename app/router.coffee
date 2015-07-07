@@ -6,16 +6,16 @@ Router = Ember.Router.extend
 
 Router.map ->
   @route 'missing', path: '/*missing'
-  @resource 'app', { path: '/' }, ->
-    @resource 'dashboard', ->
-    @resource 'homes', ->
+  @route 'app', { path: '/' }, ->
+    @route 'dashboard', resetNamespace: true, ->
+    @route 'homes', resetNamespace: true, ->
       @route 'new'
       @route 'join'
       @route 'edit', path: 'edit/:id'
-    @resource 'transactions', ->
-    @resource 'jobs', ->
-    @resource 'settings', ->
-  @resource 'getstarted', ->
+    @route 'transactions', resetNamespace: true, ->
+    @route 'jobs', resetNamespace: true, ->
+    @route 'settings', resetNamespace: true, ->
+  @route 'getstarted', resetNamespace: true, ->
     @route 'new'
     @route 'join'
   @route 'login'

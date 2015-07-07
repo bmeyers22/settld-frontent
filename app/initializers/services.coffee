@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-initialize = (container, application) ->
+initialize = (registry, application) ->
   application.inject 'controller', '_$modelDefaults', 'service:modelDefaults'
   application.inject 'route', '_$modelDefaults', 'service:modelDefaults'
 
