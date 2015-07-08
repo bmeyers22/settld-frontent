@@ -7,7 +7,9 @@ initialize = (registry, application) ->
   application.register 'session:current', Session, singleton: true
   application.inject 'controller', 'session', 'session:current'
   application.inject 'route', 'session', 'session:current'
-  application.advanceReadiness()
+  Ember.$.getJSON("/users/current.json").then (current) ->
+    window.currentUserData = current
+    application.advanceReadiness()
 
 
 SessionInitializer =

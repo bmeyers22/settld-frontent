@@ -34,15 +34,12 @@
     "ember-cli-sass": "^4.0.1",
     "ember-cli-styles-reloader": "0.1.4",
     "ember-cli-uglify": "^1.0.1",
-    "ember-data": "1.0.0-beta.18",
-    "ember-cli-simple-auth": "^0.8.0",
-    "ember-cli-simple-auth-torii": "^0.8.0",
+    "ember-data": "1.13.4",
     "ember-deploy-redis": "0.0.2",
     "ember-deploy-s3": "0.0.3",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "liquid-fire": "0.20.0",
-    "semantic-ui-ember": "0.0.1-rc.8",
-    "torii": "^0.4.0"
+    "semantic-ui-ember": "0.0.1-rc.8"
   }
 }
