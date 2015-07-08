@@ -20,15 +20,15 @@
             <i class="icon dropdown">
             </i>
             <div class="menu">
-              {{#each home in session.authUser.homes}}
-                <div {{bind-attr data-value="home.id"}} class="item">
+              {{#each session.authUser.homes as |home|}}
+                <div data-value={{home.id}} class="item">
                   {{home.name}}
                 </div>
               {{/each}}
             </div>
           </div>
         </div>
-        <a {{bind-attr href="APP_ENV.LOGOUT_URL"}} data-method="DELETE" rel="nofollow" class="item">
+        <a href={{APP_ENV.LOGOUT_URL}} data-method="DELETE" rel="nofollow" class="item">
           <div class="ui button mini red">
             Log out
           </div>

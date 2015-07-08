@@ -45,8 +45,8 @@
           <i class="dropdown icon">
           </i>
           <div class="menu">
-            {{#each state in Enums.USStates}}
-              <div {{bind-attr data-value="state.alpha-2"}} class="item">
+            {{#each Enums.USStates as |state|}}
+              <div data-value={{state.alpha-2}} class="item">
               </div>
             {{/each}}
           </div>

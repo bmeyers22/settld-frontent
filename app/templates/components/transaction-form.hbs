@@ -26,8 +26,8 @@
             <i class="dropdown icon">
             </i>
             <div class="menu">
-              {{#each cat in categories}}
-                <div {{bind-attr data-value="key"}} class="item">
+              {{#each categories as |cat|}}
+                <div data-value={{key}} class="item">
                   {{cat.val}}
                 </div>
               {{/each}}

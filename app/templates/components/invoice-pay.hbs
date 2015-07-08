@@ -2,7 +2,7 @@
   <i {{action "close" on="click"}} class="close icon">
   </i>
 </div>
-{{#each txn in transactions}}
+{{#each transactions as |txn|}}
   <div>
     <div class="title">
       {{txn.title}}

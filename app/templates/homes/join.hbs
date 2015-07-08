@@ -7,10 +7,10 @@
       <div class="ui icon fluid input">
         <i click="'findHomes' target='view'" class="search link icon">
         </i>
-        <input class="prompt" type="text" name="query" {{bind-attr value="view.query"}} autocomplete="on" placeholder="Search..." />
+        <input class="prompt" type="text" name="query" value={{query}} autocomplete="on" placeholder="Search..." />
       </div>
       <div class="ui segment home-results form">
-        {{#if view.searchResults}}
+        {{#if searchResults}}
           <div class="result results-labels">
             <div class="info">
               <div class="title">
@@ -21,8 +21,8 @@
               </div>
             </div>
           </div>
-          {{#each result in view.searchResults}}
-            <div {{bind-attr class=":result result.selected"}} click="'homeSelected' result target='view'">
+          {{#each searchResults as |result|}}
+            <div class={{:result result.selected}} click="'homeSelected' result target='view'">
               <div class="info">
                 <div class="title">
                   {{result.name}}
@@ -43,16 +43,16 @@
         {{/if}}
       </div>
       <div class="ui form segment join-password">
-        <div {{bind-attr class=":field isHomeSelected"}}>
+        <div class={{:field isHomeSelected}}>
           <label>
             Password
           </label>
           <div class="ui action input">
-            <input type="hidden" name="passwordValid" {{bind-attr value="passwordValid"}} />
-            <input type="password" name="password" placeholder="Home password" {{bind-attr value="selectedHome.password"}} {{bind-attr disabled="isHomeSelected"}} />
+            <input type="hidden" name="passwordValid" value={{passwordValid}} />
+            <input type="password" name="password" placeholder="Home password" value={{selectedHome.password}} disabled={{isHomeSelected}} />
           </div>
         </div>
-        <div {{bind-attr class=":ui :green :submit :button view.canSubmitForm"}}>
+        <div class={{:ui :green :submit :button canSubmitForm}}>
           <span class="submit-text">
             Join
           </span>

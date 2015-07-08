@@ -5,12 +5,13 @@ import Ember from 'ember'
 AppRoute = Ember.Route.extend
   beforeModel: (transition) ->
     if not @session.get('authUser')?
+      transition.abort()
       @transitionTo 'login'
-    settings = @session.get 'userSettings'
-    if not settings.get 'isUserConfigured'
+    else if !@session.get('userSettings.isUserConfigured')
       transition.abort()
       @transitionTo 'getstarted'
-    @transitionTo 'dashboard' if /^app/.test transition.targetName
+    else
+      @transitionTo 'dashboard' if /^app/.test transition.targetName
   model: ->
     Ember.Object.create
       authUser: @session.get 'authUser'

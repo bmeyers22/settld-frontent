@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-Login = Ember.View.extend
+Login = Ember.Component.extend
   classNames: [
     'signin-container'
     'login'

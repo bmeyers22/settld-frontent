@@ -18,7 +18,6 @@ var app = new EmberApp({
 app.import('vendor/javascripts/jquery-ui.js');
 app.import('bower_components/lodash/lodash.min.js');
 app.import('vendor/javascripts/socket.io.js');
-app.import('vendor/javascripts/semantic-mods.js');
 app.import('bower_components/moment/min/moment.min.js');
 app.import('bower_components/pikaday/css/pikaday.css');
 app.import('bower_components/pikaday/pikaday.js');

@@ -11,17 +11,25 @@ module.exports = function(environment) {
 
       }
     },
+    torii: {
+      providers: {
+        'facebook-connect': {
+          appId: '808c49a08b28404667651b10612ab69e',
+          scope: 'email,user_birthday'
+        }
+      }
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
     contentSecurityPolicy: {
-      'default-src': "'none' 'self'",
-      'script-src': "'self' 'localhost' 'unsafe-inline' www.google-analytics.com sandbox-api.venmo.com",
+      'default-src': "'self'",
+      'script-src': "'self' 'unsafe-inline' sandbox-api.venmo.com www.google-analytics.com connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' sandbox-api.venmo.com api.venmo.com",
-      'img-src': "'self' data: venmopics.appspot.com",
+      'connect-src': "'self' sandbox-api.venmo.com",
+      'img-src': "'self' data:",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"
     }
