@@ -12,6 +12,9 @@
       position: relative;
       padding: 5px;
       border-bottom: 1px solid #ddd;
+      &:first-of-type {
+        border-top: 1px solid #ddd;
+      }
       .label.image {
         padding: 0px 10px;
         vertical-align: middle;

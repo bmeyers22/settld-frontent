@@ -10,22 +10,11 @@ FeedItem = Ember.Component.extend
     model = @get('item')
     if model instanceof Transaction then 'transaction' else if model instanceof Job then 'job' else ''
   ).property()
-  cornerColor: (->
-    classType = @get('classType')
-    base = 'ui corner left label '
-    base + (if classType == 'transaction' then 'green' else if classType == 'job' then 'red' else '')
-  ).property('classType')
   iconType: (->
     classType = @get('classType')
     base = 'icon '
     base + (if classType == 'transaction' then 'dollar' else if classType == 'job' then 'briefcase' else '')
   ).property('classType')
-  userImage: (->
-    @get 'item.user.image'
-  ).property()
-  fuzzyTime: (->
-    moment(@get('item.date')).fromNow()
-  ).property('item.date')
   displayName: (->
     isMe = @get('item.user') == @get('targetObject.session.authUser')
     if isMe
@@ -38,10 +27,10 @@ FeedItem = Ember.Component.extend
     if classType == 'transaction' then 'bought' else if classType == 'job' then 'performed' else ''
   ).property()
   payableInvoice: (->
-    @item.getOpenInvoice?(@user)
+    @get('item').getOpenInvoice?(@get('user'))
   ).property()
   actions:
     openInvoiceAction: (invoice) ->
-      @sendAction('openInvoiceAction', @item)
+      @sendAction 'openInvoiceAction', @get('item')
 
 `export default FeedItem`

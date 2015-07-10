@@ -1,5 +1,5 @@
 <div class="label image">
-  {{#if userImage}}
+  {{#if user.image}}
     <img src={{userImage}} />
   {{else}}
     <i class="circular user icon">
@@ -16,7 +16,7 @@
 
         {{item.title}}
         <span class="date">
-          {{fuzzyTime}}
+          {{fuzzy-time item.date}}
         </span>
       </div>
       <div class="extra text">

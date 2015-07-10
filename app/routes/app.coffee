@@ -17,6 +17,9 @@ AppRoute = Ember.Route.extend
       authUser: @session.get 'authUser'
       currentHome: @session.get 'currentHome'
   actions:
+    toggleGroupsBar: () ->
+      Ember.run ->
+        $('.groups-bar').sidebar 'toggle'
     openInvoiceAction: (txn) ->
       this.controllerFor('invoice-action').addTransaction txn
       @render 'invoice-action',

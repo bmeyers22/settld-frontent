@@ -26,8 +26,7 @@ initialize = (instance) ->
       session.set 'CURRENT_HOME_ID', session.get 'currentHome.id'
       homes.forEach (home) ->
         home.get 'users'
-      user.set 'info', userInfos.find (info) ->
-        info.get('homeId') == session.get('currentHome.id')
+      user.set 'info', userInfos.get('firstObject')
       session.set 'userInfo', user.get 'info'
 
 

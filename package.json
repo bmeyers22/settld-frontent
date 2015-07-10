@@ -39,7 +39,7 @@
     "ember-deploy-s3": "0.0.3",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
-    "liquid-fire": "0.20.0",
-    "semantic-ui-ember": "0.0.1-rc.8"
+    "liquid-fire": "0.20.4",
+    "semantic-ui-ember": "^0.0.1-rc.8"
   }
 }

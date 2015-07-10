@@ -97,15 +97,12 @@ body::after {
   }
 
   .main-content-wrapper {
-      position: absolute;
-      max-width: $APP_WIDTH;
-      @include center-margin();
-      top: 40px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      background: #fff;
-      overflow-y: auto;
-
+    position: absolute;
+    background: #fff;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }

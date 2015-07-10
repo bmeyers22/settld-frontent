@@ -8,7 +8,6 @@ module.exports = function(environment) {
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
-
       }
     },
     torii: {

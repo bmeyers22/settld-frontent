@@ -1,33 +1,28 @@
-<div class="global-wrapper">
-  <div class="ui fixed transparent inverted main menu user-top-bar">
-    <div class="content">
-      {{#link-to "dashboard"}}
-        <div class="title item">
-          Settld
-        </div>
+<div class="global-wrapper pushable">
+  <div class="groups-bar ui left vertical inverted sidebar menu uncover">
+    <h3 class="ui item inverted grey header">
+      <i class="users icon"></i>
+      <span>Groups</span>
+      {{#link-to "homes" class="edit"}}
+        <span {{action 'toggleGroupsBar'}}>edit</span>
       {{/link-to}}
+    </h3>
+    {{#each session.authUser.homes as |home| }}
+      <a class="item">
+        {{home.name}}
+      </a>
+    {{/each}}
+  </div>
+  <div class="pusher">
+    <div class="ui large horizontal top fixed inverted main menu user-top-bar">
+      <div class="link item" {{action 'toggleGroupsBar'}}>
+        <i class="sidebar icon"></i>
+      </div>
       <div class="home-select-wrapper right menu">
         {{#link-to "create.index" class="item new-entry"}}
           <i class="write square link large icon">
           </i>
         {{/link-to}}
-        <div class="item">
-          <div class="ui pointing dropdown main-home-select">
-            <input type="hidden" name="currentHome" />
-            <div class="text">
-              {{session.currentHome.name}}
-            </div>
-            <i class="icon dropdown">
-            </i>
-            <div class="menu">
-              {{#each session.authUser.homes as |home|}}
-                <div data-value={{home.id}} class="item">
-                  {{home.name}}
-                </div>
-              {{/each}}
-            </div>
-          </div>
-        </div>
         <a href={{APP_ENV.LOGOUT_URL}} data-method="DELETE" rel="nofollow" class="item">
           <div class="ui button mini red">
             Log out
@@ -35,21 +30,12 @@
         </a>
       </div>
     </div>
-  </div>
-  {{liquid-outlet "invoice-action" class="invoice-pay-container"}}
-  <div class="main-content-wrapper">
-    <div class="ui left vertical inverted labeled icon sidebar menu">
-      <a class="item">
-        <i class="home icon">
-        </i>
-        Home
-      </a>
-    </div>
-    <div class="control-panel-wrapper">
-      {{partial "control_panel"}}
-    </div>
-    <div class="app-content-wrapper">
-      {{outlet}}
+    {{liquid-outlet "invoice-action" class="invoice-pay-container"}}
+    {{partial "control_panel"}}
+    <div class="main-content-wrapper">
+      <div class="app-content-wrapper">
+        {{outlet}}
+      </div>
     </div>
   </div>
 </div>
