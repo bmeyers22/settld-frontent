@@ -1,0 +1,21 @@
+@import 'variables';
+
+.groups-bar.ui.left.vertical.inverted.sidebar {
+  .ui.item.header {
+    i {
+      float: none;
+      vertical-align: baseline;
+      display: inline-block;
+      margin: 0 .05em 0 0;
+    }
+    .edit {
+      float: right;
+      margin-top: 10px;
+      line-height: 25px;
+      font-size: 85%;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

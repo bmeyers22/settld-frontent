@@ -1,0 +1,11 @@
+@import 'variables';
+
+.ui.bottom.menu.control-panel {
+  > .item {
+    display: block;
+
+    .nav-label {
+      margin-top: 5px;
+    }
+  }
+}
