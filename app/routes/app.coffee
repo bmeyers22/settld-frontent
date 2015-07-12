@@ -11,11 +11,9 @@ AppRoute = Ember.Route.extend
       transition.abort()
       @transitionTo 'getstarted'
     else
-      @transitionTo 'dashboard' if /^app/.test transition.targetName
+      @transitionTo 'group', @session.get('authUser.homes').indexOf(@session.get('currentHome')) if /^app/.test transition.targetName
   model: ->
-    Ember.Object.create
-      authUser: @session.get 'authUser'
-      currentHome: @session.get 'currentHome'
+    @session
   actions:
     toggleGroupsBar: () ->
       Ember.run ->

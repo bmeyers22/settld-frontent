@@ -9,20 +9,21 @@ Router = Ember.Router.extend
 Router.map ->
   @route 'missing', path: '/*missing'
   @resource 'app', { path: '/' }, ->
-    @resource 'dashboard', ->
-    @resource 'create', ->
-      @route 'transaction'
-      @route 'job'
-    @resource 'homes', ->
-      @route 'new'
-      @route 'join'
-      @route 'edit', path: 'edit/:id'
-    @resource 'transactions', ->
-    @resource 'jobs', ->
-    @resource 'settings', ->
-    @resource 'create', ->
-      @route 'transaction'
-      @route 'job'
+    @resource 'group', { path: '/g/:group_index' }, ->
+      @resource 'dashboard', ->
+      @resource 'create', ->
+        @route 'transaction'
+        @route 'job'
+      @resource 'homes', ->
+        @route 'new'
+        @route 'join'
+        @route 'edit', path: 'edit/:id'
+      @resource 'transactions', ->
+      @resource 'jobs', ->
+      @resource 'settings', ->
+      @resource 'create', ->
+        @route 'transaction'
+        @route 'job'
 
   @resource 'getstarted', ->
     @route 'new'

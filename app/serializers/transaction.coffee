@@ -1,9 +1,10 @@
+`import { ActiveModelSerializer } from 'active-model-adapter'`
 `import DS from 'ember-data'`
 
-TransactionSerializer = DS.ActiveModelSerializer.extend DS.EmbeddedRecordsMixin,
+TransactionSerializer = ActiveModelSerializer.extend DS.EmbeddedRecordsMixin,
   primaryKey: '_id'
   attrs:
-    invoices: 
+    invoices:
       embedded: 'always'
 
 `export default TransactionSerializer`

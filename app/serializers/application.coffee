@@ -1,6 +1,6 @@
-`import DS from 'ember-data'`
+`import { ActiveModelSerializer } from 'active-model-adapter'`
 
-ApplicationSerializer = DS.ActiveModelSerializer.extend
+ApplicationSerializer = ActiveModelSerializer.extend
   primaryKey: '_id'
   serializeHasMany: (record, json, relationship) ->
     key = relationship.key
