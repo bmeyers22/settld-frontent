@@ -18,9 +18,6 @@ module.exports = function(defaults) {
   app.import('bower_components/lodash/lodash.min.js');
   app.import('vendor/javascripts/socket.io.js');
   app.import('bower_components/moment/min/moment.min.js');
-  app.import('bower_components/pikaday/css/pikaday.css');
-  app.import('bower_components/pikaday/pikaday.js');
-  app.import('bower_components/ember-pikaday/build/lib.js');
 
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
