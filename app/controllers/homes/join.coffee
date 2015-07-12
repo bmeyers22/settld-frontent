@@ -1,6 +1,4 @@
-`
-import Ember from 'ember'
-`
+`import Ember from 'ember'`
 
 HomesJoinController = Ember.Controller.extend
   selectedHome: null
@@ -30,11 +28,8 @@ HomesJoinController = Ember.Controller.extend
     return
   actions:
     joinHome: ->
-      debugger
       new (Ember.RSVP.Promise)((resolve, reject) =>(
-        $.post '/api/v1/homes/join',
-            home: @get('selectedHome').serialize()
-          , resolve).fail(reject)
+        $.post '/api/v1/homes/join', home: @get('selectedHome').serialize(), resolve).fail(reject)
       ).then (data) =>
         @onJoinSuccess data
 

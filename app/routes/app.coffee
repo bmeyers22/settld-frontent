@@ -20,13 +20,14 @@ AppRoute = Ember.Route.extend
         $('.groups-bar').sidebar 'toggle'
     openInvoiceAction: (txn) ->
       this.controllerFor('invoice-action').addTransaction txn
-      @render 'invoice-action',
+      @render 'invoice-action', {
         into: 'app'
         outlet: 'invoice-action'
         controller: 'invoice-action'
+      }
     closeInvoiceAction: ->
       @disconnectOutlet
-        outlet: 'invoice-action',
+        outlet: 'invoice-action'
         parentView: 'app'
 
 `export default AppRoute`

@@ -24,20 +24,19 @@ defaults = ->
 getDefaults = ->
   defaults()
 
-copyFn = (defaults) ->
-  -> @getProperties Object.keys defaults
+copyFn = (defaults) -> -> @getProperties Object.keys defaults
 
 createDefaultsObject = (defaults, properties) ->
   attrs = _.extend defaults, properties
   attrs.copy = copyFn defaults
-  obj = Ember.Object.extend Ember.Copyable,
-    attrs
+  obj = Ember.Object.extend Ember.Copyable, attrs
   obj.create()
 
 ModelDefaults = Ember.Service.extend
   name: "_$modelDefaults"
   availableIn: ['controllers', 'routes']
   getDefaults: getDefaults
-  getModelType: (type, properties={}) -> createDefaultsObject getDefaults()[type], properties
+  getModelType: (type, properties={}) ->
+    createDefaultsObject getDefaults()[type], properties
 
 `export default ModelDefaults`
