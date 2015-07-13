@@ -1,21 +1,19 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
-var Application = Ember.Route.extend({
-
-  actions:
-    {showModal: function(name, model) {
-      return this.render( name,
+export default Ember.Route.extend({
+  actions: {
+    showModal(name, model) {
+      return this.render( name, {
         into: 'application',
         outlet: 'modal'
       });
     },
 
-    closeModal: function() {
+    closeModal() {
       return this.disconnectOutlet({
         outlet: "modal",
         parentView: 'application'
       });
     }
+  }
 });
-
-}export default Application

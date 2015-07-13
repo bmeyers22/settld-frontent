@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var InvoicePayComponent = Ember.Component.extend({
   classNames: ['invoice'],
@@ -14,15 +14,16 @@ var InvoicePayComponent = Ember.Component.extend({
       var invoices = this.transactions.map((txn) => {
         return txn.getOpenInvoice(this.user).get('id');
       });
-      return $.post( '/api/v1/venmo/pay',
+      return $.post( '/api/v1/venmo/pay', {
         type: "POST",
-        payment:
-          {invoices: invoices,
-          note: "HEY"},
-        success: function(data) {
+        payment: {
+          invoices: invoices,
+          note: "HEY"
+        },
+        success(data) {
           return console.log(data);
         },
-        error: function(data) {
+        error(data) {
           return console.log(data);
         }
       });

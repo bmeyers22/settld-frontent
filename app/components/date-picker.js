@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var DatePicker = Ember.Component.extend({
   classNames: ['date-group', 'date', 'field', 'ui', 'icon', 'input'],

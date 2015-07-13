@@ -1,5 +1,5 @@
 
-import Ember from 'ember'
+import Ember from 'ember';
 
 var TransactionsNewController = Ember.Controller.extend(
   {categories: (function() {

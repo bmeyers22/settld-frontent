@@ -1,5 +1,5 @@
 
-import { test, moduleForComponent } from 'ember-qunit'
+import { test, moduleForComponent } from 'ember-qunit';
 
 
 moduleForComponent('invoice-pay', {

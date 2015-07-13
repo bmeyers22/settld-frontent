@@ -1,7 +1,7 @@
-import Ember from 'ember'
-import Enums from 'web/enums'
-import AudienceButtonContainer from './audience-button'
-import AudienceButtonView from './audience-button'
+import Ember from 'ember';
+import Enums from 'web/enums';
+import AudienceButtonContainer from './audience-button';
+import AudienceButtonView from './audience-button';
 
 var AudienceContainer = Ember.ContainerView.extend({
       init: function() {

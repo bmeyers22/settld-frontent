@@ -1,7 +1,7 @@
-import DS from 'ember-data'
+import DS from 'ember-data';
 
-var Home = DS.Model.extend({ 
-  users: DS.hasMany('user', async: true}),
+var Home = DS.Model.extend({
+  users: DS.hasMany('user', {async: true}),
   name: DS.attr('string'),
   address: DS.attr('string'),
   city: DS.attr('string'),

@@ -1,4 +1,4 @@
-import Feeds from '../feeds'
+import Feeds from '../feeds';
 
 var TransactionsFeedController = Feeds.extend(
   {transactions: (function() {
@@ -20,7 +20,7 @@ var TransactionsFeedController = Feeds.extend(
     var txn = this.get('transactions') || [];
     var stream = Ember.A();
     stream.pushObjects(txn.toArray());
-    return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin,
+    return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin, {
       content: stream,
       sortProperties: this.sortProperties,
       sortAscending: this.sortAscending

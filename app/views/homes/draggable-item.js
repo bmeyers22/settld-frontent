@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var HomeDraggableItemView = Ember.View.extend({
   templateName: 'homes/home_draggable_item',
@@ -13,10 +13,11 @@ var HomeDraggableItemView = Ember.View.extend({
   }
   ).property(),
   isEditing: false,
-  actions: {editHome: function(home) {
-    this.parentView.send('editHome', home);
-    return;
+  actions: {
+    editHome(home) {
+      this.parentView.send('editHome', home);
+    }
   }
 });
 
-}export default HomeDraggableItemView
+export default HomeDraggableItemView

@@ -1,6 +1,6 @@
 
-import Ember from 'ember'
-import config from './config/environment'
+import Ember from 'ember';
+import config from './config/environment';
 
 
 var Router = Ember.Router.extend({
@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('missing', path: '/*missing'});
+  this.route('missing', { path: '/*missing'});
   this.resource('app', { path: '/' }, function() {
     return this.resource('group', { path: '/g/:group_index' }, function() {
       this.resource('dashboard', function() {});
@@ -19,7 +19,7 @@ Router.map(function() {
       this.resource('homes', function() {
         this.route('new');
         this.route('join');
-        return this.route('edit', path: 'edit/:id'});
+        return this.route('edit', { path: 'edit/:id' });
       });
       this.resource('transactions', function() {});
       this.resource('jobs', function() {});

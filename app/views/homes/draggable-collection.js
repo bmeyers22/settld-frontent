@@ -1,5 +1,5 @@
-import Ember from 'ember'
-import Item from './draggable-item'
+import Ember from 'ember';
+import Item from './draggable-item';
 
 var HomeDraggableCollectionView = Ember.CollectionView.extend({
   classNames: [

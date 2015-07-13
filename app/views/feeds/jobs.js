@@ -1,4 +1,4 @@
-import FeedView from '../feed'
+import FeedView from '../feed';
 
 var JobsFeedView = FeedView.extend({});
 

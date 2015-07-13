@@ -1,5 +1,5 @@
-import Ember from 'ember'
-import Session from 'web/models/session'
+import Ember from 'ember';
+import Session from 'web/models/session';
 
 // Takes two parameters: container and app
 var initialize = function(instance) {
@@ -21,7 +21,7 @@ var initialize = function(instance) {
     session.set('authUser', user);
     session.set('CURRENT_USER_ID', user.id);
     session.set('userSettings', user.get('settings'));
-    if (userSettings.get('isUserConfigured') {)
+    if (userSettings.get('isUserConfigured')) {
       var ref;
       var homes = store.peekAll('home');
       session.set('currentHome', homes.find(function(home) {

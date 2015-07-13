@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var initialize = function(registry, application) {
   application.inject('controller', '_$modelDefaults', 'service:modelDefaults');

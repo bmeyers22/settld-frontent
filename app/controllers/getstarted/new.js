@@ -1,4 +1,4 @@
-import HomesNewController from '../homes/new'
+import HomesNewController from '../homes/new';
 
 var GetstartedNewController = HomesNewController.extend({saveHome: function(home) {
   var self = this;

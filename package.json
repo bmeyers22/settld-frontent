@@ -43,6 +43,7 @@
     "ember-export-application-global": "^1.0.2",
     "ember-pikaday": "0.8.0",
     "liquid-fire": "0.20.4",
+    "qunit": "~1.17.1",
     "semantic-ui-ember": "^0.0.1-rc.8"
   }
 }

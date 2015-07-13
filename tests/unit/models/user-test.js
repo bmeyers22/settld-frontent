@@ -1,5 +1,5 @@
-import { test, moduleForModel } from 'ember-qunit'
-import startApp from '../../helpers/start-app'
+import { test, moduleForModel } from 'ember-qunit';
+import startApp from '../../helpers/start-app';
 
 
 moduleForModel('user', {

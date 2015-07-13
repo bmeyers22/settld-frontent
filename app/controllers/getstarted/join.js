@@ -1,4 +1,4 @@
-import HomesJoinController from '../homes/join'
+import HomesJoinController from '../homes/join';
 
 var GetstartedJoinController = HomesJoinController.extend({
   finishRouteName: 'dashboard'

@@ -1,11 +1,11 @@
 
-import Ember from 'ember'
-import DS from 'ember-data'
-import Enums from 'web/enums'
+import Ember from 'ember';
+import DS from 'ember-data';
+import Enums from 'web/enums';
 
 
 var Transaction = DS.Model.extend({
-  invoices: DS.hasMany("invoice", async: false}),
+  invoices: DS.hasMany("invoice", {async: false}),
   user: DS.belongsTo('user'),
   home: DS.belongsTo('home'),
   cost: DS.attr('number'),

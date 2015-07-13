@@ -1,4 +1,4 @@
-import { test, moduleFor } from 'ember-qunit'
+import { test, moduleFor } from 'ember-qunit';
 
 moduleFor('route:create/transaction', {
   // Specify the other units that are required for this test.

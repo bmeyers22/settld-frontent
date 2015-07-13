@@ -1,7 +1,7 @@
 
-import Ember from 'ember'
-import Enums from 'web/enums'
-import AudienceButtonContainer from './audience-button-container'
+import Ember from 'ember';
+import Enums from 'web/enums';
+import AudienceButtonContainer from './audience-button-container';
 
 
 var FeedView = Ember.View.extend(

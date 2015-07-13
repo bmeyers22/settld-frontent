@@ -1,5 +1,5 @@
-import Ember from 'ember'
-// `import io from 'web/utils/socket.io'`
+import Ember from 'ember';
+// `import io from 'web/utils/socket.io'`;
 var Client = null;
 var initialize = function(registry, application) {
   Client = function() {

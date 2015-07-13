@@ -1,14 +1,8 @@
-import HomesNewView from '../homes/new'
+import HomesNewView from '../homes/new';
 
-var GetstartedNewView = HomesNewView.extend({
+export default HomesNewView.extend({
   templateName: 'homes/new',
-  actions:
-    {createHome: (home) => {
-      var controller = this.get('controller');
-      controller.saveHome(home);
-      return;
-    }
+  actions: {
+    createHome: (home) => { this.get('controller').saveHome(home); }
+  }
 });
-
-
-}export default GetstartedNewView

@@ -1,6 +1,6 @@
-import { test, moduleForModel } from 'ember-qunit'
+import { test, moduleForModel } from 'ember-qunit';
 
-moduleForModel( 'serializer:application',
+moduleForModel( 'serializer:application', {
   // Specify the other units that are required for this test.
   needs: ['serializer:application']
 });

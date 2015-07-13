@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var HomesIndexRoute = Ember.Route.extend(
   {model: function() {

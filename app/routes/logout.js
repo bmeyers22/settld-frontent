@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var LogoutRoute = Ember.Route.extend({beforeModel: function(transition) {
   console.log(transition);

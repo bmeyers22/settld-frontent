@@ -1,5 +1,5 @@
-import Ember from 'ember'
-import {Client} from './socket-client'
+import Ember from 'ember';
+import {Client} from './socket-client';
 
 var initialize = function(registry, application) {};
   // application.ready = ->

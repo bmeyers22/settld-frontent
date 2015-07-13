@@ -1,11 +1,10 @@
-import Ember from 'ember'
-import ModelDefaults from 'web/services/model-defaults'
-import JobNew from '../jobs/new'
+import Ember from 'ember';
+import ModelDefaults from 'web/services/model-defaults';
+import JobNew from '../jobs/new';
 
-var NewJob = JobNew.extend({
-  init: function() {
-
-    var model = this._$modelDefaults.getModelType( "job",
+export default JobNew.extend({
+  init() {
+    var model = this._$modelDefaults.getModelType( "job", {
       user: this.session.get('authUser'),
       home: this.session.get('currentHome'),
       contributors: Ember.A()
@@ -15,10 +14,9 @@ var NewJob = JobNew.extend({
     return this._super();
   },
 
-  actions:
-    {submitModal: function(txn) {
-      return this.save(this.get('model'));
-    }
+  actions: {
+      submitModal(txn) {
+        return this.save(this.get('model'));
+      }
+  }
 });
-
-}export default NewJob

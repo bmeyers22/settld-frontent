@@ -1,5 +1,5 @@
 
-import Ember from 'ember'
+import Ember from 'ember';
 
 
 var JobsNewController = Ember.Controller.extend(

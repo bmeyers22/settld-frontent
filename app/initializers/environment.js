@@ -1,6 +1,4 @@
-
-import Ember from 'ember'
-
+import Ember from 'ember';
 
 // Takes two parameters: container and app
 var initialize = function(registry, application) {
@@ -28,17 +26,17 @@ var initialize = function(registry, application) {
 
 
 
-  application.register('environment:default', APP_ENV, instantiate: false});
+  application.register('environment:default', APP_ENV, { instantiate: false });
   application.inject('controller', 'APP_ENV', 'environment:default');
-  return application.inject('route', 'APP_ENV', 'environment:default');
+  application.inject('route', 'APP_ENV', 'environment:default');
 };
 
-var EnvironmentInitializer =
-  {name: 'environment',
+var EnvironmentInitializer ={
+  name: 'environment',
   after: 'store',
-  initialize: initialize};
+  initialize: initialize
+};
 
 
 export {initialize}
-export default EnvironmentInitializer
-
+export default EnvironmentInitializer;

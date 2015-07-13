@@ -1,4 +1,4 @@
-import { test, moduleFor } from 'ember-qunit'
+import { test, moduleFor } from 'ember-qunit';
 
 moduleFor('route:group', {
   // Specify the other units that are required for this test.

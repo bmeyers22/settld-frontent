@@ -1,5 +1,5 @@
-import Feeds from '../feeds'
-import Enums from 'web/enums'
+import Feeds from '../feeds';
+import Enums from 'web/enums';
 
 var JobsFeedController = Feeds.extend(
   {jobs: (function() {
@@ -20,7 +20,7 @@ var JobsFeedController = Feeds.extend(
     var jobs = this.get('jobs') || [];
     var stream = Ember.A();
     stream.pushObjects(jobs.toArray());
-    return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin,
+    return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin, {
       content: stream,
       sortProperties: this.sortProperties,
       sortAscending: this.sortAscending

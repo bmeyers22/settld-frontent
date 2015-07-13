@@ -1,11 +1,11 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
-var HomesNewView = Ember.View.extend(
-  {didInsertElement: function() {
+var HomesNewView = Ember.View.extend({
+  didInsertElement: function() {
     var self = this;
     this.$('.state-dropdown').dropdown({});
     this.$('.why-rent').popup({});
-    this.$('.ui.form.new-home').form( {
+    this.$('.ui.form.new-home').form({
       name:
         {identifier: 'name',
         rules: [ {
@@ -58,7 +58,7 @@ var HomesNewView = Ember.View.extend(
           type: 'match[password]',
           prompt: 'Passwords must match'
         } ]}
-    },
+    }, {
       on: 'blur',
       onValid: function() {
         this.parent().parent().addClass('valid');
@@ -76,12 +76,14 @@ var HomesNewView = Ember.View.extend(
     });
     return;
   },
-  actions: {createHome: function(home) {
-    var self = this;
-    var controller = this.get('controller');
-    controller.send('saveHome', home);
-    return;
-  }}
+  actions: {
+    createHome: function(home) {
+      var self = this;
+      var controller = this.get('controller');
+      controller.send('saveHome', home);
+      return;
+    }
+  }
 });
 
 export default HomesNewView

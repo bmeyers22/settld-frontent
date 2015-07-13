@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var TransactionsRoute = Ember.Route.extend({setupController: function(controller, model) {
   var controllerFeed = this.controllerFor('feeds/transactions');

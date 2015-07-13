@@ -1,12 +1,12 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
-var HomesEditableSectionView = Ember.View.extend(
-  {classNames: [ 'editable-section' ],
+var HomesEditableSectionView = Ember.View.extend({
+  classNames: [ 'editable-section' ],
   classNameBindings: [ 'isEditing:editing' ],
   isEditing: false,
   copiedProps: {},
-  actions:
-    {editSection: function() {
+  actions:{
+    editSection: function() {
       this.set('copiedProps', this.get('content').getProperties(this.get('group')));
       this.set('isEditing', true);
       return;
@@ -25,7 +25,7 @@ var HomesEditableSectionView = Ember.View.extend(
       this.$('.ui.form').form('submit');
       return;
     },
-  }didInsertElement: function() {}}
-);
+  }
+});
 
 export default HomesEditableSectionView

@@ -1,12 +1,12 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var SettingsEditableSectionView = Ember.View.extend(
   {classNames: [ 'editable-section' ],
   classNameBindings: [ 'isEditing:editing' ],
   isEditing: false,
   copiedProps: {},
-  actions:
-    {editSection: function() {
+  actions: {
+    editSection: function() {
       this.set('copiedProps', this.get('content').getProperties(this.get('group')));
       this.set('isEditing', true);
       return;
@@ -21,22 +21,20 @@ var SettingsEditableSectionView = Ember.View.extend(
       this.set('isEditing', false);
       return;
     },
-  }didInsertElement: function() {
+  },
+  didInsertElement: function() {
     var self = this;
     this.$('.ui.checkbox').checkbox({
       onEnable: function() {
         self.get('controller').session.set('userSettings.hasPublicProfile', true);
         self.get('controller').session.get('userSettings').save();
-        return;
       },
       onDisable: function() {
         self.get('controller').session.set('userSettings.hasPublicProfile', false);
         self.get('controller').session.get('userSettings').save();
-        return;
       }
     });
-    return;
-  }}
-);
+  }
+});
 
 export default SettingsEditableSectionView

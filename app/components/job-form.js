@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 var JobForm = Ember.View.extend(
   {attributeBindings: [ 'disabled' ],

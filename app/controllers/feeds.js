@@ -1,5 +1,5 @@
-import Ember from 'ember'
-import Enums from 'web/enums'
+import Ember from 'ember';
+import Enums from 'web/enums';
 
 var FeedsController = Ember.Controller.extend({
   audienceScope: Enums.FeedAudienceScope.Home,

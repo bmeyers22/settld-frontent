@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import Ember from 'ember';
 
 // This is for the feed controller only at the moment
 var AudienceButtonView = Ember.View.extend(

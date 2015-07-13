@@ -1,5 +1,5 @@
-import App from 'web/app'
-import Feeds from '../feeds'
+import App from 'web/app';
+import Feeds from '../feeds';
 
 var DashboardFeedController = Feeds.extend(
   {transactions: (function() {
@@ -17,7 +17,7 @@ var DashboardFeedController = Feeds.extend(
   ).property('audienceScope'),
   stream: (function() {
     var stream = this.get('transactions') || [];
-    return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin,
+    return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin, {
       content: stream,
       sortProperties: this.sortProperties,
       sortAscending: this.sortAscending
