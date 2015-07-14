@@ -42,7 +42,7 @@
     "ember-deploy-s3": "0.0.3",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
-    "ember-mobiletouch": "1.4.11",
+    "ember-mobiletouch": "2.0.0-beta.1",
     "ember-pikaday": "0.8.0",
     "liquid-fire": "0.20.4",
     "semantic-ui-ember": "^0.0.1-rc.8"
