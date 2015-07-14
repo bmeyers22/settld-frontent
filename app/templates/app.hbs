@@ -8,31 +8,38 @@
       {{/link-to}}
     </h3>
     {{#each session.authUser.homes as |home i| }}
-      {{#link-to 'group' i class='item' }}
-        {{home.name}}
-      {{/link-to}}
+      <div {{action 'toggleGroupsBar'}}>
+        {{#link-to 'group' i class='item' }}
+          {{home.name}}
+        {{/link-to}}
+      </div>
     {{/each}}
   </div>
-  <div class="pusher">
-    <div class="ui horizontal top fixed inverted main menu user-top-bar">
+  <div class="global-content pusher pushable">
+    <div class="ui horizontal top fixed inverted icon  main menu user-top-bar ">
       <div class="link item" {{action 'toggleGroupsBar'}}>
         <i class="sidebar icon"></i>
       </div>
       <div class="home-select-wrapper right menu">
         {{#link-to "create.index" class="item new-entry"}}
-          <i class="write square link large icon">
-          </i>
+          <i class="write link large icon"></i>
         {{/link-to}}
-        <a href={{APP_ENV.LOGOUT_URL}} data-method="DELETE" rel="nofollow" class="item">
-          <div class="ui button mini red">
-            Log out
-          </div>
-        </a>
+        <div class="link item" {{action 'toggleUserBar'}}>
+          <i class="user large icon"></i>
+        </div>
       </div>
+    </div>
+    <div class="ui user-bar top inverted sidebar vertical menu" {{action 'toggleUserBar'}}>
+      {{#link-to 'settings' class="item" }}
+        Settings
+      {{/link-to}}
+      <a href={{APP_ENV.LOGOUT_URL}} data-method="DELETE" rel="nofollow" class="item">
+        Logout
+      </a>
     </div>
     {{liquid-outlet "invoice-action" class="invoice-pay-container"}}
     {{partial "control_panel"}}
-    <div class="main-content-wrapper">
+    <div class="main-content-wrapper pusher">
       <div class="app-content-wrapper">
         {{outlet}}
       </div>

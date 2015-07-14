@@ -1,24 +1,26 @@
-<div class="column">
-  <div class="ui score center aligned dividing header blue">
-    {{session.userInfo.score}}
+<div class="ui three statistics">
+  <div class="blue statistic">
+    <div class="value">
+      {{session.userInfo.score}}
+    </div>
+    <div class="label">
+      Score
+    </div>
   </div>
-  <div class="score-type">
-    Score
+  <div class="green statistic">
+    <div class="value">
+      {{session.userInfo.balance}}
+    </div>
+    <div class="label">
+      Balance
+    </div>
   </div>
-</div>
-<div class="column">
-  <div class="ui score center aligned dividing header green">
-    {{session.userInfo.balance}}
-  </div>
-  <div class="score-type">
-    Balance
-  </div>
-</div>
-<div class="column">
-  <div class="ui score center aligned dividing header red">
-    {{session.userInfo.choresToDo}}
-  </div>
-  <div class="score-type">
-    To-Do
+  <div class="red statistic">
+    <div class="value">
+      {{session.userInfo.choresToDo}}
+    </div>
+    <div class="label">
+      To-do
+    </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 import App from 'web/app';
 import Feeds from '../feeds';
 
-var DashboardFeedController = Feeds.extend(
-  {transactions: (function() {
+var DashboardFeedController = Feeds.extend({
+  transactions: function() {
     var filter = {};
     var scope = this.get('audienceScope');
     if (scope === this.Enums.FeedAudienceScope.Me) {
@@ -13,16 +13,15 @@ var DashboardFeedController = Feeds.extend(
     }
     // return this.store.find('transaction', filter);
     return this.store.query('transaction', filter);
-  }
-  ).property('audienceScope'),
-  stream: (function() {
+  }.property('audienceScope'),
+  stream: function() {
     var stream = this.get('transactions') || [];
     return Ember.ArrayProxy.createWithMixins( Ember.SortableMixin, {
       content: stream,
       sortProperties: this.sortProperties,
       sortAscending: this.sortAscending
     });
-  }
-  ).property('transactions.@each')});
+  }.property('transactions.@each')
+});
 
-export default DashboardFeedController
+export default DashboardFeedController;

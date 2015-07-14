@@ -1,5 +1,5 @@
 import { fuzzyTime } from '../../../helpers/fuzzy-time';
-import { module, test } from 'qunit';
+import { module, test } from 'ember-qunit';
 
 module('FuzzyTimeHelper');
 

@@ -9,6 +9,9 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled: isProductionLikeBuild,
       prepend: 'https://s3.amazonaws.com/app.settld.com/'
+    },
+    sassOptions: {
+      sourceMap: false
     }
   });
 

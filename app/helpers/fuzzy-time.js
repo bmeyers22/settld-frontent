@@ -1,4 +1,4 @@
 import Ember from 'ember';
-import moment from 'moment';
+let moment = window.moment;
 
 export default Ember.Helper.helper( (params) => { return moment(params[0]).fromNow(); } );

@@ -8,9 +8,10 @@ TransactionForm = Ember.Component.extend({
     }
   },
   didInsertElement: function() {
+    var self = this;
     this.$('.ui.category.dropdown').dropdown({
       onChange: (function(_this) {
-        return function(value, text) {
+        return function(value) {
           return _this.set('model.category', value);
         };
       })(this)
@@ -27,60 +28,58 @@ TransactionForm = Ember.Component.extend({
         };
       })(this)
     });
-    return this.form = this.$('.ui.form').form({
-      title: {
-        identifier: 'title',
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'Please enter a title'
-          }
-        ]
+
+    this.$('.ui.form').form({
+      fields: {
+        title: {
+          identifier: 'title',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter a title'
+            }
+          ]
+        },
+        category: {
+          identifier: 'category',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please select a category'
+            }
+          ]
+        },
+        description: {
+          identifier: 'description',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter a description'
+            }
+          ]
+        },
+        cost: {
+          identifier: 'cost',
+          rules: [
+            {
+              type: 'number',
+              prompt: 'Please enter a cost'
+            }, {
+              type: 'gt[0]',
+              prompt: 'Please enter a cost'
+            }, {
+              type: 'lt[1000000]',
+              prompt: 'Please enter a cost'
+            }
+          ]
+        }
       },
-      category: {
-        identifier: 'category',
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'Please select a category'
-          }
-        ]
+      onSuccess: function () {
+        self.sendAction('complete', self.get('model'));
       },
-      description: {
-        identifier: 'description',
-        rules: [
-          {
-            type: 'empty',
-            prompt: 'Please enter a description'
-          }
-        ]
-      },
-      cost: {
-        identifier: 'cost',
-        rules: [
-          {
-            type: 'number',
-            prompt: 'Please enter a cost'
-          }, {
-            type: 'gt[0]',
-            prompt: 'Please enter a cost'
-          }, {
-            type: 'lt[1000000]',
-            prompt: 'Please enter a cost'
-          }
-        ]
+      onFailure: function () {
+        console.log("Fail");
       }
-    }, {
-      onSuccess: (function(_this) {
-        return function() {
-          return _this.sendAction('complete', _this.get('model'));
-        };
-      })(this),
-      onFailure: (function(_this) {
-        return function() {
-          return console.log("Fail");
-        };
-      })(this)
     });
   }
 });

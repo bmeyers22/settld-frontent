@@ -6,10 +6,9 @@ var FeedsController = Ember.Controller.extend({
   needs: 'application',
   sortProperties: [ 'date' ],
   sortAscending: false,
-  hasStream: (function() {
-    if (this.get('stream.length') === 0) { false; } else { true; }
-  }
-  ).property('stream')
+  hasStream: function() {
+    return this.get('stream.length') > 0;
+  }.property('stream')
 });
 
 export default FeedsController
