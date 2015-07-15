@@ -1,11 +1,5 @@
 import Ember from 'ember';
 
-var Login = Ember.Route.extend({
-  beforeModel: function(transition) {
-    if ((this.session.get('authUser') != null)) {
-      return this.transitionTo('app');
-    }
-  }
-});
+var Login = Ember.Route.extend({});
 
 export default Login

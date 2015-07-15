@@ -33,9 +33,10 @@
       {{#link-to 'settings' class="item" }}
         Settings
       {{/link-to}}
-      <a href={{APP_ENV.LOGOUT_URL}} data-method="DELETE" rel="nofollow" class="item">
+
+      <div class="link item" {{action 'invalidateSession'}}>
         Logout
-      </a>
+      </div>
     </div>
     {{liquid-outlet "invoice-action" class="invoice-pay-container"}}
     {{partial "control_panel"}}

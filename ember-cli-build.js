@@ -6,6 +6,7 @@ var isProductionLikeBuild = ['production', 'staging'].indexOf(env) > -1;
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    hinting: false,
     fingerprint: {
       enabled: isProductionLikeBuild,
       prepend: 'https://s3.amazonaws.com/app.settld.com/'

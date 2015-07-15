@@ -1,18 +1,39 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend( ApplicationRouteMixin, {
+  beforeModel(transition) {
+    this._super();
+    if (!this.session.get('isAuthenticated')) {
+      this.transitionTo('login');
+    }
+  },
+  sessionAuthenticationFailed(error) {
+    console.log(error);
+  },
   actions: {
-    showModal(name, model) {
-      return this.render( name, {
-        into: 'application',
-        outlet: 'modal'
+    toggleGroupsBar: function() {
+      return Ember.run(function() {
+        return $('.groups-bar').sidebar('toggle');
       });
     },
-
-    closeModal() {
+    toggleUserBar: function() {
+      return Ember.run(function() {
+        return $('.user-bar').sidebar('toggle');
+      });
+    },
+    openInvoiceAction: function(txn) {
+      this.controllerFor('invoice-action').addTransaction(txn);
+      return this.render('invoice-action', {
+        into: 'app',
+        outlet: 'invoice-action',
+        controller: 'invoice-action'
+      });
+    },
+    closeInvoiceAction: function() {
       return this.disconnectOutlet({
-        outlet: "modal",
-        parentView: 'application'
+        outlet: 'invoice-action',
+        parentView: 'app'
       });
     }
   }

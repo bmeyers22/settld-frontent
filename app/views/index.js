@@ -1,8 +1,7 @@
-
 import Ember from 'ember';
 
 
-var AppView = Ember.View.extend({
+export default Ember.View.extend({
   didInsertElement: function() {
     $('.main-home-select').dropdown('set value', this.get('controller.model.CURRENT_HOME_ID'));
     $('.groups-bar').sidebar({
@@ -22,5 +21,3 @@ var AppView = Ember.View.extend({
     });
   }
 });
-
-export default AppView
