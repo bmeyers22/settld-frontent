@@ -1,13 +1,18 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend(ApplicationRouteMixin, {
   beforeModel(transition) {
     this._super(transition);
-    if (!this.initializeUser(this.session.get('secure.raw_user'))) {
-      return this.transitionTo('getStarted');
-    } else if (/^index/.test(transition.targetName)) {
-      this.transitionTo('dashboard', this.store.peekAll('home').indexOf(this.session.get('currentHome')));
+    if (!this.session.get('isAuthenticated')) {
+      this.transitionTo('login');
+    } else {
+      if (!this.initializeUser(this.session.get('secure.raw_user'))) {
+        return this.transitionTo('getStarted');
+      } else if (/^index/.test(transition.targetName)) {
+        this.transitionTo('dashboard', this.store.peekAll('home').indexOf(this.session.get('currentHome')));
+      }
     }
   },
   initialized: false,

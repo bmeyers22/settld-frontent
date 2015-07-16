@@ -17,6 +17,7 @@
     "active-model-adapter": "~1.13.3",
     "pikaday": "~1.3.3",
     "qunit": "~1.17.1",
-    "ember-simple-auth": "0.8.0"
+    "ember-simple-auth": "0.8.0",
+    "hammerjs": "~2.0.4"
   }
 }

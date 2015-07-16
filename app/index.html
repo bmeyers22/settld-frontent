@@ -33,5 +33,21 @@
     <script src="assets/web.js"></script>
 
     {{content-for 'body-footer'}}
+    <script>
+      window.onload = function() {
+        WebPullToRefresh.init( {
+          loadingFunction: function() {
+            return new Promise( function( resolve, reject ) {
+              // Run some async loading code here
+              if (true) {
+                resolve();
+              } else {
+                reject();
+              }
+            });
+          }
+        })
+      }
+    </script>
   </body>
 </html>

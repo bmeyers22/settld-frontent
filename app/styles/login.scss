@@ -1,27 +1,11 @@
-.signin-container, .register-container {
+.signin-container {
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-
-  &.login {
-    top: -100%;
-    transition: top 1.2s;
-  }
-  &.login.visible {
-    top: 0px;
-  }
-
   .form-container {
+    width: 100%;
     display: table;
-    width: 600px;
-    height: 100%;
     margin: 0 auto;
     .form-wrapper {
-      width: 600px;
       display: table-cell;
       vertical-align: middle;
 
@@ -34,7 +18,7 @@
         -ms-user-select: none;
         color: #fff;
         font-family: 'Damion', cursive;
-        font-size: 145px;
+        font-size: 600%;
         text-align: center;
         text-shadow: 0 1px 3px rgba(0,0,0,.5);
       }
@@ -44,7 +28,10 @@
 }
 .signin-container {
   .ui.form {
-
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
     .field.valid {
       input{
         border-color: #52A954;
@@ -75,7 +62,7 @@
       }
 
     }
-    .facebook-signin-container {
+    .button {
       text-align: center;
     }
   }

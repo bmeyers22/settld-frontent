@@ -12,9 +12,8 @@ module.exports = function(environment) {
     },
     torii: {
       providers: {
-        'facebook-connect': {
-          appId: '808c49a08b28404667651b10612ab69e',
-          scope: 'email,user_birthday'
+        'facebook-oauth2': {
+          apiKey: '631252926924840'
         }
       }
     },

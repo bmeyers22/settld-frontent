@@ -22,7 +22,7 @@ module.exports = function(defaults) {
   app.import('bower_components/lodash/lodash.min.js');
   app.import('vendor/javascripts/socket.io.js');
   app.import('bower_components/moment/min/moment.min.js');
-
+  app.import('bower_components/wptr/wptr.1.1.js');
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
   // object's keys should be the environment name and the values

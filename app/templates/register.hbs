@@ -1,63 +1,45 @@
-<div class="signin-container">
-  <div class="form-container">
-    <div class="form-wrapper">
-      <h1 class="cover-heading">Settld</h1>
-      <div class="ui form segment">      
-        <form class="ui form segment new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
-          <input id="auth-hidden" type="hidden" name="authenticity_token" value="">
-          <div class="two fields">
-            <div class="field">
-              <label for="user_first_name">First name</label>
-              <div class="ui left labeled input">
-                <input placeholder="First" type="text" name="user[first_name]" id="user_first_name">
-                <div class="ui corner label">
-                  <i class="icon asterisk"></i>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <label for="user_last_name">Last name</label>
-              <input placeholder="Last" type="text" name="user[last_name]" id="user_last_name">
-            </div>
+<div class="form-container">
+  <div class="form-wrapper">
+    <div class="ui form segment new-user">
+      <div class="field">
+        <div class="ui large corner labeled input">
+          {{input value=firstName placeholder='First name' autofocus="autofocus" name='user[first_name]'}}
+          <div class="ui corner label">
+            <i class="asterisk icon"></i>
           </div>
-          <div class="field">
-            <label for="user_email">Email</label>
-            <div class="ui left labeled icon input">
-              <input placeholder="Email" type="email" name="user[email]" id="user_email">
-              <i class="user icon"></i>
-              <div class="ui corner label">
-                <i class="icon asterisk"></i>
-              </div>
-            </div>
-          </div>
-          <div class="two fields">
-            <div class="field">
-              <label for="user_password">Password</label>
-              <div class="ui left labeled icon input">
-                <input placeholder="Password 6-12 characters" type="password" name="user[password]" id="user_password">
-                <i class="lock icon"></i>
-                <div class="ui corner label">
-                  <i class="icon asterisk"></i>
-                </div>
-              </div>
-            </div>
-            <div class="field">
-              <label for="user_password_confirmation">Password confirmation</label>
-              <div class="ui left labeled icon input">
-                <input placeholder="Confirm" type="password" name="user[password_confirmation]" id="user_password_confirmation">
-                <i class="lock icon"></i>
-                <div class="ui corner label">
-                  <i class="icon asterisk"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <input type="submit" name="commit" value="Sign up" class="ui blue submit button">
-          </div>
-        </form>
-        <span>Already a member? {{#link-to 'login' classNames="signin-link"}}Sign in{{/link-to}}</span>
+        </div>
       </div>
+      <div class="field">
+        <div class="ui large fluid input">
+          {{input value=lastName placeholder='Last name' name='user[last_name]'}}
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid icon input">
+          {{input value=email placeholder='Email' name='user[email]'}}
+          <i class="mail icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid icon input">
+          {{input type='password' value=password placeholder='Password' name='user[password]'}}
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid icon input">
+          {{input type='password' value=passwordConfirm placeholder='Confirm password' name='user[password_confirm]'}}
+          <i class="lock icon"></i>
+        </div>
+      </div>
+
+      <div class="field">
+        <button class="ui green fluid submit button">Submit</button>
+      </div>
+      <div class="field">
+        {{#link-to 'login' class="ui fluid basic button"}}login{{/link-to}}
+      </div>
+
     </div>
   </div>
 </div>
