@@ -27,7 +27,7 @@ var Register = Ember.View.extend({
               last_name: self.get('controller.lastName'),
               email: self.get('controller.email'),
               password: self.get('controller.password'),
-              password_confirm: self.get('controller.passwordConfirm')
+              password_confirmation: self.get('controller.passwordConfirm')
             }
           },
           error(response) { (response) => console.log(response); },
@@ -41,40 +41,40 @@ var Register = Ember.View.extend({
         debugger
       },
       fields: {
-        // firstName: {
-        //   identifier: 'user[first_name]',
-        //   rules: [ {
-        //     type: 'empty',
-        //     prompt: 'Please enter your first name'
-        //   } ]
-        // },
-        // email: {
-        //   identifier: 'user[email]',
-        //   rules: [ {
-        //     type: 'email',
-        //     prompt: 'Please enter your email'
-        //   } ]
-        // },
-        // password: {
-        //   identifier: 'user[password]',
-        //   rules: [ {
-        //     type: 'empty',
-        //     prompt: 'Please enter your password'
-        //   } ]
-        // },
-        // password_confirm: {
-        //   identifier: 'user[password_confirm]',
-        //   rules: [
-        //     {
-        //       type: 'empty',
-        //       prompt: 'Please confirm password'
-        //     },
-        //     {
-        //       type: 'match[user[password]]',
-        //       prompt: 'Passwords must match'
-        //     }
-        //   ]
-        // }
+        firstName: {
+          identifier: 'user[first_name]',
+          rules: [ {
+            type: 'empty',
+            prompt: 'Please enter your first name'
+          } ]
+        },
+        email: {
+          identifier: 'user[email]',
+          rules: [ {
+            type: 'email',
+            prompt: 'Please enter your email'
+          } ]
+        },
+        password: {
+          identifier: 'user[password]',
+          rules: [ {
+            type: 'empty',
+            prompt: 'Please enter your password'
+          } ]
+        },
+        password_confirm: {
+          identifier: 'user[password_confirmation]',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please confirm password'
+            },
+            {
+              type: 'match[user[password]]',
+              prompt: 'Passwords must match'
+            }
+          ]
+        }
       }
     });
   }
