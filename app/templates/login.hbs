@@ -1,7 +1,7 @@
 <div class="form-container">
   <div class="form-wrapper">
     <h1 class="cover-heading">Settld</h1>
-    <div class="ui form segment new_user" {{action 'authenticate' on='submit'}}>
+    <form class="ui form segment new_user" {{action 'authenticate' on='submit'}}>
       <div class="field">
         <div class="ui huge fluid icon input">
           {{input value=identification placeholder='Email' name="identification" class="form-control" autofocus="autofocus"}}
@@ -26,6 +26,6 @@
       <div class="field">
         {{#link-to 'register' class="ui fluid basic button"}}Register{{/link-to}}
       </div>
-    </div>
+    </form>
   </div>
 </div>

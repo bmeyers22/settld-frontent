@@ -1,13 +1,12 @@
-
 import Ember from 'ember';
 
 
 var GetstartedIndexRoute = Ember.Route.extend({
   beforeModel: function(transition) {
-    var settings = this.session.get('userSettings');
+    var settings = this.get('session.userSettings');
     if (settings.get('isUserConfigured')) {
       transition.abort();
-      return this.transitionTo('dashboard');
+      this.transitionTo('index');
     }
   }
 });

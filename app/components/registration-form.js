@@ -1,17 +1,10 @@
 import Ember from 'ember';
 
-var Register = Ember.View.extend({
+export default Ember.Component.extend({
   classNames: [
     'signin-container',
     'register'
   ],
-  user: Ember.Object.create({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    password_confirm: ''
-  }),
   didInsertElement: function() {
     self = this;
     $("#auth-hidden").val($('meta[name="csrf-token"]').attr('content'));
@@ -23,23 +16,21 @@ var Register = Ember.View.extend({
           dataType: "json",
           data: {
             user: {
-              first_name: self.get('controller.firstName'),
-              last_name: self.get('controller.lastName'),
-              email: self.get('controller.email'),
-              password: self.get('controller.password'),
-              password_confirmation: self.get('controller.passwordConfirm')
+              first_name: self.get('.firstName'),
+              last_name: self.get('.lastName'),
+              email: self.get('.email'),
+              password: self.get('.password'),
+              password_confirmation: self.get('.passwordConfirm')
             }
           },
-          error(response) { (response) => console.log(response); },
+          error(response) { response => console.log(response); },
           success(response) {
-              console.log("SUCCESS", response);
+            self.sendAction('login');
           }
         })
         return;
       },
-      onFailure() {
-        debugger
-      },
+      onFailure() {},
       fields: {
         firstName: {
           identifier: 'user[first_name]',
@@ -78,6 +69,5 @@ var Register = Ember.View.extend({
       }
     });
   }
-});
 
-export default Register
+});

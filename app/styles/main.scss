@@ -4,8 +4,8 @@
 body {
   background: #fff;
   font-style: 16px;
-}
-body::after {
+
+  &:after {
     content: "";
     background: url('/assets/images/bg3.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -19,6 +19,24 @@ body::after {
     right: 0;
     position: fixed;
     z-index: -1;
+  }
+
+  #application {
+    height: 100%;
+
+    .application-outlet {
+      height: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+  }
+
 }
 
 .global-wrapper {
