@@ -18,7 +18,9 @@ var GetstartedNewRoute = Ember.Route.extend({
             password: self.get('session.token')
           }
         });
-      }).then( => { self.transitionTo('index'); });
+      }).then( function () {
+        self.transitionTo('index');
+      });
       this.session.set('currentHome', home);
       this.session.set('CURRENT_HOME_ID', home.get('id'));
 
