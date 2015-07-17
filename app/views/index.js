@@ -19,5 +19,17 @@ export default Ember.View.extend({
         }
       }
     });
+    window.WebPullToRefresh.init( {
+      resistance: 4,
+      loadingFunction: function() {
+        return new Promise( function( resolve, reject ) {
+          if (true) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      }
+    });
   }
 });

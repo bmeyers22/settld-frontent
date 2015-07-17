@@ -23,6 +23,7 @@ module.exports = function(defaults) {
   app.import('vendor/javascripts/socket.io.js');
   app.import('bower_components/moment/min/moment.min.js');
   app.import('vendor/javascripts/wptr/wptr.1.1.js');
+  app.import('vendor/stylesheets/wptr/base.css');
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
   // object's keys should be the environment name and the values
