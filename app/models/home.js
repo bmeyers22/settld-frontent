@@ -10,7 +10,6 @@ var Home = DS.Model.extend({
   roommateCount: DS.attr('number'),
   rentPerMonth: DS.attr('number'),
   password: DS.attr('string'),
-  currentPassword: DS.attr('string'),
   passwordConfirmation: DS.attr('string')
 });
 

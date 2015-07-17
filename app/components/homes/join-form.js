@@ -1,9 +1,7 @@
-
 import Ember from 'ember';
 import Serializable from 'web/mixins/serializable';
 
-
-var HomesJoinView = Ember.View.extend({
+export default Ember.Component.extend({
   query: '',
   searchResults: Ember.A(),
   selectedHome: (function() {
@@ -40,12 +38,10 @@ var HomesJoinView = Ember.View.extend({
       on: 'blur',
       onInvalid: function() {
         controller.set('passwordValid', true);
-        return;
       },
       onSuccess: function() {
         self.$('.ui.form.join-password .field').addClass('loading');
-        self.get('controller').send('joinHome');
-        return;
+        self.sendAction('join');
       }
     });
     this.$('.ui.form.join-password').form('get change event', function(e) {
@@ -98,5 +94,3 @@ var HomesJoinView = Ember.View.extend({
     }
   }
 });
-
-export default HomesJoinView

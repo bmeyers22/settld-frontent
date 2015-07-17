@@ -1,183 +1,183 @@
 <div class="edit_settings_wrapper">
-	<h1 class="ui dividing header">
-		{{name}}
-	</h1>
-	{{#view "settings.editableSection" content=this.content groupBinding=this.dataGroups.info}}
-		<h4 class="title">
-			<i class="fa fa-info"></i>Personal Info
-		</h4>
-		<div class="button-container">
-			<div class="ui tiny buttons save-cancel">
-				<div class="ui positive button" {{action 'saveEdit' this target="view"}}><i class="icon check"></i></div>
-				<div class="or"></div>
-				<div class="ui button" {{action 'cancelEdit' this target="view"}}><i class="icon close"></i></div>
-			</div>
-			<h4 class="edit-icon" {{action 'editSection' this target="view"}}>
-				<i class="icon pencil"></i>
-			</h4>
-		</div>
-		<div class="clearfix"></div>
-		<div class="ui divider"></div>
-		<div class="content">
-			<div class="details">
-				<div class="ui one column grid">
-					<div class="column">
-					Name: <span class="value">{{name}}</span>
-					</div>
-				</div>
-				<div class="ui two column grid">
-					<div class="column">
-						# of Roommates: <span class="value">{{roommateCount}}</span>
-					</div>
-					<div class="column">
-						Monthly Rent: <span class="value">{{rentPerMonth}}</span>
-					</div>
-				</div>
-			</div>
-			<div class="editable">
-				<div class="ui form">
-					<div class="field inline">
-						<label>Name</label>
-						<div class="ui labeled input">
-						{{input type="text" name="name" value=name class="form-control"}}
+  <h1 class="ui dividing header">
+    {{name}}
+  </h1>
+  {{#view "settings.editableSection" content=this.content groupBinding=this.dataGroups.info}}
+    <h4 class="title">
+      <i class="fa fa-info"></i>Personal Info
+    </h4>
+    <div class="button-container">
+      <div class="ui tiny buttons save-cancel">
+        <div class="ui positive button" {{action 'saveEdit' this target="view"}}><i class="icon check"></i></div>
+        <div class="or"></div>
+        <div class="ui button" {{action 'cancelEdit' this target="view"}}><i class="icon close"></i></div>
+      </div>
+      <h4 class="edit-icon" {{action 'editSection' this target="view"}}>
+        <i class="icon pencil"></i>
+      </h4>
+    </div>
+    <div class="clearfix"></div>
+    <div class="ui divider"></div>
+    <div class="content">
+      <div class="details">
+        <div class="ui one column grid">
+          <div class="column">
+          Name: <span class="value">{{name}}</span>
+          </div>
+        </div>
+        <div class="ui two column grid">
+          <div class="column">
+            # of Roommates: <span class="value">{{roommateCount}}</span>
+          </div>
+          <div class="column">
+            Monthly Rent: <span class="value">{{rentPerMonth}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="editable">
+        <div class="ui form">
+          <div class="field inline">
+            <label>Name</label>
+            <div class="ui labeled input">
+            {{input type="text" name="name" value=name class="form-control"}}
 
-						</div>
-					</div>
-					<div class="ui two column grid">
-						<div class="column">
-							<div class="field inline">
-								<label># of Roommates:</label>
-									<div class="ui labeled input">
-									{{input type="text" name="roommateCount" value=roommateCount class="form-control"}}
-								</div>
-							</div>
-						</div>
-						<div class="column">
-							<div class="field inline">
-								<label>Monthly Rent:</label>
-									<div class="ui labeled input">
-									{{input type="text" name="rentPerMonth" value=rentPerMonth class="form-control"}}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	{{/view}}
-	{{#view "homes.editableSection" content=this.content groupBinding=this.dataGroups.location}}
-		<h4 class="title">
-			<i class="fa fa-location-arrow"></i>Location
-		</h4>
-		<div class="button-container">
-			<div class="ui tiny buttons save-cancel">
-				<div class="ui positive button" {{action 'saveEdit' this target="view"}}><i class="icon check"></i></div>
-				<div class="or"></div>
-				<div class="ui button" {{action 'cancelEdit' this target="view"}}><i class="icon close"></i></div>
-			</div>
-			<h4 class="edit-icon" {{action 'editSection' this target="view"}}>
-				<!-- <i class="fa fa-pencil"></i> -->
-				<i class="icon pencil"></i>
-			</h4>
-		</div>
-		<div class="clearfix"></div>
-		<div class="ui divider"></div>
+            </div>
+          </div>
+          <div class="ui two column grid">
+            <div class="column">
+              <div class="field inline">
+                <label># of Roommates:</label>
+                  <div class="ui labeled input">
+                  {{input type="text" name="roommateCount" value=roommateCount class="form-control"}}
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field inline">
+                <label>Monthly Rent:</label>
+                  <div class="ui labeled input">
+                  {{input type="text" name="rentPerMonth" value=rentPerMonth class="form-control"}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/view}}
+  {{#view "homes.editableSection" content=this.content groupBinding=this.dataGroups.location}}
+    <h4 class="title">
+      <i class="fa fa-location-arrow"></i>Location
+    </h4>
+    <div class="button-container">
+      <div class="ui tiny buttons save-cancel">
+        <div class="ui positive button" {{action 'saveEdit' this target="view"}}><i class="icon check"></i></div>
+        <div class="or"></div>
+        <div class="ui button" {{action 'cancelEdit' this target="view"}}><i class="icon close"></i></div>
+      </div>
+      <h4 class="edit-icon" {{action 'editSection' this target="view"}}>
+        <!-- <i class="fa fa-pencil"></i> -->
+        <i class="icon pencil"></i>
+      </h4>
+    </div>
+    <div class="clearfix"></div>
+    <div class="ui divider"></div>
 
-		<div class="content">
-			<div class="details">
-				<div class="ui two column grid">
-					<div class="ten wide column">
-					Address: <span class="value">{{address}}</span>
-					</div>
-					<div class="six wide column">
-						Apt: <span class="value">[add this field]</span>
-					</div>
-				</div>
-				<div class="ui three column grid">
-					<div class="six wide column">
-						City: <span class="value">{{city}}</span>
-					</div>
-					<div class="four wide column">
-						State: <span class="value">{{state}}</span>
-					</div>
-					<div class="six wide column">
-						Zip: <span class="value">{{zip}}</span>
-					</div>
-				</div>
-			</div>
-			<div class="editable">
-				<div class="ui form">
-					<div class="ui two column grid">
-						<div class="ten wide column">
-							<div class="field inline">
-								<label>Address</label>
-								<div class="ui labeled input">
-								{{input type="text" name="address" value=address class="form-control"}}
+    <div class="content">
+      <div class="details">
+        <div class="ui two column grid">
+          <div class="ten wide column">
+          Address: <span class="value">{{address}}</span>
+          </div>
+          <div class="six wide column">
+            Apt: <span class="value">[add this field]</span>
+          </div>
+        </div>
+        <div class="ui three column grid">
+          <div class="six wide column">
+            City: <span class="value">{{city}}</span>
+          </div>
+          <div class="four wide column">
+            State: <span class="value">{{state}}</span>
+          </div>
+          <div class="six wide column">
+            Zip: <span class="value">{{zip}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="editable">
+        <div class="ui form">
+          <div class="ui two column grid">
+            <div class="ten wide column">
+              <div class="field inline">
+                <label>Address</label>
+                <div class="ui labeled input">
+                {{input type="text" name="address" value=address class="form-control"}}
 
-								</div>
-							</div>
-						</div>
-						<div class="six wide column">
-							<div class="field inline">
-								<label>Apt</label>
-								<div class="ui labeled input">
-								{{input type="text" name="apt" value=apt class="form-control"}}
+                </div>
+              </div>
+            </div>
+            <div class="six wide column">
+              <div class="field inline">
+                <label>Apt</label>
+                <div class="ui labeled input">
+                {{input type="text" name="apt" value=apt class="form-control"}}
 
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="ui three column grid">
-						<div class="six wide column">
-							<div class="field inline">
-									<label>City</label>
-									<div class="ui labeled input">
-									{{input type="text" name="city" value=city class="form-control"}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui three column grid">
+            <div class="six wide column">
+              <div class="field inline">
+                  <label>City</label>
+                  <div class="ui labeled input">
+                  {{input type="text" name="city" value=city class="form-control"}}
 
-									</div>
-								</div>
-							</div>
-						<div class="four wide column">
-									<div class="inline field">
-										<label>State</label>
-								<div class="ui state-dropdown selection dropdown" tabindex="4">
-												<input type="hidden" name="state" />
-												{{input type="hidden" name="state" value=state}}
-												<div class="default text">
-												...
-												</div>
-												<i class="dropdown icon"></i>
-												<div class="menu">
-												{{#each Enums.USStates}}
-													<div class="item" {{bind-attr data-value=alpha-2}} >{{alpha-2}}</div>
-												{{/each}}
-												</div>
-										</div>
-									</div>
-						</div>
-						<div class="six wide column">
-							<div class="field inline">
-									<label>Zip</label>
-									<div class="ui labeled input">
-									{{input type="text" name="zip" value=zip class="form-control"}}
+                  </div>
+                </div>
+              </div>
+            <div class="four wide column">
+                  <div class="inline field">
+                    <label>State</label>
+                <div class="ui state-dropdown selection dropdown" tabindex="4">
+                        <input type="hidden" name="state" />
+                        {{input type="hidden" name="state" value=state}}
+                        <div class="default text">
+                        ...
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                        {{#each Enums.USStates}}
+                          <div class="item" {{bind-attr data-value=alpha-2}} >{{alpha-2}}</div>
+                        {{/each}}
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="six wide column">
+              <div class="field inline">
+                  <label>Zip</label>
+                  <div class="ui labeled input">
+                  {{input type="text" name="zip" value=zip class="form-control"}}
 
-									</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-			</div>
-		</div>
-	{{/view}}
-	{{#view "homes.editableSection"}}
-		<h4 class="title">
-			<i class="fa fa-lock"></i>Change Password
-		</h4>
-		<h4 class="edit-icon">
-			<i class="fa fa-pencil"></i>
-		</h4>
-		<div class="clearfix"></div>
-		<div class="ui divider"></div>
-	{{/view}}
+      </div>
+    </div>
+  {{/view}}
+  {{#view "homes.editableSection"}}
+    <h4 class="title">
+      <i class="fa fa-lock"></i>Change Password
+    </h4>
+    <h4 class="edit-icon">
+      <i class="fa fa-pencil"></i>
+    </h4>
+    <div class="clearfix"></div>
+    <div class="ui divider"></div>
+  {{/view}}
 </div>

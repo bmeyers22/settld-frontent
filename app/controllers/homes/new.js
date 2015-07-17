@@ -1,50 +1,31 @@
 import Ember from 'ember';
 
-var HomesNewController = Ember.Controller.extend(
-  {needs: 'application',
-  saveHome: function(home) {
-    var self = this;
-    var authUser = this.session.get('authUser');
-    var prom = new (Ember.RSVP.Promise(function(resolve, reject) {
-      home.get('users').then(function(users) {
-        users.pushObject(authUser);
-        home.save().then( (function(home) {
-          authUser.get('homes').then(function(homes) {
-            if (this.session.get('currentHome')) {
-              self.makeHomeDefault(home);
-            }
-            homes.pushObject(home);
-            authUser.save();
-            return;
-          });
+var HomesNewController = Ember.Controller.extend({
+  needs: 'application',
+  saveHome: function(obj) {
+    let self = this,
+      home = this.store.createRecord('home', obj),
+      authUser = this.session.get('authUser'),
+      prom = new Ember.RSVP.Promise(function(resolve, reject) {
+        home.get('users').pushObject(authUser);
+        home.save().then(function(home) {
+          authUser.get('homes').pushObject(home);
+          authUser.save();
           resolve(home);
-          return;
-        }
-        ), function(error) {
+        }, function(error) {
           reject(error);
-          return;
-        }
-        );
-        return;
+        });
       });
-      return;
-    })
-    );
     prom.then(function(home) {
-      self.get('target').send('saveHome');
-      return;
+      self.get('target').send('saveHome', home);
     });
     return prom;
   },
-  makeHomeDefault: function(home) {
-    this.session.set('currentHome', home);
-    this.session.set('CURRENT_HOME_ID', this.session.get('currentHome').get('id'));
-    return;
-  },
-  actions: {saveHome: function(home) {
-    this.saveHome(home);
-    return;
-  }}
+  actions: {
+    createHome: function(home) {
+      this.saveHome(home);
+    }
+  }
 });
 
 export default HomesNewController

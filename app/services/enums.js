@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default {
+export default Ember.Service.extend({
   TransactionCategories: {
     0: 'other',
     1: 'cleaning',
@@ -222,4 +222,4 @@ export default {
       'alpha-2': 'WY'
     }
   ]
-};
+});

@@ -1,14 +1,15 @@
 import App from 'web/app';
 import Feeds from '../feeds';
+import Enums from 'web/enums'
 
 var DashboardFeedController = Feeds.extend({
   transactions: function() {
     var filter = {};
     var scope = this.get('audienceScope');
-    if (scope === this.Enums.FeedAudienceScope.Me) {
+    if (scope === Enums.FeedAudienceScope.Me) {
       filter['user'] = this.get('session.CURRENT_USER_ID');
       filter['home'] = this.get('session.CURRENT_HOME_ID');
-    } else if (scope === this.Enums.FeedAudienceScope.Home) {
+    } else if (scope === Enums.FeedAudienceScope.Home) {
       filter['home'] = this.get('session.CURRENT_HOME_ID');
     }
     // return this.store.find('transaction', filter);

@@ -7,7 +7,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     if (!this.session.get('isAuthenticated')) {
       transition.abort();
       this.transitionTo('login');
-    } else {
+    } else if (!this.session.get('userSettings.isUserConfigured')) {
       transition.abort();
       this.transitionTo('getstarted');
     }

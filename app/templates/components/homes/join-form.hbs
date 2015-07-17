@@ -1,0 +1,67 @@
+<div class="join-home-wrapper">
+  <h2 class="ui dividing header">
+    Find your home
+  </h2>
+  <div class="search-form-wrapper">
+    <div class="ui search join-search-form">
+      <div class="ui icon fluid input">
+        <i click="'findHomes' target='view'" class="search link icon">
+        </i>
+        <input class="prompt" type="text" name="query" value={{query}} autocomplete="on" placeholder="Search..." />
+      </div>
+      <div class="ui segment home-results form">
+        {{#if searchResults}}
+          <div class="result results-labels">
+            <div class="info">
+              <div class="title">
+                Name
+              </div>
+              <div class="zip">
+                Zip
+              </div>
+            </div>
+          </div>
+          {{#each searchResults as |result|}}
+            <div class={{:result result.selected}} click="'homeSelected' result target='view'">
+              <div class="info">
+                <div class="title">
+                  {{result.name}}
+                </div>
+                <div class="zip">
+                  {{result.zip}}
+                </div>
+              </div>
+            </div>
+          {{/each}}
+          <div class="all">
+            View all results
+          </div>
+        {{else}}
+          <h1 class="no-results">
+            No results
+          </h1>
+        {{/if}}
+      </div>
+      <div class="ui form segment join-password">
+        <div class={{:field isHomeSelected}}>
+          <label>
+            Password
+          </label>
+          <div class="ui action input">
+            <input type="hidden" name="passwordValid" value={{passwordValid}} />
+            <input type="password" name="password" placeholder="Home password" value={{selectedHome.password}} disabled={{isHomeSelected}} />
+          </div>
+        </div>
+        <div class={{:ui :green :submit :button canSubmitForm}}>
+          <span class="submit-text">
+            Join
+          </span>
+          <i class="submit-loading icon loading">
+          </i>
+        </div>
+        <div class="ui error message">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
-
 import Ember from 'ember';
+import Enums from 'web/enums';
 
 var TransactionsNewController = Ember.Controller.extend(
   {categories: (function() {
-    var cats = _.clone(this.Enums.TransactionCategories);
+    var cats = _.clone(Enums.TransactionCategories);
     return _.sortBy( _.map(cats, function(name, key) {
       return {
         key: key,

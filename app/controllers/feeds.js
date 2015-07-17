@@ -3,7 +3,6 @@ import Enums from 'web/enums';
 
 var FeedsController = Ember.Controller.extend({
   audienceScope: Enums.FeedAudienceScope.Home,
-  needs: 'application',
   sortProperties: [ 'date' ],
   sortAscending: false,
   hasStream: function() {
