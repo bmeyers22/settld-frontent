@@ -4,20 +4,10 @@ import Serializable from 'web/mixins/serializable';
 export default Ember.Component.extend({
   query: '',
   searchResults: Ember.A(),
-  selectedHome: (function() {
-    return this.get('controller.selectedHome');
-  }
-  ).property('controller.selectedHome'),
-  canSubmitForm: (function() {
-    if (this.get('controller.selectedHome')) { ''; } else { 'disabled'; }
-  }
-  ).property('controller.selectedHome'),
-  onPasswordSubmit: (function() {
-    self.$('.ui.form.join-password .field').removeClass('loading');
-    self.$('.ui.form.join-password').form('validate form');
-    return;
-  }
-  ).observes('controller.passwordValid'),
+  onPasswordSubmit: function() {
+    this.$('.ui.form.join-password .field').removeClass('loading');
+    this.$('.ui.form.join-password').form('validate form');
+  },
   didInsertElement: function() {
     var self = this;
     var controller = this.get('controller');

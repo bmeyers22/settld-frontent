@@ -25,7 +25,7 @@
   {{#if hasStream}}
     <div class="ui feed">
       {{#each stream as |item|}}
-        {{feed-item item=item openInvoiceAction="openInvoiceAction" user=session.authUser}}
+        {{feed-item item=item openActionBar="openActionBar" user=session.authUser}}
       {{/each}}
     </div>
   {{else}}

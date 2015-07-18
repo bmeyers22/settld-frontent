@@ -15,18 +15,10 @@
       </div>
     {{/each}}
   </div>
-  <div id="ptr">
-    <!-- Pull down arrow indicator -->
-    <span class="down icon"></span>
-
-    <!-- CSS-based loading indicator -->
-    <div class="loading">
-      <span id="l1"></span>
-      <span id="l2"></span>
-      <span id="l3"></span>
+  <div class="global-content pusher pushable">
+    <div class="ui global-action-bar bottom sidebar vertical fluid menu">
+      {{outlet 'actionBar'}}
     </div>
-  </div>
-  <div id="content" class="global-content pusher pushable">
     <div class="ui horizontal top fixed inverted icon  main menu user-top-bar ">
       <div class="link item" {{action 'toggleGroupsBar'}}>
         <i class="sidebar icon"></i>

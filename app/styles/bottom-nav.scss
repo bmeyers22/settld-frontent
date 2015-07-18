@@ -1,11 +1,22 @@
 @import 'variables';
 
 .ui.bottom.menu.control-panel {
+  background: #fff;
+  border-top: 1px solid #ddd;
   > .item {
     display: block;
 
     .nav-label {
       margin-top: 5px;
     }
+  }
+}
+
+.global-action-bar.ui.bottom.sidebar.menu {
+  bottom: 72px !important;
+  text-align: center;
+  z-index: 100;
+  .pay {
+    color: #21ba45;
   }
 }

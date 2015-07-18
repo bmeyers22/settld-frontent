@@ -22,7 +22,7 @@
             </div>
           </div>
           {{#each searchResults as |result|}}
-            <div class={{:result result.selected}} click="'homeSelected' result target='view'">
+            <div class={{result.selected :result}} click="'homeSelected' result target='view'">
               <div class="info">
                 <div class="title">
                   {{result.name}}
@@ -43,7 +43,7 @@
         {{/if}}
       </div>
       <div class="ui form segment join-password">
-        <div class={{:field isHomeSelected}}>
+        <div class={{isHomeSelected :field}}>
           <label>
             Password
           </label>
@@ -52,7 +52,7 @@
             <input type="password" name="password" placeholder="Home password" value={{selectedHome.password}} disabled={{isHomeSelected}} />
           </div>
         </div>
-        <div class={{:ui :green :submit :button canSubmitForm}}>
+        <div class={{canSubmitForm :ui :green :submit :button}}>
           <span class="submit-text">
             Join
           </span>

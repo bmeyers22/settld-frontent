@@ -44,6 +44,9 @@ HomesJoinController = Ember.Controller.extend({
           return _this.onJoinSuccess(data);
         };
       })(this));
+    },
+    cancelJoin() {
+      
     }
   }
 });

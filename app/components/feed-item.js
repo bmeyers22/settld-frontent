@@ -46,8 +46,8 @@ export default Ember.Component.extend({
     return typeof (base1 = this.get('item')).getOpenInvoice === "function" ? base1.getOpenInvoice(this.get('user')) : void 0;
   }).property(),
   actions: {
-    openInvoiceAction: function(invoice) {
-      return this.sendAction('openInvoiceAction', this.get('item'));
+    showActions: function(model) {
+      this.sendAction('openActionBar', model);
     }
   }
 });
