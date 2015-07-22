@@ -19,4 +19,10 @@
   .pay {
     color: #21ba45;
   }
+  .request {
+    &.disbled {
+      pointer-events: none;
+    }
+    color: #2185d0;
+  }
 }

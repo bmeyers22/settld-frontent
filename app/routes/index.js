@@ -13,24 +13,29 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     }
   },
   actionBarMap: {
-    transaction: 'transactions/actionsMenu'
+    transaction: 'transactions/actions-menu'
   },
   actions: {
-    closeActionBar: function() {
+    addTransactionToPayments(invoice) {
+      $('.payments-bar').sidebar('show');
+      this.get('controller.invoices').pushObject(invoice);
+    },
+    closeActionBar() {
       $('.global-action-bar').sidebar('hide');
       return this.disconnectOutlet({
-        outlet: 'actionBar'
+        outlet: 'actionsBar'
       });
     },
-    openActionBar: function(model) {
+    openActionBar(model) {
       $('.global-action-bar').sidebar('show');
       this.render(this.get('actionBarMap')[model.constructor.typeKey], {
         into: 'index',
-        outlet: 'actionBar',
-        model: model
+        outlet: 'actionsBar',
+        model: model,
+        controller: 'actionsMenu'
       });
     },
-    toggleUserBar: function() {
+    toggleUserBar() {
       return Ember.run(function() {
         return $('.user-bar').sidebar('show');
       });

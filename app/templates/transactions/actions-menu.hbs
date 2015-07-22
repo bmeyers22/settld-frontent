@@ -1,2 +1,7 @@
-<div class="link item pay">Pay</div>
+{{#if unpaidInvoice}}
+  <div class="link item pay" {{action "addTransactionToPayments" unpaidInvoice}}>Pay</div>
+{{/if}}
+{{#if owedInvoices}}
+  <div class="link item request">Request</div>
+{{/if}}
 <div class="link item details">Details</div>

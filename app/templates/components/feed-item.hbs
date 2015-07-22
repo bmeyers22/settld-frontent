@@ -20,7 +20,7 @@
         </span>
       </div>
       <div class="right-floated" {{action 'showActions' item}}>
-        <i class="vertical ellipsis large circular icon"></i>
+        <i class="vertical ellipsis large link circular icon"></i>
       </div>
       <div class="extra text">
         {{item.description}}
@@ -35,7 +35,7 @@
     </div>
     <div class="actions">
       {{#if payableInvoice}}
-        <div {{action "openInvoiceAction" payableInvoice on="click"}} class="ui green inverted segment pay">
+        <div  class="ui green inverted segment pay">
           <span>
             Pay
           </span>

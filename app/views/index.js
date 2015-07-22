@@ -7,6 +7,18 @@ export default Ember.View.extend({
     $('.groups-bar').sidebar({
       context: $('.global-wrapper')
     });
+    $('.payments-bar').sidebar({
+      context: $('.global-wrapper'),
+      dimPage: false,
+      defaultTransition: {
+        computer: {
+          left: 'overlay'
+        },
+        mobile: {
+          left: 'overlay'
+        }
+      }
+    });
     $('.user-bar').sidebar({
       context: $('.global-content'),
       dimPage: false,

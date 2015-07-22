@@ -23,6 +23,7 @@
       .content {
         padding: 0;
         .item-wrapper {
+          width: 100%;
           padding: 0.5em 0em 0.5em 1.25em;
           display: table;
           .info {
@@ -32,19 +33,6 @@
             padding-right: 10px;
             .date {
               float: right;
-            }
-          }
-          .actions {
-            float: right;
-            .pay {
-              width: 50px;
-              border-radius: 0px;
-              position: relative;
-              top: 0px;
-              bottom: 0px;
-              right: 0px;
-              cursor: pointer;
-              line-height: 50px;
             }
           }
         }

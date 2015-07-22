@@ -12,25 +12,15 @@ var Transaction = DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
   category: DS.attr('number'),
-  categoryName: (function() {
+  categoryName: function() {
     return Enums.TransactionCategories[this.get('category')];
-  }
-  ).property('category'),
-  date: DS.attr('date', {defaultValue: function() {
-    return new Date();
-  }}
-  ),
-  fuzzyDate: (function() {
+  }.property('category'),
+  date: DS.attr('date', { defaultValue: new Date }),
+  fuzzyDate: function() {
     return moment(this.get('date')).fromNow();
-  }
-  ).property('date'),
+  }.property('date'),
   split: DS.attr('boolean'),
-  points: DS.attr('number'),
-  getOpenInvoice: function(user) {
-    return this.get('invoices').find((inv, index, arr) => {
-      return user.get('id') === inv.get('payerId');
-    });
-  }
+  points: DS.attr('number')
 });
 
 export default Transaction
