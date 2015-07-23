@@ -1,20 +1,34 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['payments-list'],
+  classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left'],
   invoicesSum: function () {
     let sum = 0;
     this.get('invoices').forEach( (inv) => {
       sum += inv.get('amount');
     })
     return sum;
-  }.property('invoices@each'),
+  }.property('invoices.[]'),
+  didInsertElement() {
+    this.$().sidebar({
+      context: $('.global-wrapper'),
+      dimPage: false,
+      defaultTransition: {
+        computer: {
+          left: 'overlay'
+        },
+        mobile: {
+          left: 'overlay'
+        }
+      }
+    });
+  },
   actions: {
-    close() {
-      return this.sendAction('close');
+    toggleBar() {
+      this.sendAction('toggleBar');
     },
     removeTxn() {
-      return this.sendAction('remove', txn);
+      this.sendAction('remove', txn);
     },
     sendPayment() {
       var invoices = this.get('invoices').map((inv) => {
@@ -27,10 +41,10 @@ export default Ember.Component.extend({
           note: "HEY"
         },
         success(data) {
-          return console.log(data);
+          console.log(data);
         },
         error(data) {
-          return console.log(data);
+          console.log(data);
         }
       });
     },

@@ -16,6 +16,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     transaction: 'transactions/actions-menu'
   },
   actions: {
+    togglePaymentsBar(invoice) {
+      $('.payments-bar').sidebar('toggle');
+    },
     addTransactionToPayments(invoice) {
       $('.payments-bar').sidebar('show');
       this.get('controller.invoices').pushObject(invoice);

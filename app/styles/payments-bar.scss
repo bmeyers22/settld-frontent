@@ -1,4 +1,14 @@
-.payments-bar {
+.payments-bar.ui.sidebar {
+  background: #fff;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  visibility: visible !important;
+  .payments-bar-tab.ui.attached.button {
+    position: absolute;
+    bottom: 100px;
+    right: -39px;
+    background: #fff !important;
+  }
   .payments-list {
     height: 100%;
     .positive.button {
