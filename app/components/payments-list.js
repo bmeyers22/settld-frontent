@@ -23,29 +23,62 @@ export default Ember.Component.extend({
       }
     });
   },
+  didRender() {
+    this.$('.popup').popup({
+      position: 'bottom right'
+    });
+  },
   actions: {
     toggleBar() {
       this.sendAction('toggleBar');
     },
-    removeTxn() {
-      this.sendAction('remove', txn);
+    removeInvoice(inv) {
+      this.sendAction('removeInvoice', inv);
     },
     sendPayment() {
-      var invoices = this.get('invoices').map((inv) => {
-        return inv.get('id');
-      });
-      return $.post( '/api/v1/venmo/pay', {
-        type: "POST",
-        payment: {
-          invoices: invoices,
-          note: "HEY"
-        },
-        success(data) {
-          console.log(data);
-        },
-        error(data) {
-          console.log(data);
-        }
+      let self = this;
+      this.set('loading', true);
+      let invoices = this.get('invoices')
+        .filter( i => !i.get('paymentMethod') )
+        .map((inv) => {
+          return inv.get('id');
+        }),
+        venmoInvoices = this.get('invoices')
+        .filter( i => i.get('paymentMethod') )
+        .map((inv) => {
+          return inv.get('id');
+        }),
+        promises = [];
+
+      if (invoices.length > 0) {
+        promises.push($.post( '/api/v1/pay', {
+          type: "POST",
+          payment: {
+            invoices: invoices,
+            note: "HEY"
+          }
+        }));
+      }
+      if (venmoInvoices.length > 0) {
+        promises.push($.post( '/api/v1/venmo/pay', {
+          type: "POST",
+          payment: {
+            invoices: venmoInvoices,
+            note: "HEY"
+          }
+        }));
+      }
+
+      Promise.all(promises).then(function (values) {
+        self.set('loading', false);
+        let invoices = values.map(function (obj) {
+          return obj.invoices;
+        }).reduce(function (a, b) {
+          return a.concat(b);
+        });
+        self.sendAction('paymentComplete', invoices);
+      }).catch(function (error) {
+        console.log(error);
       });
     },
 

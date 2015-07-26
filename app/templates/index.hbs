@@ -15,7 +15,7 @@
       </div>
     {{/each}}
   </div>
-  {{payments-list invoices=invoices toggleBar="togglePaymentsBar"}}
+  {{payments-list invoices=invoices toggleBar="togglePaymentsBar" removeInvoice="removeInvoiceFromPayments" paymentComplete='paymentComplete'}}
   <div class="global-content pusher pushable">
     <div class="ui global-action-bar bottom sidebar vertical fluid menu" {{action 'closeActionBar'}}>
       {{outlet 'actionsBar'}}

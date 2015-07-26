@@ -6,14 +6,14 @@ var Invoice = DS.Model.extend({
   payeeId: DS.attr("string"),
   homeId: DS.attr("string"),
   amount: DS.attr('number'),
-  date: DS.attr('date', {
-    defaultValue: function() {
-      return new Date();
-    }
-  }),
+  note: DS.attr('string'),
   paid: DS.attr('boolean'),
   paymentDate: DS.attr("date"),
-  paymentMethod: DS.attr("number")
+  paymentMethod: DS.attr("number"),
+  paymentPending: DS.attr('boolean'),
+  paymentRejected: DS.attr('boolean'),
+  rejectionNote: DS.attr('string'),
+  paymentConfirmedDate: DS.attr('date')
 });
 
 export default Invoice

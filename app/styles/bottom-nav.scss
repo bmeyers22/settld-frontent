@@ -16,6 +16,9 @@
   bottom: 72px !important;
   text-align: center;
   z-index: 100;
+  .pending {
+    color: #ddd;
+  }
   .pay {
     color: #21ba45;
   }

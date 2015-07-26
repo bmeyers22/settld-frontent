@@ -16,12 +16,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     transaction: 'transactions/actions-menu'
   },
   actions: {
-    togglePaymentsBar(invoice) {
-      $('.payments-bar').sidebar('toggle');
-    },
-    addTransactionToPayments(invoice) {
+    addInvoiceToPayments(invoice) {
       $('.payments-bar').sidebar('show');
-      this.get('controller.invoices').pushObject(invoice);
+      this.get('controller.invoices').add(invoice);
+    },
+    removeInvoiceFromPayments(invoice) {
+      this.get('controller.invoices').remove(invoice);
+    },
+    togglePaymentsBar() {
+      $('.payments-bar').sidebar('toggle');
     },
     closeActionBar() {
       $('.global-action-bar').sidebar('hide');
@@ -31,7 +34,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     },
     openActionBar(model) {
       $('.global-action-bar').sidebar('show');
-      this.render(this.get('actionBarMap')[model.constructor.typeKey], {
+      this.render(this.get('actionBarMap')[model.constructor.modelName], {
         into: 'index',
         outlet: 'actionsBar',
         model: model,

@@ -9,15 +9,98 @@
     right: -39px;
     background: #fff !important;
   }
+  .status {
+    border-bottom: 1px solid #ddd;
+    line-height: 47px;
+    font-size: 20px;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #2185d0;
+    color: white;
+    .amount {
+      float: right;
+      border-left: 1px solid #ddd;
+      padding: 0 0 0 10px;
+    }
+  }
   .payments-list {
     height: 100%;
-    .positive.button {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-radius: 0;
+    .invoices.ui.grid {
       margin: 0;
+
+      > .column {
+        &.content {
+          display: block;
+          float: left;
+          margin: 0em;
+          -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1) 0.1s;
+          // transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1) 0.1s;
+          &.visible {
+            position: relative;
+            &.hidden {
+              -webkit-transform: translateX(-100%);
+              -ms-transform: translateX(-100%);
+              transform: translateX(-100%);
+            }
+            .column {
+              height: 60px;
+              background: #fff;
+              align-self: flex-end;
+              .title {
+                text-align: left;
+              }
+              .payment.ui.toggle.checkbox {
+                &.checked {
+                  > label {
+                    &:before {
+                      background-color: #2185d0;
+                    }
+                    > i {
+                      &:before {
+                        content: "\f194";
+                      }
+                      left: 2.15rem;
+                      color: #2185d0;
+                    }
+                  }
+                }
+                > label {
+                  &:before {
+                    background-color: #21ba45;
+                  }
+                  > i {
+                    position: absolute;
+                    z-index: 3;
+                    top: 2px;
+                    left: -0.05rem;
+                    margin-left: 2px;
+                    color: #21ba45;
+                  }
+                }
+              }
+            }
+          }
+          &.hidden {
+            position: absolute;
+            left: 0%;
+            width: 100%;
+            text-align: right;
+            box-shadow: 0px 0px 5px 1px #cecece inset;
+            background: #ddd;
+
+          }
+        }
+      }
+
+
+    }
+    .positive.button {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
     }
   }
 }
