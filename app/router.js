@@ -24,15 +24,14 @@ Router.map(function() {
       this.resource('jobs', function() {});
       this.resource('settings', function() {});
     });
+    this.resource('getstarted', function() {
+      this.route('new');
+      this.route('join');
+    });
   });
 
-  this.resource('getstarted', function() {
-    this.route('new');
-    this.route('join');
-  });
 
   this.route('login');
   this.route('register');
-  this.route('getstarted');
 });
 export default Router

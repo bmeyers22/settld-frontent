@@ -12,13 +12,6 @@ var GetstartedNewRoute = Ember.Route.extend({
       settings.set('isUserConfigured', true);
       settings.set('defaultHome', home.get('id'));
       settings.save().then( function (settings) {
-        return self.get('session').authenticate('simple-auth-authenticator:devise', {
-          user: {
-            email: self.get('session.email'),
-            password: self.get('session.token')
-          }
-        });
-      }).then( function () {
         self.transitionTo('index');
       });
       this.session.set('currentHome', home);
