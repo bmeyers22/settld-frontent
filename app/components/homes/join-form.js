@@ -4,83 +4,95 @@ import Serializable from 'web/mixins/serializable';
 export default Ember.Component.extend({
   query: '',
   searchResults: Ember.A(),
+  selectedHome: false,
+  passwordValid: true,
+  noSelectedHome: Ember.computed.not('selectedHome'),
   onPasswordSubmit: function() {
     this.$('.ui.form.join-password .field').removeClass('loading');
     this.$('.ui.form.join-password').form('validate form');
   },
   didInsertElement: function() {
     var self = this;
-    var controller = this.get('controller');
     this.$('.ui.form.join-password').form({
-      password: {
-        identifier: 'password',
-        rules: [
-        {
-          type: 'empty',
-          prompt: 'Please enter a password.'
-        },
-        {
-          type: 'validPassword[passwordValid]',
-          prompt: 'Incorrect password.'
-        }]
-      }
-    }, {
-      on: 'blur',
-      onInvalid: function() {
-        controller.set('passwordValid', true);
+      fields: {
+        password: {
+          identifier: 'password',
+          rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter a password.'
+          }]
+        }
       },
-      onSuccess: function() {
-        self.$('.ui.form.join-password .field').addClass('loading');
-        self.sendAction('join');
+      on: 'blur',
+      onInvalid(e) {
+        console.log(e);
+      },
+      onSuccess() {
+        self.$('.submit.join').addClass('loading');
+        self.send('joinHome');
       }
     });
-    this.$('.ui.form.join-password').form('get change event', function(e) {
-      console.log(e);
-      return;
-    });
-    return;
+  },
+  joinCallback(data) {
+    var self;
+    self = this;
+    if (data.success === true) {
+      self.sendAction('joinHome', self.get('selectedHome'));
+      self.$('.submit.join').removeClass('loading');
+    } else {
+      self.set('passwordValid', false);
+      self.$('.submit.join').removeClass('loading');
+    }
   },
   actions: {
     findHomes: function() {
       var self = this;
       this.$('home-results').addClass('loader');
-      var controller = this.get("controller");
-      console.log(controller);
-      controller.set('selectedHome', null);
+      this.set('selectedHome', null);
       $.get('/api/v1/homes/search', { filter: this.get('query') }, function(data) {
         if (data.results.length === 0) {
-          self.set('searchResults', Ember.A(null));
+          self.set('searchResults', []);
         } else {
-          var arr = Ember.A();
+          var arr = [];
           _.each(data.results, function(obj) {
             obj.password = '';
             obj.selected = false;
-            return arr.pushObject(Ember.Object.extend(Serializable).create(obj));
+            return arr.push(Ember.Object.extend(Serializable).create(obj));
           });
           self.set('searchResults', arr);
         }
         self.$('home-results').removeClass('loader');
-        return;
       });
-      return;
     },
     homeSelected: function(home) {
-      var controller = this.get("controller");
-      console.log(controller);
-      var selectedHome = controller.get('selectedHome');
+      var selectedHome = this.get('selectedHome');
       if (selectedHome) {
         selectedHome.set('selected', false);
         if (selectedHome === home) {
-          controller.set('selectedHome', null);
+          this.set('selectedHome', null);
         } else {
-          controller.set('selectedHome', home);
-          controller.set('selectedHome.selected', true);
+          this.set('selectedHome', home);
+          this.set('selectedHome.selected', true);
         }
       } else {
-        controller.set('selectedHome', home);
-        controller.set('selectedHome.selected', true);
+        this.set('selectedHome', home);
+        this.set('selectedHome.selected', true);
       }
       return;
+    },
+    joinHome: function() {
+      let self = this;
+      return new Ember.RSVP.Promise(function(resolve, reject) {
+        return ($.post('/api/v1/homes/join', {
+          home: self.get('selectedHome').serialize()
+        }, resolve)).fail(reject);
+      }).then(function(data) {
+        return self.joinCallback(data);
+      });
+    },
+    cancelJoin() {
+
     }
   }
 });

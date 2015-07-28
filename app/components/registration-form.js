@@ -16,18 +16,17 @@ export default Ember.Component.extend({
           dataType: "json",
           data: {
             user: {
-              first_name: self.get('.firstName'),
-              last_name: self.get('.lastName'),
-              email: self.get('.email'),
-              password: self.get('.password'),
-              password_confirmation: self.get('.passwordConfirm')
+              first_name: self.get('firstName'),
+              last_name: self.get('lastName'),
+              email: self.get('email'),
+              password: self.get('password'),
+              password_confirmation: self.get('passwordConfirm')
             }
           },
           error(response) { response => console.log(response); },
-          success(response) {
-            self.sendAction('login');
-          }
-        })
+        }).then(function (response) {
+          self.sendAction('login', { email: self.get('email'), password: self.get('password') } );
+        });
         return;
       },
       onFailure() {},

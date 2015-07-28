@@ -4,9 +4,9 @@ export function initialize(container, application) {
   var store          = container.lookup('store:main');
   // handle the session events
   session.on('sessionAuthenticationSucceeded', function() {
-    container.lookup('service:session').initializeUser(session, store);
-
-    applicationRoute.transitionTo('index');
+    container.lookup('service:session').initializeUser(session, store).then(function () {
+      applicationRoute.transitionTo('index');
+    });
   });
 }
 

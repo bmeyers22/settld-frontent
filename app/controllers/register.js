@@ -1,13 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  sessionService: Ember.inject.service('session'),
   actions: {
-    login() {
-      this.get('session').authenticate('simple-auth-authenticator:devise', {
-        user: {
-          email: this.get('model.email'),
-          password: this.get('model.password')
-        }
+    login(user) {
+      this.get('sessionService').authenticateUser(this.get('session'), {
+        identification: user.email,
+        password: user.password
       });
     }
   }

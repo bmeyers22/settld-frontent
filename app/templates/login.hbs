@@ -15,16 +15,16 @@
         </div>
       </div>
       <div class="field">
-        <button type="submit" class="ui fluid basic submit button">Login</button>
+        <button type="submit" class="ui fluid submit button">Login</button>
       </div>
       <div class="field">
-        <a id="fbLogin" class="ui facebook fluid button" {{bind-attr href='APP_ENV.FACEBOOK_LOGIN_URL'}}><i class="facebook icon"></i> Facebook</a>
+        <a id="fbLogin" class="ui facebook fluid button" href={{APP_ENV.FACEBOOK_LOGIN_URL}}><i class="facebook icon"></i> Facebook</a>
       </div>
       <div class="field">
-        <a id="venmoLogin" class="ui button fluid twitter" {{bind-attr href='APP_ENV.VENMO_LOGIN_URL'}}><i class="vimeo icon"></i> Venmo</a>
+        <a id="venmoLogin" class="ui button fluid twitter" href={{APP_ENV.VENMO_LOGIN_URL}}><i class="vimeo icon"></i> Venmo</a>
       </div>
       <div class="field">
-        {{#link-to 'register' class="ui fluid basic button"}}Register{{/link-to}}
+        {{#link-to 'register' class="ui fluid button"}}Register{{/link-to}}
       </div>
     </form>
   </div>

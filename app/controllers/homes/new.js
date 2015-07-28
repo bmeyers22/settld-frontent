@@ -6,7 +6,7 @@ var HomesNewController = Ember.Controller.extend({
     let self = this,
       home = this.store.createRecord('home', obj),
       authUser = this.session.get('authUser'),
-      prom = new Ember.RSVP.Promise(function(resolve, reject) {
+      prom = new Promise(function(resolve, reject) {
         home.get('users').pushObject(authUser);
         home.save().then(function(home) {
           authUser.get('homes').pushObject(home);
