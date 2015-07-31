@@ -2,7 +2,6 @@ import Ember from 'ember';
 import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
-import globals from './globals';
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
@@ -44,5 +43,5 @@ loadInitializers(Roomy, config.modulePrefix);
 //   ) document
 //   # Initialize Modules Here
 //   # Roomy.socketModule = new (Roomy.SocketModule)
-  
+
 export default Roomy
