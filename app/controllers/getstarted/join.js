@@ -13,7 +13,7 @@ var GetstartedJoinController = HomesJoinController.extend({
         settings.set('isUserConfigured', true);
         settings.set('defaultHome', home.get('id'));
         settings.save().then(function (settings) {
-          self.transitionToRoute('index');
+          self.transitionToRoute('app');
         });
       });
     }
