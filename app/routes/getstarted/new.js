@@ -12,7 +12,7 @@ var GetstartedNewRoute = Ember.Route.extend({
       settings.set('isUserConfigured', true);
       settings.set('defaultHome', home.get('id'));
       settings.save().then( function (settings) {
-        self.transitionTo('index');
+        self.transitionTo('app');
       });
       this.session.set('currentHome', home);
       this.session.set('CURRENT_HOME_ID', home.get('id'));

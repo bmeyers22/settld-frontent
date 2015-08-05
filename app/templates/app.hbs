@@ -1,0 +1,50 @@
+<div class="groups-bar ui left vertical inverted sidebar menu">
+  <h3 class="ui item inverted grey header">
+    <i class="users icon"></i>
+    <span>Groups</span>
+    {{#link-to "homes" class="edit"}}
+      <span {{action 'toggleGroupsBar'}}>edit</span>
+    {{/link-to}}
+  </h3>
+  {{#each session.authUser.homes as |home i| }}
+    <div {{action 'toggleGroupsBar'}}>
+      {{#link-to 'group' i class='item' }}
+        {{home.name}}
+      {{/link-to}}
+    </div>
+  {{/each}}
+</div>
+{{payments-list invoices=invoices toggleBar="togglePaymentsBar" removeInvoice="removeInvoiceFromPayments" paymentComplete='paymentComplete'}}
+<div class="global-content pusher pushable">
+  <div class="ui global-action-bar bottom sidebar vertical fluid menu" {{action 'closeActionBar'}}>
+    {{outlet 'actionsBar'}}
+  </div>
+  <div class="ui horizontal top fixed inverted icon  main menu user-top-bar ">
+    <div class="link item" {{action 'toggleGroupsBar'}}>
+      <i class="sidebar icon"></i>
+    </div>
+    <div class="home-select-wrapper right menu">
+      {{#link-to "create.index" class="item new-entry"}}
+        <i class="write link large icon"></i> New
+      {{/link-to}}
+      <div class="link item" {{action 'toggleUserBar'}}>
+        <i class="user large icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="ui user-bar top inverted sidebar vertical menu" {{action 'toggleUserBar'}}>
+    {{#link-to 'settings' class="item" }}
+      Settings
+    {{/link-to}}
+
+    <div class="link item" {{action 'invalidateSession'}}>
+      Logout
+    </div>
+  </div>
+  {{partial "control_panel"}}
+  <div class="main-content-wrapper pusher">
+    <div class="app-content-wrapper">
+      {{outlet}}
+    </div>
+  </div>
+</div>
