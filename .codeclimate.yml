@@ -4,3 +4,4 @@ languages:
 # exclude_paths:
 - "vendor/*"
 - "cordova/*"
+- "tests/*"
