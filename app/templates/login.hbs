@@ -18,10 +18,10 @@
         <button type="submit" class="ui fluid submit button">Login</button>
       </div>
       <div class="field">
-        <a id="fbLogin" class="ui facebook fluid button" href={{APP_ENV.FACEBOOK_LOGIN_URL}}><i class="facebook icon"></i> Facebook</a>
+        <div id="fbLogin" class="ui facebook fluid button" {{action 'facebookLogin'}}><i class="facebook icon"></i> Facebook</div>
       </div>
       <div class="field">
-        <a id="venmoLogin" class="ui button fluid twitter" href={{APP_ENV.VENMO_LOGIN_URL}}><i class="vimeo icon"></i> Venmo</a>
+        <div id="venmoLogin" class="ui button fluid twitter"><i class="vimeo icon"></i> Venmo</div>
       </div>
       <div class="field">
         {{#link-to 'register' class="ui fluid button"}}Register{{/link-to}}
