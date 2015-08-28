@@ -11,7 +11,6 @@
 
 
 # misc
-/config
 /.sass-cache
 /connect.lock
 /coverage/*
