@@ -13,7 +13,7 @@ module.exports = function(environment) {
         'facebook-oauth2': {
           apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
           redirectUri: 'http://localhost:4200'
-        }
+        },
         'google-oauth2': {
           apiKey: '716338207780-dtrfb1be8bes3vs07e9t7vdotomrp62m.apps.googleusercontent.com',
           scope: 'profile',
