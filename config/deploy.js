@@ -40,4 +40,4 @@ module.exports = {
       bucket: 'app.settld.com'
     }
   }
--};
+};
