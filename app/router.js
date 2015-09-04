@@ -13,7 +13,11 @@ Router.map(function() {
       this.resource('group', { path: '/g/:group_index' }, function() {
         this.resource('dashboard', function() {});
         this.resource('create', function() {
-          this.route('transaction');
+          this.route('transaction', function () {
+            this.route('category');
+            this.route('title');
+            this.route('submit');
+          });
           this.route('job');
         });
         this.resource('homes', function() {

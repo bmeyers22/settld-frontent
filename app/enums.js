@@ -1,16 +1,48 @@
 import Ember from 'ember';
 
 export default {
-  TransactionCategories: {
-    0: 'other',
-    1: 'cleaning',
-    2: 'home improvement',
-    3: 'furniture',
-    4: 'bathroom',
-    5: 'food',
-    6: 'kitchen supplies',
-    7: 'party supplies'
-  },
+  TransactionCategories: [
+    {
+      label: 'Service',
+      value: 0
+    },
+    {
+      label: 'Cleaning',
+      value: 1
+    },
+    {
+      label: 'Home Improvement',
+      value: 2
+    },
+    {
+      label: 'Furniture',
+      value: 3
+    },
+    {
+      label: 'Bathroom',
+      value: 4
+    },
+    {
+      label: 'Food',
+      value: 5
+    },
+    {
+      label: 'Kitchen Supplies',
+      value: 6
+    },
+    {
+      label: 'Party Supplies',
+      value: 7
+    },
+    {
+      label: 'Fees',
+      value: 8
+    },
+    {
+      label: 'Other...',
+      value: 9
+    }
+  ],
   FeedAudienceScope: {
     Me: 1,
     Home: 2,

@@ -31,7 +31,7 @@ export default Ember.Route.extend({
       });
     },
     toggleUserBar() {
-      return Ember.run(function() {
+      Ember.run(function() {
         return $('.user-bar').sidebar('show');
       });
     }
