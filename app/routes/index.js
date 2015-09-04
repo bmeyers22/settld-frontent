@@ -12,10 +12,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       return this.get('sessionService').initializeUser(this.get('session'), this.get('store'));
     }
   },
-  afterModel(transition) {
+  afterModel(model, transition) {
     if (!this.session.get('userSettings.isUserConfigured')) {
       this.transitionTo('getstarted');
-    } else {
+    } else if (transition.targetName === 'index.index') {
       this.transitionTo('app');
     }
   }

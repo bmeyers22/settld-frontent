@@ -31,15 +31,6 @@ TransactionForm = Ember.Component.extend({
 
     this.$('.ui.form').form({
       fields: {
-        title: {
-          identifier: 'title',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please enter a title'
-            }
-          ]
-        },
         category: {
           identifier: 'category',
           rules: [

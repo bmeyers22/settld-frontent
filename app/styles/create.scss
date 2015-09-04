@@ -1,0 +1,46 @@
+.create-buttons.ui.statistics {
+  flex-grow: 1;
+  align-items: center;
+  .statistic {
+    > .label {
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.transaction-categories {
+  display: flex;
+  align-items: stretch;
+  > .ui[class*="equal width"].grid > .column:not(.row) {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+}
+.transaction-title {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+.transaction-submit {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+  .ui.form {
+    flex-grow: 1;
+    > * {
+      padding: 25px 20px;
+    }
+    textarea {
+      resize: none;
+    }
+  }
+}
+.transaction-cost, .transaction-split {
+  text-align: center;
+}

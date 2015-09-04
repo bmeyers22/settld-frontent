@@ -1,0 +1,19 @@
+<div class="transaction-submit">
+  <div class="ui form">
+    <div class="transaction-cost">
+      <div class="ui huge transparent input">
+        {{input value=model.cost type="text" placeholder="How much did it cost you?" name="cost"}}
+      </div>
+    </div>
+    <div class="transaction-description">
+      <div class="field">
+        <label>Description:</label>
+        {{textarea value=model.description}}
+      </div>
+    </div>
+    <div class="transaction-split">
+      {{checkbox-toggle toggle='toggleSplit' disabled=false label="Split"}}
+    </div>
+    <div class="large ui button green fluid" {{action "complete"}}>Submit</div>
+  </div>
+</div>
