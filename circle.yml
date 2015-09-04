@@ -1,0 +1,18 @@
+machine:
+  node:
+    version: 0.12.2
+general:
+  # Use Circle CI's automatic settings inference for the Rails app
+dependencies:
+  pre:
+    - npm install -g bower
+  override:
+    - npm i
+    - bower i
+  cache_directories:
+    - "./node_modules"
+    - "./bower_components"
+test:
+  # Run the Ember tests after the Rails tests
+  post:
+    - ember test
