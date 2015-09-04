@@ -14,5 +14,7 @@ dependencies:
     - "./bower_components"
 test:
   # Run the Ember tests after the Rails tests
+  pre:
+    - rm -rf tmp
   post:
-    - ember test
+    - ./node_modules/.bin/ember test
