@@ -12,12 +12,9 @@
       </div>
       <div class="four wide column">
         <div class="ui icon basic buttons small right floated">
-          {{#each view.audienceButtonViews.childViews as |child|}}
-            {{#view child}}
-              <i class={{child.iconClass}}>
-              </i>
-            {{/view}}
-          {{/each}}
+          {{feeds/audience-button audienceScope=audienceScope index=ENUMS.FeedAudienceScope.Me iconClass='user icon'}}
+          {{feeds/audience-button audienceScope=audienceScope index=ENUMS.FeedAudienceScope.Home iconClass='users icon'}}
+          {{feeds/audience-button audienceScope=audienceScope index=ENUMS.FeedAudienceScope.Global iconClass='globe icon'}}
         </div>
       </div>
     </div>
