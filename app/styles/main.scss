@@ -24,7 +24,7 @@ body {
   #application {
     height: 100%;
 
-    .application-outlet {
+    > .ember-view {
       height: 100%;
       display: -webkit-box;
       display: -webkit-flex;
