@@ -18,9 +18,11 @@ module.exports = function(defaults) {
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
+  app.import('bower_components/semantic-ui/dist/semantic.css');
   app.import('vendor/javascripts/jquery-ui.min.js');
   app.import('bower_components/lodash/lodash.min.js');
   app.import('bower_components/moment/min/moment.min.js');
+  app.import('bower_components/semantic-ui/dist/semantic.js');
   app.import('vendor/javascripts/semantic-mods.js');
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
