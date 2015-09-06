@@ -16,7 +16,6 @@ export default Ember.Component.extend({
     return this.get('audienceScope') === this.get('index');
   }),
   click(e) {
-    this.get('parentView').send('changeAudience', this.get('index'));
-    return;
+    this.sendAction('changeAudience', this.get('index'));
   }}
 );

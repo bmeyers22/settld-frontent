@@ -1,4 +1,4 @@
-import FeedView from '../feed';
+import FeedView from './abstract-feed';
 
 var TransactionsFeedView = FeedView.extend({});
 

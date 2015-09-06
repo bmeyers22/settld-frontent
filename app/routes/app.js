@@ -34,6 +34,7 @@ export default Ember.Route.extend({
       });
     },
     openActionBar(model) {
+      debugger
       $('.global-action-bar').sidebar('show');
       this.render(this.get('actionBarMap')[model.constructor.modelName], {
         into: 'app',
