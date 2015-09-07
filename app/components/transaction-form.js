@@ -3,11 +3,11 @@ var TransactionForm;
 
 TransactionForm = Ember.Component.extend({
   actions: {
-    complete: function() {
+    complete() {
       return this.sendAction("complete");
     }
   },
-  didInsertElement: function() {
+  didInsertElement() {
     var self = this;
     this.$('.ui.category.dropdown').dropdown({
       onChange: (function(_this) {
@@ -65,10 +65,10 @@ TransactionForm = Ember.Component.extend({
           ]
         }
       },
-      onSuccess: function () {
+      onSuccess() {
         self.sendAction('complete', self.get('model'));
       },
-      onFailure: function () {
+      onFailure() {
         console.log("Fail");
       }
     });

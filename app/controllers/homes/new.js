@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 var HomesNewController = Ember.Controller.extend({
   needs: 'application',
-  saveHome: function(obj) {
+  saveHome(obj) {
     let self = this,
       home = this.store.createRecord('home', obj),
       authUser = this.session.get('authUser'),
@@ -22,7 +22,7 @@ var HomesNewController = Ember.Controller.extend({
     return prom;
   },
   actions: {
-    createHome: function(home) {
+    createHome(home) {
       this.saveHome(home);
     }
   }

@@ -1,14 +1,14 @@
 import Ember from 'ember';
 
 var HomesIndexRoute = Ember.Route.extend(
-  {model: function() {
+  {model() {
     return this.store.all('home');
   },
-  setupController: function(controller, model) {
+  setupController(controller, model) {
     controller.set('model', model);
     return;
   },
-  actions: {editHome: function(home) {
+  actions: {editHome(home) {
     this.transitionTo('homes.edit', home);
     return;
   }}

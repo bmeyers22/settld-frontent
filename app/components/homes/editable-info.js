@@ -1,7 +1,7 @@
 import HomesEditableSectionView from '../editable-section';
 
 var HomesEditableInfoView = HomesEditableSectionView.extend({
-  didInsertElement: function() {
+  didInsertElement() {
     this._super();
     var self = this;
     this.$('.ui.form').form({
@@ -35,19 +35,19 @@ var HomesEditableInfoView = HomesEditableSectionView.extend({
         ]}
     }, {
       on: 'blur',
-      onValid: function() {
+      onValid() {
         this.parent().parent().addClass('valid');
         return;
       },
-      onInvalid: function() {
+      onInvalid() {
         this.parent().parent().removeClass('valid');
         return;
       },
-      onSuccess: function() {
+      onSuccess() {
         self.send('saveEdit', self.get('content'));
         return;
       },
-      onFailure: function() {
+      onFailure() {
         console.log('Invalid form');
         return;
       }

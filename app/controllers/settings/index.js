@@ -19,7 +19,7 @@ var SettingsIndexController = Ember.Controller.extend(
   password: '',
   password_confirmation: '',
   actions:
-    {changePassword: function(user) {
+    {changePassword(user) {
       return user.save();
     }}
 });

@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     'draggable',
     'sortable'
   ],
-  didInsertElement: function() {
+  didInsertElement() {
     var self = this;
     this.$().sortable({
       revert: true,

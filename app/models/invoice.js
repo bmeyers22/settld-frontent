@@ -1,7 +1,9 @@
 import DS from 'ember-data';
 
 var Invoice = DS.Model.extend({
-  transaction: DS.belongsTo("transaction"),
+  transaction: DS.belongsTo('transaction', {
+    async: false
+  }),
   payerId: DS.attr("string"),
   payeeId: DS.attr("string"),
   homeId: DS.attr("string"),

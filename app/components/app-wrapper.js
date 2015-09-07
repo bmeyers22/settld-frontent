@@ -10,11 +10,11 @@ export default Ember.Component.extend({
     toggleUserBar() {
       this.$('.user-bar').sidebar('show');
     },
-    toggleGroupsBar: function() {
+    toggleGroupsBar() {
       this.$('.groups-bar').sidebar('toggle');
     }
   },
-  didInsertElement: function() {
+  didInsertElement() {
     this.$('.groups-bar').sidebar({
       context: $('.global-wrapper')
     });

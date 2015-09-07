@@ -7,11 +7,11 @@ export default Ember.Component.extend({
   ENUMS: Enums,
   sortProperties: [ 'date' ],
   sortAscending: false,
-  hasStream: function() {
+  hasStream: Ember.computed('stream', function() {
     return this.get('stream.length') > 0;
-  }.property('stream'),
+  }),
   actions:{
-    changeAudience: function(num) {
+    changeAudience(num) {
       this.set('audienceScope', num);
     },
     openActionBar() {

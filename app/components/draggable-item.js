@@ -7,10 +7,9 @@ export default Ember.Component.extend({
     'grid'
   ],
   attributeBindings: [ 'data-id' ],
-  'data-id': (function() {
+  'data-id': Ember.computed(function() {
     return this.get('content.id');
-  }
-  ).property(),
+  }),
   isEditing: false,
   actions: {
     editHome(home) {

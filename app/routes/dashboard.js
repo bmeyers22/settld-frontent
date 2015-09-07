@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 var DashboardRoute = Ember.Route.extend({
-  model: function() {
+  model() {
     return this.session.get('authUser');
   }
 });

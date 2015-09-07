@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     'signin-container',
     'register'
   ],
-  didInsertElement: function() {
+  didInsertElement() {
     self = this;
     $("#auth-hidden").val($('meta[name="csrf-token"]').attr('content'));
     this.$('.ui.form').form({
