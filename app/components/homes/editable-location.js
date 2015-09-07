@@ -1,4 +1,4 @@
-import HomesEditableSectionView from './editable-section';
+import HomesEditableSectionView from '../editable-section';
 
 var HomesEditableLocationView = HomesEditableSectionView.extend({
   didInsertElement: function() {

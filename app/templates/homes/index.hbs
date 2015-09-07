@@ -41,7 +41,27 @@
       </span>
     </div>
     <div class="fourteen wide column">
-      {{collection "homes/draggable-collection" content=sortedDefault target=this}}
+      {{#draggable-collection}}
+        {{#each sortedDefault as |item|}}
+          {{#draggable-item}}
+            <div class="fourteen wide column">
+              <div class="homes">
+                <div class="ui segment">
+                  <h3>
+                    {{name}}
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="one wide column move-column">
+              <i class="icon bars"></i>
+            </div>
+            <div class="one wide column edit-column">
+              {{#link-to 'homes.edit' this}}<i click="'editHome' this" class="icon pencil"></i>{{/link-to}}
+            </div>
+          {{/draggable-item}}
+        {{/each}}
+      {{/draggable-collection}}
     </div>
   </div>
 </div>

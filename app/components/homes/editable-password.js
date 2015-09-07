@@ -1,4 +1,4 @@
-import HomesEditableSectionView from './editable-section';
+import HomesEditableSectionView from '../editable-section';
 
 var HomesEditablePasswordView = HomesEditableSectionView.extend({
   didInsertElement: function() {

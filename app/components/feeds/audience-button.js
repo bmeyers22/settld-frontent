@@ -2,13 +2,10 @@ import Ember from 'ember';
 
 // This is for the feed controller only at the moment
 export default Ember.Component.extend({
-  init() {
-    this._super();
-    this.get('classNames').push(this.get('iconClass'));
-  },
   attributeBindings: [ 'data-audience' ],
   classNames: [
     'ui',
+    'icon',
     'button'
   ],
   classNameBindings: [ 'active' ],

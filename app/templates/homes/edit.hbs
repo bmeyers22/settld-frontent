@@ -2,7 +2,7 @@
   <h1 class="ui dividing header">
     {{name}}
   </h1>
-  {{#view "homes/editable-info" content=this group='this.dataGroups.info'}}
+  {{#homes/editable-info group=dataGroups.info}}
     <h4 class="title">
       <i class="info icon">
         Home Info
@@ -88,8 +88,8 @@
         </div>
       </div>
     </div>
-  {{/view}}
-  {{#view "homes/editable-location" content='this.content' group='this.dataGroups.location'}}
+  {{/homes/editable-info}}
+  {{#homes/editable-location group=dataGroups.location}}
     <h4 class="title">
       <i class="fafa-location-arrow">
         Location
@@ -215,8 +215,8 @@
         </div>
       </div>
     </div>
-  {{/view}}
-  {{#view "homes/editable-password" content='this.content' group='this.dataGroups.password'}}
+  {{/homes/editable-location}}
+  {{#homes/editable-password group=dataGroups.password}}
     <h4 class="title">
       <i class="lock icon">
         Change Password
@@ -302,5 +302,5 @@
         </div>
       </div>
     </div>
-  {{/view}}
+  {{/homes/editable-password}}
 </div>
