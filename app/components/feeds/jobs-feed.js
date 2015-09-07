@@ -1,8 +1,8 @@
-import Feeds from '../feeds';
+import Feeds from './abstract-feed';
 import Enums from 'web/enums';
 
-var JobsFeedController = Feeds.extend(
-  {jobs: (function() {
+var JobsFeedController = Feeds.extend({
+  jobs: (function() {
     var filter = {};
     var scope = this.get('audienceScope');
     if (scope === Enums.FeedAudienceScope.Me) {

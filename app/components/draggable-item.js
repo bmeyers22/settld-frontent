@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
-var HomeDraggableItemView = Ember.View.extend({
-  templateName: 'homes/home_draggable_item',
+export default Ember.Component.extend({
   classNames: [
     'drag-item',
     'ui',
@@ -19,5 +18,3 @@ var HomeDraggableItemView = Ember.View.extend({
     }
   }
 });
-
-export default HomeDraggableItemView

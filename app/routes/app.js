@@ -1,16 +1,28 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  model() {
+    return {
+      invoices: Ember.Set.create()
+    }
+  },
   actionBarMap: {
     transaction: 'transactions/actions-menu'
   },
   actions: {
+    paymentComplete(invoices) {
+      this.set('invoices', Ember.Set.create());
+      this.store.pushPayload({
+        invoices: invoices
+      });
+      this.send('togglePaymentsBar');
+    },
     addInvoiceToPayments(invoice) {
       $('.payments-bar').sidebar('show');
-      this.get('controller.invoices').add(invoice);
+      this.get('currentModel.invoices').add(invoice);
     },
     removeInvoiceFromPayments(invoice) {
-      this.get('controller.invoices').remove(invoice);
+      this.get('currentModel.invoices').remove(invoice);
     },
     togglePaymentsBar() {
       $('.payments-bar').sidebar('toggle');
@@ -22,17 +34,13 @@ export default Ember.Route.extend({
       });
     },
     openActionBar(model) {
+      debugger
       $('.global-action-bar').sidebar('show');
       this.render(this.get('actionBarMap')[model.constructor.modelName], {
         into: 'app',
         outlet: 'actionsBar',
         model: model,
         controller: 'actionsMenu'
-      });
-    },
-    toggleUserBar() {
-      Ember.run(function() {
-        return $('.user-bar').sidebar('show');
       });
     }
   }

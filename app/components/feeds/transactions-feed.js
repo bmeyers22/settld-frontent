@@ -1,4 +1,4 @@
-import Feeds from '../feeds';
+import Feeds from './abstract-feed';
 import Enums from 'web/enums';
 
 var TransactionsFeedController = Feeds.extend(

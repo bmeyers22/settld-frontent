@@ -1,9 +1,5 @@
 import Ember from 'ember';
 
-var TransactionsRoute = Ember.Route.extend({setupController: function(controller, model) {
-  var controllerFeed = this.controllerFor('feeds/transactions');
-  return;
-}}
-);
+var TransactionsRoute = Ember.Route.extend({});
 
 export default TransactionsRoute
