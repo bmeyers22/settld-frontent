@@ -1,7 +1,7 @@
 import HomesEditableSectionView from '../editable-section';
 
 var HomesEditableLocationView = HomesEditableSectionView.extend({
-  didInsertElement: function() {
+  didInsertElement() {
     this._super();
     this.$('.state-dropdown').dropdown({});
     var self = this;
@@ -15,16 +15,16 @@ var HomesEditableLocationView = HomesEditableSectionView.extend({
       }
     }, {
       on: 'blur',
-      onValid: function() {
+      onValid() {
         this.parent().parent().addClass('valid');
           },
-      onInvalid: function() {
+      onInvalid() {
         this.parent().parent().removeClass('valid');
           },
-      onSuccess: function() {
+      onSuccess() {
         self.send('saveEdit', self.get('content'));
           },
-      onFailure: function() {
+      onFailure() {
         console.log('Invalid form');
           }
     });

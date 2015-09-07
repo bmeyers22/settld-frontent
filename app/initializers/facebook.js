@@ -32,7 +32,7 @@ var initialize = function(registry, application) {};
 var Facebook =
   {name: 'facebook-auth',
   after: 'store',
-  initialize: function() {}};
+  initialize() {}};
 
 export {initialize}
 export default Facebook

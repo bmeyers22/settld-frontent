@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Enums from 'web/enums';
 
 var TransactionsNewController = Ember.Controller.extend({
-  save: function(txn) {
+  save(txn) {
     var copy = this.store.createRecord('transaction', txn);
     return copy.save();
   },
@@ -14,7 +14,7 @@ var TransactionsNewController = Ember.Controller.extend({
     toggleSplit(val) {
       this.set('model.split', !this.get('model.split'));
     },
-    complete: function(txn) {
+    complete(txn) {
       let self = this;
       return this.save(this.get('model')).then(function () {
         self.transitionTo('dashboard');

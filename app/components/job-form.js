@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 var JobForm = Ember.View.extend(
   {attributeBindings: [ 'disabled' ],
-  didInsertElement: function() {},
+  didInsertElement() {},
 
   actions:
-    {createJob: function(job) {
+    {createJob(job) {
       var controller = this.get('controller');
       this.$('.dimmer').dimmer('show');
       return controller.saveJob(job).then((job) => {

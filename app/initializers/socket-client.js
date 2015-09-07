@@ -27,7 +27,7 @@ var initialize = function(registry, application) {
 var SocketInitializer =
   {name: 'socket-initializer',
   after: 'store',
-  initialize: function() {}};
+  initialize() {}};
 
 export {Client}
 export {initialize}

@@ -9,10 +9,19 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('missing', { path: '/*missing'});
   this.route('index', { path: '/' }, function() {
-    this.resource('app', function () {
-      this.resource('group', { path: '/g/:group_index' }, function() {
-        this.resource('dashboard', function() {});
-        this.resource('create', function() {
+    this.route('app', {
+      resetNamespace: true
+    }, function () {
+      this.route('group', {
+        path: '/g/:group_index',
+        resetNamespace: true
+      }, function() {
+        this.route('dashboard', {
+          resetNamespace: true
+        }, function() {});
+        this.route('create', {
+          resetNamespace: true
+        }, function() {
           this.route('transaction', function () {
             this.route('category');
             this.route('title');
@@ -20,17 +29,27 @@ Router.map(function() {
           });
           this.route('job');
         });
-        this.resource('homes', function() {
+        this.route('homes', {
+          resetNamespace: true
+        }, function() {
           this.route('new');
           this.route('join');
           this.route('edit', { path: 'edit/:id' });
         });
-        this.resource('transactions', function() {});
-        this.resource('jobs', function() {});
-        this.resource('settings', function() {});
+        this.route('transactions', {
+          resetNamespace: true
+        }, function() {});
+        this.route('jobs', {
+          resetNamespace: true
+        }, function() {});
+        this.route('settings', {
+          resetNamespace: true
+        }, function() {});
       });
     });
-    this.resource('getstarted', function() {
+    this.route('getstarted', {
+      resetNamespace: true
+    }, function() {
       this.route('new');
       this.route('join');
     });

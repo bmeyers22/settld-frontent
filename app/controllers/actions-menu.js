@@ -1,19 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  unpaidInvoice: function () {
+  unpaidInvoice: Ember.computed('model', function () {
     let self = this;
     return this.get('model.invoices').find( function (inv) {
       return self.get('session.authUser.id') === inv.get('payerId') && !inv.get('paymentPending') && !inv.get('paid');
     });
-  }.property('model'),
-  pendingInvoice: function () {
+  }),
+  pendingInvoice: Ember.computed('model', function () {
     let self = this;
     return this.get('model.invoices').find( function (inv) {
       return self.get('session.authUser.id') === inv.get('payerId') && inv.get('paymentPending');
     });
-  }.property('model'),
-  owedInvoices: function () {
+  }),
+  owedInvoices: Ember.computed('model', function () {
     let self = this,
     invoices = this.get('model.invoices').filter(function (inv) {
       return inv.get('paid') === false && self.get('session.authUser.id') === inv.get('payeeId');
@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
         invoice: invoice
       }
     });
-  }.property('model'),
+  }),
   actions: {
     markPaid(invoice) {
       invoice.setProperties({

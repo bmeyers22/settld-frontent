@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left'],
-  invoicesSum: function () {
+  invoicesSum: Ember.computed('invoices.[]', function () {
     let sum = 0;
     this.get('invoices').forEach( (inv) => {
       sum += inv.get('amount');
     })
     return sum;
-  }.property('invoices.[]'),
+  }),
   didInsertElement() {
     this.$().sidebar({
       context: $('.global-wrapper'),

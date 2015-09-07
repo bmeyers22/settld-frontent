@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 var HomesIndexController = Ember.ArrayController.extend(
-  {sortedDefault: (function() {
+  {sortedDefault: Ember.computed('model.@each', function() {
     var self = this;
     var content = this.get('model') || [];
     var newOrder = Ember.ArrayProxy.create({content: content.toArray()});
@@ -19,9 +19,8 @@ var HomesIndexController = Ember.ArrayController.extend(
       newOrder.content[index] = tempMoved;
     }
     return newOrder;
-  }
-  ).property('model.@each'),
-  actions: {setDefaultHome: function(id) {
+  }),
+  actions: {setDefaultHome(id) {
     var settings = this.session.get('authUser.settings');
     settings.set('defaultHome', id);
     settings.save();

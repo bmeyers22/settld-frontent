@@ -7,11 +7,11 @@ export default Ember.Component.extend({
   selectedHome: false,
   passwordValid: true,
   noSelectedHome: Ember.computed.not('selectedHome'),
-  onPasswordSubmit: function() {
+  onPasswordSubmit() {
     this.$('.ui.form.join-password .field').removeClass('loading');
     this.$('.ui.form.join-password').form('validate form');
   },
-  didInsertElement: function() {
+  didInsertElement() {
     var self = this;
     this.$('.ui.form.join-password').form({
       fields: {
@@ -46,7 +46,7 @@ export default Ember.Component.extend({
     }
   },
   actions: {
-    findHomes: function() {
+    findHomes() {
       var self = this;
       this.$('home-results').addClass('loader');
       this.set('selectedHome', null);
@@ -65,7 +65,7 @@ export default Ember.Component.extend({
         self.$('home-results').removeClass('loader');
       });
     },
-    homeSelected: function(home) {
+    homeSelected(home) {
       var selectedHome = this.get('selectedHome');
       if (selectedHome) {
         selectedHome.set('selected', false);
@@ -81,7 +81,7 @@ export default Ember.Component.extend({
       }
       return;
     },
-    joinHome: function() {
+    joinHome() {
       let self = this;
       return new Ember.RSVP.Promise(function(resolve, reject) {
         return ($.post('/api/v1/homes/join', {

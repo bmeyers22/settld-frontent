@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 
 var SettingsIndexRoute = Ember.Route.extend({
-  model: function() {
+  model() {
     return this.session.get('authUser');
   }
 });

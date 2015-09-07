@@ -1,8 +1,9 @@
+import Ember from 'ember';
 import Feeds from './abstract-feed';
 import Enums from 'web/enums';
 
 var JobsFeedController = Feeds.extend({
-  jobs: (function() {
+  jobs: Ember.computed('audienceScope', function() {
     var filter = {};
     var scope = this.get('audienceScope');
     if (scope === Enums.FeedAudienceScope.Me) {
@@ -14,9 +15,8 @@ var JobsFeedController = Feeds.extend({
     return this.store.filter('job', filter, function(jobs) {
       return true;
     });
-  }
-  ).property('audienceScope'),
-  stream: (function() {
+  }),
+  stream: Ember.computed('jobs.@each', 'audienceScope', function() {
     var jobs = this.get('jobs') || [];
     var stream = Ember.A();
     stream.pushObjects(jobs.toArray());
@@ -25,7 +25,6 @@ var JobsFeedController = Feeds.extend({
       sortProperties: this.sortProperties,
       sortAscending: this.sortAscending
     });
-  }
-  ).property('jobs.@each', 'audienceScope')});
+  })});
 
 export default JobsFeedController

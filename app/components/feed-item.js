@@ -4,7 +4,7 @@ import Job from 'web/models/job';
 
 export default Ember.Component.extend({
   classNames: ['event'],
-  classType: (function() {
+  classType: Ember.computed(function() {
     var model;
     model = this.get('item');
     if (model instanceof Transaction) {
@@ -14,14 +14,14 @@ export default Ember.Component.extend({
     } else {
       return '';
     }
-  }).property(),
-  iconType: (function() {
+  }),
+  iconType: Ember.computed('classType', function() {
     var base, classType;
     classType = this.get('classType');
     base = 'icon ';
     return base + (classType === 'transaction' ? 'dollar' : classType === 'job' ? 'briefcase' : '');
-  }).property('classType'),
-  displayName: (function() {
+  }),
+  displayName: Ember.computed('item.user', function() {
     var isMe;
     isMe = this.get('item.user') === this.get('targetObject.session.authUser');
     if (isMe) {
@@ -29,8 +29,8 @@ export default Ember.Component.extend({
     } else {
       return this.get('item.user.name');
     }
-  }).property('item.user'),
-  actionName: (function() {
+  }),
+  actionName: Ember.computed(function() {
     var classType;
     classType = this.get('classType');
     if (classType === 'transaction') {
@@ -40,13 +40,13 @@ export default Ember.Component.extend({
     } else {
       return '';
     }
-  }).property(),
-  payableInvoice: (function() {
+  }),
+  payableInvoice: Ember.computed(function() {
     var base1;
     return typeof (base1 = this.get('item')).getOpenInvoice === "function" ? base1.getOpenInvoice(this.get('user')) : void 0;
-  }).property(),
+  }),
   actions: {
-    showActions: function(model) {
+    showActions(model) {
       this.sendAction('openActionBar', model);
     }
   }

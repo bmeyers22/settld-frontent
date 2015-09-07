@@ -21,9 +21,7 @@ var DashboardController = Ember.Controller.extend({
       sortProperties: this.sortProperties,
       sortAscending: this.sortAscending
     });
-  }),
-  actions: {
-  }
+  })  
 });
 
 export default DashboardController
