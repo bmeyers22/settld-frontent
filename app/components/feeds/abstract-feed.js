@@ -14,8 +14,8 @@ export default Ember.Component.extend({
     changeAudience(num) {
       this.set('audienceScope', num);
     },
-    openActionBar() {
-      this.sendAction('openActionBar')
+    openActionBar(model) {
+      this.sendAction('openActionBar', model);
     }
   }
 });
