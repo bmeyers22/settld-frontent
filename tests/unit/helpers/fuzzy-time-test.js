@@ -1,10 +1,10 @@
 import { fuzzyTime } from '../../../helpers/fuzzy-time';
-import { module, test } from 'ember-qunit';
+import { module, test } from 'qunit';
 
-module('FuzzyTimeHelper');
+module('Unit | Helper | fuzzy time');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
   var result = fuzzyTime(42);
-  return assert.ok(result);
+  assert.ok(result);
 });
