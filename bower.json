@@ -20,5 +20,8 @@
     "ember-simple-auth": "0.8.0",
     "hammerjs": "runspired/hammer.js#develop",
     "pace": "vectart/pace#master"
+  },
+  "resolutions": {
+    "ember": "1.13.9"
   }
 }
