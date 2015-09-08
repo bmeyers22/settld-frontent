@@ -5,6 +5,8 @@ general:
   # Use Circle CI's automatic settings inference for the Rails app
 dependencies:
   pre:
+    - npm cache clean
+    - bower cache clean
     - npm install -g bower
   override:
     - npm i
