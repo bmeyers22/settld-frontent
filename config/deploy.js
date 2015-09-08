@@ -1,3 +1,4 @@
+require('dotenv').load();
 module.exports = {
   development: {
     buildEnv: 'development', // Override the environment passed to the ember asset build. Defaults to 'production'
