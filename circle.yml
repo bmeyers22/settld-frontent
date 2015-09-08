@@ -6,8 +6,8 @@ general:
 dependencies:
   pre:
     - npm cache clean
-    - bower cache clean
     - npm install -g bower
+    - bower cache clean
   override:
     - npm i
     - bower i
