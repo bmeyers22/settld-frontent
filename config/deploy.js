@@ -30,8 +30,7 @@ module.exports = function(environment) {
     ENV.assets = {
       accessKeyId: process.env['AWS_ACCESS_KEY'],
       secretAccessKey: process.env['AWS_SECRET_ACCESS_KEY'],
-      bucket: 'app.settld.com',
-      prefix: '<optional-remote-prefix>'
+      bucket: 'app.settld.com'
     };
   }
 
