@@ -6,7 +6,17 @@ export default Ember.Component.extend({
     'login'
   ],
   actions: {
-    authenticate() {
+    authenticate: function(provider) {
+      let session = this.get('session');
+      session.authenticate('simple-auth-authenticator:torii', provider, function(error) {
+        console.log('There was an error when trying to sign you in: ' + error);
+      }).then(function (authData) {
+        debugger
+        console.log(session);
+        console.log(authData);
+      });
+    },
+    login() {
       this.get('sessionService').authenticateUser(this.get('session'), {
         identification: this.get('identification'),
         password: this.get('password')
@@ -26,12 +36,9 @@ export default Ember.Component.extend({
         },
         error(response) { response => console.log(response); },
       }).then(function (response) {
-        self.sendAction('authenticate');
+        self.sendAction('login');
         self.sendAction('registered');
       });
-    },
-    facebookLogin() {
-      this.get('session').authenticate('simple-auth-authenticator:torii', 'facebook-oauth2');
     }
   },
   didRender() {

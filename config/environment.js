@@ -22,6 +22,7 @@ module.exports = function(environment) {
       }
     },
     'simple-auth': {
+      authenticationRoute: 'login',
       authorizer: 'simple-auth-authorizer:devise'
     },
     pace: {

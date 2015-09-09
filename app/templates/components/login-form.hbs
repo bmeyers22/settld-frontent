@@ -16,12 +16,16 @@
       </div>
       <div class="field">
         <div class="ui fluid buttons">
-          <button type="submit" class="ui submit button">Login</button>
+          <button type="submit" class="ui submit button" {{action 'login'}}>Login</button>
           <button type="submit" class="ui green register button" {{action 'register'}}>Register</button>
         </div>
       </div>
       <div class="field">
-        <div id="fbLogin" class="ui facebook fluid button" {{action 'facebookLogin'}}><i class="facebook icon"></i> Facebook</div>
+        <div class="ui large fluid buttons">
+          <button class="ui facebook button" {{ action 'authenticate' 'facebook-oauth2' }}><i class="facebook icon"></i> Facebook</button>
+          <div class="or"></div>
+          <button class="ui google plus button" {{action 'googleLogin'}}><i class="google plus icon"></i> Google</button>
+        </div>
       </div>
     </form>
   </div>

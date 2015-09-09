@@ -4,6 +4,9 @@ export default Ember.Service.extend({
   authenticateUser(session, credentials) {
     session.authenticate('simple-auth-authenticator:devise', credentials);
   },
+  invalidateSession(session) {
+    session.invalidate()
+  },
   getSessionData(session) {
     return Ember.$.ajax('/session/refresh', {
       method: "GET",
