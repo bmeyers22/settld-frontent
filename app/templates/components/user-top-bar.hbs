@@ -1,21 +1,19 @@
-<div class="ui horizontal top fixed inverted icon  main menu user-top-bar ">
+{{#if session.userSettings.isUserConfigured}}
+  <div class="link item" {{action 'toggleGroupsBar'}}>
+    <i class="sidebar icon"></i>
+  </div>
+{{/if}}
+<div class="home-select-wrapper right menu">
   {{#if session.userSettings.isUserConfigured}}
-    <div class="link item" {{action 'toggleGroupsBar'}}>
-      <i class="sidebar icon"></i>
+    {{#link-to "create" class="item new-entry"}}
+      <i class="write link large icon"></i> New
+    {{/link-to}}
+    <div class="link item" {{action 'toggleUserBar'}}>
+      <i class="user large icon"></i>
+    </div>
+  {{else}}
+    <div class="link item" {{action 'logout'}}>
+      Logout
     </div>
   {{/if}}
-  <div class="home-select-wrapper right menu">
-    {{#if session.userSettings.isUserConfigured}}
-      {{#link-to "create" class="item new-entry"}}
-        <i class="write link large icon"></i> New
-      {{/link-to}}
-      <div class="link item" {{action 'toggleUserBar'}}>
-        <i class="user large icon"></i>
-      </div>
-    {{else}}
-      <div class="link item" {{action 'logout'}}>
-        Logout
-      </div>
-    {{/if}}
-  </div>
 </div>

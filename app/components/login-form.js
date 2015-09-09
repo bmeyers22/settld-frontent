@@ -33,11 +33,14 @@ export default Ember.Component.extend({
             password: self.get('password'),
             password_confirmation: self.get('password')
           }
-        },
-        error(response) { response => console.log(response); },
-      }).then(function (response) {
-        self.sendAction('login');
+        }
+      }).done(function (response) {
+        debugger
+        self.send('login');
         self.sendAction('registered');
+      }).fail(function (error) {
+        debugger
+        console.log(response);
       });
     }
   },
