@@ -15,16 +15,13 @@
         </div>
       </div>
       <div class="field">
-        <button type="submit" class="ui fluid submit button">Login</button>
+        <div class="ui fluid buttons">
+          <button type="submit" class="ui submit button">Login</button>
+          <button type="submit" class="ui green register button" {{action 'register'}}>Register</button>
+        </div>
       </div>
       <div class="field">
         <div id="fbLogin" class="ui facebook fluid button" {{action 'facebookLogin'}}><i class="facebook icon"></i> Facebook</div>
-      </div>
-      <div class="field">
-        <div id="venmoLogin" class="ui button fluid twitter"><i class="vimeo icon"></i> Venmo</div>
-      </div>
-      <div class="field">
-        {{#link-to 'register' class="ui fluid button"}}Register{{/link-to}}
       </div>
     </form>
   </div>

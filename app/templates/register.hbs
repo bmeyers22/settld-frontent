@@ -1,1 +1,4 @@
-{{registration-form model login='login'}}
+{{user-top-bar
+  session=session
+  logout='invalidateSession'}}
+{{outlet}}

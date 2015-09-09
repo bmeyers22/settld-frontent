@@ -8,6 +8,8 @@ export default Ember.Service.extend({
     return Ember.$.ajax('/session/refresh', {
       method: "GET",
       dataType: "json",
+    }).fail(function () {
+      session.invalidate();
     });
   },
   initializeUser(session, store) {
@@ -31,9 +33,9 @@ export default Ember.Service.extend({
       session.set('authUser', user);
       session.set('CURRENT_USER_ID', user.id);
       session.set('userSettings', user.get('settings'));
-      let configured = userSettings.get('isUserConfigured')
+      let groupConfigured = userSettings.get('isGroupConfigured')
       session.set('initialized', true);
-      if (configured) {
+      if (groupConfigured) {
         let homes = store.peekAll('home');
         session.set('currentHome', homes.find(function(home) {
           return home.get('id') === userSettings.get('defaultHome');

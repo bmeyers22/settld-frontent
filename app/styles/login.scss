@@ -66,3 +66,20 @@
     }
   }
 }
+.registration-name {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+.registration-payment {
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+  text-align: center;
+  .ui.header {
+    color: #fff;
+  }
+}

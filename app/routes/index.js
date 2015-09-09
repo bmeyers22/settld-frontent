@@ -8,12 +8,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     if (!this.session.get('isAuthenticated')) {
       transition.abort();
       this.transitionTo('login');
-    } else {
-      return this.get('sessionService').initializeUser(this.get('session'), this.get('store'));
     }
   },
+  model() {
+    return this.get('sessionService').initializeUser(this.get('session'), this.get('store'));
+  },
   afterModel(model, transition) {
-    if (!this.session.get('userSettings.isUserConfigured')) {
+    if (!model.get('userSettings.isUserConfigured')) {
+      if (!/^register/.test(transition.targetName)) {
+        this.transitionTo('register.name');
+      }
+    } else if (!model.get('userSettings.isGroupConfigured')) {
       this.transitionTo('getstarted');
     } else if (transition.targetName === 'index.index') {
       this.transitionTo('app');

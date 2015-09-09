@@ -10,7 +10,7 @@ var GetstartedJoinController = HomesJoinController.extend({
         self.session.set('CURRENT_HOME_ID', self.session.get('currentHome').get('id'));
         home.get('users');
         settings = self.session.get('userSettings');
-        settings.set('isUserConfigured', true);
+        settings.set('isGroupConfigured', true);
         settings.set('defaultHome', home.get('id'));
         settings.save().then(function (settings) {
           self.transitionToRoute('app');

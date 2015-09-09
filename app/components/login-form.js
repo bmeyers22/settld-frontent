@@ -12,6 +12,24 @@ export default Ember.Component.extend({
         password: this.get('password')
       });
     },
+    register() {
+      let self = this;
+      Ember.$.ajax('/users',{
+        method: "POST",
+        dataType: "json",
+        data: {
+          user: {
+            email: self.get('identification'),
+            password: self.get('password'),
+            password_confirmation: self.get('password')
+          }
+        },
+        error(response) { response => console.log(response); },
+      }).then(function (response) {
+        self.sendAction('authenticate');
+        self.sendAction('registered');
+      });
+    },
     facebookLogin() {
       this.get('session').authenticate('simple-auth-authenticator:torii', 'facebook-oauth2');
     }
