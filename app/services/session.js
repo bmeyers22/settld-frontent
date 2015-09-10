@@ -6,7 +6,12 @@ export default Ember.Service.extend({
   },
   invalidateSession(session) {
     session.invalidate()
+    const route = this;
+    // session.close();
   },
+  // accessDenied() {
+  //   this.transitionTo('login');
+  // },
   getSessionData(session) {
     return Ember.$.ajax('/session/refresh', {
       method: "GET",

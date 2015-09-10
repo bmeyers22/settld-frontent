@@ -1,8 +1,14 @@
 import Ember from 'ember';
-import UnauthenticatedRouteMixin from 'simple-auth/mixins/unauthenticated-route-mixin';
 
-var Login = Ember.Route.extend(UnauthenticatedRouteMixin, {
+var Login = Ember.Route.extend({
   actions: {
+    login(provider){
+      let session = this.get('session');
+      const route = this;
+      this.get('toriiSession').open(provider).then(() => {
+        route.transitionTo('app');
+      });
+    },
     registered() {
       this.transitionto('register.name');
     }

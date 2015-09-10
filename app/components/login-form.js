@@ -6,21 +6,15 @@ export default Ember.Component.extend({
     'login'
   ],
   actions: {
-    authenticate: function(provider) {
-      let session = this.get('session');
-      session.authenticate('simple-auth-authenticator:torii', provider, function(error) {
-        console.log('There was an error when trying to sign you in: ' + error);
-      }).then(function (authData) {
-        debugger
-        console.log(session);
-        console.log(authData);
-      });
-    },
-    login() {
-      this.get('sessionService').authenticateUser(this.get('session'), {
-        identification: this.get('identification'),
-        password: this.get('password')
-      });
+    login(provider) {
+      if (!provider) {
+        this.get('sessionService').authenticateUser(this.get('session'), {
+          identification: this.get('identification'),
+          password: this.get('password')
+        });
+      } else {
+        this.sendAction('login', provider);
+      }
     },
     register() {
       let self = this;
