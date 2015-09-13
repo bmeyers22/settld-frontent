@@ -29,11 +29,9 @@ export default Ember.Component.extend({
           }
         }
       }).done(function (response) {
-        debugger
         self.send('login');
         self.sendAction('registered');
       }).fail(function (error) {
-        debugger
         console.log(response);
       });
     }

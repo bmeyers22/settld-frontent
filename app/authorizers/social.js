@@ -24,7 +24,9 @@ export default Base.extend({
     @type String
     @default '/users/sign_in'
   */
-  serverTokenEndpoint: '/users/sign_in',
+  serverTokenEndpoint(provider) {
+    return `/users/oauth/${provider}`
+  },
 
   /**
     The devise resource name
@@ -88,7 +90,7 @@ export default Base.extend({
     @param {Object} options The credentials to authenticate the session with
     @return {Ember.RSVP.Promise} A promise that resolves when an auth token and email is successfully acquired from the server and rejects otherwise
   */
-  authenticate: function(credentials) {
+  authenticate: function(credentials, provider) {
     var _this = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
 
@@ -119,7 +121,7 @@ export default Base.extend({
   */
   makeRequest: function(data, resolve, reject) {
     return Ember.$.ajax({
-      url:        this.serverTokenEndpoint,
+      url:        this.serverTokenEndpoint(data.provider),
       type:       'POST',
       data:       data,
       dataType:   'json',

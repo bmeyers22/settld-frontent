@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 var Register = Ember.Route.extend({
+  sessionService: Ember.inject.service('session'),
   model() {
     return this.session.get('authUser');
   },
@@ -17,6 +18,12 @@ var Register = Ember.Route.extend({
       this.get('currentModel').save().then(function () {
         self.transitionTo('register.payment')
       })
+    },
+    connectVenmo() {
+      let session = this.get('session');
+      this.get('toriiSession').open("venmo-oauth2").then((data) => {
+        this.get('sessionService').authenticateUser(this.get('session'), data);
+      });
     },
     setUserConfigured() {
       let settings = this.get('session.userSettings');
