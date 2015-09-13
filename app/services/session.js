@@ -2,7 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   authenticateUser(session, credentials) {
-    session.authenticate('simple-auth-authenticator:devise', credentials);
+    if (credentials.provider) {
+      session.authenticate('authorizer:social', credentials);
+    } else {
+      session.authenticate('simple-auth-authenticator:devise', credentials);
+    }
   },
   invalidateSession(session) {
     session.invalidate()

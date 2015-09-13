@@ -10,16 +10,7 @@ export default Ember.Object.extend({
 
   open(postData) {
     return new Ember.RSVP.Promise((resolve, reject) => {
-      return Ember.$.ajax({
-        dataType: 'json',
-        method: 'POST',
-        url: '/users/sign_in',
-        contentType: 'application/json',
-        data: JSON.stringify(postData),
-        processData: false,
-        success: Ember.run.bind(null, resolve),
-        error: Ember.run.bind(null, reject)
-      });
+      return resolve(postData);
     });
   },
 

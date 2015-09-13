@@ -12,6 +12,7 @@ export function initialize(application) {
   session.on('sessionInvalidationSucceeded', function() {
     applicationRoute.transitionTo('login');
   });
+
 }
 
 export default {
