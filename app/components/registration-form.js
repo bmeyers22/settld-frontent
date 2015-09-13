@@ -16,11 +16,9 @@ export default Ember.Component.extend({
           dataType: "json",
           data: {
             user: {
-              first_name: self.get('firstName'),
-              last_name: self.get('lastName'),
               email: self.get('email'),
               password: self.get('password'),
-              password_confirmation: self.get('passwordConfirm')
+              password_confirmation: self.get('password')
             }
           },
           error(response) { response => console.log(response); },

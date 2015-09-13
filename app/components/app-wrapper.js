@@ -12,6 +12,9 @@ export default Ember.Component.extend({
     },
     toggleGroupsBar() {
       this.$('.groups-bar').sidebar('toggle');
+    },
+    invalidateSession() {
+      this.sendAction('invalidateSession');
     }
   },
   didInsertElement() {

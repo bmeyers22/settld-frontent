@@ -6,6 +6,7 @@ var UserSetting = DS.Model.extend(
   }),
   hasPublicProfile: DS.attr('boolean'),
   isUserConfigured: DS.attr('boolean'),
+  isGroupConfigured: DS.attr('boolean'),
   defaultHome: DS.attr('string')});
 
 export default UserSetting

@@ -2,12 +2,26 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   authenticateUser(session, credentials) {
-    session.authenticate('simple-auth-authenticator:devise', credentials);
+    if (credentials.provider) {
+      session.authenticate('authorizer:social', credentials);
+    } else {
+      session.authenticate('simple-auth-authenticator:devise', credentials);
+    }
   },
+  invalidateSession(session) {
+    session.invalidate()
+    const route = this;
+    // session.close();
+  },
+  // accessDenied() {
+  //   this.transitionTo('login');
+  // },
   getSessionData(session) {
     return Ember.$.ajax('/session/refresh', {
       method: "GET",
       dataType: "json",
+    }).fail(function () {
+      session.invalidate();
     });
   },
   initializeUser(session, store) {
@@ -31,9 +45,9 @@ export default Ember.Service.extend({
       session.set('authUser', user);
       session.set('CURRENT_USER_ID', user.id);
       session.set('userSettings', user.get('settings'));
-      let configured = userSettings.get('isUserConfigured')
+      let groupConfigured = userSettings.get('isGroupConfigured')
       session.set('initialized', true);
-      if (configured) {
+      if (groupConfigured) {
         let homes = store.peekAll('home');
         session.set('currentHome', homes.find(function(home) {
           return home.get('id') === userSettings.get('defaultHome');

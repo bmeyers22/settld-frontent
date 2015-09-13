@@ -53,10 +53,16 @@ Router.map(function() {
       this.route('new');
       this.route('join');
     });
+    this.route('register', {
+      resetNamespace: true
+    }, function() {
+      this.route('name');
+      this.route('payment');
+    });
   });
 
 
   this.route('login');
-  this.route('register');
+
 });
 export default Router

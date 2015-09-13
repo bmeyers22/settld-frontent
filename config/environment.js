@@ -9,19 +9,10 @@ module.exports = function(environment) {
       }
     },
     torii: {
-      providers: {
-        'facebook-oauth2': {
-          apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
-          redirectUri: 'http://localhost:4200'
-        },
-        'google-oauth2': {
-          apiKey: '716338207780-dtrfb1be8bes3vs07e9t7vdotomrp62m.apps.googleusercontent.com',
-          scope: 'profile',
-          redirectUri: 'http://localhost:4200'
-        }
-      }
+      sessionServiceName: 'toriiSession'
     },
     'simple-auth': {
+      authenticationRoute: 'login',
       authorizer: 'simple-auth-authorizer:devise'
     },
     pace: {
@@ -78,11 +69,21 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.PROXY_URL = "http://localhost:3000/"
+    ENV.torii.providers = {
+      'facebook-oauth2': {
+        apiKey: process.env['FACEBOOK_APP_ID_SETTLD_TEST'],
+        scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+      },
+      'venmo-oauth2': {
+        apiKey: process.env['VENMO_APP_ID_SETTLD'],
+        scope: 'access_email, access_phone, access_profile, make_payments'
+      }
+    }
   }
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.APP.PROXY_URL = "http://localhost:3000/"
+    ENV.APP.PROXY_URL = "http://localhost:3000/";
     ENV.baseURL = '/';
 
     // keep test console output quieter
@@ -93,7 +94,13 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.PROXY_URL = "http://app.settld.com/"
+    ENV.APP.PROXY_URL = "http://app.settld.com/";
+    ENV.torii.providers = {
+      'facebook-oauth2': {
+        apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
+        scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+      }
+    }
   }
 
   return ENV;
