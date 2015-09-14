@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['large-transparent-input', 'ui', 'form'],
   value: '',
-  didRender() {
+  didInsertElement() {
     let self = this;
     this.$('input').focus();
     this.$().form({
