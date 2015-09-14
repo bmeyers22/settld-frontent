@@ -1,6 +1,6 @@
 <div class="label image">
   {{#if user.image}}
-    <img src={{userImage}} />
+    <img src={{user.image}} />
   {{else}}
     <i class="circular user icon">
     </i>
@@ -19,7 +19,6 @@
           {{fuzzy-time item.date}}
         </span>
       </div>
-      {{log item}}
       <div class="right-floated" {{action 'showActions' item}}>
         <i class="vertical ellipsis large link circular icon"></i>
       </div>
