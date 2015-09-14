@@ -56,7 +56,7 @@ module.exports = function(environment) {
       'script-src': "'self' 'unsafe-inline' sandbox-api.venmo.com www.google-analytics.com connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
       'connect-src': "'self' sandbox-api.venmo.com",
-      'img-src': "'self' data:",
+      'img-src': "'self' data: venmopics.appspot.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"
     }
