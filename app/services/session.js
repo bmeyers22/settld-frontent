@@ -12,7 +12,7 @@ export default Ember.Service.extend({
         }
       });
     } else {
-      return session.authenticate('simple-auth-authenticator:devise', credentials);
+      return session.authenticate('simple-auth-authenticator:devise', authData);
     }
   },
   invalidateSession(session) {
