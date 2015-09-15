@@ -3,15 +3,18 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   authenticateUser(session, credentials) {
     if (credentials.provider) {
-      session.authenticate('authorizer:social', credentials);
+      return session.authenticate('authorizer:social', credentials);
     } else {
-      session.authenticate('simple-auth-authenticator:devise', credentials);
+      return session.authenticate('simple-auth-authenticator:devise', credentials);
     }
   },
   invalidateSession(session) {
     session.invalidate()
     const route = this;
     // session.close();
+  },
+  refresh(session, store) {
+    return this.initializeUser(session, store);
   },
   // accessDenied() {
   //   this.transitionTo('login');

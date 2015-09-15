@@ -22,17 +22,21 @@ var Register = Ember.Route.extend({
     connectVenmo() {
       let session = this.get('session');
       this.get('toriiSession').open("venmo-oauth2").then((data) => {
-        this.get('sessionService').authenticateUser(this.get('session'), data);
-      });
+        return this.get('sessionService').authenticateUser(session, data)
+      }).then( () => {
+        return this.get('sessionService').refresh(session, this.get('store'));
+      }).then( () => {
+        this.send('finish');
+      })
     },
     setUserConfigured() {
       let settings = this.get('session.userSettings');
       this.set('session.userSettings.isUserConfigured', true);
       settings.save();
-      this.transitionTo('app');
+      this.transitionTo('getstarted');
     },
     finish() {
-
+      this.send('setUserConfigured')
     }
   }
 });
