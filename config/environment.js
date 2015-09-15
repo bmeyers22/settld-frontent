@@ -46,8 +46,7 @@ module.exports = function(environment) {
       }
     },
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      MOBILE_APP: false
     },
     contentSecurityPolicy: {
       'default-src': "'self'",
