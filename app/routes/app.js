@@ -11,11 +11,10 @@ export default Ember.Route.extend({
   },
   actions: {
     paymentComplete(invoices) {
-      this.set('invoices', Ember.Set.create());
-      this.store.pushPayload({
+      this.set('currentModel.invoices', Ember.Set.create());
+      return this.store.pushPayload({
         invoices: invoices
       });
-      this.send('togglePaymentsBar');
     },
     addInvoiceToPayments(invoice) {
       $('.payments-bar').sidebar('show');

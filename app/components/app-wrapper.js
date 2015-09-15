@@ -4,6 +4,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['global-wrapper', 'pushable'],
   actions: {
+    togglePaymentsBar() {
+      this.sendAction('togglePaymentsBar');
+    },
     closeActionBar() {
       this.sendAction('closeActionBar');
     },
@@ -15,6 +18,9 @@ export default Ember.Component.extend({
     },
     invalidateSession() {
       this.sendAction('invalidateSession');
+    },
+    paymentComplete(invoices) {
+      this.sendAction('paymentComplete', invoices);
     }
   },
   didInsertElement() {
