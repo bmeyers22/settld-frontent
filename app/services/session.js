@@ -41,10 +41,10 @@ export default Ember.Service.extend({
       // data stored in raw_data
       let current = data.raw_data,
         pushData = $.extend(true, {}, {
-          users: [ current.user ],
-          userSettings: current.settings,
-          userInfos: current.infos,
-          homes: current.homes
+          'users': [ current.user ],
+          'user-settings': current.settings,
+          'user-infos': current.infos,
+          'homes': current.homes
         });
       // Create objects in store from raw data so they are normalized
       store.pushPayload(pushData);

@@ -1,7 +1,6 @@
 export function initialize(application) {
-  var applicationRoute = application.container.lookup('route:application');
-  var session          = application.container.lookup('simple-auth-session:main');
-  var store          = application.container.lookup('store:main');
+  let applicationRoute = application.container.lookup('route:application'),
+      session          = application.container.lookup('simple-auth-session:main');
   // handle the session events
   session.on('sessionAuthenticationSucceeded', function() {
     applicationRoute.transitionTo('app');

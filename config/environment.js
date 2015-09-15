@@ -72,7 +72,7 @@ module.exports = function(environment) {
         scope: 'user_birthday, user_location, user_about_me, email, public_profile'
       },
       'venmo-oauth2': {
-        apiKey: process.env['VENMO_APP_ID_SETTLD'],
+        apiKey: process.env['VENMO_APP_ID_SETTLD_TEST'],
         scope: 'access_email, access_phone, access_profile, make_payments'
       }
     }

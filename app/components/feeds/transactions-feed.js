@@ -20,7 +20,7 @@ var TransactionsFeedController = Feeds.extend(
       return this.store.find('transaction', filter);
     }
   ),
-  stream: Ember.computed('transactions.@each', 'audienceScope', function() {
+  stream: Ember.computed('transactions.[]', 'audienceScope', function() {
     var txn = this.get('transactions') || [];
     var stream = Ember.A();
     stream.pushObjects(txn.toArray());

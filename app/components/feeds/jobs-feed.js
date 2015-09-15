@@ -16,7 +16,7 @@ var JobsFeedController = Feeds.extend({
       return true;
     });
   }),
-  stream: Ember.computed('jobs.@each', 'audienceScope', function() {
+  stream: Ember.computed('jobs.[]', 'audienceScope', function() {
     var jobs = this.get('jobs') || [];
     var stream = Ember.A();
     stream.pushObjects(jobs.toArray());

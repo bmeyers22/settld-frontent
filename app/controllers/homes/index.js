@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 var HomesIndexController = Ember.ArrayController.extend(
-  {sortedDefault: Ember.computed('model.@each', function() {
+  {sortedDefault: Ember.computed('model.[]', function() {
     var self = this;
     var content = this.get('model') || [];
     var newOrder = Ember.ArrayProxy.create({content: content.toArray()});
