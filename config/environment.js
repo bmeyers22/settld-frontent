@@ -8,9 +8,7 @@ module.exports = function(environment) {
       FEATURES: {
       }
     },
-    torii: {
-      sessionServiceName: 'toriiSession'
-    },
+    torii: { },
     'simple-auth': {
       authenticationRoute: 'login',
       authorizer: 'simple-auth-authorizer:devise'
@@ -99,6 +97,10 @@ module.exports = function(environment) {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
         scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+      },
+      'venmo-oauth2': {
+        apiKey: process.env['VENMO_APP_ID_SETTLD'],
+        scope: 'access_email, access_phone, access_profile, make_payments'
       }
     }
   }
