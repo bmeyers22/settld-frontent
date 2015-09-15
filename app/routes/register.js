@@ -21,7 +21,7 @@ var Register = Ember.Route.extend({
     },
     connectVenmo() {
       let session = this.get('session');
-      this.get('toriiSession').open("venmo-oauth2").then((data) => {
+      this.get('torii').open("venmo-oauth2").then((data) => {
         return this.get('sessionService').authenticateUser(session, data)
       }).then( () => {
         return this.get('sessionService').refresh(session, this.get('store'));
