@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     return {
-      invoices: new Set()
+      invoices: new Ember.Set.create()
     }
   },
   actionBarMap: {
@@ -21,7 +21,7 @@ export default Ember.Route.extend({
       this.get('currentModel.invoices').add(invoice);
     },
     removeInvoiceFromPayments(invoice) {
-      this.get('currentModel.invoices').delete(invoice);
+      this.get('currentModel.invoices').remove(invoice);
     },
     togglePaymentsBar() {
       $('.payments-bar').sidebar('toggle');
