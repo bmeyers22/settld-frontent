@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left', 'dimmable', 'blurring'],
-  invoicesSum: Ember.computed('invoices.size', function () {
+  invoicesSum: Ember.computed('invoices.[]', function () {
     let sum = 0;
     this.get('invoices').forEach( (inv) => {
       sum += inv.get('amount');
