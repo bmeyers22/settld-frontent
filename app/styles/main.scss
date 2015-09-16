@@ -8,9 +8,6 @@ body {
   // &:after {
   //   content: "";
   //   background: url('/assets/images/bg3.jpg') no-repeat center center fixed;
-  //   -webkit-background-size: cover;
-  //   -moz-background-size: cover;
-  //   -o-background-size: cover;
   //   background-size: cover;
   //   opacity: .8;
   //   top: 0;
@@ -34,7 +31,10 @@ body {
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
-      justify-content: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
     }
   }
 
@@ -70,8 +70,6 @@ body {
           text-decoration: none;
           position: relative;
           .logo {
-            -webkit-border-radius: 4px 0px 0px 4px;
-            -moz-border-radius: 4px 0px 0px 4px;
             border-radius: 4px 0px 0px 4px;
             border: 1px solid;
             display: inline-block;
@@ -86,8 +84,6 @@ body {
             border-color: #3f94d0;
           }
           .label {
-            -webkit-border-radius: 0px 4px 4px 0px;
-            -moz-border-radius: 0px 4px 4px 0px;
             border-radius: 0px 4px 4px 0px;
             border: 1px solid;
             border-left: 0;

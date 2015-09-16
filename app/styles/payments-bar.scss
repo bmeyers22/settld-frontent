@@ -45,7 +45,9 @@
             .column {
               height: 60px;
               background: #fff;
-              align-self: flex-end;
+              -webkit-align-self: flex-end;
+                  -ms-flex-item-align: end;
+                      align-self: flex-end;
               .title {
                 text-align: left;
               }
