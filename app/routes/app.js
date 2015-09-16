@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     return {
-      invoices: new Ember.Set.create()
+      invoices: Ember.Set.create()
     }
   },
   actionBarMap: {
