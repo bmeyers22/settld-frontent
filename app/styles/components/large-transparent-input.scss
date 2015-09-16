@@ -2,7 +2,20 @@
   flex-grow: 1;
   align-items: center;
   text-align: center !important;
+  label {
+    .header {
+      margin-bottom: 50px !important;
+    }
+  }
   input {
     text-align: center !important;
+  }
+  > .ui.button.submit {
+    opacity: 0 !important;
+    margin-top: 50px !important;
+    transition: opacity 1s;
+    &.valid {
+      opacity: 1 !important;
+    }
   }
 }

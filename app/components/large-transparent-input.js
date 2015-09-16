@@ -4,22 +4,40 @@ export default Ember.Component.extend({
   classNames: ['large-transparent-input', 'ui', 'form'],
   value: '',
   didInsertElement() {
-    let self = this;
-    this.$('input').focus();
+    let self = this,
+      input = this.$('input'),
+      submit = this.$('.submit');
+    if (this.attrs.focus) {
+      input.focus();
+    }
+
+    input.keypress( (e) => {
+      if (e.which == 13) {
+        this.$().form('submit');
+      }
+    });
     this.$().form({
-      on: 'blur',
+      on: 'change',
       fields: {
-        value: {
-          identifier  : 'value',
+        empty: {
+          identifier  : 'empty',
           rules: [
             {
-              type   : self.get('validationType') || 'empty',
-              prompt : self.get('validationPrompt') || 'Please enter a value'
+              type   : self.attrs.validationType || 'empty',
+              prompt : self.attrs.validationPrompt || 'Please enter a value'
             }
           ]
         }
       },
-      onSuccess(ev, fields) {
+      onValid(ev, fields) {
+        submit.removeClass('disabled');
+        submit.addClass('valid');
+      },
+      onInvalid(err) {
+        submit.addClass('disabled');
+        submit.removeClass('valid');
+      },
+      onSuccess() {
         self.sendAction('submit', self.get('value'));
       }
     })

@@ -1,10 +1,10 @@
-{{#if session.userSettings.isUserConfigured}}
+{{#if configured}}
   <div class="link item" {{action 'toggleGroupsBar'}}>
     <i class="sidebar icon"></i>
   </div>
 {{/if}}
 <div class="home-select-wrapper right menu">
-  {{#if session.userSettings.isUserConfigured}}
+  {{#if configured}}
     {{#link-to "create" class="item new-entry"}}
       <i class="write link large icon"></i> New
     {{/link-to}}

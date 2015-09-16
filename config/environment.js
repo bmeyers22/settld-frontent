@@ -50,7 +50,7 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'self'",
-      'script-src': "'self' 'unsafe-inline' sandbox-api.venmo.com www.google-analytics.com connect.facebook.net localhost",
+      'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com www.google-analytics.com connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
       'connect-src': "'self' sandbox-api.venmo.com",
       'img-src': "'self' data: venmopics.appspot.com",

@@ -39,7 +39,7 @@ export default Ember.Component.extend({
   didRender() {
     var self = this;
     this.$('.ui.form').form({
-      on: 'blur',
+      on: 'submit',
       fields: {
         email: {
           identifier: 'identification',
@@ -55,6 +55,10 @@ export default Ember.Component.extend({
               prompt: 'Please enter your password'
           }]
         }
+      },
+      onSuccess() {
+        debugger
+        self.sendAction('login');
       }
     });
   }

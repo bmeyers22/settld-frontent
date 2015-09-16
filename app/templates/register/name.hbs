@@ -1,4 +1,4 @@
 <div class="registration-name">
-  {{large-transparent-input placeholder="What is your name?" submit='updateName'}}
+  {{log model}}
+  {{large-transparent-input initialValue=model.firstName label="What is your name?" submit='updateName' focus=true}}
 </div>
-
