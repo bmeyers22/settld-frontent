@@ -4,6 +4,7 @@ import Job from 'web/models/job';
 
 export default Ember.Component.extend({
   classNames: ['event'],
+  transactionsService: Ember.inject.service('transactions'),
   classType: Ember.computed(function() {
     var model;
     model = this.get('item');
@@ -27,7 +28,7 @@ export default Ember.Component.extend({
     if (isMe) {
       return 'You';
     } else {
-      return this.get('item.user.name');
+      return this.get('item.user.firstName');
     }
   }),
   actionName: Ember.computed(function() {
@@ -41,9 +42,14 @@ export default Ember.Component.extend({
       return '';
     }
   }),
-  payableInvoice: Ember.computed(function() {
-    var base1;
-    return typeof (base1 = this.get('item')).getOpenInvoice === "function" ? base1.getOpenInvoice(this.get('user')) : void 0;
+  pendingInvoice: Ember.computed('item.invoices.@each.paymentPending', function() {
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentPending', true, this.get('session.authUser.id'));
+  }),
+  paidInvoice: Ember.computed('item.invoices.@each.paid', function() {
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paid', true, this.get('session.authUser.id'));
+  }),
+  rejectedInvoice: Ember.computed('item.invoices.@each.paymentRejected', function() {
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentRejected', true, this.get('session.authUser.id'));
   }),
   actions: {
     showActions(model) {

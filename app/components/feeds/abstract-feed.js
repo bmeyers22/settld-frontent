@@ -3,7 +3,7 @@ import Enums from 'web/enums';
 
 
 export default Ember.Component.extend({
-  audienceScope: Enums.FeedAudienceScope.Home,
+  audienceScope: Enums.FeedAudienceScope.Me,
   ENUMS: Enums,
   hasStream: Ember.computed('stream', function() {
     return this.get('stream.length') > 0;

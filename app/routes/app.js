@@ -11,7 +11,11 @@ export default Ember.Route.extend({
   },
   actions: {
     paymentComplete(invoices) {
-      this.get('currentModel.invoices').clear();
+      this.get('currentModel.invoices').forEach((item) => {
+        if (item.get('paid')) {
+          this.send('removeInvoiceFromPayments', item);
+        }
+      });
       return this.store.pushPayload({
         invoices: invoices
       });

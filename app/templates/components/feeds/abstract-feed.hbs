@@ -2,11 +2,6 @@
   <div class="ui grid filters">
     <div class="row">
       <div class="eight wide column">
-        <div class="ui mini icon input">
-          <input type="text" placeholder="Search mini" />
-          <i class="search icon">
-          </i>
-        </div>
       </div>
       <div class="four wide column">
       </div>
@@ -21,12 +16,14 @@
             audienceScope=audienceScope
             index=ENUMS.FeedAudienceScope.Home
             iconClass='users icon'
-            changeAudience='changeAudience'}}
+            changeAudience='changeAudience'
+            disabled=true}}
           {{feeds/audience-button
             audienceScope=audienceScope
             index=ENUMS.FeedAudienceScope.Global
             iconClass='globe icon'
-            changeAudience='changeAudience'}}
+            changeAudience='changeAudience'
+            disabled=true}}
         </div>
       </div>
     </div>

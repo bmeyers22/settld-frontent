@@ -1,29 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  transactionsService: Ember.inject.service('transactions'),
   unpaidInvoice: Ember.computed('model', function () {
-    let self = this;
-    return this.get('model.invoices').find( function (inv) {
-      return self.get('session.authUser.id') === inv.get('payerId') && !inv.get('paymentPending') && !inv.get('paid');
-    });
+    let invoice = this.get('transactionsService').filterInvoicesByStatus(this.get('model'), 'paid', false, this.get('session.authUser.id'));
+    return !this.get('pendingInvoice') && invoice;
   }),
   pendingInvoice: Ember.computed('model', function () {
-    let self = this;
-    return this.get('model.invoices').find( function (inv) {
-      return self.get('session.authUser.id') === inv.get('payerId') && inv.get('paymentPending');
-    });
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('model'), 'paymentPending', true, this.get('session.authUser.id'));
   }),
   owedInvoices: Ember.computed('model', function () {
-    let self = this,
-    invoices = this.get('model.invoices').filter(function (inv) {
-      return inv.get('paid') === false && self.get('session.authUser.id') === inv.get('payeeId');
-    });
-    return invoices.map(function (invoice) {
-      return {
-        user: self.store.find('user', invoice.get('payerId')),
-        invoice: invoice
-      }
-    });
+    return this.get('transactionsService').getOwedInvoicesByUser(this.get('model'), this.get('session.authUser.id'));
+  }),
+  unpaidOwedInvoice: Ember.computed('owedInvoices.[]', function () {
+    return this.get('owedInvoices').filter( (obj) => {
+      return !obj.invoice.get('paymentPending');
+    })
   }),
   actions: {
     markPaid(invoice) {

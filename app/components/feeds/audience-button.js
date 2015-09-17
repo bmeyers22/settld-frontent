@@ -8,7 +8,7 @@ export default Ember.Component.extend({
     'icon',
     'button'
   ],
-  classNameBindings: [ 'active' ],
+  classNameBindings: [ 'active', 'disabled' ],
   active: Ember.computed('audienceScope', function() {
     return this.get('audienceScope') === this.get('index');
   }),

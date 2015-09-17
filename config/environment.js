@@ -52,7 +52,7 @@ module.exports = function(environment) {
       'default-src': "'self'",
       'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com www.google-analytics.com connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' sandbox-api.venmo.com",
+      'connect-src': "'self' sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000",
       'img-src': "'self' data: venmopics.appspot.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"

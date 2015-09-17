@@ -8,7 +8,7 @@ var initialize = function(registry, application) {
 
 var ServicesInitializer =
   {name: 'services',
-  after: 'store',
+  after: 'environment',
   initialize: initialize};
 
 export {initialize}

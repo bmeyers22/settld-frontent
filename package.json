@@ -51,6 +51,7 @@
     "ember-pikaday": "0.12.0",
     "ember-suave": "1.0.0",
     "ember-watson": "^0.6.5",
+    "ember-websockets": "1.2.3",
     "liquid-fire": "0.21.2",
     "semantic-ui-ember": "^0.0.1",
     "torii": "0.6.0-beta.4"

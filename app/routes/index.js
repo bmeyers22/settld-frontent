@@ -3,6 +3,11 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   sessionService: Ember.inject.service('session'),
+  websockets: Ember.inject.service(),
+  init() {
+    var socket = this.get('websockets').socketFor('ws://localhost:7000/');
+    return this.createListeners(socket);
+  },
   beforeModel(transition) {
     if (!this.session.get('isAuthenticated')) {
       transition.abort();
@@ -22,5 +27,20 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     } else if (transition.targetName === 'index.index') {
       this.transitionTo('app');
     }
+  },
+  createListeners(socket) {
+    socket.on('open', this.myOpenHandler, this);
+    socket.on('message', this.messageHandler, this);
+    socket.on('close', function(event) {
+        console.log('closed');
+    }, this);
+  },
+  myOpenHandler(event) {
+    console.log('On open event has been called: ' + event);
+  },
+  messageHandler(message) {
+    console.log(message);
+    let response = JSON.parse(message.data);
+    return this.get('store').pushPayload(response);
   }
 });

@@ -12,6 +12,8 @@
       </div>
     {{/if}}
   {{/each}}
-  <div class="link item request">Request</div>
+  {{#if unpaidOwedInvoice}}
+    <div class="link item request">Request</div>
+  {{/if}}
 {{/if}}
 <div class="link item details">Details</div>
