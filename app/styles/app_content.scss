@@ -12,4 +12,8 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+
+  .main-wrapper {
+    flex-grow: 1;
+  }
 }

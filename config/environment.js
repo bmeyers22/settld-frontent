@@ -50,21 +50,25 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'self'",
-      'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com www.google-analytics.com connect.facebook.net localhost",
+      'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com https://www.google-analytics.com/analytics.js http://www.google-analytics.com/analytics.js connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000",
-      'img-src': "'self' data: venmopics.appspot.com",
+      'connect-src': "'self' sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
+      'img-src': "'self' data: venmopics.appspot.com https://www.google-analytics.com http://www.google-analytics.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"
     }
   };
 
   if (environment === 'development') {
+    ENV.GA = {
+      UA_CODE: "UA-51059302-1" // where UA code looks something like: UA-00000000-1
+    }
+
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_TRANSITIONS = true;
-    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_TRANSITIONS = false;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
     ENV.APP.PROXY_URL = "http://localhost:3000/"
     ENV.torii.providers = {
       'facebook-oauth2': {
@@ -91,6 +95,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.GA = {
+      UA_CODE: "UA-51059302-1" // where UA code looks something like: UA-00000000-1
+    }
     ENV.APP.PROXY_URL = "http://app.settld.com/";
     ENV.torii.providers = {
       'facebook-oauth2': {

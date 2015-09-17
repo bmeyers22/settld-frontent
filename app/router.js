@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import config from './config/environment';
+import pageview from './mixins/analytics-pageview';
 
-
-var Router = Ember.Router.extend({
+var Router = Ember.Router.extend( pageview, {
   location: config.locationType
 });
 
