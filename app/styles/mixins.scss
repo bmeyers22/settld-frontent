@@ -46,3 +46,9 @@
   -ms-flex-pack: $val;
   justify-content: $val;
 }
+@mixin flex-grow($val:1) {
+  -webkit-box-flex: $val;
+  -webkit-flex-grow: $val;
+  -ms-flex-positive: $val;
+  flex-grow: $val;
+}

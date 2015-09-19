@@ -13,6 +13,25 @@ export default Ember.Component.extend({
   },
   didInsertElement() {
     var self = this;
+    this.$('.ui.search').search({
+      apiSettings: {
+        url: '/api/v1/homes/search?filter={query}'
+      },
+      onSearchQuery() {
+        self.$('home-results').addClass('loader');
+        self.set('selectedHome', null);
+      },
+      onResults(data) {
+        let arr = [];
+        data.results.forEach( (obj) => {
+          obj.password = '';
+          obj.selected = false;
+          arr.push(Ember.Object.extend(Serializable).create(obj));
+        })
+        self.set('searchResults', arr);
+        self.$('home-results').removeClass('loader');
+      }
+    });
     this.$('.ui.form.join-password').form({
       fields: {
         password: {
@@ -46,25 +65,6 @@ export default Ember.Component.extend({
     }
   },
   actions: {
-    findHomes() {
-      var self = this;
-      this.$('home-results').addClass('loader');
-      this.set('selectedHome', null);
-      $.get('/api/v1/homes/search', { filter: this.get('query') }, function(data) {
-        if (data.results.length === 0) {
-          self.set('searchResults', []);
-        } else {
-          var arr = [];
-          _.each(data.results, function(obj) {
-            obj.password = '';
-            obj.selected = false;
-            return arr.push(Ember.Object.extend(Serializable).create(obj));
-          });
-          self.set('searchResults', arr);
-        }
-        self.$('home-results').removeClass('loader');
-      });
-    },
     homeSelected(home) {
       var selectedHome = this.get('selectedHome');
       if (selectedHome) {

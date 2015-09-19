@@ -2,14 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   transactionsService: Ember.inject.service('transactions'),
-  unpaidInvoice: Ember.computed('model', function () {
+  unpaidInvoice: Ember.computed('model.invoices.@each.paid', 'model.invoices.@each.paymentPending', function () {
     if (this.get('model.user') === this.get('session.authUser')) {
       return false;
     }
     let invoice = this.get('transactionsService').filterInvoicesByStatus(this.get('model'), 'paid', false, this.get('session.authUser.id'));
     return !this.get('pendingInvoice') && invoice;
   }),
-  pendingInvoice: Ember.computed('model', function () {
+  pendingInvoice: Ember.computed('model.invoices.@each.paymentPending', function () {
     if (this.get('model.user') === this.get('session.authUser')) {
       return false;
     }

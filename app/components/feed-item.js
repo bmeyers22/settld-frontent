@@ -5,6 +5,9 @@ import Job from 'web/models/job';
 export default Ember.Component.extend({
   classNames: ['event'],
   transactionsService: Ember.inject.service('transactions'),
+  click() {
+    this.sendAction('openActionBar', this.get('item'));
+  },
   classType: Ember.computed(function() {
     var model;
     model = this.get('item');
@@ -50,10 +53,5 @@ export default Ember.Component.extend({
   }),
   rejectedInvoice: Ember.computed('item.invoices.@each.paymentRejected', function() {
     return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentRejected', true, this.get('session.authUser.id'));
-  }),
-  actions: {
-    showActions(model) {
-      this.sendAction('openActionBar', model);
-    }
-  }
+  })
 });
