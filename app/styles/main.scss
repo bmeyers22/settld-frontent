@@ -57,7 +57,7 @@ body {
     .invoice {
       background: #ffffff;
       padding: 10px 20px;
-      max-width: $APP_WIDTH;
+      max-width: $APP_MAX_WIDTH;
       margin: 0 auto;
       .close-button {
         text-align: right;

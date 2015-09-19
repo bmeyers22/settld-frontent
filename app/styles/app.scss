@@ -1,4 +1,5 @@
 @import "global";
+@import "mixins";
 @import "main";
 @import "login";
 @import "getstarted";
@@ -15,4 +16,7 @@
 @import "jobs";
 @import "settings";
 @import "components/grid-dropdown";
+@import "components/invoice-photo-tree";
 @import "components/large-transparent-input";
+@import "components/transaction-details";
+@import "components/user-image";

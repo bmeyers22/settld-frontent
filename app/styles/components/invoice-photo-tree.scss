@@ -1,0 +1,36 @@
+.invoice-photo-tree {
+  margin: 20px 0;
+  @include flex-column();
+  @include align-items(center);
+  .primary {
+    .ui.image {
+      height: 120px;
+    }
+    .user.icon {
+      font-size: 60px;
+    }
+    margin-bottom: 20px;
+  }
+  .secondary {
+    @include flex-row();
+    .visible.content {
+      height: 100%;
+      width: 100%;
+      .paid-overlay {
+        @include flex-row();
+        @include align-items(center);
+        @include justify-content(center);
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        background: rgba(105, 105, 105, 0.75);
+        > i {
+          margin: 0;
+        }
+      }
+    }
+    .reveal {
+      margin: 0 5px;
+    }
+  }
+}

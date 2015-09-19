@@ -1,0 +1,6 @@
+@import '../mixins';
+
+.transaction-details {
+  justify-content: center;
+  @include flex-column();
+}

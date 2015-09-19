@@ -5,19 +5,7 @@
 <div class="column visible content" {{action "showOptions" on="panLeft"}}>
   <div class="ui center aligned grid">
     <div class="four wide column">
-      {{#if user.image}}
-        <img
-          class="ui avatar image popup"
-          src={{invoice.transaction.user.image}}
-          data-content={{invoice.transaction.user.firstName}}
-          data-variation="mini" />
-      {{else}}
-        <i
-          class="circular user icon popup"
-          data-content="user"
-          data-variation="mini">
-        </i>
-      {{/if}}
+      {{user-image user=user}}
     </div>
     <div class="seven wide title column">
       <div>{{invoice.transaction.title}}</div>

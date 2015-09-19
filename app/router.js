@@ -13,7 +13,7 @@ Router.map(function() {
       resetNamespace: true
     }, function () {
       this.route('group', {
-        path: '/g/:group_index',
+        path: '/g/:home_id',
         resetNamespace: true
       }, function() {
         this.route('dashboard', {
@@ -29,13 +29,6 @@ Router.map(function() {
           });
           this.route('job');
         });
-        this.route('homes', {
-          resetNamespace: true
-        }, function() {
-          this.route('new');
-          this.route('join');
-          this.route('edit', { path: 'edit/:id' });
-        });
         this.route('transactions', {
           resetNamespace: true
         }, function() {});
@@ -45,6 +38,17 @@ Router.map(function() {
         this.route('settings', {
           resetNamespace: true
         }, function() {});
+      });
+      this.route('homes', {
+        resetNamespace: true
+      }, function() {
+        this.route('new');
+        this.route('join');
+        this.route('edit', { path: 'edit/:id' });
+      });
+      this.route('transaction', {
+        resetNamespace: true,
+        path: 'transaction/:transaction_id'
       });
     });
     this.route('getstarted', {
