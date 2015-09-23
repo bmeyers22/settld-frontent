@@ -15,8 +15,10 @@ var Register = Ember.Route.extend({
       if (names[1]) {
         this.set('currentModel.lastName', names[1])
       }
-      this.get('currentModel').save().then(function () {
-        self.transitionTo('register.payment')
+      this.get('currentModel').save().then(function (user) {
+        if (this.get('currentModel').isValid) {
+          self.transitionTo('register.payment')
+        }
       })
     },
     connectVenmo() {
