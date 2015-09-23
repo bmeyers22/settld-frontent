@@ -1,6 +1,6 @@
-<h1>
-  Transactions Home Page
-</h1>
-<div click="'showModal' 'modals/transaction'" class="ui button">
-  Add
-</div>
+{{#each model.members as |member|}}
+  <div class="member-wraper">
+    {{user-image user=member.user}}
+    {{format-money member.info.balance}}
+  </div>
+{{/each}}

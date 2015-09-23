@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   authenticateUser(session, authData) {
     if (authData.provider) {
-      console.log(authData);
       authData.provider = authData.provider.replace('-oauth2', '');
       return session.authenticate('authorizer:social', {
         provider: authData.provider,
