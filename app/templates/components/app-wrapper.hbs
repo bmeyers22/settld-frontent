@@ -8,7 +8,7 @@
   </h3>
   {{#each session.authUser.homes as |home| }}
     <div {{action 'toggleGroupsBar'}}>
-      {{#link-to 'dashboard' home.id class='item' }}
+      {{#link-to groupPath home.id class='item' }}
         {{home.name}}
       {{/link-to}}
     </div>
