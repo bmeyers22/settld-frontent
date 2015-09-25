@@ -7,6 +7,13 @@
   .grid.filters {
     margin: 0;
   }
+
+  .empty-feed {
+    .header {
+      margin-bottom: 30px;
+    }
+    margin: 50px;
+  }
   .ui.feed {
     .event {
       position: relative;

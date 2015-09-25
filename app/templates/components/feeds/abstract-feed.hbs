@@ -35,10 +35,11 @@
       {{/each}}
     </div>
   {{else}}
-    <div class="row">
-      <div class="event center aligned column">
-        Your feed is empty!  Add a transaction or a job to see items here :)
+    <div class="empty-feed ui yellow message">
+      <div class="header">
+        You have nothing in your feed!
       </div>
+      <p>Transactions and chores will show up here. Click {{link-to 'here' 'create.transaction'}} to add something :)</p>
     </div>
   {{/if}}
 </div>

@@ -1,6 +1,6 @@
 {{#each model.members as |member|}}
   <div class="member-wraper">
-    {{user-image user=member.user}}
+    {{user-image user=member.user width="200" height="200"}}
     {{format-money member.info.balance}}
   </div>
 {{/each}}

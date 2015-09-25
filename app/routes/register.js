@@ -15,7 +15,7 @@ var Register = Ember.Route.extend({
       if (names[1]) {
         this.set('currentModel.lastName', names[1])
       }
-      this.get('currentModel').save().then(function (user) {
+      this.get('currentModel').save().then( (user) => {
         if (this.get('currentModel').isValid) {
           self.transitionTo('register.payment')
         }

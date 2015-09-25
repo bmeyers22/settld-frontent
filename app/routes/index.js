@@ -5,8 +5,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   sessionService: Ember.inject.service('session'),
   websockets: Ember.inject.service(),
   init() {
-    var socket = this.get('websockets').socketFor('ws://localhost:7000/');
-    return this.createListeners(socket);
+    try {
+      var socket = this.get('websockets').socketFor('ws://localhost:7000/');
+      return this.createListeners(socket);
+    } catch (e) {
+      throw("Socket connection unsuccessful");
+    }
   },
   beforeModel(transition) {
     if (!this.session.get('isAuthenticated')) {

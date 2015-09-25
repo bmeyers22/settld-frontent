@@ -11,7 +11,7 @@ var HomesNewController = Ember.Controller.extend({
         home.save().then(function(home) {
           authUser.get('homes').pushObject(home);
           authUser.save();
-          resolve(home);
+          return resolve(home);
         }, function(error) {
           reject(error);
         });

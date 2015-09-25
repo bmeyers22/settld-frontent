@@ -49,7 +49,6 @@ export default Ember.Service.extend({
       store.pushPayload(pushData);
       let user = store.peekRecord('user', current.user._id);
       let userSettings = store.peekRecord('userSetting', current.settings[0]._id);
-      let userInfos = store.peekAll('userInfo');
       user.set('settings', userSettings);
       session.set('authUser', user);
       session.set('CURRENT_USER_ID', user.id);
@@ -57,6 +56,9 @@ export default Ember.Service.extend({
       let groupConfigured = userSettings.get('isGroupConfigured')
       session.set('initialized', true);
       if (groupConfigured) {
+        let userInfos = current.infos.map((info) => {
+          return store.peekRecord('userInfo', info._id);
+        })
         let homes = store.peekAll('home');
         session.set('currentHome', homes.find(function(home) {
           return home.get('id') === userSettings.get('defaultHome');

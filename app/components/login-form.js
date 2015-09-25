@@ -57,7 +57,6 @@ export default Ember.Component.extend({
         }
       },
       onSuccess() {
-        debugger
         self.sendAction('login');
       }
     });
