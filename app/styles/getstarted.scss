@@ -1,4 +1,7 @@
 .getstarted-container {
+  @include flex-grow();
+  background: #fff;
+  height: 100%;
   padding-top: 55px;
   .content-container {
     display: table;
