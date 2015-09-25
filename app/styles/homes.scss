@@ -117,6 +117,10 @@
           }
         }
       }
+      .results {
+        // Hide semantics template
+        display: none !important;
+      }
       .home-results {
         right: 0px;
         width: auto;

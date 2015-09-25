@@ -26,7 +26,9 @@ Router.map(function() {
             this.route('title');
             this.route('submit');
           });
-          this.route('job');
+          this.route('job', function() {
+            this.route('category');
+          });
         });
         this.route('transactions', {
           resetNamespace: true

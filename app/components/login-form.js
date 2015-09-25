@@ -5,15 +5,23 @@ export default Ember.Component.extend({
     'signin-container',
     'login'
   ],
+  addErrors(errors) {
+    this.$('.ui.form').form('add errors', errors);
+  },
   actions: {
     login(provider) {
-      if (!provider) {
-        this.get('sessionService').authenticateUser(this.get('session'), {
-          identification: this.get('identification'),
-          password: this.get('password')
-        });
-      } else {
-        this.sendAction('login', provider);
+      if (this.$('.ui.form').form('is valid')) {
+        if (!provider) {
+          this.get('sessionService').authenticateUser(this.get('session'), {
+            identification: this.get('identification'),
+            password: this.get('password')
+          }).fail( (error) => {
+            let errors = [error.error]
+            this.addErrors(errors);
+          });
+        } else {
+          this.sendAction('login', provider);
+        }
       }
     },
     register() {
@@ -28,11 +36,20 @@ export default Ember.Component.extend({
             password_confirmation: self.get('password')
           }
         }
-      }).done(function (response) {
+      }).done( (response) => {
         self.send('login');
         self.sendAction('registered');
-      }).fail(function (error) {
-        console.log(response);
+      }).fail( (error) => {
+        let response = error.responseJSON.errors;
+        let errors = [];
+        Object.keys(response).forEach((key) => {
+          let messages = response[key].map((message) => {
+            return `${key[0].toUpperCase()}${key.slice(1)} ${message}`
+          })
+          errors = errors.concat(messages)
+        })
+
+        this.addErrors(errors);
       });
     }
   },
@@ -40,6 +57,7 @@ export default Ember.Component.extend({
     var self = this;
     this.$('.ui.form').form({
       on: 'submit',
+      inline: true,
       fields: {
         email: {
           identifier: 'identification',

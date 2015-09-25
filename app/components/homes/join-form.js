@@ -17,6 +17,7 @@ export default Ember.Component.extend({
       apiSettings: {
         url: '/api/v1/homes/search?filter={query}'
       },
+      cache: false,
       onSearchQuery() {
         self.$('home-results').addClass('loader');
         self.set('selectedHome', null);
@@ -65,6 +66,9 @@ export default Ember.Component.extend({
     }
   },
   actions: {
+    findHomes() {
+      this.$('.ui.search').search('query');
+    },
     homeSelected(home) {
       var selectedHome = this.get('selectedHome');
       if (selectedHome) {

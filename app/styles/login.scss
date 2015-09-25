@@ -34,17 +34,20 @@
     background-color: transparent;
     box-shadow: none;
     border: none;
-    .field.valid {
-      input{
-        border-color: #52A954;
-        border-left: none;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-        box-shadow: 0.1em 0em 0em 0em #52A954 inset;
+    .field {
+      &.valid {
+        input{
+          border-color: #52A954;
+          border-left: none;
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+          box-shadow: 0.1em 0em 0em 0em #52A954 inset;
+        }
       }
-      .corner.label {
-        border-color: #52A954;
+      .pointing.label {
+        width: 100%;
       }
+
     }
 
 

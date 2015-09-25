@@ -43,6 +43,28 @@ export default {
       value: 9
     }
   ],
+  ChoreCategories: [
+    {
+      label: 'Cleaning',
+      value: 0
+    },
+    {
+      label: 'Trash',
+      value: 1
+    },
+    {
+      label: 'Utilities',
+      value: 2
+    },
+    {
+      label: 'Managment',
+      value: 3
+    },
+    {
+      label: 'Other',
+      value: 4
+    }
+  ],
   FeedAudienceScope: {
     Me: 1,
     Home: 2,
