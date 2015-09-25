@@ -29,7 +29,6 @@
     "ember-cli-dependency-checker": "^1.0.1",
     "ember-cli-deploy": "0.4.3",
     "ember-cli-dotenv": "^1.0.2",
-    "ember-cli-ga": "^0.1.4",
     "ember-cli-htmlbars": "0.7.9",
     "ember-cli-htmlbars-inline-precompile": "^0.2.0",
     "ember-cli-ic-ajax": "0.2.1",
