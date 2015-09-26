@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import Enums from 'web/enums';
+import formatMoney from 'accounting/format-money';
+import unformat from 'accounting/unformat';
 
 export default Ember.Route.extend({
   categories: Enums.TransactionCategories,
@@ -27,12 +29,28 @@ export default Ember.Route.extend({
     }
   },
   model() {
+    let self = this;
     return {
       transaction: this._$modelDefaults.getModelType( "transaction", {
         user: this.session.get('authUser'),
         home: this.session.get('currentHome')
       }),
-      categories: this.get('categories')
+      categories: this.get('categories'),
+      currencyValue: Ember.computed('currentModel.transaction.cost', {
+        get(key) {
+          let val = self.get('currentModel.transaction.cost');
+          if (!val) {
+            return val;
+          } else {
+            return formatMoney(val);
+          }
+        },
+        set(key, value) {
+          let val = value ? unformat(value) : value
+          self.set('currentModel.transaction.cost', val);
+          return formatMoney(value);
+        }
+      })
     }
   },
   save(obj) {

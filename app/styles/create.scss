@@ -91,4 +91,7 @@
 }
 .cost, .split {
   text-align: center;
+  input {
+    text-align: center !important;
+  }
 }

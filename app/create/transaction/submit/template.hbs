@@ -1,9 +1,15 @@
 <div class="submit">
   <div class="ui form">
     <div class="cost">
-      <div class="ui huge transparent input">
-        {{input value=model.transaction.cost type="text" placeholder="How much did it cost you?" name="cost"}}
+      <div cass="field">
+        <label>
+          <h2 class='ui centered header'>How much did it cost?</h2>
+        </label>
+        <div class="ui huge transparent input">
+          {{input value=model.transaction.cost type="text" placeholder="$0.00" name="cost"}}
+        </div>
       </div>
+
     </div>
     <div class="description">
       <div class="field">
