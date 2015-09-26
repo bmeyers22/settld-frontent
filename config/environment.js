@@ -3,7 +3,7 @@ module.exports = function(environment) {
     modulePrefix: 'web',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {
       }
@@ -47,6 +47,10 @@ module.exports = function(environment) {
     },
     APP: {
       MOBILE_APP: false
+    },
+    cordova: {
+      rebuildOnChange: false,
+      emulate: false
     },
     contentSecurityPolicy: {
       'default-src': "'self'",
