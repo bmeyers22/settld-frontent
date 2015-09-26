@@ -1,12 +1,10 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend(ApplicationRouteMixin, {
+export default Ember.Route.extend({
+  sessionService: Ember.inject.service('session'),
   actions: {
-    toggleGroupsBar: function() {
-      return Ember.run(function() {
-        return $('.groups-bar').sidebar('toggle');
-      });
+    invalidateSession() {
+      this.get('sessionService').invalidateSession(this.get('session'));
     }
   }
 });

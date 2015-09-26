@@ -1,6 +1,6 @@
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper main-wrapper">
   <div class="overview-wrapper">
     {{outlet}}
   </div>
-  {{render "feeds/dashboard"}}
+  {{feeds/abstract-feed model=model stream=stream openActionBar='openActionBar' }}
 </div>

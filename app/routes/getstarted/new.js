@@ -3,13 +3,13 @@ import Ember from 'ember';
 
 var GetstartedNewRoute = Ember.Route.extend({
   actions: {
-    cancelCreate: function(home) {
+    cancelCreate(home) {
       this.transitionTo('getstarted');
     },
-    saveHome: function(home) {
+    saveHome(home) {
       let settings = this.session.get('userSettings'),
         self = this;
-      settings.set('isUserConfigured', true);
+      settings.set('isGroupConfigured', true);
       settings.set('defaultHome', home.get('id'));
       settings.save().then( function (settings) {
         self.transitionTo('app');

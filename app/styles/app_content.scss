@@ -8,4 +8,12 @@
   bottom: 73px;
   left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  .main-wrapper {
+    @include flex-grow();
+  }
 }

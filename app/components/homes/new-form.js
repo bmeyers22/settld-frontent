@@ -8,13 +8,13 @@ export default Ember.Component.extend({
       this.sendAction('cancel');
     }
   },
-  didInsertElement: function() {
+  didInsertElement() {
     var self = this;
     this.$('.state-dropdown').dropdown({});
     this.$('.why-rent').popup({});
     this.$('.ui.form.new-home').form({
       on: 'blur',
-      onSuccess: function() {
+      onSuccess() {
         self.sendAction('create', {
           name: self.get('name'),
           address: self.get('address'),
@@ -27,7 +27,7 @@ export default Ember.Component.extend({
           passwordConfirmation: self.get('passwordConfirmation')
         });
       },
-      onFailure: function() {},
+      onFailure() {},
       fields: {
         name:
           {identifier: 'name',

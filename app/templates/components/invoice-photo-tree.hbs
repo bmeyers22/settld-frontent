@@ -1,0 +1,21 @@
+<div class="primary">
+  {{user-image user=primaryUser}}
+</div>
+<div class="secondary">
+  {{#each invoices as |invoice|}}
+    <div class="ui fade reveal image">
+      <div class="visible content">
+        {{#if (invoice-action-taken invoice.data)}}
+          <div class="paid-overlay">
+            {{#if invoice.data.paid}}<i class="green large check icon"></i>{{/if}}
+            {{#if invoice.data.paymentPending}}<i class="yellow large clock icon"></i>{{/if}}
+            {{#if invoice.data.paymentRejected}}<i class="red large remove icon"></i>{{/if}}
+          </div>
+        {{/if}}
+      </div>
+      <div class="hidden content">
+        {{user-image user=invoice.user}}
+      </div>
+    </div>
+  {{/each}}
+</div>

@@ -1,14 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left'],
-  invoicesSum: function () {
+  classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left', 'dimmable', 'blurring'],
+  invoicesSum: Ember.computed('invoices.[]', function () {
     let sum = 0;
     this.get('invoices').forEach( (inv) => {
       sum += inv.get('amount');
     })
     return sum;
-  }.property('invoices.[]'),
+  }),
   didInsertElement() {
     this.$().sidebar({
       context: $('.global-wrapper'),
@@ -30,7 +30,7 @@ export default Ember.Component.extend({
   },
   actions: {
     toggleBar() {
-      this.sendAction('toggleBar');
+      this.$().sidebar('toggle');
     },
     removeInvoice(inv) {
       this.sendAction('removeInvoice', inv);
@@ -76,11 +76,18 @@ export default Ember.Component.extend({
         }).reduce(function (a, b) {
           return a.concat(b);
         });
-        self.sendAction('paymentComplete', invoices);
+        self.$('.dimmer').dimmer('show');
+        setTimeout(function () {
+          self.$('.dimmer').dimmer('hide');
+          self.send('paymentComplete', invoices);
+          self.send('toggleBar');
+        }, 700);
       }).catch(function (error) {
         console.log(error);
       });
     },
-
-    markPaid() {}}
+    paymentComplete(invoices) {
+      this.sendAction('paymentComplete', invoices);
+    }
+  }
 });

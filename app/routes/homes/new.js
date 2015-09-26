@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 var HomesNewRoute = Ember.Route.extend({
   actions: {
-    cancelCreate: function(home) {
+    cancelCreate(home) {
       this.transitionTo('homes');
     },
-    saveHome: function(home) {
+    saveHome(home) {
       this.transitionTo('homes');
     }
   }

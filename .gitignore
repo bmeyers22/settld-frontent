@@ -9,6 +9,7 @@
 /node_modules
 /bower_components
 
+
 # misc
 /.sass-cache
 /connect.lock
@@ -16,3 +17,5 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+.env
+app/index.html

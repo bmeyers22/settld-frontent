@@ -2,10 +2,16 @@ import { ActiveModelSerializer } from 'active-model-adapter';
 
 var ApplicationSerializer = ActiveModelSerializer.extend({
   primaryKey: '_id',
-  serializeHasMany: function(record, json, relationship) {
+  serializeHasMany(record, json, relationship) {
     var key = relationship.key;
     // don't care which kind of hasMany relationship this is
-    return json[key] = Ember.get(record, key).mapBy('id');
+    let records = Ember.get(record, key);
+    if (records) {
+      return json[key] = records.mapBy('id');
+    } else {
+      return json[key] = []
+    }
+
   }
 });
 

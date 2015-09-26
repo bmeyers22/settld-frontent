@@ -2,8 +2,12 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 var Job = DS.Model.extend(
-  {user: DS.belongsTo('user'),
-  home: DS.belongsTo('home'),
+  {user: DS.belongsTo('user', {
+    async: false
+  }),
+  home: DS.belongsTo('home', {
+    async: false
+  }),
   title: DS.attr('string'),
   description: DS.attr('string'),
   points: DS.attr('number'),

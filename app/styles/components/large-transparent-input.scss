@@ -1,0 +1,22 @@
+.large-transparent-input {
+  @include flex-grow();
+  @include align-items(center);
+  text-align: center !important;
+  label {
+    .header {
+      margin-bottom: 50px !important;
+    }
+  }
+  input {
+    text-align: center !important;
+  }
+  > .ui.button.submit {
+    opacity: 0 !important;
+    margin-top: 50px !important;
+    -webkit-transition: opacity 1s;
+            transition: opacity 1s;
+    &.valid {
+      opacity: 1 !important;
+    }
+  }
+}

@@ -7,32 +7,62 @@
   .grid.filters {
     margin: 0;
   }
+
+  .empty-feed {
+    .header {
+      margin-bottom: 30px;
+    }
+    margin: 50px;
+  }
   .ui.feed {
     .event {
       position: relative;
-      padding: 5px;
+      padding: 0 5px 5px 5px;
       border-bottom: 1px solid #ddd;
       &:first-of-type {
         border-top: 1px solid #ddd;
       }
       .label.image {
         padding: 0px 10px;
-        vertical-align: middle;
+        -webkit-align-self: center;
+            -ms-flex-item-align: center;
+                align-self: center;
         width: 4.5em;
       }
       .content {
+        margin-top: 0;
         padding: 0;
         .item-wrapper {
           width: 100%;
-          padding: 0.5em 0em 0.5em 1.25em;
+          padding: 0 0em 0.5em 1.25em;
           display: table;
           .info {
             width: 100%;
             vertical-align: top;
             display: table-cell;
             padding-right: 10px;
-            .date {
-              float: right;
+            .right-floated {
+              padding: 15px 0 0 0;
+            }
+            .summary {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-align: end;
+              -webkit-align-items: flex-end;
+                  -ms-flex-align: end;
+                      align-items: flex-end;
+              .text {
+                -webkit-box-flex: 1;
+                -webkit-flex-grow: 1;
+                    -ms-flex-positive: 1;
+                        flex-grow: 1;
+              }
+              .icons {
+                min-height: 22px;
+                text-align: right;
+              }
             }
           }
         }

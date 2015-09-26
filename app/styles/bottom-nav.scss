@@ -20,12 +20,12 @@
     color: #ddd;
   }
   .pay {
-    color: #21ba45;
+    color: $text-color-money;
   }
   .request {
     &.disbled {
       pointer-events: none;
     }
-    color: #2185d0;
+    color: $text-color-info;
   }
 }

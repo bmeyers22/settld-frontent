@@ -1,0 +1,54 @@
+@mixin transition-all($dur: $DEFAULT_TRANS_SPEED) {
+  -webkit-transition: $dur;
+  transition: $dur;
+}
+
+@mixin trbl0() {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin center-margin() {
+  margin: 0 auto;
+}
+
+// Flex box things
+
+@mixin flex-row() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+@mixin flex-column() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+}
+@mixin align-items($val) {
+  -webkit-box-align: $val;
+  -webkit-align-items: $val;
+  -ms-flex-align: $val;
+  align-items: $val;
+}
+@mixin justify-content($val) {
+  -webkit-box-pack: $val;
+  -webkit-justify-content: $val;
+  -ms-flex-pack: $val;
+  justify-content: $val;
+}
+@mixin flex-grow($val:1) {
+  -webkit-box-flex: $val;
+  -webkit-flex-grow: $val;
+  -ms-flex-positive: $val;
+  flex-grow: $val;
+}

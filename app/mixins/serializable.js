@@ -2,7 +2,7 @@ import ember from 'ember';
 var Serializable;
 
 Serializable = Ember.Mixin.create({
-  serialize: function() {
+  serialize() {
     var key, result;
     result = {};
     for (key in $.extend(true, {}, this)) {

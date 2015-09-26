@@ -1,23 +1,11 @@
-{{log invoice}}
+
 <div class="column hidden content" {{action "hideOptions" on="tap"}}>
   <div class="ui mini red button" {{action "remove" invoice}}> Remove </div>
 </div>
 <div class="column visible content" {{action "showOptions" on="panLeft"}}>
   <div class="ui center aligned grid">
     <div class="four wide column">
-      {{#if user.image}}
-        <img
-          class="ui avatar image popup"
-          src={{invoice.transaction.user.image}}
-          data-content={{invoice.transaction.user.firstName}}
-          data-variation="mini" />
-      {{else}}
-        <i
-          class="circular user icon popup"
-          data-content="user"
-          data-variation="mini">
-        </i>
-      {{/if}}
+      {{user-image user=user}}
     </div>
     <div class="seven wide title column">
       <div>{{invoice.transaction.title}}</div>
@@ -27,7 +15,6 @@
       <div class="currency">{{format-money invoice.amount}}</div>
       <div class="ui payment toggle checkbox">
         {{input type="checkbox" name="paymentMethod" checked=paymentMethod}}
-        <input type="checkbox" name="paymentMethod">
         <label>
           <i class="dollar icon"></i>
         </label>

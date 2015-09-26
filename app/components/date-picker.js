@@ -3,7 +3,7 @@ import Ember from 'ember';
 var DatePicker = Ember.Component.extend({
   classNames: ['date-group', 'date', 'field', 'ui', 'icon', 'input'],
   tabindex: 100,
-  didInsertElement: function() {
+  didInsertElement() {
     var self = this;
     return this.$().datepicker(
       {autoclose: true,

@@ -1,8 +1,8 @@
-<div class="transactions-wrapper">
+<div class="transactions-wrapper main-wrapper">
   <div class="overview-wrapper">
     <div class="overview-content">
       {{outlet}}
     </div>
   </div>
-  {{render "feeds/transactions"}}
+  {{feeds/abstract-feed stream=model.transactions }}
 </div>

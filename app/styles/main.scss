@@ -2,29 +2,26 @@
 @import "resets";
 
 body {
-  background: #fff;
+  background-color: #333;
   font-size: 16px;
-
-  &:after {
-    content: "";
-    background: url('/assets/images/bg3.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    opacity: .8;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: fixed;
-    z-index: -1;
-  }
+  overflow: visible;
+  // &:after {
+  //   content: "";
+  //   background: url('/assets/images/bg3.jpg') no-repeat center center fixed;
+  //   background-size: cover;
+  //   opacity: .8;
+  //   top: 0;
+  //   left: 0;
+  //   bottom: 0;
+  //   right: 0;
+  //   position: fixed;
+  //   z-index: -1;
+  // }
 
   #application {
     height: 100%;
 
-    .application-outlet {
+    > .ember-view {
       height: 100%;
       display: -webkit-box;
       display: -webkit-flex;
@@ -34,6 +31,10 @@ body {
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
     }
   }
 
@@ -56,7 +57,7 @@ body {
     .invoice {
       background: #ffffff;
       padding: 10px 20px;
-      max-width: $APP_WIDTH;
+      max-width: $APP_MAX_WIDTH;
       margin: 0 auto;
       .close-button {
         text-align: right;
@@ -69,8 +70,6 @@ body {
           text-decoration: none;
           position: relative;
           .logo {
-            -webkit-border-radius: 4px 0px 0px 4px;
-            -moz-border-radius: 4px 0px 0px 4px;
             border-radius: 4px 0px 0px 4px;
             border: 1px solid;
             display: inline-block;
@@ -85,8 +84,6 @@ body {
             border-color: #3f94d0;
           }
           .label {
-            -webkit-border-radius: 0px 4px 4px 0px;
-            -moz-border-radius: 0px 4px 4px 0px;
             border-radius: 0px 4px 4px 0px;
             border: 1px solid;
             border-left: 0;

@@ -49,7 +49,7 @@ ModelDefaults = Ember.Service.extend({
   name: "_$modelDefaults",
   availableIn: ['controllers', 'routes'],
   getDefaults: getDefaults,
-  getModelType: function(type, properties) {
+  getModelType(type, properties) {
     if (properties == null) {
       properties = {};
     }

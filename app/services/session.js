@@ -1,13 +1,36 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  authenticateUser(session, credentials) {
-    session.authenticate('simple-auth-authenticator:devise', credentials);
+  authenticateUser(session, authData) {
+    if (authData.provider) {
+      authData.provider = authData.provider.replace('-oauth2', '');
+      return session.authenticate('authorizer:social', {
+        provider: authData.provider,
+        credentials: {
+          token: authData.authorizationCode
+        }
+      });
+    } else {
+      return session.authenticate('simple-auth-authenticator:devise', authData);
+    }
   },
+  invalidateSession(session) {
+    session.invalidate()
+    const route = this;
+    // session.close();
+  },
+  refresh(session, store) {
+    return this.initializeUser(session, store);
+  },
+  // accessDenied() {
+  //   this.transitionTo('login');
+  // },
   getSessionData(session) {
     return Ember.$.ajax('/session/refresh', {
       method: "GET",
       dataType: "json",
+    }).fail(function () {
+      session.invalidate();
     });
   },
   initializeUser(session, store) {
@@ -17,23 +40,25 @@ export default Ember.Service.extend({
       // data stored in raw_data
       let current = data.raw_data,
         pushData = $.extend(true, {}, {
-          users: [ current.user ],
-          userSettings: current.settings,
-          userInfos: current.infos,
-          homes: current.homes
+          'users': [ current.user ],
+          'user-settings': current.settings,
+          'user-infos': current.infos,
+          'homes': current.homes
         });
       // Create objects in store from raw data so they are normalized
       store.pushPayload(pushData);
       let user = store.peekRecord('user', current.user._id);
       let userSettings = store.peekRecord('userSetting', current.settings[0]._id);
-      let userInfos = store.peekAll('userInfo');
       user.set('settings', userSettings);
       session.set('authUser', user);
       session.set('CURRENT_USER_ID', user.id);
       session.set('userSettings', user.get('settings'));
-      let configured = userSettings.get('isUserConfigured')
+      let groupConfigured = userSettings.get('isGroupConfigured')
       session.set('initialized', true);
-      if (configured) {
+      if (groupConfigured) {
+        let userInfos = current.infos.map((info) => {
+          return store.peekRecord('userInfo', info._id);
+        })
         let homes = store.peekAll('home');
         session.set('currentHome', homes.find(function(home) {
           return home.get('id') === userSettings.get('defaultHome');
