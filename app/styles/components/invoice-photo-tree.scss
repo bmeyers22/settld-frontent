@@ -2,6 +2,7 @@
   margin: 20px 0;
   @include flex-column();
   @include align-items(center);
+  text-align: center;
   .primary {
     .ui.image {
       height: 120px;
@@ -14,14 +15,16 @@
   .secondary {
     @include flex-row();
     .visible.content {
+      @include flex-column();
+      @include justify-content(flex-end);
       height: 100%;
       width: 100%;
       .paid-overlay {
         @include flex-row();
         @include align-items(center);
         @include justify-content(center);
-        height: 100%;
-        width: 100%;
+        height: 50px;
+        width: 50px;
         border-radius: 50%;
         background: rgba(105, 105, 105, 0.75);
         > i {

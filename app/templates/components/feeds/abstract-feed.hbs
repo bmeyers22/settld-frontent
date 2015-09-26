@@ -1,4 +1,5 @@
 <div class="feed-wrapper">
+  {{#if hasStream}}
   <div class="feed-panel">
     <div class="left">
     </div>
@@ -24,18 +25,17 @@
       </div>
     </div>
   </div>
-  {{#if hasStream}}
-    <div class="ui feed">
-      {{#each stream as |item|}}
-        {{feed-item item=item openActionBar=(action "openActionBar") user=session.authUser}}
-      {{/each}}
-    </div>
+  <div class="ui feed">
+    {{#each stream as |item|}}
+      {{feed-item item=item openActionBar=(action "openActionBar") user=session.authUser}}
+    {{/each}}
+  </div>
   {{else}}
-    <div class="empty-feed ui yellow message">
-      <div class="header">
-        You have nothing in your feed!
-      </div>
-      <p>Transactions and chores will show up here. Click {{link-to 'here' 'create.transaction'}} to add something :)</p>
+  <div class="empty-feed ui yellow message">
+    <div class="header">
+      You have nothing in your feed!
     </div>
+    <p>Transactions and chores will show up here. Click {{link-to 'here' 'create'}} to add something :)</p>
+  </div>
   {{/if}}
 </div>

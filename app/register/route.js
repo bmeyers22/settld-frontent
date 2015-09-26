@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var Register = Ember.Route.extend({
+export default Ember.Route.extend({
   sessionService: Ember.inject.service('session'),
   model() {
     return this.session.get('authUser');
@@ -42,5 +42,3 @@ var Register = Ember.Route.extend({
     }
   }
 });
-
-export default Register

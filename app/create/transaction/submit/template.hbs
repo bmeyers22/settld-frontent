@@ -6,7 +6,7 @@
           <h2 class='ui centered header'>How much did it cost?</h2>
         </label>
         <div class="ui huge transparent input">
-          {{input value=model.transaction.cost type="text" placeholder="$0.00" name="cost"}}
+          {{input value=model.transaction.cost type="number" min="0" step=".01" placeholder="$0.00" name="cost"}}
         </div>
       </div>
 

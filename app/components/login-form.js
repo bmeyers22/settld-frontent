@@ -10,19 +10,19 @@ export default Ember.Component.extend({
   },
   actions: {
     login(provider) {
-      if (this.$('.ui.form').form('is valid')) {
         if (!provider) {
-          this.get('sessionService').authenticateUser(this.get('session'), {
-            identification: this.get('identification'),
-            password: this.get('password')
-          }).fail( (error) => {
-            let errors = [error.error]
-            this.addErrors(errors);
-          });
+          if (this.$('.ui.form').form('is valid')) {
+            this.get('sessionService').authenticateUser(this.get('session'), {
+              identification: this.get('identification'),
+              password: this.get('password')
+            }).fail( (error) => {
+              let errors = [error.error]
+              this.addErrors(errors);
+            });
+          }
         } else {
           this.sendAction('login', provider);
         }
-      }
     },
     register() {
       let self = this;

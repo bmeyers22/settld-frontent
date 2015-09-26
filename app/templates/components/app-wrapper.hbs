@@ -23,7 +23,7 @@
   <div class="ui global-action-bar bottom sidebar vertical fluid menu" {{action 'closeActionBar'}}>
     {{log actionMenuComponent}}
     {{log actionMenuModel}}
-    {{component actionMenuComponent model=actionMenuModel}}
+    {{component actionMenuComponent model=actionMenuModel addInvoiceToPayments='addInvoiceToPayments'}}
   </div>
   {{user-top-bar
     session=session

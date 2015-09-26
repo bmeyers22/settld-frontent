@@ -1,4 +1,5 @@
 .user-image {
+  @include flex-column();
   .icon {
     font-size: $image-icon-size;
   }

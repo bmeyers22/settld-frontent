@@ -4,6 +4,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['global-wrapper', 'pushable'],
   actions: {
+    addInvoiceToPayments(invoice) {
+      this.sendAction('addInvoiceToPayments', invoice);
+    },
     togglePaymentsBar() {
       this.sendAction('togglePaymentsBar');
     },

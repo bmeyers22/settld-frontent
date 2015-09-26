@@ -24,6 +24,9 @@ export default Ember.Component.extend({
     })
   }),
   actions: {
+    addInvoiceToPayments(invoice) {
+      this.sendAction('addInvoiceToPayments', invoice);
+    },
     markPaid(invoice) {
       invoice.setProperties({
         paid: true,

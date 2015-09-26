@@ -35,7 +35,8 @@ export default Ember.Route.extend({
       $('.payments-bar').sidebar('toggle');
     },
     closeActionBar() {
-      this.set('actionMenuComponent', null);
+      $('.global-action-bar').sidebar('hide');
+      this.set('actionMenuComponent', '');
     },
     openActionBar(model) {
       this.set('currentModel.actionMenuModel', model);

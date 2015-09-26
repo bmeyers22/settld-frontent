@@ -82,14 +82,10 @@ export default Ember.Component.extend({
       return;
     },
     joinHome() {
-      let selectedHome = null;
-      if (selectedHome = !this.get('selectedHome')) {
-        return
-      }
       let self = this;
       return new Ember.RSVP.Promise(function(resolve, reject) {
         return ($.post('/api/v1/homes/join', {
-          home: selectedHome.serialize()
+          home: self.get('selectedHome').serialize()
         }, resolve)).fail(reject);
       }).then(function(data) {
         return self.joinCallback(data);
