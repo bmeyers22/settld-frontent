@@ -1,0 +1,6 @@
+{{#each model.members as |member|}}
+  <div class="member-wrapper">
+    {{user-image user=member.user}}
+    {{member.info.choresToDo}}
+  </div>
+{{/each}}

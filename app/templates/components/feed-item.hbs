@@ -1,3 +1,12 @@
+{{#if isTransaction}}
+  <div class="item-type transaction">
+    <i class="dollar icon"></i>
+  </div>
+{{else}}
+  <div class="item-type job">
+    <i class="briefcase icon"></i>
+  </div>
+{{/if}}
 <div class="label image">
   {{user-image user=user}}
 </div>
@@ -8,9 +17,11 @@
         <div class="text">{{displayName}} {{actionName}} {{item.title}}</div>
         <div>
           <div class="icons">
-            {{#if pendingInvoice}}<i class="mini yellow clock icon"></i>{{/if}}
-            {{#if rejectedInvoice}}<i class="mini red remove icon"></i>{{/if}}
-            {{#if paidInvoice}}<i class="mini green check icon"></i>{{/if}}
+            {{#if isTransaction}}
+              {{#if pendingInvoice}}<i class="mini yellow clock icon"></i>{{/if}}
+              {{#if rejectedInvoice}}<i class="mini red remove icon"></i>{{/if}}
+              {{#if paidInvoice}}<i class="mini green check icon"></i>{{/if}}
+            {{/if}}
           </div>
           {{fuzzy-time item.date}}
         </div>

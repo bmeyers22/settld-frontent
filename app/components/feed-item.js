@@ -6,18 +6,25 @@ export default Ember.Component.extend({
   classNames: ['event'],
   transactionsService: Ember.inject.service('transactions'),
   click() {
-    this.sendAction('openActionBar', this.get('item'));
+    if (this.get('isTransaction')) {
+      this.sendAction('openActionBar', this.get('item'));
+    }
   },
-  classType: Ember.computed(function() {
+  isTransaction: Ember.computed(function() {
     var model;
     model = this.get('item');
-    if (model instanceof Transaction) {
-      return 'transaction';
-    } else if (model instanceof Job) {
-      return 'job';
-    } else {
-      return '';
+    if (model.constructor.modelName === 'transaction') {
+      return true;
     }
+    return false
+  }),
+  isJob: Ember.computed(function() {
+    var model;
+    model = this.get('item');
+    if (model.constructor.modelName === 'transaction') {
+      return true;
+    }
+    return false
   }),
   iconType: Ember.computed('classType', function() {
     var base, classType;

@@ -102,6 +102,8 @@
 }
 
 .join-home-wrapper {
+  width: 90%;
+  margin: 0 auto;
   transition-property: .5s height;
   -moz-transition-property: .5s height; /* Firefox 4 */
   -webkit-transition-property:.5s height; /* Safari and Chrome */

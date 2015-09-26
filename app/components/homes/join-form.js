@@ -44,10 +44,6 @@ export default Ember.Component.extend({
           }]
         }
       },
-      on: 'blur',
-      onInvalid(e) {
-        console.log(e);
-      },
       onSuccess() {
         self.$('.submit.join').addClass('loading');
         self.send('joinHome');
@@ -86,10 +82,14 @@ export default Ember.Component.extend({
       return;
     },
     joinHome() {
+      let selectedHome = null;
+      if (selectedHome = !this.get('selectedHome')) {
+        return
+      }
       let self = this;
       return new Ember.RSVP.Promise(function(resolve, reject) {
         return ($.post('/api/v1/homes/join', {
-          home: self.get('selectedHome').serialize()
+          home: selectedHome.serialize()
         }, resolve)).fail(reject);
       }).then(function(data) {
         return self.joinCallback(data);

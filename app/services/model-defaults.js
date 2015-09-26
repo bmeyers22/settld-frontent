@@ -39,7 +39,7 @@ copyFn = function(defaults) {
 
 createDefaultsObject = function(defaults, properties) {
   var attrs, obj;
-  attrs = _.extend(defaults, properties);
+  attrs = $.extend(true, {}, defaults, properties);
   attrs.copy = copyFn(defaults);
   obj = Ember.Object.extend(Ember.Copyable, attrs);
   return obj.create();

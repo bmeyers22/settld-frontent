@@ -21,7 +21,9 @@
   paymentComplete='paymentComplete'}}
 <div class="global-content pusher pushable">
   <div class="ui global-action-bar bottom sidebar vertical fluid menu" {{action 'closeActionBar'}}>
-    {{outlet 'actionsBar'}}
+    {{log actionMenuComponent}}
+    {{log actionMenuModel}}
+    {{component actionMenuComponent model=actionMenuModel}}
   </div>
   {{user-top-bar
     session=session

@@ -15,7 +15,7 @@
   }
 }
 
-.transaction-categories {
+.categories {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,7 +41,7 @@
     text-transform: uppercase;
   }
 }
-.transaction-title {
+.title {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +59,7 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-.transaction-submit {
+.submit {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -89,6 +89,6 @@
     }
   }
 }
-.transaction-cost, .transaction-split {
+.cost, .split {
   text-align: center;
 }

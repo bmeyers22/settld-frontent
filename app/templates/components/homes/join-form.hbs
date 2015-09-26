@@ -2,7 +2,7 @@
 <div class="join-home-wrapper">
   <div class="search-form-wrapper">
     <div class="ui search join-search-form">
-      <div class="ui segment home-results form">
+      <div class="ui home-results form">
         <div class="ui icon fluid input">
           <i {{action 'findHomes'}} class="search link icon"></i>
           <input class="prompt" type="text" name="query" value={{query}} autocomplete="on" placeholder="Search..." />
@@ -38,21 +38,23 @@
         {{/if}}
       </div>
       <div class="results"></div>
-      <div class="ui form segment join-password">
-        <div class="field">
-          <label>
-            Password
-          </label>
-          {{input type="password" name="password" placeholder="Home password" value=selectedHome.password disabled=noSelectedHome}}
+      {{#unless noSelectedHome}}
+        <div class="ui form join-password">
+          <div class="field">
+            <label>
+              Password
+            </label>
+            {{input type="password" name="password" placeholder="Home password" value=selectedHome.password}}
+          </div>
+          <div class="ui green submit join button">
+            <span class="submit-text">
+              Join
+            </span>
+          </div>
+          <div class="ui error message">
+          </div>
         </div>
-        <div class="ui green submit join button">
-          <span class="submit-text">
-            Join
-          </span>
-        </div>
-        <div class="ui error message">
-        </div>
-      </div>
+      {{/unless}}
     </div>
   </div>
 </div>

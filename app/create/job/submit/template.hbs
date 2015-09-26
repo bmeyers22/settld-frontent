@@ -1,0 +1,11 @@
+<div class="submit">
+  <div class="ui form">
+    <div class="description">
+      <div class="field">
+        <label>Description:</label>
+        {{textarea value=model.job.description}}
+      </div>
+    </div>
+    <div class="large ui button green fluid" {{action "complete"}}>Submit</div>
+  </div>
+</div>

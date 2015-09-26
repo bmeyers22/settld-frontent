@@ -3,11 +3,15 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model() {
     return {
-      invoices: Ember.Set.create()
+      invoices: Ember.Set.create(),
+      actionMenuComponent: null,
+      actionMenuModel: null
     }
   },
   actionBarMap: {
-    transaction: 'transactions/actions-menu'
+    transaction:  {
+      component: 'transactions/actions-menu'
+    }
   },
   actions: {
     paymentComplete(invoices) {
@@ -31,19 +35,12 @@ export default Ember.Route.extend({
       $('.payments-bar').sidebar('toggle');
     },
     closeActionBar() {
-      $('.global-action-bar').sidebar('hide');
-      return this.disconnectOutlet({
-        outlet: 'actionsBar'
-      });
+      this.set('actionMenuComponent', null);
     },
     openActionBar(model) {
+      this.set('currentModel.actionMenuModel', model);
+      this.set('currentModel.actionMenuComponent', this.get('actionBarMap')[model.constructor.modelName].component);
       $('.global-action-bar').sidebar('show');
-      this.render(this.get('actionBarMap')[model.constructor.modelName], {
-        into: 'app',
-        outlet: 'actionsBar',
-        model: model,
-        controller: 'actionsMenu'
-      });
     }
   }
 });

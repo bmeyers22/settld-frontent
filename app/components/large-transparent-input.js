@@ -7,9 +7,6 @@ export default Ember.Component.extend({
     let self = this,
       input = this.$('input'),
       submit = this.$('.submit');
-    if (this.attrs.focus) {
-      input.focus();
-    }
 
     input.keypress( (e) => {
       if (e.which == 13) {

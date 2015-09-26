@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var TransactionsIndexRoute = Ember.Route.extend({
+export default Ember.Route.extend({
   model(params) {
     return new Promise( (resolve, reject) => {
       let users = this.session.get('currentHome.users')
@@ -21,5 +21,3 @@ var TransactionsIndexRoute = Ember.Route.extend({
     });
   }
 });
-
-export default TransactionsIndexRoute

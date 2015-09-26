@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return this.modelFor('create.transaction');
   },
   afterModel(model, transition) {
-    if (model.get('category') === null || model.get('category') === undefined) {
+    if (model.transaction.get('category') === null || model.transaction.get('category') === undefined) {
       this.transitionTo('create');
     }
   }

@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return this.modelFor('create.transaction');
   },
   afterModel(model, transition) {
-    if (!model.get('title')) {
+    if (!model.transaction.get('title')) {
       this.transitionTo('create');
     }
   }

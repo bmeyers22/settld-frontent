@@ -28,6 +28,8 @@ Router.map(function() {
           });
           this.route('job', function() {
             this.route('category');
+            this.route('title');
+            this.route('submit');
           });
         });
         this.route('transactions', {

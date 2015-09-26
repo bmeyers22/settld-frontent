@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   transactionsService: Ember.inject.service('transactions'),
   unpaidInvoice: Ember.computed('model.invoices.@each.paid', 'model.invoices.@each.paymentPending', function () {
     if (this.get('model.user') === this.get('session.authUser')) {

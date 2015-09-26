@@ -18,10 +18,19 @@ module.exports = function(defaults) {
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
-  app.import('vendor/javascripts/jquery-ui.min.js');
+  app.import('bower_components/semantic-ui/dist/semantic.css');
+
   app.import('bower_components/lodash/lodash.min.js');
   app.import('bower_components/moment/min/moment.min.js');
+  app.import('bower_components/semantic-ui/dist/semantic.js');
   app.import('vendor/javascripts/semantic-mods.js');
+
+  var fontExtensions = ['.eot','.otf','.svg','.ttf','.woff','.woff2'];
+  for (var i = fontExtensions.length - 1; i >= 0; i--) {
+    app.import('bower_components/semantic-ui/dist/themes/default/assets/fonts/icons'+fontExtensions[i], {
+      destDir: 'assets/themes/default/assets/fonts'
+    });
+  };
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
   // object's keys should be the environment name and the values
