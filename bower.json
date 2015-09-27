@@ -19,7 +19,8 @@
     "qunit": "~1.18.0",
     "ember-simple-auth": "0.8.0",
     "hammerjs": "runspired/hammer.js#develop",
-    "pace": "vectart/pace#master"
+    "pace": "vectart/pace#master",
+    "uri.js": "~1.16.0"
   },
   "resolutions": {
     "ember": "1.13.9"
