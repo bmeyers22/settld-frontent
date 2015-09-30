@@ -38,10 +38,10 @@ Router.map(function() {
         this.route('jobs', {
           resetNamespace: true
         }, function() {});
-        this.route('settings', {
-          resetNamespace: true
-        }, function() {});
       });
+      this.route('settings', {
+        resetNamespace: true
+      }, function() {});
       this.route('homes', {
         resetNamespace: true
       }, function() {
@@ -71,5 +71,9 @@ Router.map(function() {
 
   this.route('login');
 
+  this.route('home', function() {
+    this.route('edit');
+    this.route('new');
+  });
 });
 export default Router

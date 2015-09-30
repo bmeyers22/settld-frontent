@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   audienceScope: Enums.FeedAudienceScope.Me,
   ENUMS: Enums,
   sortProp: ['date:desc'],
-  feed: Ember.computed('feedList.@each', function () {
+  feed: Ember.computed('feedList.[]', function () {
     let arr = Ember.A();
     this.get('feedList').forEach((list) => {
       arr.pushObjects(list.toArray());

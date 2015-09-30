@@ -2,74 +2,28 @@
 $header-height: 30px;
 
 
-.dashboard-wrapper {
-  width: 100%;
-  .overview-wrapper {
-    position: relative;
-    .overview-segment-container {
-      font-size: 0;
-      margin: 1rem;
-      .column {
-        .segment {
-          box-shadow: none;
-          padding: 0px 10px;
-          font-size: 1rem;
+.overview-wrapper {
+  position: relative;
+  padding: 20px;
+  .overview-segment-container {
+    font-size: 0;
+    margin: 1rem;
+    .column {
+      .segment {
+        box-shadow: none;
+        padding: 0px 10px;
+        font-size: 1rem;
 
-          .score {
-            font-size: 400%;
-            /* padding: 30px; */
-          }
+        .score {
+          font-size: 400%;
+          /* padding: 30px; */
+        }
 
-          .score-type {
-            font-size: 200%;
-            color: #777;
-          }
+        .score-type {
+          font-size: 200%;
+          color: #777;
         }
       }
-    }
-
-
-    .new-quick-add-form {
-      position: absolute;
-      .ui.dropdown .menu .item {
-        padding: 0.45em 1em !important;
-      }
-      .form-header {
-        &.transaction {
-          background: #A1CF64;
-        }
-        &.job {
-          background: #D95C5C;
-        }
-        height: $header-height;
-        padding: 5px;
-        color: #fff;
-        font-weight: bold;
-        position: absolute;
-        left: 0;
-        right: 0;
-      }
-      .close-quick-add {
-        position: absolute;
-        right: 0;
-        top: 3px;
-        color: #fff;
-      }
-      .form-wrapper {
-        position: absolute;
-        top: $header-height;
-        padding: 10px;
-        top: 30px;
-        left: 0px;
-        bottom: 0px;
-        right: 0px;
-      }
-      .cost-checkboxes {
-        margin-top: 30px;
-      }
-
-      // Mixins
-        @include trbl0()
     }
   }
 }

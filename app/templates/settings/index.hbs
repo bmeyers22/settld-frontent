@@ -1,256 +1,196 @@
 <div class="settings-wrapper main-wrapper" >
-  <div class="edit_settings_wrapper">
-    {{#editable-section model=model group=dataGroups.info as |section|}}
-    <h4 class="title">
-      <i class="fa fa-info"></i>Personal Info
-    </h4>
-    <div class="button-container">
-      <div class="ui tiny buttons save-cancel">
-        <div class="ui positive button" {{action 'saveEdit' target='section'}}><i class="icon check"></i></div>
-        <div class="or"></div>
-        <div class="ui button" {{action 'cancelEdit' target='section'}}><i class="icon close"></i></div>
-      </div>
-      <h4 class="edit-icon" {{action 'editSection' target='section' }}>
-        <i class="icon pencil"></i>
-      </h4>
-    </div>
-
-    <div class="clearfix"></div>
-    <div class="ui divider"></div>
-    <div class="content">
-      <div class="details">
-        <div class="ui two column grid">
-          <div class="column">
-            <div class="label_wrap">
-              <label> First Name: </label>
-          </div>
-          <span class="value">{{model.firstName}}</span>
-          </div>
-          <div class="column">
-            <div class="label_wrap">
-              <label> Last Name: </label>
-            </div>
-            <span class="value">{{model.lastName}}</span>
-          </div>
-        </div>
-        <div class="ui one column grid">
-          <div class="column">
-            <div class="label_wrap">
-              <label> Age: </label>
-            </div>
-            <span class="value">{{model.age}}</span>
-          </div>
-        </div>
-        <div class="ui one column grid">
-          <div class="column">
-            <div class="label_wrap">
-              <label> Email: </label>
-            </div>
-            <span class="value">{{model.email}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="editable">
-        <div class="ui form">
-          <div class="ui two column grid">
-            <div class="column">
-              <div class="field inline">
-                <label>First Name</label>
-                <div class="ui labeled input">
-                {{input type="text" name="firstName" value=model.firstName class="form-control"}}
-                </div>
-               </div>
-              </div>
-              <div class="column">
-                <div class="field inline">
-                  <label>Last Name:</label>
-                  <div class="ui labeled input">
-                  {{input type="text" name="lastName" value=model.lastName class="form-control"}}
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="ui one column grid">
-            <div class="column">
-              <div class="field inline">
-                <label> Age: </label>
-                <div class ="ui labeled input">
-                {{input type="text" name="age" value=model.age class="form-control"}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ui one column grid">
-            <div class="column">
-              <div class="field inline">
-                  <label>Email</label>
-                  <div class="ui labeled input">
-                  {{input type="email" name="email" value=model.email class="form-control"}}
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    {{/editable-section}}
-    <div class="clearfix"></div>
-    <div class="ui divider"></div>
-
-    {{#editable-section model=model group=dataGroups.password}}
-    <div class="clearfix"></div>
-    <div class="ui divider"></div>
-    <h4 class="title">
-      <i class="fa fa-lock"></i>Change Password
-    </h4>
-    <div class="button-container">
-      <div class="ui tiny buttons save-cancel">
-        <div class="ui positive button" {{action 'saveEdit' target='section'}}><i class="icon check"></i></div>
-        <div class="or"></div>
-        <div class="ui button" {{action 'cancelEdit' target='section'}}><i class="icon close"></i></div>
-      </div>
-      <h4 class="edit-icon" {{action 'editSection' target='section'}}>
-        <i class="icon pencil"></i>
-      </h4>
-    </div>
-    <div class="clearfix"></div>
-    <div class="content">
-        <div class="details">
-        </div>
-          <div class="editable">
-            <div class="password_edit_wrapper">
-              <div class="ui form">
-                <div class="field inline">
-                  <label>Current Password:</label>
-                  <div class="ui labeled input">
-                  {{input type="password" email="email" value=session.authUser.current_password class="form-control"}}
-                  </div>
-                </div>
-                <div class="field inline">
-                  <label>New Password:</label>
-                     <div class="ui labeled input">
-                    {{input type="password" password="password" value=session.authUser.password class="form-control"}}
-                   </div>
-                </div>
-                <div class="field inline">
-                  <label>Password Confirmation:</label>
-                      <div class="ui labeled input">
-                        {{input type="password" password_confirmation="password_confirmation" value=session.authUser.password_confirmation class="form-control"}}
-                    </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-    </div>
-
-    {{/editable-section}}
-    <div class="clearfix"></div>
-    <div class="ui divider"></div>
-    {{#editable-section model=model group=dataGroups.password}}
-      <div class="privacy_wrap">
+  <div class="edit-settings-wrapper">
+    {{#editable-section model=model group=dataGroups.info as |editSection saveEdit cancelEdit|}}
+      <div class="header">
         <h4 class="title">
-          <i class="fa fa-eye"></i>Privacy Setting
+          <i class="fa fa-info"></i>Personal Info
         </h4>
         <div class="button-container">
           <div class="ui tiny buttons save-cancel">
-            <div class="ui positive button" {{action 'saveEdit' target='section'}}><i class="icon check"></i></div>
+            <div class="ui positive button" {{action saveEdit}}><i class="icon check"></i></div>
             <div class="or"></div>
-            <div class="ui button" {{action 'cancelEdit' target='section'}}><i class="icon close"></i></div>
+            <div class="ui button" {{action cancelEdit}}><i class="icon close"></i></div>
           </div>
-                {{#if settings.hasPublicProfile}}
-                <div class="ui form">
-                  <div class="inline field">
-                    <div class="ui toggle checkbox pj-left-label">
-                        <input id="privacy" type="checkbox" checked="checked">
-                        <label for="privacy">Public</label>
-                    </div>
-                  </div>
-                </div>
-                {{else}}
-                <div class="ui form">
-                  <div class="inline field">
-                    <div class="ui toggle checkbox">
-                      <div class="checkbox_align">
-                          <input id="privacy" type="checkbox">
-                          <label for="privacy">Private</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {{/if}}
+          <h4 class="edit-icon" {{action editSection}}>
+            <i class="icon pencil"></i>
+          </h4>
         </div>
       </div>
-      {{/editable-section}}
+      <div class="ui divider"></div>
+      <div class="content">
+        <div class="details">
+          <div class="ui two column grid">
+            <div class="column">
+              <div class="label_wrap">
+                <label> First Name: </label>
+            </div>
+            <span class="value">{{model.firstName}}</span>
+            </div>
+            <div class="column">
+              <div class="label_wrap">
+                <label> Last Name: </label>
+              </div>
+              <span class="value">{{model.lastName}}</span>
+            </div>
+          </div>
+          <div class="ui one column grid">
+            <div class="column">
+              <div class="label_wrap">
+                <label> Age: </label>
+              </div>
+              <span class="value">{{model.age}}</span>
+            </div>
+          </div>
+          <div class="ui one column grid">
+            <div class="column">
+              <div class="label_wrap">
+                <label> Email: </label>
+              </div>
+              <span class="value">{{model.email}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="editable">
+          <div class="ui form">
+            <div class="ui two column grid">
+              <div class="column">
+                <div class="field inline">
+                  <label>First Name</label>
+                  <div class="ui labeled input">
+                  {{input type="text" name="firstName" value=model.firstName class="form-control"}}
+                  </div>
+                 </div>
+                </div>
+                <div class="column">
+                  <div class="field inline">
+                    <label>Last Name:</label>
+                    <div class="ui labeled input">
+                    {{input type="text" name="lastName" value=model.lastName class="form-control"}}
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui one column grid">
+              <div class="column">
+                <div class="field inline">
+                  <label> Age: </label>
+                  <div class ="ui labeled input">
+                  {{input type="text" name="age" value=model.age class="form-control"}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui one column grid">
+              <div class="column">
+                <div class="field inline">
+                    <label>Email</label>
+                    <div class="ui labeled input">
+                    {{input type="email" name="email" value=model.email class="form-control"}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/editable-section}}
+    <div class="ui divider"></div>
 
-    <div class="clearfix"></div>
-    <div class="content"></div>
-
-    {{#editable-section model=model group=dataGroups.password}}
-
+    {{#editable-section/editable-password model=model group=dataGroups.password as |editSection saveEdit cancelEdit|}}
+    <div class="header">
       <h4 class="title">
-        <i class="fa fa-link"></i>Account Linking
+        <i class="fa fa-lock"></i>Change Password
       </h4>
       <div class="button-container">
         <div class="ui tiny buttons save-cancel">
-          <div class="ui positive button" {{action 'saveEdit' target='section'}}><i class="icon check"></i></div>
+          <div class="ui positive button" {{action saveEdit}}><i class="icon check"></i></div>
           <div class="or"></div>
-          <div class="ui button" {{action 'cancelEdit' target='section'}}><i class="icon close"></i></div>
+          <div class="ui button" {{action cancelEdit}}><i class="icon close"></i></div>
         </div>
-        <h4 class="edit-icon" {{action 'editSection' target='section'}}>
+        <h4 class="edit-icon" {{action editSection}}>
           <i class="icon pencil"></i>
         </h4>
       </div>
-      <div class="clearfix"></div>
-      <div class="content">
-        <div class="details"></div>
-        <div class="editable">
-          <table class="ui table segment">
-            <thead>
-            <tr>
-              <th>Account</th>
-              <th>Info</th>
-              <th>Link / Unlink</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                <td><i class="fa fa-vimeo">Venmo</i></td>
-                  {{#if session.authUser.vuid}}
-                    <td class="positive"><i icon check>Linked</i>Approved</td>
-                    <td><a class="ui red button">Unlink</a></td>
-                  {{else}}
-                    <td class="disabled">Info stuff</td>
-                    <td><a class="ui button twitter" href="/users/auth/venmo" id="venmoLogin"><i class="fa fa-vimeo-square"></i> Link</a></td>
-                  {{/if}}
-              </tr>
-              <tr>
-                <td>Facebook</td>
-                  {{#if session.authUser.fuid}}
-                    <td><i class="icon check">Approved</i></td>
-                    <td><a class="ui red button">Unlink</a></td>
-                  {{else}}
-                    <td> Info Stuff </td>
-                    <td><a class="ui button twitter" href="/users/auth/facebook" id="facebookLogin"><i class="fa fa-facebook-square"></i> Link</a></td>
-                  {{/if}}
-              </tr>
-              <tr>
-                <td>Twitter</td>
-                  {{#if session.authUser.fuid}}
-                    <td><i class="icon check">Approved</i></td>
-                    <td><a class="ui red button">Unlink</a></td>
-                  {{else}}
-                    <td>Info Stuff</td>
-                    <td><a class="ui button twitter" href="/users/auth/venmo" id="venmoLogin"><i class="fa fa-twitter-square"></i> Link</a></td>
-                  {{/if}}
-              </tr>
-            </tbody>
-          </table>
-          <i>Potential Key Here.</i>
+    </div>
+    <div class="ui divider"></div>
+    <div class="content">
+      <div class="details"></div>
+      <div class="editable">
+        <div class="password_edit_wrapper">
+          <div class="ui form">
+            <div class="field inline">
+              <label>Current Password:</label>
+              <div class="ui labeled input">
+              {{input type="password" name="currentPassword" value=model.currentPassword class="form-control"}}
+              </div>
+            </div>
+            <div class="field inline">
+              <label>New Password:</label>
+                 <div class="ui labeled input">
+                {{input type="password" name="password" value=model.password class="form-control"}}
+               </div>
+            </div>
+            <div class="field inline">
+              <label>Password Confirmation:</label>
+                  <div class="ui labeled input">
+                    {{input type="password" name="passwordConfirmation" value=model.passwordConfirmation class="form-control"}}
+                </div>
+            </div>
+          </div>
         </div>
-      <div class="clearfix"></div>
-      <div class="ui divider"></div>
+        <div class="ui divider"></div>
       </div>
-
-      {{/editable-section}}
+    </div>
+    {{/editable-section/editable-password}}
+    <div class="editable-section">
+      <div class="header">
+        <h4 class="title">
+          <i class="fa fa-eye"></i>Privacy Setting
+        </h4>
+        <div class="ui toggle checkbox pj-left-label">
+            <input id="privacy" type="checkbox" checked="checked">
+            <label for="privacy">Public</label>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+    </div>
+    <div class="editable-section">
+      <div class="header">
+        <h4 class="title">
+          <i class="fa fa-link"></i>Account Linking
+        </h4>
+      </div>
+      <div class="content">
+        <div class="details">
+          <div class="account-row">
+            <div class="account-label">
+              <i class="facebook icon"></i>
+              Facebook
+            </div>
+            <div class="account-action">
+              {{#unless model.facebook.uid}}
+                <div class="ui button blue">Link</div>
+              {{else}}
+                <div class="ui green disabled button">Linked</div>
+              {{/unless}}
+            </div>
+          </div>
+          <div class="account-row">
+            <div class="account-label">
+              <i class="vimeo icon"></i>
+              Venmo
+            </div>
+            <div class="account-action">
+              {{#unless model.venmo.uid}}
+                <div class="ui button blue" {{action 'connect' 'venmo-oauth2'}}>Link</div>
+              {{else}}
+                <div class="ui green disabled button">Linked</div>
+              {{/unless}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
   </div>
 </div>

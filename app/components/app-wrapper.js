@@ -14,7 +14,7 @@ export default Ember.Component.extend({
       this.sendAction('closeActionBar');
     },
     toggleUserBar() {
-      this.$('.user-bar').sidebar('show');
+      this.$('.user-bar').sidebar('toggle');
     },
     toggleGroupsBar() {
       this.$('.groups-bar').sidebar('toggle');
