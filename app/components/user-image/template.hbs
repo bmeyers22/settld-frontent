@@ -1,7 +1,12 @@
-{{user.firstName}}
-{{#if user.image}}
-  <img class="ui circular image" src={{image}} />
-{{else}}
-  <i class="circular user icon">
-  </i>
-{{/if}}
+{{log "BARE" bare}}
+{{#unless bare}}
+  {{#unless imageOnly}}
+    {{user.firstName}}
+  {{/unless}}
+  {{#if user.image}}
+    <img class="ui circular image" src={{image}} />
+  {{else}}
+    <i class="circular user icon">
+    </i>
+  {{/if}}
+{{/unless}}

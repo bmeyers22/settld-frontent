@@ -1,6 +1,13 @@
-{{#each model.members as |member|}}
-  <div class="member-wrapper">
-    {{user-image user=member.user}}
-    {{member.info.choresToDo}}
-  </div>
-{{/each}}
+<div class="ui mini statistics">
+  {{#each model.members as |member|}}
+    <div class="statistic {{if (gte member.info.choresToDo 0) 'green' 'red'}}">
+      <div class="value">
+        {{user-image user=member.user bare=true}}
+        {{member.info.choresToDo}}
+      </div>
+      <div class="label">
+        {{member.user.firstName}}
+      </div>
+    </div>
+  {{/each}}
+</div>

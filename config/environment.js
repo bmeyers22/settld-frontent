@@ -81,6 +81,7 @@ module.exports = function(environment) {
       },
       'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD_TEST'],
+        redirectUri: "http://localhost:4200/register",
         scope: 'access_email, access_phone, access_profile, make_payments'
       }
     }
