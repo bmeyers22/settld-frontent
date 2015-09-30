@@ -2,7 +2,8 @@
 import Ember from 'ember';
 
 
-var SettingsIndexRoute = Ember.Route.extend({
+export default Ember.Route.extend({
+  sessionService: Ember.inject.service('session'),
   model() {
     return this.session.get('authUser');
   },
@@ -13,8 +14,12 @@ var SettingsIndexRoute = Ember.Route.extend({
         this.get('sessionService').authenticateUser(this.get('session'), data);
       });
     },
-
+    togglePrivacy() {
+      let self = this;
+      self.set('currentModel.settings.hasPublicProfile', !self.get('currentModel.settings.hasPublicProfile'));
+      Ember.run(function () {
+        self.get('currentModel.settings').save();
+      });
+    }
   }
 });
-
-export default SettingsIndexRoute

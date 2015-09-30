@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   copiedProps: {},
   actions: {
     editSection() {
-      this.set('copiedProps', this.get('model').getProperties(this.get('group')));
+      this.set('copiedProps', this.get('model').getProperties(Object.keys(this.get('group'))));
       this.set('isEditing', true);
     },
     cancelEdit() {
@@ -16,12 +16,21 @@ export default Ember.Component.extend({
     },
     saveEdit() {
       if (this.$('.ui.form').form('is valid')) {
-        this.get('model').save();
-        this.set('isEditing', false);
+        this.get('model').save().then((response) => {
+          this.set('isEditing', false);
+        }).fail( (response) => {
+          this.$('.ui.form').form('add errors', response.errors);
+        });;
       }
     },
     submitEdit() {
       this.$('.ui.form').form('submit');
     },
+  },
+  didInsertElement() {
+    this.$('.ui.form').form({
+      fields: this.get('group'),
+      on: 'submit'
+    });
   }
 });
