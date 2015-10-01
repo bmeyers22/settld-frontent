@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'web/config/environment';
 
 export default Ember.Service.extend({
   authenticateUser(session, authData) {
