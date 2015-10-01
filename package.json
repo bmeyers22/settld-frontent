@@ -54,7 +54,7 @@
     "ember-truth-helpers": "1.1.0",
     "ember-watson": "^0.6.5",
     "ember-websockets": "1.2.3",
-    "liquid-fire": "0.21.2",
+    "liquid-fire": "0.21.3",
     "torii": "0.6.0"
   }
 }

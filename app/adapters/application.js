@@ -1,8 +1,7 @@
-import ActiveModelAdapter from 'active-model-adapter';
+import DS from 'ember-data';
+import config from '../config/environment';
 
-var ApplicationAdapter = ActiveModelAdapter.extend({
-  host: 'http://app.settld.com',
+export default ActiveModelAdapter.extend({
+  host: config.PROXY_URL,
   namespace: 'api/v1'
 });
-
-export default ApplicationAdapter;

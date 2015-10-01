@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'web/config/environment';
 
 export default Ember.Component.extend({
   classNames: [
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
     },
     register() {
       let self = this;
-      Ember.$.ajax('/users',{
+      Ember.$.ajax(`${config.PROXY_URL}/users`,{
         method: "POST",
         dataType: "json",
         data: {

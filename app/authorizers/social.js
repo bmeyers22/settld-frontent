@@ -1,4 +1,5 @@
 import Base from 'simple-auth/authenticators/base';
+import config from 'web/config/environment';
 
 /**
   Authenticator that works with the Ruby gem
@@ -25,7 +26,7 @@ export default Base.extend({
     @default '/users/sign_in'
   */
   serverTokenEndpoint(provider) {
-    return `/users/oauth/${provider}`
+    return `${config.PROXY_URL}/users/oauth/${provider}`
   },
 
   /**

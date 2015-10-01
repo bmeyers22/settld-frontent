@@ -8,42 +8,16 @@ module.exports = function(environment) {
       FEATURES: {
       }
     },
-    torii: { },
+    torii: {},
     'simple-auth': {
       authenticationRoute: 'login',
       authorizer: 'simple-auth-authorizer:devise'
     },
+    'simple-auth-devise': {},
     pace: {
       // addon-specific options to configure theme
       theme: 'minimal',
       color: 'green',
-
-      // pace-specific options
-      // learn more on http://github.hubspot.com/pace/#configuration
-      catchupTime: 50,
-      initialRate: .01,
-      minTime: 100,
-      ghostTime: 50,
-      maxProgressPerFrame: 20,
-      easeFactor: 1.25,
-      startOnPageLoad: true,
-      restartOnPushState: true,
-      restartOnRequestAfter: 500,
-      target: 'body',
-      elements: {
-        checkInterval: 100,
-        selectors: ['body', '.ember-view']
-      },
-      eventLag: {
-        minSamples: 10,
-        sampleCount: 3,
-        lagThreshold: 3
-      },
-      ajax: {
-        trackMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-        trackWebSockets: true,
-        ignoreURLs: []
-      }
     },
     APP: {
       MOBILE_APP: false
@@ -73,11 +47,14 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    ENV.APP.PROXY_URL = "http://localhost:3000/"
+    ENV.PROXY_URL = "http://localhost:3000"
+    ENV['simple-auth']['serverTokenEndpoint'] = 'http://localhost:3000/users/sign_in';
+    ENV['simple-auth-devise']['serverTokenEndpoint'] = 'http://localhost:3000/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD_TEST'],
-        scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+        scope: 'user_birthday, user_location, user_about_me, email, public_profile',
+        redirectUri: "http://localhost:4200/login"
       },
       'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD_TEST'],
@@ -89,7 +66,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.APP.PROXY_URL = "http://localhost:3000/";
+    ENV.PROXY_URL = "http://app.settld.com/";
     ENV.baseURL = '/';
 
     // keep test console output quieter
@@ -103,15 +80,19 @@ module.exports = function(environment) {
     ENV.GA = {
       UA_CODE: "UA-51059302-1" // where UA code looks something like: UA-00000000-1
     }
-    ENV.APP.PROXY_URL = "http://app.settld.com/";
+    ENV.PROXY_URL = "http://app.settld.com";
+    ENV['simple-auth']['serverTokenEndpoint'] = 'http://app.settld.com/users/sign_in';
+    ENV['simple-auth-devise']['serverTokenEndpoint'] = 'http://app.settld.com/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
-        scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+        scope: 'user_birthday, user_location, user_about_me, email, public_profile',
+        redirectUri: "http://app.settld.com/login",
       },
       'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD'],
-        scope: 'access_email, access_phone, access_profile, make_payments'
+        scope: 'access_email, access_phone, access_profile, make_payments',
+        redirectUri: "http://app.settld.com/register",
       }
     }
   }
