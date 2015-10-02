@@ -1,57 +1,51 @@
+var os     = require('os');
+var ifaces = os.networkInterfaces();
+
+var addresses = [];
+for (var dev in ifaces) {
+  ifaces[dev].forEach(function(details){
+    if(details.family === 'IPv4' && details.address !== '127.0.0.1') {
+      addresses.push(details.address);
+    }
+  });
+}
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'web',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    defaultLocationType: 'auto',
     EmberENV: {
       FEATURES: {
       }
     },
-    torii: { },
+    torii: {},
     'simple-auth': {
       authenticationRoute: 'login',
       authorizer: 'simple-auth-authorizer:devise'
     },
+    'simple-auth-devise': {},
     pace: {
       // addon-specific options to configure theme
       theme: 'minimal',
       color: 'green',
-
-      // pace-specific options
-      // learn more on http://github.hubspot.com/pace/#configuration
-      catchupTime: 50,
-      initialRate: .01,
-      minTime: 100,
-      ghostTime: 50,
-      maxProgressPerFrame: 20,
-      easeFactor: 1.25,
-      startOnPageLoad: true,
-      restartOnPushState: true,
-      restartOnRequestAfter: 500,
-      target: 'body',
-      elements: {
-        checkInterval: 100,
-        selectors: ['body', '.ember-view']
-      },
-      eventLag: {
-        minSamples: 10,
-        sampleCount: 3,
-        lagThreshold: 3
-      },
-      ajax: {
-        trackMethods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-        trackWebSockets: true,
-        ignoreURLs: []
-      }
     },
     APP: {
       MOBILE_APP: false
     },
+    cordova: {
+      rebuildOnChange: false,
+      emulate: false,
+      emberUrl: 'http://' + addresses[0] + ':4200',
+      liveReload: {
+        enabled: false,
+        platform: 'ios'
+      }
+    },
     contentSecurityPolicy: {
       'default-src': "'self'",
       'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com https://www.google-analytics.com/analytics.js http://www.google-analytics.com/analytics.js connect.facebook.net localhost",
-      'font-src': "'self' fonts.gstatic.com data:", // Allow fonts to be loaded from http://fonts.gstatic.com
+      'font-src': "'self' fonts.gstatic.com data: fonts.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
       'connect-src': "'self' sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
       'img-src': "'self' data: venmopics.appspot.com https://www.google-analytics.com http://www.google-analytics.com https://fbcdn-profile-a.akamaihd.net",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
@@ -69,11 +63,14 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    ENV.APP.PROXY_URL = "http://localhost:3000/"
+    ENV.PROXY_URL = "http://localhost:3000"
+    ENV['simple-auth']['serverTokenEndpoint'] = 'http://localhost:3000/users/sign_in';
+    ENV['simple-auth-devise']['serverTokenEndpoint'] = 'http://localhost:3000/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD_TEST'],
-        scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+        scope: 'user_birthday, user_location, user_about_me, email, public_profile',
+        redirectUri: "http://localhost:4200/login"
       },
       'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD_TEST'],
@@ -81,11 +78,12 @@ module.exports = function(environment) {
         scope: 'access_email, access_phone, access_profile, make_payments'
       }
     }
+    ENV.development = true;
   }
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.APP.PROXY_URL = "http://localhost:3000/";
+    ENV.PROXY_URL = "http://app.settld.com/";
     ENV.baseURL = '/';
 
     // keep test console output quieter
@@ -99,17 +97,22 @@ module.exports = function(environment) {
     ENV.GA = {
       UA_CODE: "UA-51059302-1" // where UA code looks something like: UA-00000000-1
     }
-    ENV.APP.PROXY_URL = "http://app.settld.com/";
+    ENV.PROXY_URL = "http://app.settld.com";
+    ENV['simple-auth']['serverTokenEndpoint'] = 'http://app.settld.com/users/sign_in';
+    ENV['simple-auth-devise']['serverTokenEndpoint'] = 'http://app.settld.com/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
-        scope: 'user_birthday, user_location, user_about_me, email, public_profile'
+        scope: 'user_birthday, user_location, user_about_me, email, public_profile',
+        redirectUri: "http://app.settld.com/login",
       },
       'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD'],
-        scope: 'access_email, access_phone, access_profile, make_payments'
+        scope: 'access_email, access_phone, access_profile, make_payments',
+        redirectUri: "http://app.settld.com/register",
       }
     }
+    ENV.production = true;
   }
 
   return ENV;

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'web/config/environment';
 
 export default Ember.Component.extend({
   classNames: [
@@ -16,8 +17,13 @@ export default Ember.Component.extend({
               identification: this.get('identification'),
               password: this.get('password')
             }).fail( (error) => {
-              let errors = [error.error]
-              this.addErrors(errors);
+              try {
+                let errors = [error.error]
+                this.addErrors(errors);
+              } catch (e) {
+
+              }
+
             });
           }
         } else {
@@ -26,7 +32,7 @@ export default Ember.Component.extend({
     },
     register() {
       let self = this;
-      Ember.$.ajax('/users',{
+      Ember.$.ajax(`${config.PROXY_URL}/users`,{
         method: "POST",
         dataType: "json",
         data: {
@@ -40,16 +46,21 @@ export default Ember.Component.extend({
         self.send('login');
         self.sendAction('registered');
       }).fail( (error) => {
-        let response = error.responseJSON.errors;
-        let errors = [];
-        Object.keys(response).forEach((key) => {
-          let messages = response[key].map((message) => {
-            return `${key[0].toUpperCase()}${key.slice(1)} ${message}`
+        try {
+          let response = error.responseJSON.errors;
+          let errors = [];
+          Object.keys(response).forEach((key) => {
+            let messages = response[key].map((message) => {
+              return `${key[0].toUpperCase()}${key.slice(1)} ${message}`
+            })
+            errors = errors.concat(messages)
           })
-          errors = errors.concat(messages)
-        })
 
-        this.addErrors(errors);
+          this.addErrors(errors);
+
+        } catch (e) {
+
+        }
       });
     }
   },

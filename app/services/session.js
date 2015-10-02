@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'web/config/environment';
 
 export default Ember.Service.extend({
   authenticateUser(session, authData) {
@@ -26,7 +27,7 @@ export default Ember.Service.extend({
   //   this.transitionTo('login');
   // },
   getSessionData(session) {
-    return Ember.$.ajax('/session/refresh', {
+    return Ember.$.ajax(`${config.PROXY_URL}/session/refresh`, {
       method: "GET",
       dataType: "json",
     }).fail(function () {
