@@ -95,12 +95,12 @@ module.exports = function(environment) {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
         scope: 'user_birthday, user_location, user_about_me, email, public_profile',
-        redirectUri: ENV.PROXY_URL + '/login',
+        redirectUri: 'http://app.settld.com/login',
       },
       'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD'],
         scope: 'access_email, access_phone, access_profile, make_payments',
-        redirectUri: ENV.PROXY_URL + '/register',
+        redirectUri: 'http://app.settld.com/register',
       }
     }
     ENV.production = true;
