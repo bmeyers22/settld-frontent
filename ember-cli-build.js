@@ -8,7 +8,7 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     hinting: false,
     fingerprint: {
-      enabled: false,
+      enabled: isProductionLikeBuild,
       prepend: 'https://s3.amazonaws.com/app.settld.com/'
     },
     sassOptions: {
