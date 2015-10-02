@@ -63,9 +63,9 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    ENV.PROXY_URL = "http://localhost:3000"
-    ENV['simple-auth']['serverTokenEndpoint'] = 'http://localhost:3000/users/sign_in';
-    ENV['simple-auth-devise']['serverTokenEndpoint'] = 'http://localhost:3000/users/sign_in';
+    ENV.PROXY_URL = ""
+    ENV['simple-auth']['serverTokenEndpoint'] = '/users/sign_in';
+    ENV['simple-auth-devise']['serverTokenEndpoint'] = '/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD_TEST'],
