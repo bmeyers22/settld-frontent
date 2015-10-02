@@ -1,0 +1,18 @@
+<div class="split-wrapper">
+  <div class="ui large statistic">
+    <div class="value">
+      {{format-money model.transaction.cost}}
+    </div>
+    <div class="label">
+      Total
+    </div>
+  </div>
+
+  {{create/transaction/split-sliders contributors=model.contributors}}
+
+</div>
+
+<div class="actions">
+  <div class="large ui button green fluid" {{action "completeWithSplit"}}>Submit</div>
+  <div class="large ui button basic fluid" {{action "goBack"}}>Go Back</div>
+</div>

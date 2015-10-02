@@ -14,12 +14,10 @@
     <div class="description">
       <div class="field">
         <label>Description:</label>
-        {{textarea value=model.transaction.description}}
+        {{textarea class="description" value=model.transaction.description placeholder="(Optional)"}}
       </div>
     </div>
-    <div class="split">
-      {{checkbox-toggle toggle='toggleSplit' disabled=false label="Split"}}
-    </div>
-    <div class="large ui button green fluid" {{action "complete"}}>Submit</div>
+    <div class="large ui button green fluid" {{action "split"}}>Split</div>
+    <div class="large ui button basic fluid" {{action "complete"}}>Submit</div>
   </div>
 </div>

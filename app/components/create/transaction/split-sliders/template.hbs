@@ -1,0 +1,17 @@
+{{#each contributors as |c|}}
+  <div class="split-row">
+    {{user-image user=c.user}}
+    <div class="split-input">
+      <input
+        value={{c.percent}}
+        type="range"
+        min="0"
+        max="1.0"
+        step="0.01"
+        oninput={{action 'updateSliders' c}} />
+    </div>
+    <div class="split-amount">
+      {{format-money c.amount}}
+    </div>
+  </div>
+{{/each}}

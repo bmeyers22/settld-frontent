@@ -1,6 +1,9 @@
 .create-wrapper {
   @include flex-column();
   @include flex-grow();
+  .ui.button {
+    text-transform: uppercase;
+  }
   .create-buttons.ui.statistics {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
@@ -85,9 +88,56 @@
       > * {
         padding: 25px 20px;
       }
-      textarea {
+      textarea.description {
         resize: none;
+        font-size: 35px;
+        line-height: 20px;
+        text-align: center;
+        min-height: inherit;
+        max-height: none;
+        height: auto;
+        &:focus {
+          font-size: 1em;
+          text-align: left;
+          line-height: 1.2857;
+        }
       }
+    }
+  }
+  .split-wrapper {
+    padding: 50px;
+    text-align: center;
+    overflow: scroll;
+    margin-bottom: 50px;
+    .statistic {
+      margin-bottom: 50px;
+    }
+    .split-row {
+      @include flex-row();
+      @include align-items(center);
+      margin-bottom: 25px;
+      .split-input {
+        @include flex-grow();
+        padding: 0 30px;
+        margin-top: 25px;
+        input {
+          width: 100%;
+        }
+      }
+      .split-amount {
+        width: 150px;
+        margin-top: 20px;
+        color: $text-color-money;
+        font-size: 2em;
+      }
+    }
+
+    & ~ .actions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #fff;
     }
   }
   .cost, .split {

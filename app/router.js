@@ -25,6 +25,7 @@ Router.map(function() {
             this.route('category');
             this.route('title');
             this.route('submit');
+            this.route('split');
           });
           this.route('job', function() {
             this.route('category');
@@ -53,6 +54,11 @@ Router.map(function() {
         resetNamespace: true,
         path: 'transaction/:transaction_id'
       });
+      this.route('home', function() {
+        this.route('edit');
+        this.route('new');
+      });
+
     });
     this.route('getstarted', {
       resetNamespace: true
@@ -71,9 +77,5 @@ Router.map(function() {
 
   this.route('login');
 
-  this.route('home', function() {
-    this.route('edit');
-    this.route('new');
-  });
 });
 export default Router

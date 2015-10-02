@@ -24,7 +24,8 @@ var Transaction = DS.Model.extend({
     return moment(this.get('date')).fromNow();
   }),
   split: DS.attr('boolean'),
-  points: DS.attr('number')
+  points: DS.attr('number'),
+  contributors: DS.attr('array')
 });
 
 export default Transaction

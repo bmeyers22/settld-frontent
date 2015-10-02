@@ -3,7 +3,7 @@
     <div class="description">
       <div class="field">
         <label>Description:</label>
-        {{textarea value=model.job.description}}
+        {{textarea class="description" value=model.job.description placeholder="(Optional)"}}
       </div>
     </div>
     <div class="large ui button green fluid" {{action "complete"}}>Submit</div>

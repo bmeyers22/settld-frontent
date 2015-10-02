@@ -1,5 +1,6 @@
 <div class="primary">
   {{user-image user=primaryUser}}
+  {{format-money transaction.cost}}
 </div>
 <div class="secondary">
   {{#each invoices as |invoice|}}
@@ -15,6 +16,7 @@
       </div>
       <div class="hidden content">
         {{user-image user=invoice.user}}
+        {{format-money invoice.data.amount}}
       </div>
     </div>
   {{/each}}
