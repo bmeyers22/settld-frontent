@@ -17,3 +17,6 @@
   {{/if}}
 {{/if}}
 {{#link-to 'transaction' model class="link item details" }}Details{{/link-to}}
+{{#if canDelete}}
+  <div class="item delete">Delete</div>
+{{/if}}

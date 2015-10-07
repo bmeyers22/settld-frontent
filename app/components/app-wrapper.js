@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 
 export default Ember.Component.extend({
+  store: Ember.inject.service('store'),
   classNames: ['global-wrapper', 'pushable'],
   actions: {
     addInvoiceToPayments(invoice) {
@@ -24,6 +25,12 @@ export default Ember.Component.extend({
     },
     paymentComplete(invoices) {
       this.sendAction('paymentComplete', invoices);
+    },
+    deleteTransaction(model) {
+      this.get('store').deleteRecord(model);
+      model.save().then((record) => {
+        this.get('store').unloadRecord(model);
+      });
     }
   },
   didInsertElement() {

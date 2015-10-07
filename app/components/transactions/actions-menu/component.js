@@ -23,6 +23,10 @@ export default Ember.Component.extend({
       return !obj.invoice.get('paymentPending');
     })
   }),
+  canDelete: Ember.computed(function () {
+    return this.get('model.user') === this.get('session.authUser')
+      && this.get('owedInvoices.length') === this.get('model.invoices.length');
+  }),
   actions: {
     addInvoiceToPayments(invoice) {
       this.sendAction('addInvoiceToPayments', invoice);
@@ -34,6 +38,25 @@ export default Ember.Component.extend({
         paymentConfirmedDate: new Date()
       })
       invoice.save()
+    },
+    deleteTransaction(model) {
+      this.sendAction('deleteTransaction', model);
     }
+  },
+  didRender() {
+    let self = this;
+    this.$().on('click', '.item.delete', (e) => {
+      $('.ui.delete-transaction.modal')
+        .modal({
+          closable  : false,
+          onDeny    : function() {
+
+          },
+          onApprove : function() {
+            self.sendAction('deleteTransaction', self.get('model'));
+          }
+        })
+        .modal('show');
+    })
   }
 });
