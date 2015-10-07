@@ -1,8 +1,8 @@
-import DS from 'ember-data';
-import config from '../config/environment';
-import ActiveModelAdapter from 'active-model-adapter';
+import Ember from 'ember';
+import FirebaseAdapter from 'emberfire/adapters/firebase';
 
-export default ActiveModelAdapter.extend({
-  host: config.PROXY_URL,
-  namespace: 'api/v1'
+const { inject } = Ember;
+
+export default FirebaseAdapter.extend({
+  firebase: inject.service(),
 });

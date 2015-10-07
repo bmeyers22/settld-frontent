@@ -13,6 +13,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'web',
     environment: environment,
+    firebase: 'https://incandescent-fire-2053.firebaseIO.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -37,7 +38,7 @@ module.exports = function(environment) {
       'default-src': "'self'",
       'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com https://www.google-analytics.com/analytics.js http://www.google-analytics.com/analytics.js connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data: fonts.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
+      'connect-src': "'self' wss://s-dal5-nss-16.firebaseio.com wss://incandescent-fire-2053.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
       'img-src': "'self' data: venmopics.appspot.com https://www.google-analytics.com http://www.google-analytics.com https://fbcdn-profile-a.akamaihd.net",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ', // Allow inline styles and loaded CSS from http://fonts.googleapis.com",
       'media-src': "'self'"
