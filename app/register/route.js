@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  sessionService: Ember.inject.service('session'),
+  sessionService: Ember.inject.service('current-session'),
   model() {
-    return this.session.get('authUser');
+    return this.get('currentSession.authUser');
   },
   actions: {
     updateName(name) {

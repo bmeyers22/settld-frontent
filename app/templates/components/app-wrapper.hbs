@@ -6,7 +6,7 @@
       <span {{action 'toggleGroupsBar'}}>edit</span>
     {{/link-to}}
   </h3>
-  {{#each session.authUser.homes as |home| }}
+  {{#each currentSession.authUser.homes as |home| }}
     <div {{action 'toggleGroupsBar'}}>
       {{#link-to groupPath home.id class='item' }}
         {{home.name}}

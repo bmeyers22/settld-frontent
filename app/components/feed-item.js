@@ -34,7 +34,7 @@ export default Ember.Component.extend({
   }),
   displayName: Ember.computed('item.user', function() {
     var isMe;
-    isMe = this.get('item.user') === this.get('targetObject.session.authUser');
+    isMe = this.get('item.user') === this.get('targetObject.currentSession.authUser');
     if (isMe) {
       return 'You';
     } else {
@@ -53,12 +53,12 @@ export default Ember.Component.extend({
     }
   }),
   pendingInvoice: Ember.computed('item.invoices.@each.paymentPending', function() {
-    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentPending', true, this.get('session.authUser.id'));
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentPending', true, this.get('currentSession.authUser.id'));
   }),
   paidInvoice: Ember.computed('item.invoices.@each.paid', function() {
-    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paid', true, this.get('session.authUser.id'));
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paid', true, this.get('currentSession.authUser.id'));
   }),
   rejectedInvoice: Ember.computed('item.invoices.@each.paymentRejected', function() {
-    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentRejected', true, this.get('session.authUser.id'));
+    return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentRejected', true, this.get('currentSession.authUser.id'));
   })
 });

@@ -13,19 +13,16 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'web',
     environment: environment,
-    firebase: 'https://incandescent-fire-2053.firebaseIO.com/',
+    firebase: process.env['FIREBASE_URL'],
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
       }
     },
-    torii: {},
-    'simple-auth': {
-      authenticationRoute: 'login',
-      authorizer: 'simple-auth-authorizer:devise'
+    torii: {
+      sessionServiceName: 'session'
     },
-    'simple-auth-devise': {},
     pace: {
       // addon-specific options to configure theme
       theme: 'minimal',
@@ -38,9 +35,9 @@ module.exports = function(environment) {
       'default-src': "'self'",
       'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com https://www.google-analytics.com/analytics.js http://www.google-analytics.com/analytics.js connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data: fonts.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' wss://s-dal5-nss-16.firebaseio.com wss://incandescent-fire-2053.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
+      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
       'img-src': "'self' data: venmopics.appspot.com https://www.google-analytics.com http://www.google-analytics.com https://fbcdn-profile-a.akamaihd.net",
-      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com ', // Allow inline styles and loaded CSS from http://fonts.googleapis.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com",
       'media-src': "'self'"
     }
   };
@@ -56,8 +53,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
     ENV.PROXY_URL = ''
-    ENV['simple-auth']['serverTokenEndpoint'] = '/users/sign_in';
-    ENV['simple-auth-devise']['serverTokenEndpoint'] = '/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD_TEST'],
@@ -90,8 +85,6 @@ module.exports = function(environment) {
       UA_CODE: 'UA-51059302-1' // where UA code looks something like: UA-00000000-1
     }
     ENV.PROXY_URL = '';
-    ENV['simple-auth']['serverTokenEndpoint'] = ENV.PROXY_URL + '/users/sign_in';
-    ENV['simple-auth-devise']['serverTokenEndpoint'] = ENV.PROXY_URL + '/users/sign_in';
     ENV.torii.providers = {
       'facebook-oauth2': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],

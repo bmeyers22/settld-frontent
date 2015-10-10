@@ -16,7 +16,7 @@
     <span class="amount">{{format-money invoicesSum}}</span>
   </div>
   {{#each invoices as |inv|}}
-    {{payments-list-invoice invoice=inv user=session.authUser remove='removeInvoice' togglePaymentMethod='togglePaymentMethod'}}
+    {{payments-list-invoice invoice=inv user=currentSession.authUser remove='removeInvoice' togglePaymentMethod='togglePaymentMethod'}}
   {{/each}}
   <div class={{if loading "ui loading disabled button positive huge" "ui button positive huge"}} {{action 'sendPayment'}}>
     Pay

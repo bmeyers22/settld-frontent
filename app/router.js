@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('missing', { path: '/*missing'});
-  this.route('index', { path: '/' }, function() {
+  this.authenticatedRoute('index', { path: '/' }, function() {
     this.route('app', {
       resetNamespace: true
     }, function () {

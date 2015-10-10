@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   model() {
     return new Promise( (resolve, reject) => {
       this.store.query('transaction', {
-        user: this.get('session.authUser.id'),
+        user: this.get('currentSession.authUser.id'),
         home: this.get('session.currentHome.id')
       }).then( (response) => {
         return resolve({

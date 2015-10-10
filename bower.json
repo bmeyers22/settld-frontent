@@ -16,7 +16,6 @@
     "semantic-ui": "^2.1.4",
     "active-model-adapter": "~2.0.1",
     "qunit": "~1.18.0",
-    "ember-simple-auth": "0.8.0",
     "hammerjs": "runspired/hammer.js#develop",
     "pace": "vectart/pace#master",
     "uri.js": "~1.16.0",

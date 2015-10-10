@@ -27,7 +27,7 @@
   </div>
   <div class="ui feed">
     {{#each stream as |item|}}
-      {{feed-item item=item openActionBar=(action "openActionBar") user=session.authUser}}
+      {{feed-item item=item openActionBar=(action "openActionBar") user=currentSession.authUser}}
     {{/each}}
   </div>
   {{else}}
