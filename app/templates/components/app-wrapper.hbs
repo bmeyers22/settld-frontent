@@ -16,7 +16,7 @@
 </div>
 {{payments-list
   invoices=invoices
-  session=session
+  currentSession=currentSession
   removeInvoice="removeInvoiceFromPayments"
   paymentComplete='paymentComplete'}}
 <div class="global-content pusher pushable">
@@ -28,7 +28,7 @@
     deleteTransaction='deleteTransaction'}}
   </div>
   {{user-top-bar
-    session=session
+    currentSession=currentSession
     toggleUserBar='toggleUserBar'
     toggleGroupsBar='toggleGroupsBar'
     logout='invalidateSession'}}

@@ -32,8 +32,8 @@ export default Ember.Route.extend({
       })
     },
     setUserConfigured() {
-      let settings = this.get('session.userSettings');
-      this.set('session.userSettings.isUserConfigured', true);
+      let settings = this.get('currentSession.userSettings');
+      this.set('currentSession.userSettings.isUserConfigured', true);
       settings.save();
       this.transitionTo('getstarted');
     },

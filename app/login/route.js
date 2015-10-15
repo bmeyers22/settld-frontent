@@ -1,29 +1,51 @@
 import Ember from 'ember';
 
 var Login = Ember.Route.extend({
+  currentSession: Ember.inject.service(),
   beforeModel(transition) {
-    if (this.get('session.isAuthenticated')) {
+    if (this.get('currentSession.isAuthenticated')) {
       this.transitionTo('index');
     }
   },
   actions: {
     registered(user) {
-      debugger
-      this.store.createRecord('user', user).save().then( () => {
+      this.store.createRecord('user', user).save().then( (user) => {
+        return this.store.createRecord('userSetting', {
+          user: user
+        }).save();
+      }).then( (data) => {
+        return this.store.createRecord('userInfo', {
+          user: user
+        }).save();
+      }).then( () => {
+        return this.get('currentSession').refresh()
+      }).then( () => {
         this.transitionTo('register.name');
       })
     },
     signIn(provider, loginInfo) {
       let data = { provider: provider };
-      if (data) {
+      if (loginInfo) {
         $.extend(data, loginInfo);
       }
-      this.get("session").open("firebase", data).then(function(data) {
-        console.log(data.currentUser);
+      this.get('session').open("firebase", data).then( (data) => {
+        if (provider !== 'password') {
+          this.get('store').query('user', { uid: data.uid }).then( (users) => {
+            if (users.get('length') > 0) {
+              this.transitionTo('index');
+            } else {
+              this.send('registered', {
+                uid: data.uid
+              });
+            }
+          })
+        } else {
+          this.transitionTo('index');
+        }
       });
     },
     signOut: function() {
-      this.get("session").close();
+      this.get('session').close();
     }
 
   }

@@ -17,30 +17,53 @@ export default Ember.Service.extend({
       return session.authenticate('simple-auth-authenticator:devise', authData);
     }
   },
-  invalidateSession(session) {
+  invalidateSession() {
     this.get('session').close();
   },
-  refresh(session, store) {
-    return this.initializeUser(session, store);
+  refresh() {
+    return this.initializeUser(this.get('session'), this.get('store'));
   },
-  // accessDenied() {
-  //   this.transitionTo('login');
-  // },
   getSessionData(session) {
-    return this.get('store').find('user', { uid: session.get('currentUser.uid') })
-      .then( users => {
-        if (users.length > 0) {
-          this.set('authUser', users.get('firstObject'));
-          return this;
-        } else {
-          debugger
-          this.invalidateSession();
+    let pArray = []
+    debugger
+    pArray.push(this.get('store').query('user', { uid: session.get('uid') }));
+    pArray.push(this.get('store').query('userInfo', { user: session.get('uid') }));
+    pArray.push(this.get('store').query('userSetting', { user: session.get('uid') }));
+    pArray.push(this.get('store').query('home', { user: session.get('uid') }));
+    return Promise.all(pArray).then( (responses) => {
+      let users = responses[0],
+        infos = responses[1],
+        settings = responses[2],
+        homes = responses[3];
+
+      if (users.get('length') > 0) {
+        let user = users.get('firstObject'),
+          userSettings = settings.get('firstObject');
+        this.set('authUser', user);
+        user.set('settings', userSettings);
+        this.set('CURRENT_USER_ID', user.id);
+        this.set('userSettings', user.get('settings'));
+        let groupConfigured = userSettings.get('isGroupConfigured')
+        if (groupConfigured) {
+          this.set('currentHome', homes.find(function(home) {
+            return home.get('id') === userSettings.get('defaultHome');
+          }));
+          this.set('CURRENT_HOME_ID', this.get('currentHome.id'));
+          homes.forEach(function(home) {
+            return home.get('users');
+          });
+          user.set('info', infos.get('firstObject'));
+          this.set('userInfo', user.get('info'));
         }
-      });
+        return this;
+      } else {
+        return this.invalidateSession();
+      }
+    });
   },
-  initializeUser(session, store) {
+  initializeUser() {
     // Make deep copy so we dont change the session object
-    return this.getSessionData(session);
+    return this.getSessionData(this.get('session'));
     // return data.then(function (data) {
     //   // data stored in raw_data
     //   let current = data.raw_data,
@@ -52,30 +75,5 @@ export default Ember.Service.extend({
     //     });
     //   // Create objects in store from raw data so they are normalized
     //   store.pushPayload(pushData);
-    //   let user = store.peekRecord('user', current.user._id);
-    //   let userSettings = store.peekRecord('userSetting', current.settings[0]._id);
-    //   user.set('settings', userSettings);
-    //   session.set('authUser', user);
-    //   session.set('CURRENT_USER_ID', user.id);
-    //   session.set('userSettings', user.get('settings'));
-    //   let groupConfigured = userSettings.get('isGroupConfigured')
-    //   session.set('initialized', true);
-    //   if (groupConfigured) {
-    //     let userInfos = current.infos.map((info) => {
-    //       return store.peekRecord('userInfo', info._id);
-    //     })
-    //     let homes = store.peekAll('home');
-    //     session.set('currentHome', homes.find(function(home) {
-    //       return home.get('id') === userSettings.get('defaultHome');
-    //     }));
-    //     session.set('CURRENT_HOME_ID', session.get('currentHome.id'));
-    //     homes.forEach(function(home) {
-    //       return home.get('users');
-    //     });
-    //     user.set('info', userInfos.get('firstObject'));
-    //     session.set('userInfo', user.get('info'));
-    //   }
-    //   return session;
-    // });
   }
 });

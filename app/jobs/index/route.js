@@ -3,15 +3,15 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model(params) {
     return new Promise( (resolve, reject) => {
-      let users = this.session.get('currentHome.users')
+      let users = this.get('currentSession.currentHome.users')
       return resolve({
-        home: this.session.get('currentHome'),
+        home: this.get('currentSession.currentHome'),
         members: users.map((user) => {
           return {
             user: user,
             info: this.store.queryRecord('userInfo', {
               filter: {
-                home: this.session.get('currentHome.id'),
+                home: this.get('currentSession.currentHome.id'),
                 user: user.id
               }
             })

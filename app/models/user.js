@@ -9,6 +9,7 @@ User = DS.Model.extend({
   userInfos: DS.hasMany('userInfos', {
     async: true
   }),
+  uid: DS.attr('string'),
   fuid: DS.attr('string'),
   vuid: DS.attr('string'),
   email: DS.attr('string'),

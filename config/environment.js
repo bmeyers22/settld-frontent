@@ -54,12 +54,12 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
     ENV.PROXY_URL = ''
     ENV.torii.providers = {
-      'facebook-oauth2': {
+      'facebook': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD_TEST'],
         scope: 'user_birthday, user_location, user_about_me, email, public_profile',
         redirectUri: 'http://localhost:4200/login'
       },
-      'venmo-oauth2': {
+      'venmo': {
         apiKey: process.env['VENMO_APP_ID_SETTLD_TEST'],
         redirectUri: 'http://localhost:4200/register',
         scope: 'access_email, access_phone, access_profile, make_payments'
@@ -86,12 +86,12 @@ module.exports = function(environment) {
     }
     ENV.PROXY_URL = '';
     ENV.torii.providers = {
-      'facebook-oauth2': {
+      'facebook': {
         apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
         scope: 'user_birthday, user_location, user_about_me, email, public_profile',
         redirectUri: 'http://app.settld.com/login',
       },
-      'venmo-oauth2': {
+      'venmo': {
         apiKey: process.env['VENMO_APP_ID_SETTLD'],
         scope: 'access_email, access_phone, access_profile, make_payments',
         redirectUri: 'http://app.settld.com/register',

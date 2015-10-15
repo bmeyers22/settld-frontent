@@ -22,8 +22,8 @@ export default Ember.Route.extend({
   model() {
     return {
       job: this._$modelDefaults.getModelType( "job", {
-        user: this.session.get('authUser'),
-        home: this.session.get('currentHome')
+        user: this.get('currentSession.authUser'),
+        home: this.get('currentSession.currentHome')
       }),
       categories: this.get('categories')
     }

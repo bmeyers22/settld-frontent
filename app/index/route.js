@@ -6,6 +6,9 @@ export default Ember.Route.extend({
     return this.get('sessionService').initializeUser(this.get('session'), this.get('store'));
   },
   afterModel(model, transition) {
+    if (!model) {
+      return this.transitionTo('login');
+    }
     if (!model.get('userSettings.isUserConfigured')) {
       if (!/^register/.test(transition.targetName)) {
         this.transitionTo('register.name');

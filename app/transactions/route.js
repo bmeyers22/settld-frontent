@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return new Promise( (resolve, reject) => {
       this.store.query('transaction', {
         user: this.get('currentSession.authUser.id'),
-        home: this.get('session.currentHome.id')
+        home: this.get('currentSession.currentHome.id')
       }).then( (response) => {
         return resolve({
           feedList: [

@@ -50,17 +50,6 @@ export default Ember.Component.extend({
       }
     });
   },
-  joinCallback(data) {
-    var self;
-    self = this;
-    if (data.success === true) {
-      self.sendAction('joinHome', self.get('selectedHome'));
-      self.$('.submit.join').removeClass('loading');
-    } else {
-      self.set('passwordValid', false);
-      self.$('.submit.join').removeClass('loading');
-    }
-  },
   actions: {
     findHomes() {
       this.$('.ui.search').search('query');
@@ -82,14 +71,8 @@ export default Ember.Component.extend({
       return;
     },
     joinHome() {
-      let self = this;
-      return new Ember.RSVP.Promise(function(resolve, reject) {
-        return ($.post('/api/v1/homes/join', {
-          home: self.get('selectedHome').serialize()
-        }, resolve)).fail(reject);
-      }).then(function(data) {
-        return self.joinCallback(data);
-      });
+      this.sendAction('joinHome', this.get('selectedHome'));
+      this.$('.submit.join').removeClass('loading');
     },
     cancelJoin() {
 

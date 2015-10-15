@@ -9,8 +9,8 @@ export default Ember.Route.extend({
     let self = this;
     return Ember.Object.extend({
       transaction: this._$modelDefaults.getModelType( "transaction", {
-        user: this.session.get('authUser'),
-        home: this.session.get('currentHome')
+        user: this.get('currentSession.authUser'),
+        home: this.get('currentSession.currentHome')
       }),
       categories: this.get('categories'),
       currencyValue: Ember.computed('currentModel.transaction.cost', {
@@ -32,7 +32,31 @@ export default Ember.Route.extend({
   },
   save(obj) {
     var copy = this.store.createRecord('transaction', obj);
-    return copy.save();
+    return copy.save().then( transaction => {
+      if (transaction.get('contributors.length') > 0) {
+        return this.createInvoices(transaction);
+      }
+    });
+  },
+  createInvoices(transaction) {
+    let proms = [];
+    this.get('currentSession.currentHome.users').forEach( (user) => {
+      let contributor = transaction.get('contributors').find( (c) => {
+        return c.user === user.id;
+      })
+      let amount = +(transition.get('cost') * contributor.percent).toFixed(2);
+      proms.push(this.createInvoice(transaction, amount, user));
+    })
+    return Promise.all(proms);
+  },
+  createInvoice(transaction, amount, user) {
+    return this.get('store').createRecord('invoice', {
+      transaction: transaction,
+      amount: amount,
+      home: this.get('currentSession.currentHome'),
+      payer_id: user.get('id'),
+      payee_id: this.get('currentSession.authUser.id')
+    }).save()
   },
   actions: {
     setTitle(title) {
@@ -57,8 +81,8 @@ export default Ember.Route.extend({
       }));
       this.transitionTo('create.transaction.split');
     },
-    goBack() {
-      this.set('obj.contributors', null);
+    goBack(model) {
+      model.set('contributors', null);
       this.transitionTo('create.transaction.submit');
     },
     complete() {

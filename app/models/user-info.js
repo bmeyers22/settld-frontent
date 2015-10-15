@@ -7,9 +7,9 @@ var UserInfo = DS.Model.extend({
   home: DS.belongsTo('home', {
     async: true
   }),
-  score: DS.attr('number'),
-  balance: DS.attr('number'),
-  choresToDo: DS.attr('number')
+  score: DS.attr('number', { defaultValue: 0 }),
+  balance: DS.attr('number', { defaultValue: 0 }),
+  choresToDo: DS.attr('number', { defaultValue: 0 })
 });
 
 export default UserInfo

@@ -7,10 +7,10 @@ var JobsFeedController = Feeds.extend({
     var filter = {};
     var scope = this.get('audienceScope');
     if (scope === Enums.FeedAudienceScope.Me) {
-      filter['user_id'] = this.get('session.CURRENT_USER_ID');
-      filter['home_id'] = this.get('session.CURRENT_HOME_ID');
+      filter['user_id'] = this.get('currentSession.CURRENT_USER_ID');
+      filter['home_id'] = this.get('currentSession.CURRENT_HOME_ID');
     } else if (scope === Enums.FeedAudienceScope.Home) {
-      filter['home_id'] = this.get('session.CURRENT_HOME_ID');
+      filter['home_id'] = this.get('currentSession.CURRENT_HOME_ID');
     }
     return this.store.filter('job', filter, function(jobs) {
       return true;
