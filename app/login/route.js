@@ -18,8 +18,6 @@ var Login = Ember.Route.extend({
           user: user
         }).save();
       }).then( () => {
-        return this.get('currentSession').refresh()
-      }).then( () => {
         this.transitionTo('register.name');
       })
     },
@@ -30,7 +28,7 @@ var Login = Ember.Route.extend({
       }
       this.get('session').open("firebase", data).then( (data) => {
         if (provider !== 'password') {
-          this.get('store').query('user', { uid: data.uid }).then( (users) => {
+          this.get('store').query('user', {orderBy: 'uid', startAt: data.uid, endAt: data.uid}).then( (users) => {
             if (users.get('length') > 0) {
               this.transitionTo('index');
             } else {

@@ -1,9 +1,7 @@
-
 import Ember from 'ember';
-
+import config from 'web/config/environment';
 
 export default Ember.Route.extend({
-  sessionService: Ember.inject.service('current-session'),
   model() {
     return this.get('currentSession.authUser');
   },
@@ -11,7 +9,7 @@ export default Ember.Route.extend({
     connect(provider){
       let session = this.get('session');
       this.get('torii').open(provider).then((data) => {
-        this.get('sessionService').authenticateUser(this.get('session'), data);
+        return this.get('sessionService').linkVenmo(data);
       });
     },
     togglePrivacy() {

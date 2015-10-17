@@ -35,7 +35,7 @@ module.exports = function(environment) {
       'default-src': "'self'",
       'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com https://www.google-analytics.com/analytics.js http://www.google-analytics.com/analytics.js connect.facebook.net localhost",
       'font-src': "'self' fonts.gstatic.com data: fonts.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
-      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
+      'connect-src': "'self' http://localhost:1337 https://auth.firebase.com wss://*.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
       'img-src': "'self' data: venmopics.appspot.com https://www.google-analytics.com http://www.google-analytics.com https://fbcdn-profile-a.akamaihd.net",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com",
       'media-src': "'self'"
@@ -59,12 +59,14 @@ module.exports = function(environment) {
         scope: 'user_birthday, user_location, user_about_me, email, public_profile',
         redirectUri: 'http://localhost:4200/login'
       },
-      'venmo': {
+      'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD_TEST'],
         redirectUri: 'http://localhost:4200/register',
         scope: 'access_email, access_phone, access_profile, make_payments'
       }
     }
+    ENV.APP.rootElement = '#application';
+    ENV.SAUCE_URL = 'http://localhost:1337/'
     ENV.development = true;
   }
 
@@ -91,12 +93,13 @@ module.exports = function(environment) {
         scope: 'user_birthday, user_location, user_about_me, email, public_profile',
         redirectUri: 'http://app.settld.com/login',
       },
-      'venmo': {
+      'venmo-oauth2': {
         apiKey: process.env['VENMO_APP_ID_SETTLD'],
         scope: 'access_email, access_phone, access_profile, make_payments',
         redirectUri: 'http://app.settld.com/register',
       }
     }
+    ENV.APP.rootElement = '#application';
     ENV.production = true;
   }
 

@@ -4,18 +4,14 @@ import config from 'web/config/environment';
 export default Ember.Service.extend({
   store: Ember.inject.service(),
   session: Ember.inject.service(),
-  authenticateUser(session, authData) {
-    if (authData.provider) {
-      authData.provider = authData.provider.replace('-oauth2', '');
-      return session.authenticate('authorizer:social', {
-        provider: authData.provider,
-        credentials: {
-          token: authData.authorizationCode
-        }
-      });
-    } else {
-      return session.authenticate('simple-auth-authenticator:devise', authData);
-    }
+  linkVenmo(data) {
+    return Ember.$.post(`${config.SAUCE_URL}venmo/link`, {
+      data: {
+        userId: this.get('authUser.id'),
+        authData: JSON.parse(localStorage.getItem('firebase:session::incandescent-fire-2053')),
+        data: data
+      }
+    });
   },
   invalidateSession() {
     this.get('session').close();
@@ -25,41 +21,42 @@ export default Ember.Service.extend({
   },
   getSessionData(session) {
     let pArray = []
-    debugger
-    pArray.push(this.get('store').query('user', { uid: session.get('uid') }));
-    pArray.push(this.get('store').query('userInfo', { user: session.get('uid') }));
-    pArray.push(this.get('store').query('userSetting', { user: session.get('uid') }));
-    pArray.push(this.get('store').query('home', { user: session.get('uid') }));
-    return Promise.all(pArray).then( (responses) => {
-      let users = responses[0],
-        infos = responses[1],
-        settings = responses[2],
-        homes = responses[3];
-
+    return this.get('store').query('user', {orderBy: 'uid', startAt: session.get('uid'), endAt: session.get('uid')}).then( (users) => {
       if (users.get('length') > 0) {
-        let user = users.get('firstObject'),
-          userSettings = settings.get('firstObject');
-        this.set('authUser', user);
-        user.set('settings', userSettings);
-        this.set('CURRENT_USER_ID', user.id);
-        this.set('userSettings', user.get('settings'));
-        let groupConfigured = userSettings.get('isGroupConfigured')
-        if (groupConfigured) {
-          this.set('currentHome', homes.find(function(home) {
-            return home.get('id') === userSettings.get('defaultHome');
-          }));
-          this.set('CURRENT_HOME_ID', this.get('currentHome.id'));
-          homes.forEach(function(home) {
-            return home.get('users');
-          });
-          user.set('info', infos.get('firstObject'));
-          this.set('userInfo', user.get('info'));
-        }
-        return this;
+        return users.get('firstObject');
+      } else {
+        return null;
+      }
+    }).then ( (user) => {
+      if (user) {
+        pArray.push(this.get('store').query('userInfo', {orderBy: 'user', startAt: user.get('id'), endAt: user.get('id')}));
+        pArray.push(this.get('store').query('userSetting', {orderBy: 'user', startAt: user.get('id'), endAt: user.get('id')}));
+        pArray.push(this.get('store').query('home', {orderBy: 'user', startAt: user.get('id'), endAt: user.get('id')}));
+        return Promise.all(pArray).then( (responses) => {
+          let infos = responses[0],
+            settings = responses[1],
+            homes = responses[2],
+            userSettings = settings.get('firstObject');
+          this.set('authUser', user);
+          user.set('settings', userSettings);
+          this.set('CURRENT_USER_ID', user.id);
+          this.set('userSettings', user.get('settings'));
+          let groupConfigured = userSettings.get('isGroupConfigured')
+          if (groupConfigured) {
+            this.set('currentHome', homes.find(function(home) {
+              return home.get('id') === userSettings.get('defaultHome');
+            }));
+            this.set('CURRENT_HOME_ID', this.get('currentHome.id'));
+            user.set('info', infos.get('firstObject'));
+            this.set('userInfo', user.get('info'));
+          }
+          return this;
+        });
       } else {
         return this.invalidateSession();
       }
-    });
+
+    })
   },
   initializeUser() {
     // Make deep copy so we dont change the session object

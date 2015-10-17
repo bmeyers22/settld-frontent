@@ -24,9 +24,7 @@ export default Ember.Route.extend({
     connectVenmo() {
       let session = this.get('session');
       this.get('torii').open("venmo-oauth2").then((data) => {
-        return this.get('sessionService').authenticateUser(session, data)
-      }).then( () => {
-        return this.get('sessionService').refresh(session, this.get('store'));
+        return this.get('sessionService').linkVenmo(data);
       }).then( () => {
         this.send('finish');
       })

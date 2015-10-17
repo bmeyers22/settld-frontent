@@ -28,7 +28,6 @@ export default Ember.Component.extend({
         email    : self.get('identification'),
         password : self.get('password')
       }, function(error, userData) {
-        debugger
         if (error) {
           console.log("Error creating user:", error);
         } else {
