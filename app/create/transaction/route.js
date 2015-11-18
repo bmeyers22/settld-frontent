@@ -41,21 +41,25 @@ export default Ember.Route.extend({
   createInvoices(transaction) {
     let proms = [];
     this.get('currentSession.currentHome.users').forEach( (user) => {
+      if (user === this.get('currentSession.authUser')) {
+        return;
+      }
       let contributor = transaction.get('contributors').find( (c) => {
         return c.user === user.id;
       })
-      let amount = +(transition.get('cost') * contributor.percent).toFixed(2);
+      let amount = +(transaction.get('cost') * contributor.percent).toFixed(2);
       proms.push(this.createInvoice(transaction, amount, user));
     })
     return Promise.all(proms);
   },
   createInvoice(transaction, amount, user) {
+    debugger
     return this.get('store').createRecord('invoice', {
       transaction: transaction,
       amount: amount,
       home: this.get('currentSession.currentHome'),
-      payer_id: user.get('id'),
-      payee_id: this.get('currentSession.authUser.id')
+      payer: user.get('id'),
+      payee: this.get('currentSession.authUser.id')
     }).save()
   },
   actions: {

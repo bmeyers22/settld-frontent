@@ -9,11 +9,9 @@ export default Ember.Route.extend({
         members: users.map((user) => {
           return {
             user: user,
-            info: this.store.queryRecord('userInfo', {
-              filter: {
-                home: this.get('currentSession.currentHome.id'),
-                user: user.id
-              }
+            info: this.store.find('userInfo', {
+              orderBy: 'home',
+              equalTo: this.get('currentSession.currentHome.id')
             })
           };
         })

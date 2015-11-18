@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  sessionService: Ember.inject.service('current-session'),
+  currentSession: Ember.inject.service(),
   model() {
     return this.get('currentSession.authUser');
   },
@@ -24,7 +24,7 @@ export default Ember.Route.extend({
     connectVenmo() {
       let session = this.get('session');
       this.get('torii').open("venmo-oauth2").then((data) => {
-        return this.get('sessionService').linkVenmo(data);
+        return this.get('currentSession').linkVenmo(data);
       }).then( () => {
         this.send('finish');
       })
