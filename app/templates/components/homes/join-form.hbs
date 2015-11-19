@@ -5,7 +5,7 @@
       <div class="ui home-results form">
         <div class="ui icon fluid input">
           <i {{action 'findHomes'}} class="search link icon"></i>
-          <input class="prompt" type="text" name="query" value={{query}} autocomplete="on" placeholder="Search..." />
+          {{input class="prompt" type="text" name="query" value=queryText autocomplete="on" placeholder="Search..."}}
         </div>
         {{#if searchResults}}
           <div class="result results-labels">
@@ -30,9 +30,6 @@
               </div>
             </div>
           {{/each}}
-          <div class="ui bottom attached button basic all">
-            View all results
-          </div>
         {{else}}
           <h1 class="no-results">No results</h1>
         {{/if}}
@@ -40,13 +37,7 @@
       <div class="results"></div>
       {{#unless noSelectedHome}}
         <div class="ui form join-password">
-          <div class="field">
-            <label>
-              Password
-            </label>
-            {{input type="password" name="password" placeholder="Home password" value=selectedHome.password}}
-          </div>
-          <div class="ui green submit join button" {{action 'joinHome'}}>
+          <div class="ui fluid submit join button" {{action 'joinHome'}}>
             <span class="submit-text">
               Join
             </span>

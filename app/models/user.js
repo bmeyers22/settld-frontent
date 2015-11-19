@@ -24,8 +24,8 @@ User = DS.Model.extend({
     return this.get('firstName' + ' ' + this.get('lastName'));
   }),
   providers: DS.attr('array'),
-  facebook: DS.attr('object'),
-  venmo: DS.attr('object')
+  hasFacebook: DS.attr('boolean'),
+  hasVenmo: DS.attr('boolean')
 });
 
 export default User;
