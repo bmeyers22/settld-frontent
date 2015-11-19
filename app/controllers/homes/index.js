@@ -9,7 +9,7 @@ var HomesIndexController = Ember.ArrayController.extend(
     //        return home.get('id') == Room.globeController.get('authUser.settings.defaultHome');
     //    });
     var index = newOrder.indexOf(newOrder.find(function(home) {
-      return home.get('id') === self.session.get('authUser.settings.defaultHome');
+      return home.get('id') === self.get('currentSession.authUser.settings.defaultHome');
     }
     ));
     if (index !== 0) {

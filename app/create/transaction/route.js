@@ -53,11 +53,10 @@ export default Ember.Route.extend({
     return Promise.all(proms);
   },
   createInvoice(transaction, amount, user) {
-    debugger
     return this.get('store').createRecord('invoice', {
       transaction: transaction,
       amount: amount,
-      home: this.get('currentSession.currentHome'),
+      home: this.get('currentSession.currentHome.id'),
       payer: user.get('id'),
       payee: this.get('currentSession.authUser.id')
     }).save()
