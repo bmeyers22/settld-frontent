@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   invoices: Ember.computed( function () {
     return this.get('transaction.invoices').map( (inv) => {
       return {
-        user: this.get('store').find('user', inv.get('payerId')),
+        user: this.get('store').find('user', inv.get('payer')),
         data: inv
       }
     })

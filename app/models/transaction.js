@@ -5,12 +5,12 @@ import Enums from 'web/enums';
 
 
 var Transaction = DS.Model.extend({
-  invoices: DS.hasMany('invoice', {async: false}),
+  invoices: DS.hasMany('invoice', {async: true}),
   user: DS.belongsTo('user', {
-    async: false
+    async: true
   }),
   home: DS.belongsTo('home', {
-    async: false
+    async: true
   }),
   cost: DS.attr('number'),
   title: DS.attr('string'),

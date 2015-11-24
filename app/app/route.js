@@ -20,7 +20,7 @@ export default Ember.Route.extend({
           this.send('removeInvoiceFromPayments', item);
         }
       });
-      return this.store.pushPayload({
+      return this.store.pushPayload('invoice', {
         invoices: invoices
       });
     },
