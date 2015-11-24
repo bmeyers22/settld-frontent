@@ -22,9 +22,9 @@
     Pay
   </div>
 </div>
-{{#if invoices.length}}
+{{#if invoices.size}}
   <div class="ui right attached icon basic button payments-bar-tab" {{action 'toggleBar'}}>
     <i class="icon list layout"></i>
-    <div class="floating ui mini blue label">{{invoices.length}}</div>
+    <div class="floating ui mini blue label">{{invoices.size}}</div>
   </div>
 {{/if}}

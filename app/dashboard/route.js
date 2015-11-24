@@ -11,12 +11,8 @@ export default Ember.Route.extend({
             }).then( (response) => {
                 return resolve({
                     feedList: [
-                        this.store.filter('transaction', function () {
-                            return true;
-                        }),
-                        this.store.filter('job', function () {
-                            return true;
-                        })
+                        this.get('store').peekAll('transaction'),
+                        this.get('store').peekAll('job')
                     ]
                 })
             });

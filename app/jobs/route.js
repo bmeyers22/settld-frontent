@@ -9,9 +9,7 @@ export default Ember.Route.extend({
       }).then( (response) => {
         return resolve({
           feedList: [
-            this.store.filter('job', function () {
-              return true;
-            })
+            this.store.peekAll('job')
           ]
         })
       });
