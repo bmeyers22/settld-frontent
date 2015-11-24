@@ -14,7 +14,6 @@
     "lodash": "~3.10.0",
     "moment": "~2.10.6",
     "semantic-ui": "^2.1.4",
-    "active-model-adapter": "~2.0.1",
     "hammerjs": "runspired/hammer.js#develop",
     "pace": "vectart/pace#master",
     "uri.js": "~1.16.0",

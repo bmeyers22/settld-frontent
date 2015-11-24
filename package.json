@@ -19,7 +19,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "active-model-adapter": "2.0.1",
     "broccoli-asset-rev": "^2.2.0",
     "ember-cli": "1.13.12",
     "ember-cli-accounting": "1.0.0",
@@ -49,7 +48,6 @@
     "ember-suave": "1.0.0",
     "ember-truth-helpers": "1.1.0",
     "ember-watson": "^0.6.5",
-    "ember-websockets": "1.2.3",
     "emberfire": "1.6.1",
     "liquid-fire": "0.21.3",
     "torii": "0.6.0"
