@@ -1,0 +1,26 @@
+<div class="item-type job">
+  <i class="briefcase icon"></i>
+</div>
+<div class="label image">
+  {{user-image user=user}}
+</div>
+<div class="content">
+  <div class="item-wrapper">
+    <div class="info">
+      <div class="summary">
+        <div class="text">{{displayName}} completed {{item.title}}</div>
+        <div>
+          {{fuzzy-time item.date}}
+        </div>
+      </div>
+      <div class="extra text">
+        {{item.description}}
+      </div>
+      <div class="meta">
+        <a class="like">
+          <i class="like icon"></i> {{numberOfLikes}} Likes
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

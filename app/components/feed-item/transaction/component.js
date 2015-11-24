@@ -4,38 +4,14 @@ import Job from 'web/models/job';
 
 export default Ember.Component.extend({
     classNames: ['event'],
+    firebase: Ember.inject.service(),
     transactionsService: Ember.inject.service('transactions'),
     currentSession: Ember.inject.service(),
     pendingInvoice: false,
     paidInvoice: false,
     rejectedInvoice: false,
-    click() {
-        if (this.get('isTransaction')) {
-            this.sendAction('openActionBar', this.get('item'));
-        }
-    },
-    isTransaction: Ember.computed(function() {
-        var model;
-        model = this.get('item');
-        if (model.constructor.modelName === 'transaction') {
-            return true;
-        }
-        return false
-    }),
-    isJob: Ember.computed(function() {
-        var model;
-        model = this.get('item');
-        if (model.constructor.modelName === 'transaction') {
-            return true;
-        }
-        return false
-    }),
-    iconType: Ember.computed('classType', function() {
-        var base, classType;
-        classType = this.get('classType');
-        base = 'icon ';
-        return base + (classType === 'transaction' ? 'dollar' : classType === 'job' ? 'briefcase' : '');
-    }),
+    numberOfLikes: 0,
+    hasLikedTransaction: false,
     displayName: Ember.computed('item.user.currentState.isLoading', function() {
         let isMe = this.get('item.user.content') === this.get('currentSession.authUser');
         if (isMe) {
@@ -44,16 +20,43 @@ export default Ember.Component.extend({
             return this.get('item.user.content.firstName');
         }
     }),
-    actionName: Ember.computed(function() {
-        var classType;
-        classType = this.get('classType');
-        if (classType === 'transaction') {
-            return 'bought';
-        } else if (classType === 'job') {
-            return 'performed';
-        } else {
-            return '';
+    click() {
+        this.sendAction('openActionBar', this.get('item'));
+    },
+    actions: {
+        toggleLike() {
+            if (this.get('hasLikedTransaction')) {
+                let userRef = this.getUserLikedRef();
+                userRef.once('value', (snapshot) => {
+                    this.get('firebase').child(`transactionLikes/${snapshot.val()}`).remove();
+                    userRef.remove();
+                })
+            } else {
+                let ref = this.get('firebase').child('transactionLikes').push({
+                    user: this.get('currentSession.authUser.id'),
+                    transaction: this.get('item.id')
+                });
+                this.getUserLikedRef().set(ref.key());
+            }
+            return false;
         }
+    },
+    getUserLikedRef() {
+        return this.get('firebase').child(`userLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
+    },
+    userLikedObserver: Ember.on('init', function () {
+        let ref = this.getUserLikedRef().on('value', (snapshot) => {
+            if (snapshot.exists()) {
+                this.set('hasLikedTransaction', true);
+            } else {
+                this.set('hasLikedTransaction', false);
+            }
+        });
+    }),
+    likesObserver: Ember.on('init', function () {
+        let ref = this.get('firebase').child('transactionLikes').orderByChild('transaction').equalTo(this.get('item.id')).on('value', (snapshot) => {
+            this.set('numberOfLikes', snapshot.numChildren());
+        });
     }),
     pendingInvoiceObserver: Ember.on('init', Ember.observer('item.invoices.@each.paymentPending', function() {
         return this.get('transactionsService').filterInvoicesByStatus(this.get('item'), 'paymentPending', true, this.get('currentSession.authUser.id')).then((inv) => {

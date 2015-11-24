@@ -27,7 +27,11 @@
   </div>
   <div class="ui feed">
     {{#each stream as |item|}}
-      {{feed-item item=item openActionBar=(action "openActionBar") user=currentSession.authUser}}
+      {{#if (eq item.constructor.modelName "transaction")}}
+        {{feed-item/transaction item=item openActionBar=(action "openActionBar") user=currentSession.authUser}}
+      {{else}}
+        {{feed-item/job item=item openActionBar=(action "openActionBar") user=currentSession.authUser}}
+      {{/if}}
     {{/each}}
   </div>
   {{else}}
