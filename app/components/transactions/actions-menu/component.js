@@ -18,6 +18,7 @@ export default Ember.Component.extend({
     pendingInvoiceObserver: Ember.on('init', Ember.observer('model.invoices.@each.paymentPending', function () {
         if (this.get('model.user.content') === this.get('currentSession.authUser')) {
             this.set('pendingInvoice', false);
+            return;
         }
         this.get('transactionsService').filterInvoicesByStatus(this.get('model'), 'paymentPending', true, this.get('currentSession.authUser.id')).then((inv) => {
             this.set('pendingInvoice', !!inv);

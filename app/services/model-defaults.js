@@ -20,8 +20,7 @@ defaults = function() {
       home: null,
       title: null,
       description: null,
-      date: new Date(),
-      contributors: [],
+      date: new Date().getTime(),
       points: null
     }
   };

@@ -36,7 +36,7 @@ export default Ember.Component.extend({
         base = 'icon ';
         return base + (classType === 'transaction' ? 'dollar' : classType === 'job' ? 'briefcase' : '');
     }),
-    displayName: Ember.computed('item.user', function() {
+    displayName: Ember.computed('item.user.currentState.isLoading', function() {
         let isMe = this.get('item.user.content') === this.get('currentSession.authUser');
         if (isMe) {
             return 'You';
