@@ -2,7 +2,7 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app'),
   env = EmberApp.env();
 
-var isProductionLikeBuild = ['production', 'staging'].indexOf(env) > -1;
+var isProductionLikeBuild = ['prod', 'qa'].indexOf(env) > -1;
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
