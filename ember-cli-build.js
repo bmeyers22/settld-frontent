@@ -9,7 +9,7 @@ module.exports = function(defaults) {
     hinting: false,
     fingerprint: {
       enabled: isProductionLikeBuild,
-      prepend: 'https://s3.amazonaws.com/app.settld.com/web'
+      prepend: 'https://s3.amazonaws.com/app.settld.com/web/'
     },
     sassOptions: {
       sourceMap: false
