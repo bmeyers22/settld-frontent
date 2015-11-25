@@ -70,7 +70,7 @@ export default Ember.Component.extend({
                 }));
             }
             if (venmoInvoices.length > 0) {
-                promises.push(Ember.$.post(`${config.SAUCE_URL}venmo/pay`, {
+                promises.push(Ember.$.post(`${config.API_URL}venmo/pay`, {
                     type: "POST",
                     payment: {
                         invoices: venmoInvoices,

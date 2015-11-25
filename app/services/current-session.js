@@ -6,7 +6,7 @@ export default Ember.Service.extend({
     session: Ember.inject.service(),
     linkVenmo(data) {
         debugger
-        return Ember.$.post(`${config.SAUCE_URL}venmo/link`, {
+        return Ember.$.post(`${config.API_URL}venmo/link`, {
             data: {
                 userId: this.get('authUser.id'),
                 authData: JSON.parse(localStorage.getItem('firebase:session::incandescent-fire-2053')),
