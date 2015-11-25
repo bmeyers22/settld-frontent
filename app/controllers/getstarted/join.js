@@ -9,6 +9,14 @@ var GetstartedJoinController = HomesJoinController.extend({
         this.set('currentSession.currentHome', home);
         this.set('currentSession.CURRENT_HOME_ID', this.get('currentSession.currentHome.id'));
         home.get('users').pushObject(authUser);
+        home.get('groupInfo').then((info) => {
+            info.set(`users.${this.get('currentSession.authUser.id')}`, {
+                score: 0,
+                balance: 0,
+                choresToDo: 0
+            });
+            return info.save();
+        })
         authUser.get('homes').pushObject(home);
         authUser.save();
         home.save();

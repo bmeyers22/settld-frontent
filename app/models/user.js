@@ -6,9 +6,6 @@ User = DS.Model.extend({
   homes: DS.hasMany('home', {
     async: true
   }),
-  userInfos: DS.hasMany('userInfos', {
-    async: true
-  }),
   uid: DS.attr('string'),
   fuid: DS.attr('string'),
   vuid: DS.attr('string'),
@@ -25,7 +22,10 @@ User = DS.Model.extend({
   }),
   providers: DS.attr('array'),
   hasFacebook: DS.attr('boolean'),
-  hasVenmo: DS.attr('boolean')
+  hasVenmo: DS.attr('boolean'),
+  createdAt: DS.attr('number', {
+    defaultValue() { return new Date().getTime(); }
+  })
 });
 
 export default User;

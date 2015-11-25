@@ -25,7 +25,10 @@ var Transaction = DS.Model.extend({
   }),
   split: DS.attr('boolean'),
   points: DS.attr('number'),
-  contributors: DS.attr('array')
+  contributors: DS.attr('array'),
+  createdAt: DS.attr('number', {
+    defaultValue() { return new Date().getTime(); }
+  })
 });
 
 export default Transaction

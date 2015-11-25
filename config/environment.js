@@ -13,7 +13,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'web',
     environment: environment,
-    firebase: process.env['FIREBASE_URL'],
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -46,6 +45,7 @@ module.exports = function(environment) {
     ENV.GA = {
       UA_CODE: 'UA-51059302-1' // where UA code looks something like: UA-00000000-1
     }
+    ENV.firebase = process.env['FIREBASE_URL_DEV'];
 
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -86,6 +86,7 @@ module.exports = function(environment) {
     ENV.GA = {
       UA_CODE: 'UA-51059302-1' // where UA code looks something like: UA-00000000-1
     }
+    ENV.firebase = process.env['FIREBASE_URL'];
     ENV.PROXY_URL = '';
     ENV.torii.providers = {
       'facebook': {

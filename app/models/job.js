@@ -12,5 +12,8 @@ export default DS.Model.extend({
     description: DS.attr('string'),
     points: DS.attr('number'),
     date: DS.attr('date'),
-    split: DS.attr('boolean')
+    split: DS.attr('boolean'),
+    createdAt: DS.attr('number', {
+      defaultValue() { return new Date().getTime(); }
+    })
 });

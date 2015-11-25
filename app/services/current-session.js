@@ -5,7 +5,6 @@ export default Ember.Service.extend({
     store: Ember.inject.service(),
     session: Ember.inject.service(),
     linkVenmo(data) {
-        debugger
         return Ember.$.post(`${config.API_URL}venmo/link`, {
             data: {
                 userId: this.get('authUser.id'),
@@ -30,14 +29,12 @@ export default Ember.Service.extend({
             }
         }).then ( (user) => {
             if (user) {
-                pArray.push(this.get('store').query('userInfo', {orderBy: 'user', equalTo: user.get('id')}));
                 pArray.push(this.get('store').query('userSetting', {orderBy: 'user', equalTo: user.get('id')}));
                 pArray.push(user.get('homes'));
                 return Promise.all(pArray).then( (responses) => {
-                    let infos = responses[0],
-                    settings = responses[1],
-                    homes = responses[2],
-                    userSettings = settings.get('firstObject');
+                    let settings = responses[0],
+                        homes = responses[1],
+                        userSettings = settings.get('firstObject');
                     this.set('authUser', user);
                     user.set('settings', userSettings);
                     this.set('CURRENT_USER_ID', user.id);
@@ -48,8 +45,9 @@ export default Ember.Service.extend({
                             return home.get('id') === userSettings.get('defaultHome');
                         }));
                         this.set('CURRENT_HOME_ID', this.get('currentHome.id'));
-                        user.set('info', infos.get('firstObject'));
-                        this.set('userInfo', user.get('info'));
+                        this.get('currentHome.groupInfo').then((info) => {
+                            this.set('currentHomeInfo', info);
+                        })
                     }
                     return this;
                 });

@@ -15,7 +15,10 @@ var Invoice = DS.Model.extend({
   paymentPending: DS.attr('boolean'),
   paymentRejected: DS.attr('boolean'),
   rejectionNote: DS.attr('string'),
-  paymentConfirmedDate: DS.attr('date')
+  paymentConfirmedDate: DS.attr('date'),
+  createdAt: DS.attr('number', {
+    defaultValue() { return new Date().getTime(); }
+  })
 });
 
 export default Invoice

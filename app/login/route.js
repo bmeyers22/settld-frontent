@@ -14,10 +14,6 @@ var Login = Ember.Route.extend({
                 return this.store.createRecord('userSetting', {
                     user: user
                 }).save()
-            }).then( (data) => {
-                return this.store.createRecord('userInfo', {
-                    user: user
-                }).save();
             }).then( () => {
                 if (provider === 'facebook') {
                     user.set('hasFacebook', true)

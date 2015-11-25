@@ -1,18 +1,1 @@
-<div class="ui small two statistics">
-  <div class="green statistic">
-    <div class="value">
-      {{format-money currentSession.userInfo.balance}}
-    </div>
-    <div class="label">
-      Balance
-    </div>
-  </div>
-  <div class="red statistic">
-    <div class="value">
-      {{currentSession.userInfo.choresToDo}}
-    </div>
-    <div class="label">
-      To-do
-    </div>
-  </div>
-</div>
+{{dashboard-stats user=model}}
