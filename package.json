@@ -45,7 +45,6 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-gestures": "0.0.6",
-    "ember-suave": "1.0.0",
     "ember-truth-helpers": "1.1.0",
     "ember-watson": "^0.6.5",
     "emberfire": "1.6.1",
