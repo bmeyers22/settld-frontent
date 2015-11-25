@@ -38,6 +38,9 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'prod') {
     ENV.redis.url = process.env.PROD_REDIS_URL || 'redis://0.0.0.0:6379/';
+    ENV.s3.accessKeyId = process.env.AWS_ACCESS_KEY;
+    ENV.s3.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+    ENV.s3.bucket = 'app.dev.settld.com';
   }
 
   return ENV;
