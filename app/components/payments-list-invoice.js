@@ -12,7 +12,7 @@ export default Ember.Component.extend({
           return self.send('togglePaymentMethod');
         }
       })
-      .addClass(this.get('user.venmo') ? '' : 'disabled');
+      .addClass(this.get('user.hasVenmo') ? '' : 'disabled');
   },
   actions: {
     togglePaymentMethod() {

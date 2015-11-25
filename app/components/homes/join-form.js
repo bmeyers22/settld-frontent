@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import Serializable from 'web/mixins/serializable';
+import config from 'web/config/environment';
 
 export default Ember.Component.extend({
-  query: '',
+  queryText: '',
   searchResults: Ember.A(),
   selectedHome: false,
-  passwordValid: true,
   noSelectedHome: Ember.computed.not('selectedHome'),
   onPasswordSubmit() {
     this.$('.ui.form.join-password .field').removeClass('loading');
@@ -15,16 +15,21 @@ export default Ember.Component.extend({
     var self = this;
     this.$('.ui.search').search({
       apiSettings: {
-        url: '/api/v1/homes/search?filter={query}'
+        url: `${config.firebase}homes.json?orderBy="name"&startAt="${this.get('queryText')}"`
       },
       cache: false,
+      onSelect() {
+          return false;
+      },
       onSearchQuery() {
         self.$('home-results').addClass('loader');
         self.set('selectedHome', null);
       },
       onResults(data) {
         let arr = [];
-        data.results.forEach( (obj) => {
+        Object.keys(data).forEach( (key) => {
+          let obj = data[key];
+          obj.id = key;
           obj.password = '';
           obj.selected = false;
           arr.push(Ember.Object.extend(Serializable).create(obj));
@@ -50,17 +55,6 @@ export default Ember.Component.extend({
       }
     });
   },
-  joinCallback(data) {
-    var self;
-    self = this;
-    if (data.success === true) {
-      self.sendAction('joinHome', self.get('selectedHome'));
-      self.$('.submit.join').removeClass('loading');
-    } else {
-      self.set('passwordValid', false);
-      self.$('.submit.join').removeClass('loading');
-    }
-  },
   actions: {
     findHomes() {
       this.$('.ui.search').search('query');
@@ -82,14 +76,8 @@ export default Ember.Component.extend({
       return;
     },
     joinHome() {
-      let self = this;
-      return new Ember.RSVP.Promise(function(resolve, reject) {
-        return ($.post('/api/v1/homes/join', {
-          home: self.get('selectedHome').serialize()
-        }, resolve)).fail(reject);
-      }).then(function(data) {
-        return self.joinCallback(data);
-      });
+      this.sendAction('joinHome', this.get('selectedHome'));
+      this.$('.submit.join').removeClass('loading');
     },
     cancelJoin() {
 

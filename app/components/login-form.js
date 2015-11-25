@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from 'web/config/environment';
 
 export default Ember.Component.extend({
+  firebase: Ember.inject.service(),
   classNames: [
     'signin-container',
     'login'
@@ -10,56 +11,28 @@ export default Ember.Component.extend({
     this.$('.ui.form').form('add errors', errors);
   },
   actions: {
-    login(provider) {
-        if (!provider) {
-          if (this.$('.ui.form').form('is valid')) {
-            this.get('sessionService').authenticateUser(this.get('session'), {
-              identification: this.get('identification'),
-              password: this.get('password')
-            }).fail( (error) => {
-              try {
-                let errors = [error.error]
-                this.addErrors(errors);
-              } catch (e) {
-
-              }
-
-            });
-          }
-        } else {
-          this.sendAction('login', provider);
-        }
+    signIn(provider) {
+      let data;
+      if (provider === 'password') {
+        data = {
+          email: this.get('identification'),
+          password: this.get('password')
+        };
+      }
+      this.sendAction('signIn', provider, data);
     },
     register() {
       let self = this;
-      Ember.$.ajax(`${config.PROXY_URL}/users`,{
-        method: "POST",
-        dataType: "json",
-        data: {
-          user: {
-            email: self.get('identification'),
-            password: self.get('password'),
-            password_confirmation: self.get('password')
-          }
-        }
-      }).done( (response) => {
-        self.send('login');
-        self.sendAction('registered');
-      }).fail( (error) => {
-        try {
-          let response = error.responseJSON.errors;
-          let errors = [];
-          Object.keys(response).forEach((key) => {
-            let messages = response[key].map((message) => {
-              return `${key[0].toUpperCase()}${key.slice(1)} ${message}`
-            })
-            errors = errors.concat(messages)
-          })
-
-          this.addErrors(errors);
-
-        } catch (e) {
-
+      let ref = new Firebase(config.firebase);
+      ref.createUser({
+        email    : self.get('identification'),
+        password : self.get('password')
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          self.sendAction('registered', userData);
         }
       });
     }

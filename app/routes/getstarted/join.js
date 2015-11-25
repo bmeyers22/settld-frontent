@@ -1,5 +1,3 @@
 import Ember from 'ember';
 
-var GetstartedJoinRoute = Ember.Route.extend();
-
-export default GetstartedJoinRoute
+export default Ember.Route.extend();

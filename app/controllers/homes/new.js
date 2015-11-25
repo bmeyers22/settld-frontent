@@ -5,7 +5,7 @@ var HomesNewController = Ember.Controller.extend({
   saveHome(obj) {
     let self = this,
       home = this.store.createRecord('home', obj),
-      authUser = this.session.get('authUser'),
+      authUser = this.get('currentSession.authUser'),
       prom = new Promise(function(resolve, reject) {
         home.get('users').pushObject(authUser);
         home.save().then(function(home) {

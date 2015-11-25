@@ -1,7 +1,7 @@
 <div class="ui small two statistics">
   <div class="green statistic">
     <div class="value">
-      {{format-money session.userInfo.balance}}
+      {{format-money currentSession.userInfo.balance}}
     </div>
     <div class="label">
       Balance
@@ -9,7 +9,7 @@
   </div>
   <div class="red statistic">
     <div class="value">
-      {{session.userInfo.choresToDo}}
+      {{currentSession.userInfo.choresToDo}}
     </div>
     <div class="label">
       To-do

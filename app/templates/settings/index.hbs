@@ -140,7 +140,7 @@
           <i class="fa fa-eye"></i>Privacy Setting
         </h4>
         <div class="ui toggle checkbox" {{action "togglePrivacy"}}>
-            {{input id="privacy" type="checkbox" checked=model.settings.hasPublicProfile}}
+            {{input name="privacy" type="checkbox"}}
             <label for="privacy">Public</label>
         </div>
       </div>
@@ -160,7 +160,7 @@
               Facebook
             </div>
             <div class="account-action">
-              {{#unless model.facebook.uid}}
+              {{#unless model.hasFacebook}}
                 <div class="ui button blue">Link</div>
               {{else}}
                 <div class="ui green disabled button">Linked</div>
@@ -173,7 +173,7 @@
               Venmo
             </div>
             <div class="account-action">
-              {{#unless model.venmo.id}}
+              {{#unless model.hasVenmo}}
                 <div class="ui button blue" {{action 'connect' 'venmo-oauth2'}}>Link</div>
               {{else}}
                 <div class="ui green disabled button">Linked</div>

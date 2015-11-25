@@ -1,93 +1,105 @@
 import Ember from 'ember';
+import config from 'web/config/environment';
 
 export default Ember.Component.extend({
-  classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left', 'dimmable', 'blurring'],
-  invoicesSum: Ember.computed('invoices.[]', function () {
-    let sum = 0;
-    this.get('invoices').forEach( (inv) => {
-      sum += inv.get('amount');
-    })
-    return sum;
-  }),
-  didInsertElement() {
-    this.$().sidebar({
-      context: $('.global-wrapper'),
-      dimPage: false,
-      defaultTransition: {
-        computer: {
-          left: 'overlay'
-        },
-        mobile: {
-          left: 'overlay'
-        }
-      }
-    });
-  },
-  didRender() {
-    this.$('.popup').popup({
-      position: 'bottom right'
-    });
-  },
-  actions: {
-    toggleBar() {
-      this.$().sidebar('toggle');
-    },
-    removeInvoice(inv) {
-      this.sendAction('removeInvoice', inv);
-    },
-    sendPayment() {
-      let self = this;
-      this.set('loading', true);
-      let invoices = this.get('invoices')
-        .filter( i => !i.get('paymentMethod') )
-        .map((inv) => {
-          return inv.get('id');
-        }),
-        venmoInvoices = this.get('invoices')
-        .filter( i => i.get('paymentMethod') )
-        .map((inv) => {
-          return inv.get('id');
-        }),
-        promises = [];
-
-      if (invoices.length > 0) {
-        promises.push($.post( '/api/v1/pay', {
-          type: "POST",
-          payment: {
-            invoices: invoices,
-            note: "HEY"
-          }
-        }));
-      }
-      if (venmoInvoices.length > 0) {
-        promises.push($.post( '/api/v1/venmo/pay', {
-          type: "POST",
-          payment: {
-            invoices: venmoInvoices,
-            note: "HEY"
-          }
-        }));
-      }
-
-      Promise.all(promises).then(function (values) {
-        self.set('loading', false);
-        let invoices = values.map(function (obj) {
-          return obj.invoices;
-        }).reduce(function (a, b) {
-          return a.concat(b);
+    store: Ember.inject.service(),
+    classNames: ['payments-bar', 'ui', 'vertical', 'sidebar', 'left', 'dimmable', 'blurring'],
+    invoicesSum: Ember.computed('invoices.[]', function () {
+        let sum = 0;
+        this.get('invoices').forEach( (inv) => {
+            sum += inv.get('amount');
+        })
+        return sum;
+    }),
+    markInvoicesPaid(invoices) {
+        return invoices.map((key) => {
+            let inv = this.get('store').peekRecord('invoice', key);
+            inv.setProperties({
+                paymentPending: true,
+                paymentDate: new Date().getTime()
+            })
+            inv.save();
+            return inv;
         });
-        self.$('.dimmer').dimmer('show');
-        setTimeout(function () {
-          self.$('.dimmer').dimmer('hide');
-          self.send('paymentComplete', invoices);
-          self.send('toggleBar');
-        }, 700);
-      }).catch(function (error) {
-        console.log(error);
-      });
     },
-    paymentComplete(invoices) {
-      this.sendAction('paymentComplete', invoices);
+    didInsertElement() {
+        this.$().sidebar({
+            context: $('.global-wrapper'),
+            dimPage: false,
+            defaultTransition: {
+                computer: {
+                    left: 'overlay'
+                },
+                mobile: {
+                    left: 'overlay'
+                }
+            }
+        });
+    },
+    didRender() {
+        this.$('.popup').popup({
+            position: 'bottom right'
+        });
+    },
+    actions: {
+        toggleBar() {
+            this.$().sidebar('toggle');
+        },
+        removeInvoice(inv) {
+            this.sendAction('removeInvoice', inv);
+        },
+        sendPayment() {
+            this.set('loading', true);
+            let invoices = this.get('invoices')
+                .filter( i => !i.get('paymentMethod') )
+                .map((inv) => {
+                    return inv.get('id');
+                }),
+            venmoInvoices = this.get('invoices')
+                .filter( i => i.get('paymentMethod') )
+                .map((inv) => {
+                    return inv.get('id');
+                }),
+            promises = [];
+
+            if (invoices.length > 0) {
+                promises.push(new Promise( (resolve, reject) => {
+                    resolve({
+                        invoices: this.markInvoicesPaid(invoices)
+                    });
+                }));
+            }
+            if (venmoInvoices.length > 0) {
+                promises.push(Ember.$.post(`${config.API_URL}venmo/pay`, {
+                    type: "POST",
+                    payment: {
+                        invoices: venmoInvoices,
+                        note: "HEY"
+                    },
+                    user: this.get('currentSession.authUser.id')
+                }));
+            }
+
+            Promise.all(promises).then( (values) => {
+                this.set('loading', false);
+                let invoices = values.map(function (obj) {
+                    return obj.invoices;
+                }).reduce(function (a, b) {
+                    return a.concat(b);
+                });
+                this.$('.dimmer').dimmer('show');
+                this.send('paymentComplete', invoices);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        paymentComplete(invoices) {
+            setTimeout( () => {
+                this.$('.dimmer').dimmer('hide');
+                this.sendAction('paymentComplete', invoices);
+                this.send('toggleBar');
+            }, 700);
+
+        }
     }
-  }
 });

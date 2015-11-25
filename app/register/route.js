@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  sessionService: Ember.inject.service('session'),
+  currentSession: Ember.inject.service(),
   model() {
-    return this.session.get('authUser');
+    return this.get('currentSession.authUser');
   },
   actions: {
     updateName(name) {
@@ -24,16 +24,14 @@ export default Ember.Route.extend({
     connectVenmo() {
       let session = this.get('session');
       this.get('torii').open("venmo-oauth2").then((data) => {
-        return this.get('sessionService').authenticateUser(session, data)
-      }).then( () => {
-        return this.get('sessionService').refresh(session, this.get('store'));
+        return this.get('currentSession').linkVenmo(data);
       }).then( () => {
         this.send('finish');
       })
     },
     setUserConfigured() {
-      let settings = this.get('session.userSettings');
-      this.set('session.userSettings.isUserConfigured', true);
+      let settings = this.get('currentSession.userSettings');
+      this.set('currentSession.userSettings.isUserConfigured', true);
       settings.save();
       this.transitionTo('getstarted');
     },

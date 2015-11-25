@@ -26,7 +26,7 @@ export default Base.extend({
     @default '/users/sign_in'
   */
   serverTokenEndpoint(provider) {
-    return `${config.PROXY_URL}/users/oauth/${provider}`
+    return `${config.PROXY_URL}/{provider}/link`
   },
 
   /**

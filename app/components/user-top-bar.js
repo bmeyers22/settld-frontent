@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['ui', 'horizontal', 'top', 'fixed', 'inverted', 'icon', 'main', 'menu', 'user-top-bar'],
-  configured: Ember.computed('session.userSettings.isUserConfigured', 'session.userSettings.isGroupConfigured', function () {
-    return !!(this.get('session.userSettings.isUserConfigured') && this.get('session.userSettings.isGroupConfigured'));
+  configured: Ember.computed('currentSession.userSettings.isUserConfigured', 'currentSession.userSettings.isGroupConfigured', function () {
+    return !!(this.get('currentSession.userSettings.isUserConfigured') && this.get('currentSession.userSettings.isGroupConfigured'));
   }),
   actions: {
     toggleUserBar() {

@@ -6,7 +6,7 @@
       <span {{action 'toggleGroupsBar'}}>edit</span>
     {{/link-to}}
   </h3>
-  {{#each session.authUser.homes as |home| }}
+  {{#each currentSession.authUser.homes as |home| }}
     <div {{action 'toggleGroupsBar'}}>
       {{#link-to groupPath home.id class='item' }}
         {{home.name}}
@@ -16,7 +16,7 @@
 </div>
 {{payments-list
   invoices=invoices
-  session=session
+  currentSession=currentSession
   removeInvoice="removeInvoiceFromPayments"
   paymentComplete='paymentComplete'}}
 <div class="global-content pusher pushable">
@@ -28,7 +28,7 @@
     deleteTransaction='deleteTransaction'}}
   </div>
   {{user-top-bar
-    session=session
+    currentSession=currentSession
     toggleUserBar='toggleUserBar'
     toggleGroupsBar='toggleGroupsBar'
     logout='invalidateSession'}}

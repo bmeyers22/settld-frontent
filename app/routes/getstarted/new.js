@@ -7,15 +7,15 @@ var GetstartedNewRoute = Ember.Route.extend({
       this.transitionTo('getstarted');
     },
     saveHome(home) {
-      let settings = this.session.get('userSettings'),
+      let settings = this.get('currentSession.userSettings'),
         self = this;
       settings.set('isGroupConfigured', true);
       settings.set('defaultHome', home.get('id'));
       settings.save().then( function (settings) {
         self.transitionTo('app');
       });
-      this.session.set('currentHome', home);
-      this.session.set('CURRENT_HOME_ID', home.get('id'));
+      this.set('currentSession.currentHome', home);
+      this.set('currentSession.CURRENT_HOME_ID', home.get('id'));
 
     }
   }
