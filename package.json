@@ -48,5 +48,8 @@
     "emberfire": "1.6.1",
     "liquid-fire": "0.21.3",
     "torii": "0.6.0"
+  },
+  "dependencies": {
+    "ember-cli-dotenv": "^1.0.4"
   }
 }
