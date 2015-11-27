@@ -1,0 +1,75 @@
+<div class="settings-wrapper main-wrapper">
+  <div class="ui big divided list">
+    <div class="item">
+      <i class="user icon"></i>
+      <div class="content">
+        <div class="ui transparent input">
+          {{input class="header" value=model.firstName placeholder="First name"}}
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="user icon"></i>
+      <div class="content">
+        <div class="ui transparent input">
+          {{input value=model.lastName class="header" placeholder="Last name"}}
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="user icon"></i>
+      <div class="content">
+        <div class="ui transparent input">
+          {{input value=model.age class="header" placeholder="Age"}}
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="right floated content">
+        <i class="pencil icon"></i>
+      </div>
+      <i class="lock icon"></i>
+      <div class="content">
+        <div class="header">Change Password</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="right floated content">
+        {{#unless model.hasFacebook}}
+        <div class="ui button blue">Link</div>
+        {{else}}
+        <div class="ui green disabled button">Linked</div>
+        {{/unless}}
+      </div>
+      <i class="facebook icon"></i>
+      <div class="content">
+        <div class="header">Facebook</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="right floated content">
+        {{#unless model.hasVenmo}}
+        <div class="ui button blue" {{action 'connect' 'venmo-oauth2'}}>Link</div>
+        {{else}}
+        <div class="ui green disabled button">Linked</div>
+        {{/unless}}
+      </div>
+      <i class="vimeo icon"></i>
+      <div class="content">
+        <div class="header">Venmo</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="right floated content">
+        <div class="ui toggle checkbox" {{action "togglePrivacy"}}>
+          {{input name="privacy" type="checkbox"}}
+          <label for="privacy">Public</label>
+        </div>
+      </div>
+      <i class="lock icon"></i>
+      <div class="content">
+        <div class="header">Privacy</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -39,7 +39,7 @@
         <i class="dropdown icon">
         </i>
         <div class="menu">
-          
+
           {{#each enums.USStates as |state|}}
             <div data-value={{state.alpha-2}} class="item">
               {{state.alpha-2}} - {{state.name}}
@@ -81,37 +81,10 @@
       <label>
         Rent
       </label>
-      <i class="why-rent">
-        question.icon small data-content="For rent payment features."
+      <i class="why-rent question icon small" data-content="For rent payment features.">
       </i>
       <div class="ui left corner labeled input">
         {{input type="text" name="rentPerMonth" value=rentPerMonth class="form-control" tabindex="7" placeholder="e.g. 2000"}}
-        <div class="ui green left corner label">
-          <i class="asterisk icon">
-          </i>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="two fields">
-    <div class="field">
-      <label>
-        Password
-      </label>
-      <div class="ui left corner labeled input">
-        {{input type="password" name="password" value=password class="form-control" tabindex="8" placeholder="Password 8-12 characters"}}
-        <div class="ui green left corner label">
-          <i class="asterisk icon">
-          </i>
-        </div>
-      </div>
-    </div>
-    <div class="field">
-      <label for="">
-        Confirm
-      </label>
-      <div class="ui left corner labeled input">
-        {{input name="confirm" type="password" class="form-control" tabindex="9" placeholder="Confirm password"}}
         <div class="ui green left corner label">
           <i class="asterisk icon">
           </i>

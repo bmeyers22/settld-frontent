@@ -42,7 +42,7 @@ export default Ember.Component.extend({
         }
     },
     getUserLikedRef() {
-        return this.get('firebase').child(`userLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
+        return this.get('firebase').child(`userTransactionLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
     },
     userLikedObserver: Ember.on('init', function () {
         let ref = this.getUserLikedRef().on('value', (snapshot) => {

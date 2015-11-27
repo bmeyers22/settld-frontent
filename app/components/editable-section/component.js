@@ -18,7 +18,7 @@ export default Ember.Component.extend({
       if (this.$('.ui.form').form('is valid')) {
         this.get('model').save().then((response) => {
           this.set('isEditing', false);
-        }).fail( (response) => {
+      }).catch( (response) => {
           this.$('.ui.form').form('add errors', response.errors);
         });;
       }

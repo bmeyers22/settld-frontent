@@ -22,9 +22,9 @@
         {{item.description}}
       </div>
       <div class="meta">
-        <a class={{if hasLikedTransaction 'like active' 'like'}} {{action 'toggleLike' bubbles=false}}>
+        <div class={{if hasLikedTransaction 'item-like active' 'item-like'}} {{action 'toggleLike' bubbles=false}}>
           <i class="like icon"></i> {{numberOfLikes}} Likes
-        </a>
+        </div>
       </div>
     </div>
   </div>
