@@ -50,12 +50,12 @@ export default Ember.Component.extend({
         },
         sendPayment() {
             this.set('loading', true);
-            let invoices = this.get('invoices')
+            let invoices = this.get('invoices.content')
                 .filter( i => !i.get('paymentMethod') )
                 .map((inv) => {
                     return inv.get('id');
                 }),
-            venmoInvoices = this.get('invoices')
+            venmoInvoices = this.get('invoices.content')
                 .filter( i => i.get('paymentMethod') )
                 .map((inv) => {
                     return inv.get('id');
