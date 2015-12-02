@@ -18,7 +18,8 @@
 npm-debug.log
 testem.log
 .env
-app/index.html
+.env.deploy.dev
+.env.deploy.prod
 
 # iOS
 cordova/platforms/ios/build/

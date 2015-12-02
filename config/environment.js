@@ -14,7 +14,7 @@ module.exports = function(environment) {
         modulePrefix: 'web',
         environment: environment,
         baseURL: '/',
-        defaultLocationType: 'auto',
+        locationType: 'auto',
         EmberENV: {
             FEATURES: {
             }
