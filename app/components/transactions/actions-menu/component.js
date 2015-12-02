@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     transactionsService: Ember.inject.service('transactions'),
     currentSession: Ember.inject.service(),
+    firebase: Ember.inject.service(),
     unpaidInvoice: null,
     pendingInvoice: null,
     owedInvoices: null,
@@ -48,7 +49,9 @@ export default Ember.Component.extend({
                 paymentPending: false,
                 paymentConfirmedDate: new Date()
             })
-            invoice.save()
+            invoice.save().then((invoice) => {
+                this.get('firebase').child('paidInvoices').child(invoice.get('id')).set(invoice.toJSON());
+            })
         },
         deleteTransaction(model) {
             this.sendAction('deleteTransaction', model);
