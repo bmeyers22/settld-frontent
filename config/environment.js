@@ -86,7 +86,7 @@ module.exports = function(environment) {
         ENV.APP.rootElement = '#ember-testing';
     }
 
-    if (environment === 'production') {
+    if (environment === 'production' || environment === 'prod') {
         ENV.GA = {
             UA_CODE: 'UA-51059302-1' // where UA code looks something like: UA-00000000-1
         }
