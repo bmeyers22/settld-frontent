@@ -91,7 +91,7 @@ module.exports = function(environment) {
             UA_CODE: 'UA-51059302-1' // where UA code looks something like: UA-00000000-1
         }
         ENV.firebase = process.env['FIREBASE_URL'];
-        ENV.PROXY_URL = '';
+        ENV.API_URL = '';
         ENV.torii.providers = {
             'facebook': {
                 apiKey: process.env['FACEBOOK_APP_ID_SETTLD'],
