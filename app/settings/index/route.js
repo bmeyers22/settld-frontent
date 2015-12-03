@@ -7,6 +7,9 @@ export default Ember.Route.extend({
         return this.get('currentSession.authUser');
     },
     actions: {
+        updateUserInfo(user) {
+            return user.save();
+        },
         connect(provider){
             let session = this.get('session');
             this.get('torii').open("venmo-oauth2").then((data) => {
@@ -14,10 +17,8 @@ export default Ember.Route.extend({
             })
         },
         togglePrivacy() {
-            Ember.run( () => {
-                this.set('currentModel.settings.hasPublicProfile', !this.get('currentModel.settings.hasPublicProfile'));
-                this.get('currentModel.settings').save();
-            });
+            this.set('currentModel.settings.hasPublicProfile', !this.get('currentModel.settings.hasPublicProfile'));
+            return this.get('currentModel.settings').save();
         }
     }
 });

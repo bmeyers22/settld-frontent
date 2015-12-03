@@ -2,6 +2,24 @@
 
 .settings-wrapper {
   .ui.list > .item {
-    padding: 15px 10px 20px 10px;
+    display: flex;
+    padding: 16px;
+    font-size: 16px;
+    align-items: center;
+    &:first-child {
+      border-top: 1px solid rgba(34, 36, 38, 0.15);
+    }
+    &:last-child {
+      border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+    }
+    .icon {
+      font-size: 32px;
+      vertical-align: middle;
+      height: auto;
+    }
+    .content {
+      vertical-align: middle;
+      flex-grow: 1;
+    }
   }
 }

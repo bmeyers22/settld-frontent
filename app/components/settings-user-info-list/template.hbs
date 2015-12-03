@@ -1,0 +1,66 @@
+<div class="ui big divided list">
+  <div class="item">
+    <i class="user icon"></i>
+    <div class="content">
+      <div class="ui transparent input">
+        {{input class="header" value=user.firstName placeholder="First name"}}
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <i class="user icon"></i>
+    <div class="content">
+      <div class="ui transparent input">
+        {{input value=user.lastName class="header" placeholder="Last name"}}
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <i class="user icon"></i>
+    <div class="content">
+      <div class="ui transparent input">
+        {{input value=user.age class="header" placeholder="Age"}}
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <i class="lock icon"></i>
+    <div class="content">
+      <div class="header">Change Password</div>
+    </div>
+    <i class="pencil icon"></i>
+  </div>
+  <div class="item">
+    <i class="facebook icon"></i>
+    <div class="content">
+      <div class="header">Facebook</div>
+    </div>
+    {{#unless user.hasFacebook}}
+      <div class="ui button blue">Link</div>
+    {{else}}
+      <div class="ui green disabled button">Linked</div>
+    {{/unless}}
+  </div>
+  <div class="item">
+    <i class="vimeo icon"></i>
+    <div class="content">
+      <div class="header">Venmo</div>
+    </div>
+    {{#unless user.hasVenmo}}
+      <div class="ui button blue" {{action 'connect' 'venmo-oauth2'}}>Link</div>
+    {{else}}
+      <div class="ui green disabled button">Linked</div>
+    {{/unless}}
+  </div>
+  <div class="item">
+    <i class="lock icon"></i>
+    <div class="content">
+      <div class="header">Privacy</div>
+    </div>
+    <div class="ui toggle checkbox">
+      {{input name="privacy" type="checkbox" checked=hasPublicProfile}}
+      <label for="privacy">{{privacyLabel}}</label>
+    </div>
+
+  </div>
+</div>

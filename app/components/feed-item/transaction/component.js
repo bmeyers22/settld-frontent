@@ -21,7 +21,10 @@ export default Ember.Component.extend({
         }
     }),
     click() {
-        this.sendAction('openActionBar', this.get('item'));
+        if (!$('.global-action-bar').sidebar('is visible')) {
+            this.sendAction('openActionBar', this.get('item'));
+        }
+        return false;
     },
     actions: {
         toggleLike() {
@@ -38,7 +41,6 @@ export default Ember.Component.extend({
                 });
                 this.getUserLikedRef().set(ref.key());
             }
-            return false;
         }
     },
     getUserLikedRef() {

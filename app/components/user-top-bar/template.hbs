@@ -5,7 +5,7 @@
 {{/if}}
 <div class="home-select-wrapper right menu">
   {{#if configured}}
-    {{#link-to "create" class="item new-entry"}}
+    {{#link-to "create" currentSession.currentHome class="item new-entry"}}
       <i class="write link large icon"></i> New
     {{/link-to}}
     <div class="link item" {{action 'toggleUserBar'}}>
