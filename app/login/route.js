@@ -23,7 +23,7 @@ var Login = Ember.Route.extend({
                 if (provider === 'password') {
                     this.send('signIn', provider, loginInfo);
                 } else {
-                    this.transitionTo('register.name');
+                    this.send('loginComplete');
                 }
             })
         },
@@ -36,7 +36,7 @@ var Login = Ember.Route.extend({
                 if (provider !== 'password') {
                     this.get('store').query('user', { orderBy: 'uid', equalTo: data.uid }).then( (users) => {
                         if (users.get('length') > 0) {
-                            this.transitionTo('index');
+                            this.send('loginComplete');
                         } else {
                             this.send('registered', {
                                 uid: data.uid
@@ -50,6 +50,9 @@ var Login = Ember.Route.extend({
         },
         signOut: function() {
             this.get('session').close();
+        },
+        loginComplete() {
+            this.transitionTo('index');
         }
 
     }

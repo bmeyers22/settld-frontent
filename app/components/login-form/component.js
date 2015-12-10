@@ -23,7 +23,7 @@ export default Ember.Component.extend({
             if (provider !== 'password') {
                 this.get('store').query('user', { orderBy: 'uid', equalTo: data.uid }).then( (users) => {
                     if (users.get('length') > 0) {
-                        this.transitionTo('index');
+                        this.sendAction('loginComplete');
                     } else {
                         this.sendAction('registered', {
                             uid: data.uid
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
                     }
                 })
             } else {
-                this.transitionTo('index');
+                this.sendAction('loginComplete');
             }
         }).catch( (error) => {
             this.addErrors([error.message]);
