@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from 'web/config/environment';
 
 export default Ember.Component.extend({
+    store: Ember.inject.service(),
     errorHandler: Ember.inject.service(),
     firebase: Ember.inject.service(),
     classNames: [
