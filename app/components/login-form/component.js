@@ -32,7 +32,10 @@ export default Ember.Component.extend({
           console.log("Error creating user:", error);
         } else {
           console.log("Successfully created user account with uid:", userData.uid);
-          self.sendAction('registered', userData);
+          self.sendAction('registered', userData, {
+              email    : self.get('identification'),
+              password : self.get('password')
+          });
         }
       });
     }

@@ -8,7 +8,7 @@ var Login = Ember.Route.extend({
         }
     },
     actions: {
-        registered(uidObj, provider) {
+        registered(uidObj, provider, loginInfo) {
             let user = this.store.createRecord('user', uidObj);
             return user.save().then( (user) => {
                 return this.store.createRecord('userSetting', {
@@ -20,7 +20,11 @@ var Login = Ember.Route.extend({
                 }
                 return user.save();
             }).then( () => {
-                this.transitionTo('register.name');
+                if (provider === 'password') {
+                    this.send('signIn', provider, loginInfo);
+                } else {
+                    this.transitionTo('register.name');
+                }
             })
         },
         signIn(provider, loginInfo) {
