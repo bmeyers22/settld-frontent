@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   sessionService: Ember.inject.service('current-session'),
+  beforeModel: function() {
+    if (!this.get('session.isAuthenticated')) {
+        return this.transitionTo('login');
+    };
+  },
   model() {
     return this.get('sessionService').initializeUser(this.get('session'), this.get('store'));
   },

@@ -3,7 +3,7 @@ import Ember from 'ember';
 var Login = Ember.Route.extend({
     currentSession: Ember.inject.service(),
     beforeModel(transition) {
-        if (this.get('currentSession.isAuthenticated')) {
+        if (this.get('session.isAuthenticated')) {
             this.transitionTo('index');
         }
     },

@@ -5,7 +5,10 @@ export default Ember.Route.extend({
         return {
             invoices: Ember.ArrayProxy.create({ content: [] }),
             actionMenuComponent: null,
-            actionMenuModel: null
+            actionMenuModel: null,
+            flashMessages: [],
+            flashMessageType: 'error',
+            flashMessageDuration: 3000
         }
     },
     actionBarMap: {

@@ -1,20 +1,33 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  actions: {
-    invalidateSession() {
-      this.get('session').close().then(() => {
-        this.transitionTo('login');
-      });
+    pubSub: Ember.inject.service(),
+    init() {
+        this.get('pubSub').subscribe('flashMessage', (params) => {
+            this.get('currentModel').setProperties(params);
+        })
     },
-    back: function() {
-      history.back();
+    model() {
+        return Ember.Object.extend({
+            flashMessages: [],
+            flashMessageType: 'error',
+            flashMessageDuration: 3000
+        }).create();
     },
-    openLink: function(url) {
-      window.open(url, '_system');
-    },
-    accessDenied: function() {
-      this.transitionTo('login');
+    actions: {
+        invalidateSession() {
+            this.get('session').close().then(() => {
+                this.transitionTo('login');
+            });
+        },
+        back: function() {
+            history.back();
+        },
+        openLink: function(url) {
+            window.open(url, '_system');
+        },
+        accessDenied: function() {
+            this.transitionTo('login');
+        }
     }
-  }
 });
