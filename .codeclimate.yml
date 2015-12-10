@@ -50,7 +50,7 @@ engines:
 #- vendor/**/*
 
 exclude_paths:
-- "vendor/*"
-- "dist/*"
-- "cordova/*"
-- "tests/*"
+- "vendor/**/*"
+- "dist/**/*"
+- "cordova/**/*"
+- "tests/**/*"
