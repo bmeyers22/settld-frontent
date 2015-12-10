@@ -40,7 +40,7 @@ module.exports = function(deployTarget) {
         ENV.redis = {
             host: '162.243.7.17',
             port: 6379,
-            password: process.ENV.REDIS_PASSWORD
+            password: process.env.REDIS_PASSWORD
         };
         ENV.s3.accessKeyId = process.env.AWS_ACCESS_KEY;
         ENV.s3.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
