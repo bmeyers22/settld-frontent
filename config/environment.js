@@ -34,7 +34,7 @@ module.exports = function(environment) {
             'default-src': "'self'",
             'script-src': "'self' 'unsafe-inline' https://d37gvrvc0wt4s1.cloudfront.net sandbox-api.venmo.com https://www.google-analytics.com/analytics.js http://www.google-analytics.com/analytics.js connect.facebook.net localhost",
             'font-src': "'self' fonts.gstatic.com data: fonts.googleapis.com", // Allow fonts to be loaded from http://fonts.gstatic.com
-            'connect-src': "'self' http://localhost:3000 https://incandescent-fire-2053.firebaseio.com https://auth.firebase.com wss://*.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
+            'connect-src': "'self' http://localhost:3000 https://settld-dev.firebaseio.com https://auth.firebase.com wss://*.firebaseio.com sandbox-api.venmo.com https://api.rollbar.com ws://localhost:7000 https://www.google-analytics.com http://www.google-analytics.com",
             'img-src': "'self' data: venmopics.appspot.com https://www.google-analytics.com http://www.google-analytics.com https://fbcdn-profile-a.akamaihd.net",
             'style-src': "'self' 'unsafe-inline' fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com",
             'media-src': "'self'"
