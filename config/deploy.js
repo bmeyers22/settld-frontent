@@ -38,7 +38,7 @@ module.exports = function(deployTarget) {
 
     if (deployTarget === 'prod') {
         ENV.redis = {
-            host: '162.243.7.17',
+            host: '0.0.0.0',
             port: 6379,
             password: process.env.REDIS_PASSWORD
         };
