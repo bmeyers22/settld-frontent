@@ -25,7 +25,7 @@ export default Ember.Component.extend({
                     if (users.get('length') > 0) {
                         this.transitionTo('index');
                     } else {
-                        this.send('registered', {
+                        this.sendAction('registered', {
                             uid: data.uid
                         }, provider);
                     }
