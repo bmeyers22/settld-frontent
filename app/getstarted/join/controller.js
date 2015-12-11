@@ -1,6 +1,6 @@
-import HomesJoinController from '../homes/join';
+import Ember from 'ember';
 
-var GetstartedJoinController = HomesJoinController.extend({
+var GetstartedJoinController = Ember.Controller.extend({
   actions: {
     onJoinSuccess(selectedHome) {
       this.store.find('home', selectedHome.get('id')).then( (home) => {

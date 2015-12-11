@@ -28,6 +28,7 @@ module.exports = function(defaults) {
     app.import('bower_components/moment/min/moment.min.js');
     app.import('bower_components/semantic-ui/dist/semantic.js');
     app.import('vendor/javascripts/semantic-mods.js');
+    app.import('bower_components/Sortable/Sortable.js');
 
     var fontExtensions = ['.eot','.otf','.svg','.ttf','.woff','.woff2'];
     for (var i = fontExtensions.length - 1; i >= 0; i--) {

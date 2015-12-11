@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var HomesNewController = Ember.Controller.extend({
+export default Ember.Controller.extend({
     needs: 'application',
     saveHome(obj) {
         let self = this,
@@ -42,5 +42,3 @@ var HomesNewController = Ember.Controller.extend({
         }
     }
 });
-
-export default HomesNewController

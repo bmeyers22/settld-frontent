@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend(
   {model() {
-    return this.store.all('home');
+    return this.store.peekAll('home');
   },
   setupController(controller, model) {
     controller.set('model', model);
