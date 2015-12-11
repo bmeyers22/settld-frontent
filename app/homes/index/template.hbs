@@ -1,1 +1,67 @@
-{{outlet}}
+<div class="home-index-wrapper">
+  <div class="button-bar">
+    <div class="ui green small labeled icon top right pointing dropdown button add-join">
+      <i class="dropdown icon">
+      </i>
+      <span class="text">
+        Add
+      </span>
+      <div class="menu">
+        <div class="item">
+          {{#link-to "homes.new"}}
+            <i class="plus icon">
+            </i>
+            <span>
+              New
+            </span>
+          {{/link-to}}
+        </div>
+        <div class="item">
+          {{#link-to "homes.join"}}
+            <i class="add user icon">
+            </i>
+            <span>
+              Join
+            </span>
+          {{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+    </div>
+  </div>
+  <div class="ui grid">
+    <div class="two wide center aligned column default-marker-column">
+      <span class="default-marker">
+        <span>
+          Default
+        </span>
+        <i class="right icon">
+        </i>
+      </span>
+    </div>
+    <div class="fourteen wide column">
+      {{#draggable-collection}}
+        {{#each sortedDefault as |item|}}
+          {{#draggable-item}}
+            <div class="fourteen wide column">
+              <div class="homes">
+                <div class="ui segment">
+                  <h3>
+                    {{name}}
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="one wide column move-column">
+              <i class="icon bars"></i>
+            </div>
+            <div class="one wide column edit-column">
+              {{#link-to 'homes.edit' this}}<i click="'editHome' this" class="icon pencil"></i>{{/link-to}}
+            </div>
+          {{/draggable-item}}
+        {{/each}}
+      {{/draggable-collection}}
+    </div>
+  </div>
+</div>

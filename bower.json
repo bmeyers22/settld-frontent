@@ -19,7 +19,8 @@
     "hammerjs": "runspired/hammer.js#develop",
     "pace": "vectart/pace#master",
     "uri.js": "~1.16.0",
-    "firebase": "^2.3.1"
+    "firebase": "^2.3.1",
+    "Sortable": "~1.4.2"
   },
   "resolutions": {
     "ember": "^2.2.0",
