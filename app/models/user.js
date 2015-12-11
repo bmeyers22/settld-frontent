@@ -21,6 +21,7 @@ User = DS.Model.extend({
     return this.get('firstName' + ' ' + this.get('lastName'));
   }),
   providers: DS.attr('array'),
+  hasPassword: DS.attr('boolean'),
   hasFacebook: DS.attr('boolean'),
   hasVenmo: DS.attr('boolean'),
   createdAt: DS.attr('number', {

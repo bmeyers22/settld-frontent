@@ -6,6 +6,19 @@
     padding: 16px;
     font-size: 16px;
     align-items: center;
+    &.form {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      .top-bar {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+      }
+      .ui.form {
+        padding: 16px;
+      }
+    }
     .header {
       font-weight: 300;
     }
@@ -19,6 +32,7 @@
       font-size: 32px;
       vertical-align: middle;
       height: auto;
+      cursor: pointer;
     }
     .content {
       vertical-align: middle;

@@ -10,6 +10,10 @@ var Login = Ember.Route.extend({
     actions: {
         registered(uidObj, provider, loginInfo) {
             let user = this.store.createRecord('user', uidObj);
+            if (provider === 'password') {
+                user.set('email', loginInfo.email);
+                user.set('hasPassword', true);
+            }
             return user.save().then( (user) => {
                 return this.store.createRecord('userSetting', {
                     user: user

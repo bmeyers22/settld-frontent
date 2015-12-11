@@ -10,7 +10,7 @@ export default Ember.Service.extend({
         }
     },
     flashParams: null,
-    showFlashErrors(params) {
+    showFlashMessage(params) {
         let properties = _.extend(this.defaultParams(), params);
         Ember.run( () => {
             this.get('pubSub').publish('flashMessage', properties);

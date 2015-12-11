@@ -20,7 +20,6 @@ export default Ember.Component.extend({
             this.set('invoice.paymentMethod', boolVal ? 0 : 1);
         },
         showOptions() {
-            debugger
             this.$('.content.visible').addClass('hidden');
         },
         hideOptions() {

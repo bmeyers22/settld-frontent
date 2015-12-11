@@ -10,12 +10,14 @@ export default Ember.Component.extend({
         'login'
     ],
     addErrors(errors) {
-        this.get('errorHandler').showFlashErrors({
+        this.get('errorHandler').showFlashMessage({
             flashMessages: errors
         });
     },
     loginUser(provider, loginInfo) {
-        let data = { provider: provider };
+        let data = {
+            provider: provider
+        };
         if (loginInfo) {
             $.extend(data, loginInfo);
         }
@@ -41,6 +43,9 @@ export default Ember.Component.extend({
         signIn(provider) {
             let data;
             if (provider === 'password') {
+                if (!this.$('.ui.form').form('is valid')) {
+                    return;
+                }
                 data = {
                     email: this.get('identification'),
                     password: this.get('password')
@@ -49,6 +54,9 @@ export default Ember.Component.extend({
             this.loginUser(provider, data);
         },
         register() {
+            if (!this.$('.ui.form').form('is valid')) {
+                return;
+            }
             let self = this;
             let ref = new Firebase(config.firebase);
             ref.createUser({

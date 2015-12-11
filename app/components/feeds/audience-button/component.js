@@ -6,10 +6,11 @@ export default Ember.Component.extend({
   classNames: [
     'ui',
     'icon',
+    'basic',
     'button'
   ],
-  classNameBindings: [ 'active', 'disabled' ],
-  active: Ember.computed('audienceScope', function() {
+  classNameBindings: [ 'green', 'disabled' ],
+  green: Ember.computed('audienceScope', function() {
     return this.get('audienceScope') === this.get('index');
   }),
   click(e) {
