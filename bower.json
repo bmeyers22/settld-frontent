@@ -12,12 +12,13 @@
     "lodash": "~3.10.0",
     "moment": "~2.10.6",
     "semantic-ui": "^2.1.4",
-    "hammerjs": "runspired/hammer.js#develop",
     "pace": "vectart/pace#master",
     "uri.js": "~1.16.0",
     "firebase": "^2.1.0",
     "Sortable": "~1.4.2",
-    "qunit": "~1.20.0"
+    "qunit": "~1.20.0",
+    "hammer.js": "2.0.6",
+    "hammer-time": "1.0.0"
   },
   "resolutions": {
     "ember": "2.2.0"
