@@ -1,0 +1,14 @@
+<div class="card item">
+  <div class="content item-handle">
+    <div class="header item-handle">{{item.name}}</div>
+    <div class="description">
+      {{item.address}}
+    </div>
+  </div>
+  {{#link-to 'homes.edit' item}}
+    <div class="ui bottom attached button">
+      <i class="pencil icon"></i>
+      Edit
+    </div>
+  {{/link-to}}
+</div>

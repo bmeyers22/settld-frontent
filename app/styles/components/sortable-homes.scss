@@ -1,0 +1,12 @@
+.sortable-homes-wrapper {
+  .sortable-items {
+    display: flex;
+    flex-direction: column;
+    .item {
+      width: auto;
+      .item-handle {
+        cursor: move;
+      }
+    }
+  }
+}

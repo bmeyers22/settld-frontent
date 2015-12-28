@@ -10,21 +10,7 @@
       </span>
     </div>
     <div class="fourteen wide column">
-      {{#sortable-homes}}
-        {{#each sortedDefault as |item|}}
-          <div class="sixteen wide column">
-            <div class="item">
-              <div class="homes">
-                <div class="ui segment">
-                  <h3>
-                    {{name}}
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        {{/each}}
-      {{/sortable-homes}}
+      {{sortable-homes list=sortedDefault}}
     </div>
   </div>
 </div>

@@ -20,12 +20,6 @@ var HomesIndexController = Ember.Controller.extend({
         return newOrder;
     }),
     actions: {
-        setDefaultHome(id) {
-            var settings = this.get('currentSession.authUser.settings');
-            settings.set('defaultHome', id);
-            settings.save();
-            return;
-        }
     }
 });
 
