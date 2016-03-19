@@ -1,14 +1,9 @@
 {
   "name": "web",
   "dependencies": {
-    "ember": "2.2.0",
-    "ember-cli-shims": "0.0.6",
-    "ember-cli-test-loader": "0.2.1",
-    "ember-data": "^2.2.1",
-    "ember-load-initializers": "0.1.7",
+    "ember": "~2.4.1",
+    "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
-    "jquery": "^1.11.3",
-    "loader.js": "^3.5.0",
     "lodash": "~3.10.0",
     "moment": "~2.10.6",
     "semantic-ui": "^2.1.4",
@@ -19,8 +14,5 @@
     "qunit": "~1.20.0",
     "hammer.js": "2.0.6",
     "hammer-time": "1.0.0"
-  },
-  "resolutions": {
-    "ember": "2.2.0"
   }
 }
