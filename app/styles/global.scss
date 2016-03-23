@@ -1,3 +1,11 @@
+@import 'mixins';
+
 .right-floated {
   float: right;
+}
+.flex-row {
+  @include flex-row();
+}
+.flex-column {
+  @include flex-column();
 }

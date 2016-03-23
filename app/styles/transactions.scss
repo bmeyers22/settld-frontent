@@ -1,15 +1,12 @@
-$overview-height: 350px;
-$header-height: 30px;
 .transactions-wrapper {
   .overview-wrapper {
     .overview-content {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      height: $overview-height;
-      overflow-y: auto;
-      position: relative;
-
-
+      @include flex-row();
+      @include justify-content(space-around);
+      margin: 20px 0;
+      .member-wrapper {
+        text-align: center;
+      }
     }
   }
 }

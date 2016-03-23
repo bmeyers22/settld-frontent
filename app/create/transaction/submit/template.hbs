@@ -1,0 +1,23 @@
+<div class="submit">
+  <div class="ui form">
+    <div class="cost">
+      <div cass="field">
+        <label>
+          <h2 class='ui centered header'>How much did it cost?</h2>
+        </label>
+        <div class="ui huge transparent input">
+          {{input value=model.transaction.cost type="number" min="0" step=".01" placeholder="$0.00" name="cost"}}
+        </div>
+      </div>
+
+    </div>
+    <div class="description">
+      <div class="field">
+        <label>Description:</label>
+        {{textarea class="description" value=model.transaction.description placeholder="(Optional)"}}
+      </div>
+    </div>
+    <div class="large ui button green fluid" {{action "split"}}>Split</div>
+    <div class="large ui button basic fluid" {{action "complete"}}>Submit</div>
+  </div>
+</div>

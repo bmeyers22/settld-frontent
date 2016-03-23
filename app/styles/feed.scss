@@ -4,37 +4,107 @@
   .section-header {
     font-size: 20px;
   }
-  .grid.filters {
-    margin: 0;
+  .feed-panel {
+    @include flex-row();
+    .left {
+      @include flex-grow();
+    }
+    .right {
+      .ui.buttons {
+        border-bottom: none;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+    }
+  }
+
+
+  .empty-feed {
+    .header {
+      margin-bottom: 30px;
+    }
+    margin: 50px;
   }
   .ui.feed {
+    margin: 0;
+    padding-top: 20px;
     .event {
       position: relative;
-      padding: 5px;
       border-bottom: 1px solid #ddd;
+      padding: 0;
       &:first-of-type {
         border-top: 1px solid #ddd;
       }
       .label.image {
         padding: 0px 10px;
-        vertical-align: middle;
+        -webkit-align-self: center;
+            -ms-flex-item-align: center;
+                align-self: center;
         width: 4.5em;
       }
       .content {
+        margin-top: 0;
         padding: 0;
+        .meta {
+          .item-like {
+            cursor: pointer;
+            &.active {
+              color: rgba(0, 0, 0, 1);
+              .icon {
+                color: #EF404A;
+              }
+            }
+          }
+        }
         .item-wrapper {
           width: 100%;
-          padding: 0.5em 0em 0.5em 1.25em;
+          padding: 0 0em 0.5em 1.25em;
           display: table;
           .info {
             width: 100%;
             vertical-align: top;
             display: table-cell;
             padding-right: 10px;
-            .date {
-              float: right;
+            .right-floated {
+              padding: 15px 0 0 0;
+            }
+            .summary {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-align: end;
+              -webkit-align-items: flex-end;
+                  -ms-flex-align: end;
+                      align-items: flex-end;
+              .text {
+                -webkit-box-flex: 1;
+                -webkit-flex-grow: 1;
+                    -ms-flex-positive: 1;
+                        flex-grow: 1;
+              }
+              .icons {
+                min-height: 22px;
+                text-align: right;
+              }
             }
           }
+        }
+      }
+      .item-type {
+        @include flex-column();
+        @include justify-content(center);
+        opacity: .5;
+        border-left: 1px solid #e4e4e4;
+        > i {
+          color: rgb(255, 255, 255);
+          margin: 0;
+        }
+        &.transaction {
+          background: $text-color-money;
+        }
+        &.job {
+          background: $text-color-error;
         }
       }
     }

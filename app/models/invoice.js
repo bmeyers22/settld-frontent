@@ -1,10 +1,12 @@
 import DS from 'ember-data';
 
 var Invoice = DS.Model.extend({
-  transaction: DS.belongsTo("transaction"),
-  payerId: DS.attr("string"),
-  payeeId: DS.attr("string"),
-  homeId: DS.attr("string"),
+  transaction: DS.belongsTo('transaction', {
+    async: true
+  }),
+  payer: DS.attr("string"),
+  payee: DS.attr("string"),
+  home: DS.attr("string"),
   amount: DS.attr('number'),
   note: DS.attr('string'),
   paid: DS.attr('boolean'),
@@ -13,7 +15,10 @@ var Invoice = DS.Model.extend({
   paymentPending: DS.attr('boolean'),
   paymentRejected: DS.attr('boolean'),
   rejectionNote: DS.attr('string'),
-  paymentConfirmedDate: DS.attr('date')
+  paymentConfirmedDate: DS.attr('date'),
+  createdAt: DS.attr('number', {
+    defaultValue() { return new Date().getTime(); }
+  })
 });
 
 export default Invoice

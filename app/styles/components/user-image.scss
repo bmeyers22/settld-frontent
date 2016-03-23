@@ -1,0 +1,8 @@
+.user-image {
+  @include flex-column();
+  text-align: center;
+  i.circular.icon {
+    margin: 0 auto;
+    font-size: $image-icon-size;
+  }
+}

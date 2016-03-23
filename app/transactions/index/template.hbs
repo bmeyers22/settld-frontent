@@ -1,0 +1,13 @@
+<div class="ui mini statistics">
+  {{#each model.members as |member|}}
+    <div class="statistic {{if (lte member.info.balance 0) 'red' 'green'}}">
+      <div class="value">
+        {{user-image user=member.user bare=true}}
+        {{format-money member.info.balance}}
+      </div>
+      <div class="label">
+        {{member.user.firstName}}
+      </div>
+    </div>
+  {{/each}}
+</div>

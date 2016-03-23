@@ -1,0 +1,51 @@
+
+<div class="join-home-wrapper">
+  <div class="search-form-wrapper">
+    <div class="ui search join-search-form">
+      <div class="ui home-results form">
+        <div class="ui icon fluid input">
+          <i {{action 'findHomes'}} class="search link icon"></i>
+          {{input class="prompt" type="text" name="query" value=queryText autocomplete="on" placeholder="Search..."}}
+        </div>
+        {{#if searchResults}}
+          <div class="result results-labels">
+            <div class="info">
+              <div class="title">
+                Name
+              </div>
+              <div class="zip">
+                Zip
+              </div>
+            </div>
+          </div>
+          {{#each searchResults as |result|}}
+            <div class={{if result.selected 'selected result' 'result'}} {{action 'homeSelected' result}}>
+              <div class="info">
+                <div class="title">
+                  {{result.name}}
+                </div>
+                <div class="zip">
+                  {{result.zip}}
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+          <h1 class="no-results">No results</h1>
+        {{/if}}
+      </div>
+      <div class="results"></div>
+      {{#unless noSelectedHome}}
+        <div class="ui form join-password">
+          <div class="ui fluid submit join button" {{action 'joinHome'}}>
+            <span class="submit-text">
+              Join
+            </span>
+          </div>
+          <div class="ui error message">
+          </div>
+        </div>
+      {{/unless}}
+    </div>
+  </div>
+</div>

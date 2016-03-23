@@ -1,0 +1,14 @@
+{{app-wrapper
+  currentSession=currentSession
+  groupPath=groupPath
+  invoices=model.invoices
+  actionMenuComponent=model.actionMenuComponent
+  actionMenuModel=model.actionMenuModel
+  paymentComplete='paymentComplete'
+  closeActionBar='closeActionBar'
+  addInvoiceToPayments='addInvoiceToPayments'
+  togglePaymentsBar='togglePaymentsBar'
+  invalidateSession='invalidateSession' }}
+<div class="ui dimmer modals page transition">
+  {{modals/delete-transaction}}
+</div>

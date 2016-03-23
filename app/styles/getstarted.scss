@@ -1,12 +1,8 @@
 .getstarted-container {
-  width: 100%;
+  @include flex-grow();
+  background: #fff;
   height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-
+  padding-top: 55px;
   .content-container {
     display: table;
     height: 100%;

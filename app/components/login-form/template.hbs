@@ -1,0 +1,28 @@
+<div class="form-container">
+  <div class="form-wrapper">
+    <h1 class="cover-heading">Settld</h1>
+    <form class="ui form segment new_user" {{action 'authenticate' on='submit'}}>
+      <div class="field">
+        <div class="ui huge fluid icon input">
+          {{input type="email" value=identification placeholder='Email' name="identification" class="form-control"}}
+          <i class="mail icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui huge fluid icon input">
+          {{input value=password type='password' class="form-control" placeholder="Enter Password" name="password" }}
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui fluid buttons">
+          <button type="submit" class="ui submit button" {{action 'signIn' 'password'}}>Login</button>
+          <button type="submit" class="ui green register button" {{action 'register'}}>Register</button>
+        </div>
+      </div>
+      <div class="field">
+        <button class="ui large fluid facebook button" {{ action 'signIn' 'facebook' }}><i class="facebook icon"></i> Facebook</button>
+      </div>
+    </form>
+  </div>
+</div>

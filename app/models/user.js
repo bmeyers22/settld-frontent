@@ -1,10 +1,12 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 var User;
 
 User = DS.Model.extend({
-  homes: DS.hasMany("home", {
+  homes: DS.hasMany('home', {
     async: true
   }),
+  uid: DS.attr('string'),
   fuid: DS.attr('string'),
   vuid: DS.attr('string'),
   email: DS.attr('string'),
@@ -15,12 +17,16 @@ User = DS.Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
   image: DS.attr('string'),
-  name: (function() {
+  name: Ember.computed('firstName', 'lastName', function() {
     return this.get('firstName' + ' ' + this.get('lastName'));
-  }).property('firstName', 'lastName'),
+  }),
   providers: DS.attr('array'),
-  facebook: DS.attr('object'),
-  venmo: DS.attr('object')
+  hasPassword: DS.attr('boolean'),
+  hasFacebook: DS.attr('boolean'),
+  hasVenmo: DS.attr('boolean'),
+  createdAt: DS.attr('number', {
+    defaultValue() { return new Date().getTime(); }
+  })
 });
 
 export default User;

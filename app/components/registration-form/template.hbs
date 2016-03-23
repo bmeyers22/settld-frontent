@@ -1,0 +1,45 @@
+<div class="form-container">
+  <div class="form-wrapper">
+    <div class="ui form segment new-user">
+      <div class="field">
+        <div class="ui large corner labeled input">
+          {{input value=firstName placeholder='First name' name='user[first_name]'}}
+          <div class="ui corner label">
+            <i class="asterisk icon"></i>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid input">
+          {{input value=lastName placeholder='Last name' name='user[last_name]'}}
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid icon input">
+          {{input value=email placeholder='Email' name='user[email]'}}
+          <i class="mail icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid icon input">
+          {{input type='password' value=password placeholder='Password' name='user[password]'}}
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui large fluid icon input">
+          {{input type='password' value=passwordConfirm placeholder='Confirm password' name='user[password_confirmation]'}}
+          <i class="lock icon"></i>
+        </div>
+      </div>
+
+      <div class="field">
+        <button class="ui green fluid submit button">Submit</button>
+      </div>
+      <div class="field">
+        {{#link-to 'login' class="ui fluid button"}}Back To Login{{/link-to}}
+      </div>
+
+    </div>
+  </div>
+</div>

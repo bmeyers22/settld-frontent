@@ -1,0 +1,22 @@
+{{#if unpaidInvoice}}
+  <div class="link item pay" {{action "addInvoiceToPayments" unpaidInvoice}}>Pay</div>
+{{/if}}
+{{#if pendingInvoice}}
+  <div class="item pending">Payment Pending</div>
+{{/if}}
+{{#if owedInvoices}}
+  {{#each owedInvoices as |hash|}}
+    {{#if hash.invoice.paymentPending}}
+      <div class="link active green item approve" {{action "markPaid" hash.invoice}}>
+        Approve {{hash.user.firstName}}'s payment
+      </div>
+    {{/if}}
+  {{/each}}
+  {{#if unpaidOwedInvoice}}
+    <div class="link item request">Request</div>
+  {{/if}}
+{{/if}}
+{{#link-to 'transaction' model class="link item details" }}Details{{/link-to}}
+{{#if canDelete}}
+  <div class="item delete">Delete</div>
+{{/if}}

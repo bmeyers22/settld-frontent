@@ -1,0 +1,5 @@
+{{#each list as |opt|}}
+  <div class="column" {{action 'select' opt}}>
+    <span class="category-label">{{opt.label}}</span>
+  </div>
+{{/each}}

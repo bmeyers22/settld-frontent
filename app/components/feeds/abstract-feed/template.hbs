@@ -1,0 +1,45 @@
+<div class="feed-wrapper">
+  {{#if hasStream}}
+  <div class="feed-panel">
+    <div class="left">
+    </div>
+    <div class="right">
+      <div>
+        {{feeds/audience-button
+          audienceScope=audienceScope
+          index=ENUMS.FeedAudienceScope.Me
+          iconClass='user icon'
+          changeAudience=(action 'changeAudience')}}
+        {{feeds/audience-button
+          audienceScope=audienceScope
+          index=ENUMS.FeedAudienceScope.Home
+          iconClass='users icon'
+          changeAudience='changeAudience'
+          disabled=true}}
+        {{feeds/audience-button
+          audienceScope=audienceScope
+          index=ENUMS.FeedAudienceScope.Global
+          iconClass='globe icon'
+          changeAudience='changeAudience'
+          disabled=true}}
+      </div>
+    </div>
+  </div>
+  <div class="ui feed">
+    {{#each stream as |item|}}
+      {{#if (eq item.constructor.modelName "transaction")}}
+        {{feed-item/transaction item=item openActionBar=(action "openActionBar") user=currentSession.authUser}}
+      {{else}}
+        {{feed-item/job item=item openActionBar=(action "openActionBar") user=currentSession.authUser}}
+      {{/if}}
+    {{/each}}
+  </div>
+  {{else}}
+  <div class="empty-feed ui yellow message">
+    <div class="header">
+      You have nothing in your feed!
+    </div>
+    <p>Transactions and chores will show up here. Click {{link-to 'here' 'create'}} to add something :)</p>
+  </div>
+  {{/if}}
+</div>

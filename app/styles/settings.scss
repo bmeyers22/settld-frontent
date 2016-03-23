@@ -1,149 +1,42 @@
 @import "variables";
 
-#settings_wrap {
-	.column {
-		label {
-			width:140px;
-			text-align: right;
-		}
-		span {
-			margin-left: 20px;
-		}
-		table{
-			height:100px;
-			
-			.ui.table.segment{
-			}
-		}
-	}
-	input {
-		width:90%;
-		float:left;
-	}
-	.privacy_wrap {
-		.ui.form .field {
-			margin-bottom: 0px;
-		}
-		.checkbox_align {
-
-			label {
-			}
-			input {
-			}
-		}
-	}
-	.pj-left-label {
-		label {
-			float:left;
-			margin: 0 5px 0;
-		}
-	}
-	.label_wrap {
-		width:140px;
-		float:left;
-		text-align: right;
-	}
-	.password_edit_wrapper {
-		label {
-			width:140px;
-			text-align: right;
-		}
-	}
-	.settings_button_wrap {
-		a {
-			width:275px;
-		}
-		.tooltip{
-    		display: inline;
-    		position: relative;
-		}
-		.tooltip:hover:after{
-		    background: #333;
-		    background: rgba(0,0,0,.8);
-		    border-radius: 5px;
-		    bottom: 26px;
-		    color: #fff;
-		    content: attr(title);
-		    left: 20%;
-		    padding: 5px 15px;
-		    position: absolute;
-		    z-index: 98;
-		    width: 220px;
-		}
-		.tooltip:hover:before{
-		    border: solid;
-		    border-color: #333 transparent;
-		    border-width: 6px 6px 0 6px;
-		    bottom: 20px;
-		    content: "";
-		    left: 50%;
-		    position: absolute;
-		    z-index: 99;
-		}
-	}
-	.edit_settings_wrapper {
-		padding: 20px;
-		.editable-section {
-			color: #999;
-
-			.title {
-				float: left;
-
-				i {
-					width: 25px;
-				}
-			}
-
-			.button-container {
-				float: right;
-				.edit-icon {
-					display: block;
-					opacity: .5;
-					cursor: pointer;
-
-					&:hover {
-						opacity: 1;
-					};
-
-
-				}
-				.save-cancel {
-					display: none;
-				}
-			}
-			
-
-			.content {
-				color: #aaa;
-				@include transition-all();
-				.value {
-					color: #555;
-				}
-
-				.editable {
-					display: none;
-				}
-			}
-
-			&.editing {
-
-				.button-container {
-					.edit-icon {
-						display: none;
-					}
-					.save-cancel {
-						display: block;
-					}
-				}
-				.content {
-					.editable {
-						display: block;
-					}
-					.details {
-						display: none;
-					}
-				}
-			}
-		}
-	}
+.settings-wrapper {
+  .ui.list > .item {
+    display: flex;
+    padding: 16px;
+    font-size: 16px;
+    align-items: center;
+    &.form {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      .top-bar {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+      }
+      .ui.form {
+        padding: 16px;
+      }
+    }
+    .header {
+      font-weight: 300;
+    }
+    &:first-child {
+      border-top: 1px solid rgba(34, 36, 38, 0.15);
+    }
+    &:last-child {
+      border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+    }
+    .icon {
+      font-size: 32px;
+      vertical-align: middle;
+      height: auto;
+      cursor: pointer;
+    }
+    .content {
+      vertical-align: middle;
+      flex-grow: 1;
+    }
+  }
 }

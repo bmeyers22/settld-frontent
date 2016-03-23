@@ -1,0 +1,40 @@
+.invoice-photo-tree {
+  margin: 20px 0;
+  @include flex-column();
+  @include align-items(center);
+  text-align: center;
+  .primary {
+    .ui.image {
+      height: 120px;
+    }
+    .user.icon {
+      font-size: 60px;
+    }
+    margin-bottom: 20px;
+  }
+  .secondary {
+    @include flex-row();
+    margin-top: 25px;
+    .visible.content {
+      @include flex-column();
+      @include justify-content(flex-end);
+      height: 100%;
+      width: 100%;
+      .paid-overlay {
+        @include flex-row();
+        @include align-items(center);
+        @include justify-content(center);
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background: rgba(105, 105, 105, 0.75);
+        > i {
+          margin: 0;
+        }
+      }
+    }
+    .reveal {
+      margin: 0 5px;
+    }
+  }
+}
