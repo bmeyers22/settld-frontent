@@ -14,7 +14,7 @@ module.exports = function(environment) {
         modulePrefix: 'web',
         environment: environment,
     firebase: 'https://YOUR-FIREBASE-NAME.firebaseio.com/',
-        baseURL: '/',
+        rootURL: '/',
         locationType: 'auto',
         EmberENV: {
             FEATURES: {

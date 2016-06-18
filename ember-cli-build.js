@@ -24,7 +24,6 @@ module.exports = function(defaults) {
     // output files.
     app.import('bower_components/semantic-ui/dist/semantic.css');
 
-    app.import('bower_components/lodash/lodash.min.js');
     app.import('bower_components/moment/min/moment.min.js');
     app.import('bower_components/semantic-ui/dist/semantic.js');
     app.import('vendor/javascripts/semantic-mods.js');
