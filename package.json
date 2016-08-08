@@ -49,15 +49,14 @@
     "ember-resolver": "^2.0.3",
     "ember-truth-helpers": "1.2.0",
     "ember-watson": "^0.8.1",
-    "emberfire": "2.0.0",
+    "emberfire": "git://github.com/firebase/emberfire.git#c81e02868078389558f54b8d66209e9334dd7687",
     "liquid-fire": "git+https://github.com/ember-animation/liquid-fire.git#master",
-    "loader.js": "^4.0.0",
     "torii": "0.8.0-beta.1"
   },
   "dependencies": {
     "ember-cli-dotenv": "^1.2.0",
     "ember-cli-sortable": "git+https://github.com/bmeyers22/ember-cli-sortable.git#master",
     "ember-welcome-page": "^1.0.1",
-    "loader.js": "^4.0.1"
+    "loader.js": "^4.0.11"
   }
 }

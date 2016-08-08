@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    firebase: Ember.inject.service(),
+    firebaseApp: Ember.inject.service(),
     errorHandler: Ember.inject.service(),
     hasPublicProfile: Ember.computed('user.settings.hasPublicProfile', function () {
         return this.get('user.settings.hasPublicProfile') ? 'checked' : '';
@@ -49,7 +49,7 @@ export default Ember.Component.extend({
             });
         },
         changePassword() {
-            this.get('firebase').changePassword({
+            this.get('firebaseApp').changePassword({
                 email       : this.get('user.email'),
                 oldPassword : this.get('passwordForm.oldPassword'),
                 newPassword : this.get('passwordForm.newPassword')

@@ -4,7 +4,7 @@ import Job from 'web/models/job';
 
 export default Ember.Component.extend({
     classNames: ['event'],
-    firebase: Ember.inject.service(),
+    firebaseApp: Ember.inject.service(),
     transactionsService: Ember.inject.service('transactions'),
     currentSession: Ember.inject.service(),
     pendingInvoice: false,
@@ -31,11 +31,11 @@ export default Ember.Component.extend({
             if (this.get('hasLikedTransaction')) {
                 let userRef = this.getUserLikedRef();
                 userRef.once('value', (snapshot) => {
-                    this.get('firebase').child(`transactionLikes/${snapshot.val()}`).remove();
+                    this.get('firebaseApp').child(`transactionLikes/${snapshot.val()}`).remove();
                     userRef.remove();
                 })
             } else {
-                let ref = this.get('firebase').child('transactionLikes').push({
+                let ref = this.get('firebaseApp').child('transactionLikes').push({
                     user: this.get('currentSession.authUser.id'),
                     transaction: this.get('item.id')
                 });
@@ -44,7 +44,7 @@ export default Ember.Component.extend({
         }
     },
     getUserLikedRef() {
-        return this.get('firebase').child(`userTransactionLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
+        return this.get('firebaseApp').child(`userTransactionLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
     },
     userLikedObserver: Ember.on('init', function () {
         let ref = this.getUserLikedRef().on('value', (snapshot) => {
@@ -56,7 +56,7 @@ export default Ember.Component.extend({
         });
     }),
     likesObserver: Ember.on('init', function () {
-        let ref = this.get('firebase').child('transactionLikes').orderByChild('transaction').equalTo(this.get('item.id')).on('value', (snapshot) => {
+        let ref = this.get('firebaseApp').child('transactionLikes').orderByChild('transaction').equalTo(this.get('item.id')).on('value', (snapshot) => {
             this.set('numberOfLikes', snapshot.numChildren());
         });
     }),

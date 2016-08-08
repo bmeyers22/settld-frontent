@@ -4,7 +4,7 @@ import config from 'web/config/environment';
 export default Ember.Component.extend({
     store: Ember.inject.service(),
     errorHandler: Ember.inject.service(),
-    firebase: Ember.inject.service(),
+    firebaseApp: Ember.inject.service(),
     classNames: [
         'signin-container',
         'login'
@@ -58,21 +58,18 @@ export default Ember.Component.extend({
                 return;
             }
             let self = this;
-            let ref = new Firebase(config.firebase);
-            ref.createUser({
-                email    : self.get('identification'),
-                password : self.get('password')
-            }, function(error, userData) {
-                if (error) {
-                    self.addErrors([error.message]);
-                } else {
+            const auth = this.get('firebaseApp').auth();
+            auth.createUserWithEmailAndPassword(self.get('identification'), self.get('password'))
+                .then(function(userData) {
                     console.log("Successfully created user account with uid:", userData.uid);
                     self.sendAction('registered', userData, 'password', {
                         email    : self.get('identification'),
                         password : self.get('password')
                     });
-                }
-            });
+                })
+                .catch(function (error) {
+                    self.addErrors([error.message]);
+                });
         }
     },
     didInsertElement() {

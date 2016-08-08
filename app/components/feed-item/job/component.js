@@ -4,7 +4,7 @@ import Job from 'web/models/job';
 export default Ember.Component.extend({
     classNames: ['event'],
     currentSession: Ember.inject.service(),
-    firebase: Ember.inject.service(),
+    firebaseApp: Ember.inject.service(),
     numberOfLikes: 0,
     hasLikedJob: false,
     displayName: Ember.computed('item.user.currentState.isLoading', function() {
@@ -20,11 +20,11 @@ export default Ember.Component.extend({
             if (this.get('hasLikedJob')) {
                 let userRef = this.getUserLikedRef();
                 userRef.once('value', (snapshot) => {
-                    this.get('firebase').child(`jobLikes/${snapshot.val()}`).remove();
+                    this.get('firebaseApp').child(`jobLikes/${snapshot.val()}`).remove();
                     userRef.remove();
                 })
             } else {
-                let ref = this.get('firebase').child('jobLikes').push({
+                let ref = this.get('firebaseApp').child('jobLikes').push({
                     user: this.get('currentSession.authUser.id'),
                     job: this.get('item.id')
                 });
@@ -34,7 +34,7 @@ export default Ember.Component.extend({
         }
     },
     getUserLikedRef() {
-        return this.get('firebase').child(`userJobLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
+        return this.get('firebaseApp').child(`userJobLikes/${this.get('currentSession.authUser.id')}/${this.get('item.id')}`);
     },
     userLikedObserver: Ember.on('init', function () {
         let ref = this.getUserLikedRef().on('value', (snapshot) => {
@@ -46,7 +46,7 @@ export default Ember.Component.extend({
         });
     }),
     likesObserver: Ember.on('init', function () {
-        let ref = this.get('firebase').child('jobLikes').orderByChild('job').equalTo(this.get('item.id')).on('value', (snapshot) => {
+        let ref = this.get('firebaseApp').child('jobLikes').orderByChild('job').equalTo(this.get('item.id')).on('value', (snapshot) => {
             this.set('numberOfLikes', snapshot.numChildren());
         });
     }),
