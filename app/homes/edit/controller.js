@@ -1,21 +1,15 @@
 import Ember from 'ember';
 
-var HomesEditController = Ember.Controller.extend({dataGroups:
-  {info: [
-    'name',
-    'roommateCount',
-    'rentPerMonth'
-  ],
-  location: [
-    'address',
-    'city',
-    'state',
-    'zip'
-  ],
-  password: [
-    'currentPassword',
-    'password',
-    'passwordConfirmation'
-  ]}});
-
-export default HomesEditController
+export default Ember.Controller.extend({
+    actions: {
+        updateHome: function (home) {
+            let self = this;
+            home.save().then( function (home) {
+                self.get('target').send('homeUpdated', home);
+            });
+        },
+        cancel: function () {
+            this.get('target').send('homeUpdateCancelled');
+        }
+    }
+});

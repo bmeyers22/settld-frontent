@@ -13,9 +13,10 @@ export default Ember.Component.extend({
   },
   didInsertElement() {
     var self = this;
+    debugger
     this.$('.ui.search').search({
       apiSettings: {
-        url: `${config.firebase}homes.json?orderBy="name"&startAt="${this.get('queryText')}"`
+        url: `${config.firebase.databaseURL}/homes.json?orderBy="name"&startAt="${this.get('queryText')}"`
       },
       cache: false,
       onSelect() {
